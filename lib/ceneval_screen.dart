@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:ui';
+import 'package:titulacion/widgets/curved_text.dart';
+import 'dart:math' as math;
 
 class CenevalScreen extends StatelessWidget {
   const CenevalScreen({super.key});
@@ -25,34 +26,51 @@ class CenevalScreen extends StatelessWidget {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    SvgPicture.asset(
-                      'assets/images/parchment_Open.svg',
+                    // Cambiando SVG por imagen PNG
+                    Image.asset(
+                      'assets/images/parchment_Open.png',
                       width: 300,
-                      height: 300,
-                      placeholderBuilder: (BuildContext context) => Container(
-                        width: 300,
-                        height: 300,
-                        color: Colors.amber.withOpacity(0.3),
-                        child: const Center(child: CircularProgressIndicator()),
+                      height: 350,
+                      fit: BoxFit.contain,
+                    ),
+                    Positioned(
+                      top: 35,
+                      child: CurvedText(
+                        text: 'TITULACION POR CENEVAL',
+                        radius: 100,
+                        textStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                      child: SizedBox(
-                        width: 220,
-                        height: 220,
-                        child: Center(
-                          child: SingleChildScrollView(
-                            child: Text(
-                              'Descripción de la titulación por Ex. Ceneval',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black87,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 60),
+                          SizedBox(
+                            width: 220,
+                            height: 220,
+                            child: Center(
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(25, 0, 5, 0),
+                                  child: Text(
+                                    'Descripción de la titulación por Ex. Ceneval',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ),
-                              textAlign: TextAlign.center,
                             ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ],

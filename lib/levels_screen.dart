@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LevelsScreen extends StatefulWidget {
   const LevelsScreen({super.key});
@@ -15,6 +16,33 @@ class _LevelsScreenState extends State<LevelsScreen> {
   bool _showFilesPopup = false;
   bool _showLinksPopup = false;
   bool _showContactsPopup = false;
+
+  // Función simplificada para abrir URLs usando launchUrl
+  Future<void> _launchUrl(String urlString) async {
+    if (urlString.isEmpty) return;
+
+    try {
+      // Añadir el prefijo correcto basado en el tipo de URL
+      String urlWithScheme = urlString;
+      if (urlString.contains('@')) {
+        urlWithScheme = 'mailto:$urlString';
+      } else if (urlString.replaceAll(RegExp(r'[^0-9]'), '').length >= 10 && !urlString.contains('http')) {
+        urlWithScheme = 'tel:${urlString.replaceAll(RegExp(r'[^0-9]'), '')}';
+      } else if (!urlString.startsWith('http://') && !urlString.startsWith('https://')) {
+        urlWithScheme = 'https://$urlString';
+      }
+      
+      final Uri url = Uri.parse(urlWithScheme);
+      await launchUrl(url);
+    } catch (e) {
+      debugPrint('Error al abrir: $e');
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('No se pudo abrir: $urlString')),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -171,8 +199,32 @@ class _LevelsScreenState extends State<LevelsScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '1. Contacto Directo: Coordinación General de Atención a los Universitarios de la BUAP al teléfono: +52 (222) 229 5500 o al correo: jorge.avelinos@correo.buap.mx.',
+            '1. Contacto Directo:',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            'Coordinación General de Atención a los Universitarios de la BUAP',
             style: TextStyle(color: Colors.white),
+          ),
+          InkWell(
+            onTap: () => _launchUrl('+52 222 229 5500'),
+            child: Text(
+              'Teléfono: +52 (222) 229 5500',
+              style: TextStyle(
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+          ),
+          InkWell(
+            onTap: () => _launchUrl('jorge.avelinos@correo.buap.mx'),
+            child: Text(
+              'Correo: jorge.avelinos@correo.buap.mx',
+              style: TextStyle(
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+              ),
+            ),
           ),
           const SizedBox(height: 15),
           Text(
@@ -187,14 +239,43 @@ class _LevelsScreenState extends State<LevelsScreen> {
             '• Instagram: @cgaubuap',
             style: TextStyle(color: Colors.white),
           ),
+          const SizedBox(height: 15),
           Text(
-            'Visitar la coordinación de titulación de la Facultad de Arquitectura, quien está encargada: Maricarmen Lara o mandando un correo a: titulacion.fabuap@correo.buap.mx.',
+            'Coordinación de titulación de la Facultad de Arquitectura:',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            'Encargada: Maricarmen Lara',
             style: TextStyle(color: Colors.white),
+          ),
+          InkWell(
+            onTap: () => _launchUrl('titulacion.fabuap@correo.buap.mx'),
+            child: Text(
+              'Correo: titulacion.fabuap@correo.buap.mx',
+              style: TextStyle(
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+              ),
+            ),
           ),
           const SizedBox(height: 15),
           Text(
-            '3. Contacto externo: Para cualquier consulta, envía un mensaje o realiza una llamada a Víctor, miembro del Departamento de Titulación de la Facultad de Arquitectura, al número 221 256 998.',
+            '3. Contacto externo:',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            'Víctor - Departamento de Titulación de la Facultad de Arquitectura',
             style: TextStyle(color: Colors.white),
+          ),
+          InkWell(
+            onTap: () => _launchUrl('+52 221 256 998'),
+            child: Text(
+              'Teléfono: 221 256 998',
+              style: TextStyle(
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+              ),
+            ),
           ),
         ],
       ),
@@ -217,53 +298,56 @@ class _LevelsScreenState extends State<LevelsScreen> {
       child: Container(
         color: Colors.black.withOpacity(0.5),
         child: Center(
-          child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: const Color(0xFF002D4C).withOpacity(0.9),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
+          child: GestureDetector(
+            onTap: () {}, // Evita que el pop-up se cierre al hacer clic dentro de él
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: 20),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: const Color(0xFF002D4C).withOpacity(0.9),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  description,
-                  style: TextStyle(color: Colors.white),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  height: 300,
-                  child: SingleChildScrollView(
-                    child: content,
+                  const SizedBox(height: 10),
+                  Text(
+                    description,
+                    style: TextStyle(color: Colors.white),
+                    textAlign: TextAlign.center,
                   ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      _showFilesPopup = false;
-                      _showLinksPopup = false;
-                      _showContactsPopup = false;
-                    });
-                  },
-                  child: Text('Cerrar'),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: const Color(0xFF002D4C),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: 300,
+                    child: SingleChildScrollView(
+                      child: content,
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        _showFilesPopup = false;
+                        _showLinksPopup = false;
+                        _showContactsPopup = false;
+                      });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      foregroundColor: const Color(0xFF002D4C),
+                    ),
+                    child: Text('Cerrar'),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -280,9 +364,15 @@ class _LevelsScreenState extends State<LevelsScreen> {
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         if (url.isNotEmpty)
-          Text(
-            url,
-            style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
+          InkWell(
+            onTap: () => _launchUrl(url),
+            child: Text(
+              url,
+              style: TextStyle(
+                color: Colors.blue,
+                decoration: TextDecoration.underline,
+              ),
+            ),
           ),
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:ui';
+import 'package:titulacion/widgets/curved_text.dart';
+import 'dart:math' as math;
 
 class PromedioScreen extends StatelessWidget {
   const PromedioScreen({super.key});
@@ -25,35 +26,52 @@ class PromedioScreen extends StatelessWidget {
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    // Usando try-catch para SVG
-                    SvgPicture.asset(
-                      'assets/images/parchment_Open.svg',
+                    // Cambiando SVG por imagen PNG
+                    Image.asset(
+                      'assets/images/parchment_Open.png',
                       width: 300,
-                      height: 300,
-                      placeholderBuilder: (BuildContext context) => Container(
-                        width: 300,
-                        height: 300,
-                        color: Colors.amber.withOpacity(0.3),
-                        child: const Center(child: CircularProgressIndicator()),
+                      height: 350,
+                      fit: BoxFit.contain,
+                    ),
+                    Positioned(
+                      top: 35,
+                      child: CurvedText(
+                        text: 'TITULACION POR PROMEDIO',
+                        radius: 100,
+                        textStyle: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
                       ),
+                      
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                      child: SizedBox(
-                        width: 220,
-                        height: 220,
-                        child: Center(
-                          child: SingleChildScrollView(
-                            child: Text(
-                              'Bienvenido valiente estudiante felicidades por llegar a esta punto sin haber reprobado, sin haber recursado ninguna materia y sin haber pedido permiso por baja temporal. Ahora solo queda terminar tu proceso de titulacion, es momento de empezar el vuelo hacia tu titulo profesional, reune tus documentos y vuela por los cielos de tu proceso final.',
-                              style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.black87,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 60), // Ajustar el espacio para el título
+                          SizedBox(
+                            width: 220,
+                            height: 220,
+                            child: Center(
+                              child: SingleChildScrollView(
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(25, 0, 5, 0),
+                                  child: Text(
+                                    'Bienvenido valiente estudiante felicidades por llegar a esta punto sin haber reprobado, sin haber recursado ninguna materia y sin haber pedido permiso por baja temporal. Ahora solo queda terminar tu proceso de titulacion, es momento de empezar el vuelo hacia tu titulo profesional, reune tus documentos y vuela por los cielos de tu proceso final.',
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black87,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
                               ),
-                              textAlign: TextAlign.center,
                             ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
                   ],
@@ -67,7 +85,7 @@ class PromedioScreen extends StatelessWidget {
                   placeholderBuilder: (BuildContext context) => Container(
                     width: 200,
                     height: 200,
-                    color: Colors.grey.withOpacity(0.3),
+                    color: Colors.grey,
                     child: const Icon(Icons.person, size: 100),
                   ),
                 ),
