@@ -11,7 +11,7 @@ Fecha de recuperación: 2026-09-28
 | `/home/alan/Documents/LoboApp/Documentos para aplicación LoboApp-...zip` | **116 assets de diseño** (la fuente de verdad del arte) |
 | `/home/alan/Documents/LoboApp/lobito.eps`, `iconos inapp-4.eps` | Logos vectoriales sueltos |
 
-Repo remoto: `https://github.com/MadManJohnSmith/titulacion.git`
+Repo remoto: `https://github.com/MadManJohnSmith/LoboApp.git`
 
 ## 2. Estado de las ramas
 

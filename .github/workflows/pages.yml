@@ -30,7 +30,7 @@ jobs:
           cache: true
 
       - name: Compilar demo web sin bases de datos
-        run: bash tools/preparar_demo_web.sh titulacion
+        run: bash tools/preparar_demo_web.sh LoboApp
 
       - name: Configurar Pages
         uses: actions/configure-pages@v5

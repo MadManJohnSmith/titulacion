@@ -7,7 +7,7 @@
 <h3 align="center">Tu titulación en la BUAP, como una aventura</h3>
 
 <p align="center">
-  <a href="https://github.com/MadManJohnSmith/titulacion/actions/workflows/ci.yml"><img src="https://github.com/MadManJohnSmith/titulacion/actions/workflows/ci.yml/badge.svg" alt="CI"/></a>
+  <a href="https://github.com/MadManJohnSmith/LoboApp/actions/workflows/ci.yml"><img src="https://github.com/MadManJohnSmith/LoboApp/actions/workflows/ci.yml/badge.svg" alt="CI"/></a>
   <img src="https://img.shields.io/badge/Flutter-3.47-02569B?logo=flutter&logoColor=white" alt="Flutter"/>
   <img src="https://img.shields.io/badge/plataforma-Android_%C2%B7_Web-0B233A" alt="Android y Web"/>
   <img src="https://img.shields.io/badge/licencia-todos_los_derechos_reservados-E0A93B" alt="Licencia"/>
@@ -22,7 +22,7 @@ Funciona **100% sin conexión y sin cuenta**: tu progreso se guarda únicamente
 en tu dispositivo.
 
 <p align="center">
-  🌐 <a href="https://madmanjohnsmith.github.io/titulacion/"><strong>Pruébala en el navegador (demo)</strong></a>
+  🌐 <a href="https://madmanjohnsmith.github.io/LoboApp/"><strong>Pruébala en el navegador (demo)</strong></a>
   — versión de muestra sin buscadores; la app completa va en la instalación de abajo.
 </p>
 
@@ -76,7 +76,7 @@ en tu dispositivo.
 ## 📲 Instalación
 
 Todas las versiones se publican en la página de
-[**Releases**](https://github.com/MadManJohnSmith/titulacion/releases).
+[**Releases**](https://github.com/MadManJohnSmith/LoboApp/releases).
 
 ### Android (recomendado)
 
@@ -104,7 +104,7 @@ Descarga `LoboApp-x.y.z-linux-x64.tar.gz`, descomprímelo y ejecuta
 ### Web
 
 No requiere instalación: usa la
-[demo en el navegador](https://madmanjohnsmith.github.io/titulacion/), o
+[demo en el navegador](https://madmanjohnsmith.github.io/LoboApp/), o
 compílalo tú (pasos abajo).
 
 ### Compilar desde el código fuente
@@ -113,7 +113,7 @@ Necesitas [Flutter](https://docs.flutter.dev/get-started/install) 3.47 o
 superior (y Android SDK solo si quieres el APK):
 
 ```bash
-git clone https://github.com/MadManJohnSmith/titulacion.git
+git clone https://github.com/MadManJohnSmith/LoboApp.git
 cd titulacion
 flutter pub get
 flutter run -d chrome            # web
@@ -155,7 +155,7 @@ hardcodeado en el código:
 
 ¿Cambió un requisito, un costo o un teléfono? Se edita el JSON y la app se
 actualiza. ¿Tu facultad no tiene correo publicado? Mándalo con su fuente
-oficial vía [issue](https://github.com/MadManJohnSmith/titulacion/issues) y
+oficial vía [issue](https://github.com/MadManJohnSmith/LoboApp/issues) y
 se agrega.
 
 ## 🧱 Estructura del proyecto
