@@ -1,0 +1,21 @@
+name: 📋 Información de la BUAP desactualizada o faltante
+description: Un requisito, costo, teléfono o correo de titulación cambió (o falta)
+labels: [contenido]
+body:
+  - type: dropdown
+    id: unidad
+    attributes:
+      label: Unidad académica
+      description: Si aplica a una facultad o escuela en particular.
+      options:
+        - "General (BUAP completa)"
+        - "Otra (escribir en descripción)"
+    validations:
+      required: true
+  - type: textarea
+    id: dato
+    attributes:
+      label: ¿Qué dato es y cuál es el correcto?
+      description: Indica también la fuente oficial (sitio BUAP, oficio, publicación institucional). La app no publica datos sin fuente verificada.
+    validations:
+      required: true

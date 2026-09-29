@@ -1,0 +1,43 @@
+name: 🐺 Error en la app
+description: Algo se ve o funciona mal
+labels: [bug]
+body:
+  - type: textarea
+    id: que-paso
+    attributes:
+      label: ¿Qué pasó?
+      description: Describe qué hiciste, qué esperabas y qué pasó.
+    validations:
+      required: true
+  - type: dropdown
+    id: pantalla
+    attributes:
+      label: ¿En qué pantalla?
+      options:
+        - Bienvenida
+        - Registro (matrícula / facultad)
+        - Selección de ruta
+        - Mapa de niveles
+        - Detalle de nivel (pasos y documentos)
+        - Perfil
+        - Contactos
+        - Directorio BUAP
+        - Otra
+    validations:
+      required: true
+  - type: dropdown
+    id: plataforma
+    attributes:
+      label: ¿Dónde lo viste?
+      options:
+        - Android
+        - Web (navegador)
+        - Windows / Linux / macOS
+        - Otro
+    validations:
+      required: true
+  - type: textarea
+    id: captura
+    attributes:
+      label: Captura de pantalla
+      description: Si aplica, pega la imagen aquí.

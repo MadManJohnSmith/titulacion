@@ -1,0 +1,8 @@
+{
+  "total": 43025,
+  "con_correo_institucional": 10715,
+  "archivo": "assets/trabajadores/trabajadores.tsv.gz",
+  "raw_bytes": 1851906,
+  "gz_bytes": 605760,
+  "nota": "Solo correos @correo.buap.mx. La base no tiene unidad academica: no se puede ligar a una facultad."
+}

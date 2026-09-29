@@ -1,0 +1,21 @@
+{
+  "_nota": "Contactos de alcance general (toda la BUAP). Los contactos por facultad viven en facultades.json. Cuando una facultad no publica el suyo, la app muestra estos.",
+  "contactos": [
+    {
+      "nombre": "Dirección de Administración Escolar (DAE)",
+      "area": "Titulación — BUAP",
+      "telefono": "+52 (222) 229 55 00",
+      "correo": "",
+      "redes": "Extensiones 7025 y 4051. Edificio Central DAE, Ciudad Universitaria, Col. San Manuel, C.P. 72592, Puebla, Pue.",
+      "ambito": "general"
+    },
+    {
+      "nombre": "Coordinación General de Atención a los Universitarios (CGAU)",
+      "area": "Atención a egresados y titulación",
+      "telefono": "+52 (222) 229 5500",
+      "correo": "jorge.avelinos@correo.buap.mx",
+      "redes": "Facebook: CGAU BUAP Coordinación General de Atención a los Universitarios · Instagram: @cgaubuap",
+      "ambito": "general"
+    }
+  ]
+}

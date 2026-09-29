@@ -43,3 +43,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# ZCode session artifacts
+.zcode/
+
+# Android signing (never commit)
+android/key.properties
+*.jks
+*.keystore
+
+# Local databases (source data lives outside the repo)
+*.db
+
+# Gradle build output at android/ level
+/android/build/

@@ -1,0 +1,750 @@
+{
+  "rutas": [
+    {
+      "id": "promedio",
+      "nombre": "Titulación por Promedio",
+      "descripcion": "Llegaste hasta aquí sin reprobar, sin recursar y sin baja temporal. Ahora solo queda terminar tu proceso: es momento de empezar el vuelo hacia tu título profesional. Reúne tus documentos y vuela por los cielos de tu proceso final.",
+      "mascotaInicio": "assets/images/lobo_deportivo.svg",
+      "pergaminoInicio": "assets/images/parchment/prof_niveles.svg",
+      "tituloAsset": "assets/images/screens/select_titulo_promedio.svg",
+      "descripcionAsset": "assets/images/screens/select_desc_promedio.svg",
+      "niveles": [
+        {
+          "numero": 0,
+          "titulo": "Titulación por Promedio",
+          "descripcion": "Tu aventura comienza aquí. Sigue nivel por nivel y reúne lo que necesitas para titularte.",
+          "icono": "",
+          "mascota": "assets/images/lobo_deportivo.svg",
+          "fondo": "",
+          "esInicio": true,
+          "pasos": [],
+          "documentos": []
+        },
+        {
+          "numero": 1,
+          "titulo": "Servicio Social",
+          "descripcion": "Tu tutor académico califica tu servicio social y tu coordinator genera la carta de término digital.",
+          "icono": "assets/images/level_icons/nivel_1.svg",
+          "mascota": "assets/images/lobo_aviador.svg",
+          "fondo": "",
+          "pasos": [
+            {
+              "titulo": "Habla con tu tutor académico",
+              "detalle": "Contacta a tu académico que funge como tutor de servicio social para que pueda calificar la materia de servicio social."
+            },
+            {
+              "titulo": "Sigue la ruta en Autoservicios",
+              "detalle": "Autoservicios > Servicios al Alumno > Registro Escolar > Servicio social y práctica profesional."
+            },
+            {
+              "titulo": "Pide tu carta de término",
+              "detalle": "Contacta al Coordinador de Práctica Profesional Crítica de tu Unidad Académica para que genere la carta de término digital."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Carta de término de servicio social",
+              "nota": "Digital, la genera tu unidad académica."
+            }
+          ]
+        },
+        {
+          "numero": 2,
+          "titulo": "Acta de nacimiento",
+          "descripcion": "Tu acta de nacimiento es la base de todo el expediente. Debe estar actualizada y coincidir con tu CURP.",
+          "icono": "assets/images/level_icons/nivel_2.svg",
+          "mascota": "assets/images/lobo_aviador.svg",
+          "fondo": "",
+          "pasos": [
+            {
+              "titulo": "Si no eres egresado de la BUAP",
+              "detalle": "Tendrás que conseguir la reliquia por medio de un académico de titulación. Contacta a tu facultad preguntando qué debes realizar."
+            },
+            {
+              "titulo": "Los datos deben coincidir",
+              "detalle": "Los datos del acta de nacimiento y la CURP deben coincidir en su totalidad. El acta debe indicar la entidad de registro."
+            },
+            {
+              "titulo": "Si te registraste después de nacer",
+              "detalle": "Deberás presentar constancia de extemporaneidad expedida por el Registro Civil de tu estado."
+            },
+            {
+              "titulo": "Carta de naturalización",
+              "detalle": "Presentar original y copia a color de excelente calidad."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Acta de nacimiento",
+              "nota": "Original, actualizada y con la entidad de registro visible."
+            },
+            {
+              "nombre": "Constancia de extemporaneidad",
+              "nota": "Solo si te registraste después de tu fecha de nacimiento."
+            },
+            {
+              "nombre": "Carta de naturalización",
+              "nota": "Si corresponde: original y copia a color."
+            }
+          ]
+        },
+        {
+          "numero": 3,
+          "titulo": "Acta de nacimiento actualizada",
+          "descripcion": "Trámite tu acta de nacimiento actualizada en línea y recíbela en PDF por correo.",
+          "icono": "assets/images/level_icons/nivel_3.svg",
+          "mascota": "assets/images/lobo_aviador.svg",
+          "fondo": "",
+          "pasos": [
+            {
+              "titulo": "Entra al sitio oficial",
+              "detalle": "Ingresa a la página oficial del Gobierno de Puebla para iniciar el trámite de tu acta de nacimiento."
+            },
+            {
+              "titulo": "Captura tus datos",
+              "detalle": "Incluye datos registrales, CURP, RFC, razón social, nombre completo y correo electrónico."
+            },
+            {
+              "titulo": "Genera la referencia y paga",
+              "detalle": "Genera la referencia de pago y realiza el pago correspondiente."
+            },
+            {
+              "titulo": "Recibe tu PDF certificado",
+              "detalle": "Una vez confirmado el pago, en un lapso de 72 horas recibirás por correo electrónico la copia certificada del acta en formato PDF."
+            },
+            {
+              "titulo": "Descarga e imprime",
+              "detalle": "Después de descargar el acta, puedes imprimirla y usarla para cualquier trámite necesario."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Acta de nacimiento certificada en PDF",
+              "nota": "Llega por correo tras 72 horas de confirmado el pago."
+            },
+            {
+              "nombre": "Referencia de pago",
+              "nota": "Guárdala: es tu comprobante."
+            }
+          ]
+        },
+        {
+          "numero": 4,
+          "titulo": "Certificado de estudios",
+          "descripcion": "Obtén tu certificado de estudios desde Autoservicios y tenlo listo en PDF escaneado.",
+          "icono": "assets/images/level_icons/nivel_4.svg",
+          "mascota": "assets/images/lobo_aviador.svg",
+          "fondo": "",
+          "pasos": [
+            {
+              "titulo": "Entra a tu cuenta",
+              "detalle": "Ingresa a tu cuenta en www.autoservicios.buap.mx y sigue las instrucciones del manual de usuario."
+            },
+            {
+              "titulo": "¿Completaste el 100% de tu plan?",
+              "detalle": "Si ya completaste el 100% de tu plan de estudios, debes realizar el trámite de certificado de estudios."
+            },
+            {
+              "titulo": "Escanea póliza y voucher",
+              "detalle": "Escanea la póliza y el voucher de pago por concepto de constancia de estudios. La póliza se genera desde tu cuenta en autoservicios."
+            },
+            {
+              "titulo": "Consulta el manual de escaneo",
+              "detalle": "Consulta el manual de escaneo de documentos para cumplir con las características necesarias al adjuntar tus requisitos."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Certificado de estudios",
+              "nota": "Póliza generada desde autoservicios. Con fecha de emisión de 1997 o anteriores el tiempo de entrega es mayor.",
+              "url": "https://escolar.buap.mx/"
+            }
+          ]
+        },
+        {
+          "numero": 5,
+          "titulo": "Pago de derechos",
+          "descripcion": "Paga los derechos del Título Profesional y conserva el folio para dar seguimiento.",
+          "icono": "assets/images/level_icons/nivel_5.svg",
+          "mascota": "assets/images/lobo_aviador.svg",
+          "fondo": "",
+          "pasos": [
+            {
+              "titulo": "Paga en ventanilla bancaria",
+              "detalle": "Realiza el pago de derechos del Título Profesional directamente en ventanilla bancaria, mediante depósito a la cuenta a nombre de la Benemérita Universidad Autónoma de Puebla, Dirección de Administración Escolar."
+            },
+            {
+              "titulo": "Guarda tu folio",
+              "detalle": "Conserva el folio que se te asigne para poder dar seguimiento a tu constancia."
+            },
+            {
+              "titulo": "Presenta identificación y comprobante",
+              "detalle": "Presenta la identificación oficial, el comprobante de pago del documento en trámite y el pago de derechos."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Comprobante de pago de derechos del Título Profesional",
+              "nota": "Conserva el folio para seguimiento."
+            },
+            {
+              "nombre": "Identificación oficial vigente",
+              "nota": "La presentas en ventanilla."
+            }
+          ]
+        },
+        {
+          "numero": 6,
+          "titulo": "Encuesta de egresados",
+          "descripcion": "Responde la encuesta de egresados y ten su comprobante impreso.",
+          "icono": "assets/images/level_icons/nivel_6.svg",
+          "mascota": "assets/images/lobo_aviador.svg",
+          "fondo": "",
+          "pasos": [
+            {
+              "titulo": "Responde la encuesta",
+              "detalle": "Completa la encuesta de egresados en el portal correspondiente."
+            },
+            {
+              "titulo": "Imprime el comprobante",
+              "detalle": "El comprobante debe ir impreso para entregarlo junto con tu expediente."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Comprobante de la encuesta a egresados",
+              "nota": "IMPRESO. Sin la impresión no se acepta.",
+              "url": "http://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1"
+            }
+          ]
+        },
+        {
+          "numero": 7,
+          "titulo": "Entrega final",
+          "descripcion": "Reúne los ocho documentos finales y entrégalos en la ventanilla que te indique tu facultad.",
+          "icono": "assets/images/level_icons/nivel_7.svg",
+          "mascota": "assets/images/lobo_aviador.svg",
+          "fondo": "",
+          "esFinal": true,
+          "pasos": [
+            {
+              "titulo": "Reúne tu expediente completo",
+              "detalle": "Lleva los documentos a la oficina de titulación de tu unidad académica o al punto que te indique tu facultad."
+            },
+            {
+              "titulo": "Pide tu título profesional",
+              "detalle": "Al entregar el expediente solicitas el Título Profesional en ORIGINAL y DOS COPIAS."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Certificado de Servicio Social",
+              "nota": ""
+            },
+            {
+              "nombre": "Certificado de estudios",
+              "nota": ""
+            },
+            {
+              "nombre": "Certificado de estudios original de licenciatura",
+              "nota": ""
+            },
+            {
+              "nombre": "Oficio original de titulación por promedio",
+              "nota": "Con antigüedad no mayor a 6 meses."
+            },
+            {
+              "nombre": "Certificado de liberación de bibliotecas",
+              "nota": "VIGENTE y con antigüedad no mayor a 3 meses.",
+              "url": "https://bibliotecas.buap.mx/"
+            },
+            {
+              "nombre": "Ficha de depósito bancario",
+              "nota": "Por concepto de acta de titulación automática."
+            },
+            {
+              "nombre": "Título profesional",
+              "nota": "En ORIGINAL y DOS COPIAS."
+            },
+            {
+              "nombre": "Comprobante de la encuesta a egresados",
+              "nota": "IMPRESO."
+            }
+          ]
+        }
+      ],
+      "mapa": "assets/images/maps/mapa_tierra.png"
+    },
+    {
+      "id": "ceneval",
+      "nombre": "Titulación por CENEVAL",
+      "descripcion": "Rinde el Examen General para el Egreso de la Licenciaatura, reúne los documentos que pide la BUAP y presenta tu expediente. Al final del camino: tu título profesional.",
+      "mascotaInicio": "assets/images/lobo_aviador.svg",
+      "pergaminoInicio": "assets/images/parchment/ceneval_inicio.svg",
+      "tituloAsset": "assets/images/screens/select_titulo_ceneval.svg",
+      "descripcionAsset": "assets/images/screens/select_desc_ceneval.svg",
+      "niveles": [
+        {
+          "numero": 0,
+          "titulo": "Titulación por CENEVAL",
+          "descripcion": "Prepárate: el EGEL es el camino más directo hacia tu título profesional.",
+          "icono": "",
+          "mascota": "assets/images/mascot_ceneval_inicio.svg",
+          "fondo": "assets/images/levels_ceneval_bg_inicio.svg",
+          "esInicio": true,
+          "pasos": [],
+          "documentos": []
+        },
+        {
+          "numero": 1,
+          "titulo": "Acta de nacimiento",
+          "descripcion": "Tu acta de nacimiento es la base de todo el expediente. Debe estar actualizada y coincidir con tu CURP.",
+          "icono": "assets/images/level_icons/nivel_1.svg",
+          "mascota": "assets/images/mascot_ceneval_1_7.svg",
+          "fondo": "assets/images/levels_ceneval_bg_1.svg",
+          "pasos": [
+            {
+              "titulo": "Los datos deben coincidir",
+              "detalle": "Los datos del acta de nacimiento y la CURP deben coincidir en su totalidad. El acta debe indicar la entidad de registro."
+            },
+            {
+              "titulo": "Si te registraste después de nacer",
+              "detalle": "Deberás presentar constancia de extemporaneidad expedida por el Registro Civil de tu estado."
+            },
+            {
+              "titulo": "Trámite tu acta actualizada en línea",
+              "detalle": "Entra al sitio oficial del Gobierno de Puebla, captura tus datos registrales, genera la referencia y paga. En 72 horas recibes el PDF certificado por correo."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Acta de nacimiento en original y actualizada",
+              "nota": "Coincide con tu CURP."
+            },
+            {
+              "nombre": "Constancia de extemporaneidad",
+              "nota": "Solo si aplica."
+            }
+          ]
+        },
+        {
+          "numero": 2,
+          "titulo": "Identificación oficial",
+          "descripcion": "Tu INE vigente, en original y en buena calidad, es uno de los requisitos de la cita.",
+          "icono": "assets/images/level_icons/nivel_2.svg",
+          "mascota": "assets/images/mascot_ceneval_2.svg",
+          "fondo": "assets/images/levels_ceneval_bg_2.svg",
+          "pasos": [
+            {
+              "titulo": "Ten tu INE vigente",
+              "detalle": "Presenta identificación oficial vigente, en original y copia a color de excelente calidad."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Identificación oficial vigente",
+              "nota": "INE. Original y copia a color."
+            }
+          ]
+        },
+        {
+          "numero": 3,
+          "titulo": "CURP certificada",
+          "descripcion": "Descarga tu CURP certificada con el mismo formato que la BUAP pide.",
+          "icono": "assets/images/level_icons/nivel_3.svg",
+          "mascota": "assets/images/mascot_ceneval_3.svg",
+          "fondo": "assets/images/levels_ceneval_bg_3.svg",
+          "pasos": [
+            {
+              "titulo": "Acude al Registro Civil",
+              "detalle": "Ve a la oficina del Registro Civil donde fuiste registrado y lleva: copia del acta de nacimiento, identificación oficial y la referencia de pago."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Impresión de CURP certificada",
+              "nota": "Los datos deben coincidir con tu acta.",
+              "url": "https://www.gob.mx/curp/"
+            }
+          ]
+        },
+        {
+          "numero": 4,
+          "titulo": "Certificados de prepa y licenciatura",
+          "descripcion": "Certificado de preparatoria o bachillerato, su formato de validación y el certificado original de licenciatura.",
+          "icono": "assets/images/level_icons/nivel_4.svg",
+          "mascota": "assets/images/mascot_ceneval_4.svg",
+          "fondo": "assets/images/levels_ceneval_bg_4.svg",
+          "pasos": [
+            {
+              "titulo": "Consigue el certificado de prepa",
+              "detalle": "Certificado de Estudios completos de preparatoria o bachillerato."
+            },
+            {
+              "titulo": "Valida el certificado de prepa",
+              "detalle": "Presenta el formato original de Validación del Certificado de Estudios de preparatoria o bachillerato."
+            },
+            {
+              "titulo": "Pide tu certificado de licenciatura",
+              "detalle": "Certificado de Estudios original de Licenciatura, emitido por la BUAP."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Certificado de Estudios completos de preparatoria o bachillerato",
+              "nota": ""
+            },
+            {
+              "nombre": "Formato original de Validación del Certificado de Estudios",
+              "nota": "",
+              "url": "https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf"
+            },
+            {
+              "nombre": "Certificado de Estudios original de Licenciatura",
+              "nota": "",
+              "url": "https://escolar.buap.mx/?q=content/certificado-de-estudios-por-autoservicios"
+            }
+          ]
+        },
+        {
+          "numero": 5,
+          "titulo": "Servicio social",
+          "descripcion": "Constancia y certificado de liberación de servicio social, vigentes.",
+          "icono": "assets/images/level_icons/nivel_5.svg",
+          "mascota": "assets/images/mascot_ceneval_5.svg",
+          "fondo": "assets/images/levels_ceneval_bg_5.svg",
+          "pasos": [
+            {
+              "titulo": "Califica tu servicio social",
+              "detalle": "Contacta a tu tutor académico para que pueda calificar la materia de servicio social."
+            },
+            {
+              "titulo": "Obtén tu constancia",
+              "detalle": "Contacta al Coordinador de Práctica Profesional Crítica de tu Unidad Académica para que genere la carta de término digital."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Certificado de liberación de Servicio Social",
+              "nota": "Debe estar vigente."
+            }
+          ]
+        },
+        {
+          "numero": 6,
+          "titulo": "No adeudo y fotografías",
+          "descripcion": "Certificado de no adeudo bibliotecario, dos fotografías y el comprobante de la encuesta.",
+          "icono": "assets/images/level_icons/nivel_6.svg",
+          "mascota": "assets/images/mascot_ceneval_6.svg",
+          "fondo": "assets/images/levels_ceneval_bg_6.svg",
+          "pasos": [
+            {
+              "titulo": "Verifica que no debes nada",
+              "detalle": "Acude al Departamento de Servicios Escolares que te corresponde (CU, Centro, Salud o Complejos Regionales) para verificar tu situación de adeudo."
+            },
+            {
+              "titulo": "Toma tus fotografías",
+              "detalle": "Consulta el catálogo de fotografías para tomar las tuyas con las características correctas."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Certificado de no adeudo bibliotecario",
+              "nota": ""
+            },
+            {
+              "nombre": "Catálogo de fotografías",
+              "nota": "Consulta antes de tomarlas.",
+              "url": "https://escolar.buap.mx/sites/default/files/Catalogo%20de%20fotografias1.pdf"
+            },
+            {
+              "nombre": "Dos fotografías",
+              "nota": ""
+            }
+          ]
+        },
+        {
+          "numero": 7,
+          "titulo": "Entrega final",
+          "descripcion": "Cita previa, voucher de pago y entrega de tu expediente completo.",
+          "icono": "assets/images/level_icons/nivel_7.svg",
+          "mascota": "assets/images/mascot_ceneval_1_7.svg",
+          "fondo": "assets/images/levels_ceneval_bg_final.svg",
+          "esFinal": true,
+          "pasos": [
+            {
+              "titulo": "Paga los derechos del título",
+              "detalle": "Realiza el voucher de pago de derechos del Título Profesional y conserva el folio."
+            },
+            {
+              "titulo": "Agenda tu cita previa",
+              "detalle": "Agenda la cita en DAE o en el punto que te indique tu facultad y entrega tu expediente completo."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Cita previa",
+              "nota": "Agenda antes de presentarte."
+            },
+            {
+              "nombre": "Voucher de pago de derechos del Título Profesional",
+              "nota": ""
+            },
+            {
+              "nombre": "Comprobante de la encuesta a egresados",
+              "nota": "IMPRESO.",
+              "url": "http://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1"
+            }
+          ]
+        },
+        {
+          "numero": 8,
+          "titulo": "¡Ya eres profesional!",
+          "descripcion": "Entregaste tu expediente y la BUAP validó tus documentos. Ahora solo espera la confirmación final.",
+          "icono": "",
+          "mascota": "assets/images/mascot_ceneval_final.svg",
+          "fondo": "assets/images/levels_ceneval_bg_final.svg",
+          "esFinal": true,
+          "pasos": [
+            {
+              "titulo": "Envía tu expediente escaneado",
+              "detalle": "Envía todos los documentos escaneados al correo que te indique tu facultad."
+            },
+            {
+              "titulo": "Espera la validación",
+              "detalle": "Una vez validado tu expediente recibirás las instrucciones finales y la confirmación de tu titulación."
+            }
+          ],
+          "documentos": []
+        }
+      ],
+      "mapa": "assets/images/maps/mapa_aire.png"
+    },
+    {
+      "id": "profesional",
+      "nombre": "Titulación por Examen Profesional",
+      "descripcion": "Reúne a tu equipo, registra tu tesis, obtén el aval académico, rinde el examen y entrega tu tesis. El camino de los que lo logran en equipo.",
+      "mascotaInicio": "assets/images/mascot_profesional_lobo_1.svg",
+      "pergaminoInicio": "assets/images/parchment/prof_inicio.svg",
+      "tituloAsset": "assets/images/screens/select_titulo_profesional.svg",
+      "descripcionAsset": "assets/images/screens/select_desc_profesional.svg",
+      "niveles": [
+        {
+          "numero": 0,
+          "titulo": "Titulación por Examen Profesional",
+          "descripcion": "Esta ruta se hace en equipo. Reúne a las personas que te acompañarán en el camino.",
+          "icono": "",
+          "mascota": "assets/images/mascot_profesional_lobo_1.svg",
+          "fondo": "assets/images/levels_profesional_bg_1.svg",
+          "esInicio": true,
+          "pasos": [],
+          "documentos": []
+        },
+        {
+          "numero": 1,
+          "titulo": "Registro de tesis",
+          "descripcion": "Llena y firma el formato de registro de tesis con tu director. Sin registro no hay examen.",
+          "icono": "assets/images/level_icons/nivel_1.svg",
+          "mascota": "assets/images/mascot_profesional_lobo_1.svg",
+          "fondo": "assets/images/levels_profesional_bg_1.svg",
+          "pasos": [
+            {
+              "titulo": "Llena el formato de registro",
+              "detalle": "Llena y firma el formato de registro de tesis con la ayuda de tu director de tesis."
+            },
+            {
+              "titulo": "Reúne a tus sinodales",
+              "detalle": "Personas clave que debes reunir: tu Director de Tesis y dos asesores que se convertirán en sinodales."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Formato de registro de tesis",
+              "nota": "Firmado por tu director."
+            }
+          ]
+        },
+        {
+          "numero": 2,
+          "titulo": "Carta de separación de equipo",
+          "descripcion": "Si un integrante se separa del equipo, debe presentar la carta de separación firmada.",
+          "icono": "assets/images/level_icons/nivel_2.svg",
+          "mascota": "assets/images/mascot_profesional_lobo_2.svg",
+          "fondo": "assets/images/levels_profesional_bg_2_3_4.svg",
+          "pasos": [
+            {
+              "titulo": "Presenta la carta de separación",
+              "detalle": "Debe estar firmada por los integrantes del equipo."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Carta de separación de equipo",
+              "nota": "Firmada por todos los integrantes."
+            },
+            {
+              "nombre": "INE de cada integrante",
+              "nota": ""
+            }
+          ]
+        },
+        {
+          "numero": 3,
+          "titulo": "Aval Académico",
+          "descripcion": "Obtén la aceptación y la firma del Formato de Aval Académico. Es lo que autoriza tu examen.",
+          "icono": "assets/images/level_icons/nivel_3.svg",
+          "mascota": "assets/images/mascot_profesional_lobo_3.svg",
+          "fondo": "assets/images/levels_profesional_bg_2_3_4.svg",
+          "pasos": [
+            {
+              "titulo": "Consigue la firma",
+              "detalle": "Se requiere obtener la aceptación y la firma del Formato de Aval Académico."
+            },
+            {
+              "titulo": "Calcula fecha y hora del examen",
+              "detalle": "Una vez sellado este documento, debes calcular la fecha y hora del Examen, asegurándote de que sea al menos 15 días después de la autorización de la tesis y con todos los documentos en orden."
+            },
+            {
+              "titulo": "Respeta el tiempo límite",
+              "detalle": "Tienes 1 año para presentar la tesis tras el registro, con posibilidad de prórroga de hasta 6 meses."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Formato de Aval Académico",
+              "nota": "Con sello de la secretaría académica y fecha y hora de examen."
+            }
+          ]
+        },
+        {
+          "numero": 4,
+          "titulo": "Examen profesional",
+          "descripcion": "Rinde tu examen profesional, virtual o presencial. Se graba y se envía a la Coordinación como evidencia.",
+          "icono": "assets/images/level_icons/nivel_4.svg",
+          "mascota": "assets/images/mascot_profesional_lobo_4.svg",
+          "fondo": "assets/images/levels_profesional_bg_2_3_4.svg",
+          "pasos": [
+            {
+              "titulo": "Elige tu modalidad",
+              "detalle": "Puedes rendir el examen por medio de una plataforma virtual o de forma presencial, dependiendo de tu elección."
+            },
+            {
+              "titulo": "Presenta tu tesis y tu expediente",
+              "detalle": "Lleva la tesis en digital, la portada, y el resto de los documentos de tu equipo."
+            },
+            {
+              "titulo": "Se graba como evidencia",
+              "detalle": "El examen profesional será grabado como prueba y enviada a la Coordinación como evidencia."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Tesis en digital",
+              "nota": ""
+            },
+            {
+              "nombre": "Portada de la Tesis",
+              "nota": "PDF o JPG."
+            },
+            {
+              "nombre": "Certificado del Servicio Social",
+              "nota": ""
+            },
+            {
+              "nombre": "Certificado de preparatoria",
+              "nota": ""
+            },
+            {
+              "nombre": "Certificado de estudios",
+              "nota": ""
+            },
+            {
+              "nombre": "Acta de nacimiento",
+              "nota": ""
+            },
+            {
+              "nombre": "Certificado de no adeudo bibliotecario",
+              "nota": ""
+            },
+            {
+              "nombre": "Carta de separación de equipo",
+              "nota": ""
+            },
+            {
+              "nombre": "INE de cada integrante",
+              "nota": ""
+            }
+          ]
+        },
+        {
+          "numero": 5,
+          "titulo": "Depósito en biblioteca",
+          "descripcion": "Sube tu tesis autorizada a la Plataforma de la Dirección General de Bibliotecas.",
+          "icono": "assets/images/level_icons/nivel_5.svg",
+          "mascota": "assets/images/mascot_profesional_lobo_5.svg",
+          "fondo": "assets/images/levels_profesional_bg_5.svg",
+          "pasos": [
+            {
+              "titulo": "Entra a la plataforma",
+              "detalle": "Entra a la Plataforma de la Dirección General de Bibliotecas en https://bdigital.buap.mx/user_services_beta/certificate/wizard"
+            },
+            {
+              "titulo": "Sube la tesis autorizada",
+              "detalle": "La tesis autorizada por tu director de tesis, en formato PDF y WORD."
+            },
+            {
+              "titulo": "Anexa el aval académico",
+              "detalle": "El formato de aval académico con fecha, hora de examen y sello de la secretaría académica."
+            },
+            {
+              "titulo": "Consulta una cita",
+              "detalle": "Consulta una cita para la documentación necesaria."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Tesis autorizada por tu director",
+              "nota": "PDF y WORD.",
+              "url": "https://bdigital.buap.mx/user_services_beta/certificate/wizard"
+            },
+            {
+              "nombre": "Formato de aval académico sellado",
+              "nota": "Con fecha y hora de examen."
+            }
+          ]
+        },
+        {
+          "numero": 6,
+          "titulo": "Entrega tu tesis",
+          "descripcion": "Sube tu documentación a Autoservicios, agenda cita y entrega tu expediente. Ya casi lo logran.",
+          "icono": "assets/images/level_icons/nivel_6.svg",
+          "mascota": "assets/images/mascot_profesional_lobo_6.svg",
+          "fondo": "assets/images/levels_profesional_bg_6.svg",
+          "esFinal": true,
+          "pasos": [
+            {
+              "titulo": "Sube tu documentación",
+              "detalle": "Sube tu documentación al portal de www.autoservicios.buap.mx y agenda una cita para presentar tus documentos."
+            },
+            {
+              "titulo": "Entrega puntual",
+              "detalle": "Entreguen todos sus documentos de forma puntual. Ya casi lo logran: solo esperen un correo de confirmación para poder recibir su logro final."
+            }
+          ],
+          "documentos": [
+            {
+              "nombre": "Expediente completo digital",
+              "nota": "Subido a autoservicios.",
+              "url": "https://autoservicios.buap.mx/"
+            },
+            {
+              "nombre": "Tesis final",
+              "nota": "Con todas las firmas."
+            }
+          ]
+        }
+      ],
+      "mapa": "assets/images/maps/mapa_agua.png"
+    }
+  ]
+}

@@ -1,0 +1,345 @@
+{
+  "_nota": "Investigado en los sitios oficiales de la BUAP. Los campos vacíos se dejaron vacíos a propósito: la app cae al contacto general de la DAE cuando una facultad no tiene el suyo. `confianza` refleja la fuente: alta = página oficial de la unidad, media = directorio BUAP, baja = no se encontró.",
+  "facultades": [
+    {
+      "nombre": "Facultad de Administración",
+      "clave": "FADMON",
+      "coordinacion": "Unidad de Titulación y EGEL CENEVAL",
+      "correo": "titulacion.fadmon@correo.buap.mx",
+      "telefono": "+52 (222) 229 5500",
+      "responsable": "Mtra. María Elena Cuapio Salvador",
+      "notas": "La Secretaría Académica publica la Unidad de Titulación y EGEL CENEVAL con responsable, correo y teléfono.",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Facultad de Arquitectura",
+      "clave": "FABUAP",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500",
+      "responsable": "Maricarmen Lara (referido en la app actual)",
+      "notas": "No se localizó una coordinación de titulación propia publicada. El contacto de Arquitectura que la app traía hardcodeado (Maricarmen Lara, titulacion.fabuap@correo.buap.mx) no pudo confirmarse en el sitio oficial durante esta investigación: VERIFICAR antes de usar.",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Artes Plásticas y Audiovisuales",
+      "clave": "ARPA",
+      "coordinacion": "Coordinación de Titulación ARPA",
+      "correo": "titulacion.arpa@correo.buap.mx",
+      "telefono": "",
+      "responsable": "",
+      "notas": "Portal oficial de titulación en https://admin.arpa.buap.mx/titulacion/. Atiende Artes Digital, Artes Plásticas y Cinematografía. Modalidades: Titulación Automática, Examen ante Jurado, Seminario de Titulación y Diplomado de Educación Continua.",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Facultad de Ciencias Agrícolas y Pecuarias",
+      "clave": "FCAP",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ciencias Biológicas",
+      "clave": "FCB",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ciencias de la Computación",
+      "clave": "FCC",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "Su página de Servicios Escolares enlaza al portal general de titulación de la DAE.",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ciencias de la Comunicación",
+      "clave": "FCCOM",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ciencias de la Electrónica",
+      "clave": "FCEL",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ciencias Físico Matemáticas",
+      "clave": "FCFM",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500 ext. 7552",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ciencias Políticas y Sociales",
+      "clave": "FCPS",
+      "coordinacion": "Laboratorio Disciplinario: Titulación y Egreso",
+      "correo": "titulacion.fcps@correo.buap.mx",
+      "telefono": "+52 (222) 229 5500",
+      "responsable": "",
+      "notas": "",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Facultad de Ciencias Químicas",
+      "clave": "FCQ",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Contaduría Pública",
+      "clave": "FCP",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Cultura Física",
+      "clave": "FCF",
+      "coordinacion": "Secretaría Académica",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500 ext. 7114",
+      "responsable": "",
+      "notas": "La página de titulación no identifica explícitamente una coordinación de titulación.",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Derecho",
+      "clave": "FDERE",
+      "coordinacion": "Dirección de Administración Escolar (servicio institucional)",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500 ext. 7025 y 4051",
+      "responsable": "",
+      "notas": "No se localizó una coordinación propia de la Facultad de Derecho; se atiende como servicio institucional de la DAE.",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Economía",
+      "clave": "FECON",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Enfermería",
+      "clave": "FENF",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500 ext. 7025 y 4051",
+      "responsable": "",
+      "notas": "No se identificó teléfono propio de la facultad; se atiende vía DAE.",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Estomatología",
+      "clave": "FESTO",
+      "coordinacion": "Área de Planeación y Titulación",
+      "correo": "planeacion.estomatologia@correo.buap.mx",
+      "telefono": "+52 (222) 229 5500 ext. 6400, 6402 y 6405",
+      "responsable": "",
+      "notas": "",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Facultad de Filosofía y Letras",
+      "clave": "FFL",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ingeniería",
+      "clave": "FING",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500 ext. 7610",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Ingeniería Química",
+      "clave": "FIQ",
+      "coordinacion": "Sin coordinación nombrada; la documentación se envía a dos maestros",
+      "correo": "carlos.hdzmaceda@correo.buap.mx",
+      "telefono": "+52 (222) 229 5500 ext. 7252",
+      "responsable": "Mtro. Juan Carlos Pichardo Macías y Mtro. Carlos Maceda Hernández",
+      "notas": "La página de titulación indica que ambos maestros orientan y apoyan el proceso; la documentación se envía a ellos.",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Facultad de Lenguas",
+      "clave": "FLENG",
+      "coordinacion": "Departamento de Titulación",
+      "correo": "titulacion.lenguas@correo.buap.mx",
+      "telefono": "+52 (222) 229 5500",
+      "responsable": "",
+      "notas": "LEI, LEF y LEFCUME usan titulacion.lenguas@correo.buap.mx; LELI usa lael-i.lenguas@correo.buap.mx.",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Facultad de Medicina",
+      "clave": "FMED",
+      "coordinacion": "Titulación y Eficiencia Terminal",
+      "correo": "eficienciaterminal.facmed@correo.buap.mx",
+      "telefono": "+52 (222) 229 5500 ext. 6041 y 6052",
+      "responsable": "",
+      "notas": "",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Facultad de Medicina Veterinaria y Zootecnia",
+      "clave": "FMVZ",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Facultad de Psicología",
+      "clave": "FPSY",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Instituto de Ciencias Sociales y Humanidades Alfonso Vélez Pliego",
+      "clave": "ICSH",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Instituto de Ciencias de Gobierno y Desarrollo Estratégico",
+      "clave": "ICGDE",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Instituto de Fisiología",
+      "clave": "IF",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Instituto de Física Luis Rivera Terrazas",
+      "clave": "IFI",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Complejo Regional Centro",
+      "clave": "CRC",
+      "coordinacion": "Secretaría Académica",
+      "correo": "sandraf.cerezo@correo.buap.mx",
+      "telefono": "Ext. 3985",
+      "responsable": "Sandra F. Cerezo",
+      "notas": "",
+      "confianza": "alta"
+    },
+    {
+      "nombre": "Complejo Regional Mixteca",
+      "clave": "CRM",
+      "coordinacion": "Secretaría Académica",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500 ext. 3588",
+      "responsable": "",
+      "notas": "El directorio no identifica a la persona titular de la Secretaría Académica.",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Complejo Regional Nororiental",
+      "clave": "CRNO",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Complejo Regional Norte",
+      "clave": "CRN",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "",
+      "confianza": "baja"
+    },
+    {
+      "nombre": "Complejo Regional Sur",
+      "clave": "CRS",
+      "coordinacion": "Coordinación de Evaluación Académica y Titulación",
+      "correo": "",
+      "telefono": "+52 (222) 229 5500",
+      "responsable": "",
+      "notas": "Se identificó la coordinación por nombre, pero no se publicó un correo propio.",
+      "confianza": "media"
+    },
+    {
+      "nombre": "Bachillerato Internacional 5 de Mayo",
+      "clave": "BACH5M",
+      "coordinacion": "",
+      "correo": "",
+      "telefono": "",
+      "responsable": "",
+      "notas": "Nivel bachillerato: usa el proceso de egreso, no el de titulación.",
+      "confianza": "baja"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.titulacion"
+    namespace = "mx.buap.loboapp"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = "27.0.12077973" // Updated to match url_launcher_android requirements
 
@@ -21,10 +21,10 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.titulacion"
+        applicationId = "mx.buap.loboapp"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 21 // Actualizado para compatibilidad con NDK y url_launcher
+        minSdk = 24 // Play Store exige 24+ desde 2025
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

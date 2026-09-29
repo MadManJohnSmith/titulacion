@@ -1,0 +1,21 @@
+{
+  "links": [
+    { "titulo": "Titulación BUAP (portal oficial)", "url": "https://titulacion.buap.mx/", "categoria": "Titulación" },
+    { "titulo": "Autoservicios BUAP", "url": "https://autoservicios.buap.mx/", "categoria": "Trámites" },
+    { "titulo": "Requisito de acta de examen o titulación automática", "url": "https://titulacion.buap.mx/?q=content/requisitos-para-acta-de-examen-o-acta-de-titulaci%C3%B3n-autom%C3%A1tica", "categoria": "Titulación" },
+    { "titulo": "Requisitos para el Título Profesional", "url": "https://titulacion.buap.mx/?q=content/requisitos-t%C3%ADtulo", "categoria": "Titulación" },
+    { "titulo": "Trámite completo de titulación", "url": "https://titulacion.buap.mx/?q=content/tr%C3%A1mite-completo-de-titulaci%C3%B3n", "categoria": "Titulación" },
+    { "titulo": "Información importante de titulación", "url": "https://titulacion.buap.mx/?q=content/informaci%C3%B3n-importante", "categoria": "Titulación" },
+    { "titulo": "CURP (gob.mx)", "url": "https://www.gob.mx/curp/", "categoria": "Trámites" },
+    { "titulo": "Acta de nacimiento (gob.mx)", "url": "https://www.gob.mx/ActaNacimiento/", "categoria": "Trámites" },
+    { "titulo": "Cédula profesional en línea", "url": "https://www.gob.mx/cedulaprofesional", "categoria": "Titulación" },
+    { "titulo": "Certificado de estudios por autoservicios", "url": "https://escolar.buap.mx/?q=content/certificado-de-estudios-por-autoservicios", "categoria": "Trámites" },
+    { "titulo": "Certificado de liberación de bibliotecas", "url": "https://bibliotecas.buap.mx/", "categoria": "Trámites" },
+    { "titulo": "Depósito de tesis (Biblioteca Digital)", "url": "https://bdigital.buap.mx/user_services_beta/certificate/wizard", "categoria": "Examen profesional" },
+    { "titulo": "Encuesta de egresados", "url": "http://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1", "categoria": "Trámites" },
+    { "titulo": "Formato de validación de certificado de estudios", "url": "https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf", "categoria": "Documentos" },
+    { "titulo": "Catálogo de fotografías", "url": "https://escolar.buap.mx/sites/default/files/Catalogo%20de%20fotografias1.pdf", "categoria": "Documentos" },
+    { "titulo": "Titulación BUAP en Facebook", "url": "https://www.facebook.com/TitulacionBUAP", "categoria": "Redes" },
+    { "titulo": "Unidades académicas de la BUAP", "url": "https://www.buap.mx/content/unidades-academicas", "categoria": "BUAP" }
+  ]
+}

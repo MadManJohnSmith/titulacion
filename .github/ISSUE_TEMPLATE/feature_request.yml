@@ -1,0 +1,15 @@
+name: ✨ Nueva idea
+description: Una función o mejora que te gustaría ver en la app
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: ¿Cuál es la idea?
+      description: Cuéntala como si se la contaras a un compañero de la BUAP.
+    validations:
+      required: true
+  - type: textarea
+    id: problema
+    attributes:
+      label: ¿Qué problema resuelve?
