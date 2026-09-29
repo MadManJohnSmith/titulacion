@@ -1,8 +1,16 @@
 # Lo que falta para publicar LoboApp
 
-Fecha: 2026-09-29. La app **compila, pasa las 37 pruebas y ya genera AAB y
-APKs de release**. Lo de aquí son cosas que dependen de la BUAP o de una
-decisión de ellos, no bugs.
+Fecha: 2026-09-29. La app **compila, pasa las 116 pruebas y ya genera AAB y
+APKs de release**. Comprobado hoy en `titulacion/`: `flutter analyze` →
+`No issues found!`, `flutter test` → `+116: All tests passed!`, `flutter build
+web` → `✓ Built build/web`, `flutter build apk --debug` →
+`✓ Built build/app/outputs/flutter-apk/app-debug.apk`. Lo de aquí son cosas que
+dependen de la BUAP o de una decisión de ellos, no bugs.
+
+**Nota de versión:** la app cambió de 3 a 8 rutas y de 33 a 34 unidades, y el
+alumno ahora elige una **modalidad** (con requisitos, fuente y fecha) en vez de
+una ruta suelta. Los pendientes de ese trabajo están en §6 y el detalle
+completo en `out/INFORME-MODALIDADES.md`.
 
 ---
 
@@ -17,25 +25,32 @@ a propósito, sin inventar números:
 
 | Dónde | Qué falta |
 |---|---|
-| `routes.json` → CENEVAL, nivel 3 | **Costo del acta de nacimiento actualizada.** El diseño dice «1?50 pesos» (un dígito se perdió al exportar). Casi seguro es $150, pero no lo puse porque un cobro mal puesto hace que un alumno vaya con el monto equivocado. |
-| `routes.json` → Examen profesional, nivel 3 | «1 año para presentar la tesis» — **¿desde qué fecha se cuenta?** |
-| `routes.json` → Examen profesional, nivel 4 | El **correo** donde se envían los documentos escaneados no aparece en el diseño |
-| `routes.json` → Examen profesional, nivel 5 | La URL del formato de aval académico |
-| Toda la app | Vigencia de cada documento (puse 3 meses para bibliotecas y 6 para el oficio, **según el diseño, pero confírmenlo**) |
+| `routes.json` → promedio, nivel 4 | **Costo del acta de nacimiento actualizada.** El diseño dice «1?50 pesos» (un dígito se perdió al exportar). Casi seguro es $150, pero no lo puse porque un cobro mal puesto hace que un alumno vaya con el monto equivocado. Hoy `routes.json` **no publica ningún costo**: verifiqué que las 8 rutas no contienen la palabra «pesos» ni «costo». |
+| `routes.json` → profesional, nivel «Aval Académico» | «Tienes 1 año para presentar la tesis tras el registro, con prórroga de hasta 6 meses» — **¿desde qué fecha se cuenta el año?** |
+| `routes.json` → profesional, nivel «Depósito en biblioteca» | La **URL del formato de aval académico**: el nivel menciona el formato pero no su enlace. |
+| `routes.json` → profesional, nivel «Entrega tu tesis» | El **correo** de confirmación del título: el nivel dice «esperen un correo de confirmación» y el diseño no trae la dirección. |
+| `routes.json` → promedio, nivel 7 «Entrega final» | Vigencia: puse 3 meses para el certificado de biblioteca y 6 para el oficio **según el diseño, pero confírmenlo**. Son los dos únicos plazos de vigencia escritos en las 8 rutas. |
 
-### Correos de las 25 facultades que no los publican
+### Correos de las 26 unidades que no los publican
 
-La investigación encontró **8 con correo verificado** en el sitio oficial:
+De las 34 unidades de `facultades.json`, **8 tienen correo con
+`confianza: "alta"`** (verificado en el sitio oficial en esta corrida):
 Administración, ARPA, Ciencias Políticas y Sociales, Estomatología,
-Ingeniería Química, Lenguas, Medicina y Complejo Regional Centro.
+Ingeniería Química, Lenguas, Medicina y Complejo Regional Centro. Una más
+(Complejo Regional Sur) tiene la coordinación identificada por nombre pero sin
+correo propio, y quedó con `confianza: "media"`.
 
-Las otras 25 tienen el campo vacío: la app les cae al contacto general de la DAE
-en vez de mostrar un correo inventado. **Si tienen los correos internos, van en
-`facultades.json` y ya aparecen** — no hay que tocar código.
+Las otras 26 tienen el campo `correo` vacío: la app les cae al contacto general
+de la DAE en vez de mostrar un correo inventado. **Si tienen los correos internos,
+van en `facultades.json` y ya aparecen** — no hay que tocar código.
 
 **Caso Arquitectura:** el código original traía hardcodeados a Maricarmen Lara y
-`titulacion.fabuap@correo.buap.mx`, y **no se pudieron confirmar**. Están
-marcados `confianza: "baja"`. Confírmalos o quítalos.
+`titulacion.fabuap@correo.buap.mx`, y **no se pudieron confirmar**. Esta corrida
+**quitó el correo** del JSON (queda `correo: ""`, `confianza: "baja"`) y dejó la
+advertencia en el campo `notas`: «no pudo confirmarse en el sitio oficial durante
+esta investigación: VERIFICAR antes de usar». Sigue apareciendo como responsable
+«Maricarmen Lara (referido en la app actual)». Si la BUAP lo confirma, se
+devuelve el correo a `facultades.json`.
 
 ### ¿La base de alumnos se puede distribuir dentro de la app?
 
@@ -91,11 +106,18 @@ corregir, pero conviene que lo sepan.**
 
 Las anoto para que puedas revertirlas si no te convencen:
 
-- **Mapas por ruta.** El zip de diseño tenía `Mapa agua` con archivo, pero
-  `Mapa tierra` y `Mapa aire` estaban **vacías**. Asigné: promedio → tierra (la
-  mascota es la deportiva), CENEVAL → aire (la mascota va con goggles de
-  aviador), profesional → agua. Los de tierra y aire **los generé** con la
-  paleta de cada ruta; no son arte de diseño.
+- **Mapas por ruta — se movieron.** El zip de diseño tenía `Mapa agua` con
+  archivo, pero `Mapa tierra` y `Mapa aire` estaban **vacías**. En el commit
+  anterior el reparto era promedio → tierra, CENEVAL → aire, profesional → agua.
+  **Esta corrida lo rotó** para que el único mapa que el diseño entregó
+  (agua) fuera el de CENEVAL: hoy CENEVAL → `mapa_agua.png`, examen profesional y
+  las rutas de tesis / experiencia profesional / asignatura optativa →
+  `mapa_tierra.png`, y promedio, diplomado y seminario → `mapa_aire.png`.
+  **Los tres PNG se generaron durante esta corrida y no son arte de diseño**
+  (antes eran degradados planos); el script que los produce no quedó en el
+  repositorio, así que no son reproducibles desde el código. Si el cambio no te
+  gusta, es una línea por ruta en `routes.json` — pero entonces el único mapa
+  del diseño se queda sin usar.
 - **Menú hamburguesa y pestañas secundarias.** También estaban vacías en el
   zip. Hice un menú con los colores de las demás pantallas, que lleva a perfil,
   contactos y directorio.
@@ -109,10 +131,13 @@ Las anoto para que puedas revertirlas si no te convencen:
 - **Los títulos de nivel ya no van en arco.** El texto curvo (`CustomPaint`) se
   salía de su caja con las fuentes nuevas y quedaba invisible. Ahora es texto
   plano con Bungee: legible y confiable.
-- **Niveles por ruta: 7, 8 y 6.** El diseño no cuadra: hay 7 iconos de nivel,
-  7 fondos de CENEVAL, 6 de profesional, 9 lobos y 9 EPS de texto. Usé lo que
-  el contenido soportaba. **Si profesional debería tener 9, hay que agregar tres
-  niveles** al JSON.
+- **Niveles por ruta: 8, 9 y 7.** El diseño no cuadra: hay 7 iconos de nivel,
+  7 fondos de CENEVAL, 6 de profesional, 9 lobos y 9 EPS de texto. Este texto
+  decía 7, 8 y 6 y ya estaba desactualizado: los conteos que hoy trae
+  `routes.json` (8, 9 y 7) son los mismos que estaban en el commit anterior y
+  esta corrida no los tocó. **Si profesional debería tener 9, hay que agregar dos
+  niveles** al JSON. Las cinco rutas nuevas traen 6, 6, 6, 4 y 4 niveles,
+  contados a partir de su fuente oficial, no del diseño.
 
 ---
 
@@ -143,3 +168,49 @@ Anotados porque son fáciles de volver a meter:
 
 **No hice commit.** Todo está en el working tree para que lo revises antes de que
 exista un commit con cientos de archivos.
+
+---
+
+## 6. Pendientes del catálogo de modalidades (2026-09-29)
+
+La app ya carga `assets/json/catalogo_modalidades.json`: 34 unidades, 137
+modalidades, cada una con su fuente y su fecha. Lo que falta:
+
+1. **La tesina está mal clasificada en 9 modalidades de 8 unidades** (FCP, FDERE,
+   FECON, FENF, FESTO, FIQ ×2, FPSY, CRNO): apunta a la ruta `tesis` cuando el
+   art. 7 la pone dentro de *asignatura optativa con créditos*. Hoy el alumno ve
+   el trámite de tesis de la FCC en vez de la exposición ante jurado. Es el
+   pendiente que más afecta a un alumno.
+2. **Faltan identificadores de carrera y plan por unidad.** Van `null` en las
+   137 modalidades porque ninguna fuente los trae, y por eso la Facultad de
+   Medicina muestra sus 21 modalidades a cualquier alumno.
+3. **Unas unidades no publican catálogo y otras tienen modalidades sin URL
+   oficial.** El catálogo marca como «no publica catálogo» a FADMON, FABUAP,
+   FCPS, **FFL**, FING, ICSH, IF, IFI y CRC, y como «sin fuente registrada» a
+   FIQ, FESTO y FENF (18 modalidades). **Ojo con FFyL: ese estado es incorrecto**
+   — `out/investigacion-g3.json` documenta un catálogo de 33 modalidades en 5
+   licenciaturas (PDF de 2018, aprobado por su CUA el 6-feb-2018, enlazado hoy
+   desde su Secretaría Académica) que se perdió al consolidar; hay que rehacer su
+   fila y arreglar `build_catalog.py`, que es la causa de que también se perdieran
+   FADMON y FABUAP. Detalle en `out/INFORME-MODALIDADES.md` §7.
+4. **Sin arte propio**: las cinco rutas nuevas no tienen título, descripción,
+   pergamino ni mascota del diseño, y sus mapas son PNG generados, no del zip.
+   El zip de diseño además trae 7 carpetas vacías.
+5. **Sin deltas por unidad**: `operaciones` va `[]` en las 137 modalidades; no se
+   verificó ningún paso adicional que exija una unidad sobre su ruta base.
+6. **Tres pantallas escritas y probadas pero no conectadas**: elegibilidad
+   (`lib/screens/eligibility_screen.dart`), notas por nivel
+   (`lib/screens/notes_screen.dart`) y respaldo del avance
+   (`lib/screens/backup_screen.dart`). Hoy ningún `lib/screens/*.dart` las
+   importa; solo las alcanzan las pruebas de `test/features_test.dart`. Falta
+   decidir dónde van en la navegación.
+7. **Una errata en la fuente**: el mapa gráfico de Experiencia Profesional de la
+   FCC trae «Se参加 en las Convocatorias…» con un carácter no latino. Se conservó
+   la cita literal marcada como anomalía; hay que revisar el PDF original.
+8. **Otros documentos del repo quedaron desactualizados** y no se tocaron en
+   esta corrida porque no estaban en el encargo: `docs/TIENDA.md` («33
+   facultades», «3 rutas»), `docs/DECISIONES.md` («8 de las 33 unidades») y
+   `docs/INVENTARIO.md` («Elige tu ruta (3 rutas)»). `docs/PLAN.md` describe el
+   plan original y se dejó como histórico.
+
+Detalle y evidencia: `out/INFORME-MODALIDADES.md`.

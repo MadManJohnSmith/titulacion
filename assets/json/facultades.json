@@ -9,7 +9,33 @@
       "telefono": "+52 (222) 229 5500",
       "responsable": "Mtra. María Elena Cuapio Salvador",
       "notas": "La Secretaría Académica publica la Unidad de Titulación y EGEL CENEVAL con responsable, correo y teléfono.",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FADMON].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FADMON].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FADMON].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": null
     },
     {
       "nombre": "Facultad de Arquitectura",
@@ -19,7 +45,33 @@
       "telefono": "+52 (222) 229 5500",
       "responsable": "Maricarmen Lara (referido en la app actual)",
       "notas": "No se localizó una coordinación de titulación propia publicada. El contacto de Arquitectura que la app traía hardcodeado (Maricarmen Lara, titulacion.fabuap@correo.buap.mx) no pudo confirmarse en el sitio oficial durante esta investigación: VERIFICAR antes de usar.",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FABUAP].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FABUAP].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FABUAP].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": null
     },
     {
       "nombre": "Facultad de Artes Plásticas y Audiovisuales",
@@ -29,7 +81,53 @@
       "telefono": "",
       "responsable": "",
       "notas": "Portal oficial de titulación en https://admin.arpa.buap.mx/titulacion/. Atiende Artes Digital, Artes Plásticas y Cinematografía. Modalidades: Titulación Automática, Examen ante Jurado, Seminario de Titulación y Diplomado de Educación Continua.",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://admin.arpa.buap.mx/titulacion/titulacion-automatica/"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-arpa",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-automatica/ ; guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2022/09/Titulacion-Automatica-SD.pdf",
+          "fecha": "Guía PDF creada 2022-09-26 (metadato interno). Página consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "titulacion-por-examen-ante-un-jurado-ruta-arpa",
+          "nombre": "Titulación por Examen ante un Jurado (ruta)",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-examen-profesional/ ; guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/09/TitulacionExamenProfesional_080926.pdf",
+          "fecha": "Guía PDF creada 2026-09-08 16:26 CST. Es el documento de trámite más reciente encontrado en cualquiera de las cinco unidades."
+        },
+        {
+          "modalidadId": "seminario-de-titulacion-arpa",
+          "nombre": "Seminario de Titulación",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/seminario-de-titulacion/ ; convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Seminario_P2026.jpg",
+          "fecha": "Convocatoria Primavera 2026, fecha de inicio 2026-04-16; imagen publicada en la carpeta /2026/07/ de WordPress. Leída 2026-09-29."
+        },
+        {
+          "modalidadId": "titulacion-por-diplomado-de-educacion-continua-arpa",
+          "nombre": "Titulación por Diplomado de Educación Continua",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-diplomado-de-educacion-continua/ ; convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Diplomado_O2026.jpg",
+          "fecha": "Convocatoria Otoño 2026, fecha de inicio 2026-08-20; imagen publicada en la carpeta /2026/07/ de WordPress. Leída 2026-09-29."
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ciencias Agrícolas y Pecuarias",
@@ -39,7 +137,89 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "examen-profesional-por-defensa-de-tesis-fcap",
+          "nombre": "Examen Profesional por Defensa de Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "examen-probatorio-del-egel-ceneval-fcap",
+          "nombre": "Examen probatorio del EGEL – CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "un-articulo-en-revista-indexada-fcap",
+          "nombre": "Un artículo en revista indexada",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "dos-articulos-en-revistas-arbitradas-fcap",
+          "nombre": "Dos artículos en revistas arbitradas",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "tres-trabajos-presentados-en-forma-oral-en-congresos-nacionales-e-internacionales-y-publicaciones-en-extenso-o-capitulos-de-libro-con-isbn-fcap",
+          "nombre": "Tres trabajos presentados en forma oral en congresos nacionales e internacionales y publicaciones en extenso o capítulos de libro con ISBN",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "seminario-de-titulacion-para-generaciones-anteriores-al-mum-fcap",
+          "nombre": "Seminario de titulación para generaciones anteriores al MUM",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "portafolio-de-evidencias-y-experiencias-profesionales-fcap",
+          "nombre": "Portafolio de evidencias y experiencias profesionales",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        },
+        {
+          "modalidadId": "titulacion-automatica-fcap",
+          "nombre": "Titulación automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://agrohidraulica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Aprobación citada: sesión de CUA 2015-02-13. Consultada 2026-09-29."
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ciencias Biológicas",
@@ -49,7 +229,62 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4 y 4.1)"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-fcb",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4 y 4.1)",
+          "fecha": "2022-02-09 (actualización del CUA); PDF creado 2022-02-22"
+        },
+        {
+          "modalidadId": "examen-profesional-fcb",
+          "nombre": "Examen Profesional",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4.2) y https://csbiologicas.buap.mx/menu/formatos",
+          "fecha": "2022-02-09; guías de 2022"
+        },
+        {
+          "modalidadId": "examen-de-conocimientos-egel-bio-ceneval-fcb",
+          "nombre": "Examen de conocimientos EGEL-BIO CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5, 5.1, 5.1.1 a 5.1.3)",
+          "fecha": "2022-02-09"
+        },
+        {
+          "modalidadId": "reporte-laboral-fcb",
+          "nombre": "Reporte Laboral",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.2 a 5.2.4, Apéndice 1)",
+          "fecha": "2022-02-09"
+        },
+        {
+          "modalidadId": "articulo-cientifico-fcb",
+          "nombre": "Artículo científico",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.3 a 5.3.2)",
+          "fecha": "2022-02-09"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ciencias de la Computación",
@@ -59,7 +294,62 @@
       "telefono": "",
       "responsable": "",
       "notas": "Su página de Servicios Escolares enlaza al portal general de titulación de la DAE.",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.018204_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Tesis.pdf"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "tesis-fcc",
+          "nombre": "Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.018204_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Tesis.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "automatica-fcc",
+          "nombre": "Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.010283_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Autom%C3%A1tica.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "ceneval-fcc",
+          "nombre": "Ceneval",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.012342_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Ceneval.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "diplomado-fcc",
+          "nombre": "Diplomado",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.014407_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Diplomado.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "experiencia-profesional-fcc",
+          "nombre": "Experiencia Profesional",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.016378_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Experiencia%20Profesional.pdf",
+          "fecha": "Consultada 2026-09-29"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ciencias de la Comunicación",
@@ -69,7 +359,53 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/TESIS%20FCCOM%20%20%281%29.pdf"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-por-tesis-fccom",
+          "nombre": "Titulación por tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/TESIS%20FCCOM%20%20%281%29.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-egel-ceneval-fccom",
+          "nombre": "Titulación EGEL-Ceneval",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/CENEVAL%20FCCOM%20.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-automatica-fccom",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/TITULACIO%CC%81N%20AUTOMA%CC%81TICA%20FCCOM%20%20(1).pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "memoria-de-experiencia-profesional-fccom",
+          "nombre": "Memoria de Experiencia Profesional",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM(1).pdf",
+          "fecha": "Consultada 2026-09-29"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ciencias de la Electrónica",
@@ -79,7 +415,89 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "examen-profesional-por-tesis-individual-fcel",
+          "nombre": "Examen Profesional por Tesis Individual",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-automatica-fcel",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "memoria-de-experiencia-profesional-o-reporte-tecnico-fcel",
+          "nombre": "Memoria de Experiencia Profesional o Reporte Técnico",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "presentacion-de-examen-ceneval-egel-fcel",
+          "nombre": "Presentación de examen CENEVAL-EGEL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "seminario-de-titulacion-fcel",
+          "nombre": "Seminario de Titulación",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "diplomado-de-educacion-continua-fcel",
+          "nombre": "Diplomado de Educación Continua",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "asignatura-obligatoria-con-valor-en-creditos-que-incorpora-el-examen-ceneval-egel-fcel",
+          "nombre": "Asignatura Obligatoria con Valor en Créditos que Incorpora el Examen CENEVAL-EGEL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "asignatura-optativa-con-valor-de-creditos-fcel",
+          "nombre": "Asignatura Optativa con Valor de Créditos",
+          "nombreNormativo": "Asignatura optativa con créditos",
+          "rutaId": "asignatura-optativa",
+          "estado": "vigente",
+          "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
+          "fecha": "Consultada 2026-09-29"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ciencias Físico Matemáticas",
@@ -89,7 +507,80 @@
       "telefono": "+52 (222) 229 5500 ext. 7552",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Fis/2026-ManualDeTitulacionLicFisica.pdf"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "examen-profesional-fcfm",
+          "nombre": "Examen profesional",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Fis/2026-ManualDeTitulacionLicFisica.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-automatica-fcfm",
+          "nombre": "Titulación automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Procedimiento_Titulacion_Por_Modalidades.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-experiencia-profesional-modalidad-i-trabajo-en-los-sectores-productivos-fcfm",
+          "nombre": "Titulación por experiencia profesional (Modalidad I: Trabajo en los sectores productivos)",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Fis/FIS-Documentacion_ExperienciaProfesional.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-experiencia-profesional-modalidad-ii-acreditaciones-para-el-ejercicio-profesional-fcfm",
+          "nombre": "Titulación por experiencia profesional (Modalidad II: Acreditaciones para el ejercicio profesional)",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Actuaria/ReglamentoTitulacion.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "seminario-de-titulacion-fcfm",
+          "nombre": "Seminario de titulación",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Fis/FIS-Documentacion-Seminario-de-Titulacion.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "diplomado-en-educacion-continua-fcfm",
+          "nombre": "Diplomado en educación continua",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Fis/Procedimiento_Titulacion_Diplomado.pdf",
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "publicacion-de-un-articulo-fcfm",
+          "nombre": "Publicación de un artículo",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://www.fcfm.buap.mx/assets/docs/servicios/tramites/Fis/2026-ManualDeTitulacionLicFisica.pdf",
+          "fecha": "Consultada 2026-09-29"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ciencias Políticas y Sociales",
@@ -99,7 +590,27 @@
       "telefono": "+52 (222) 229 5500",
       "responsable": "",
       "notas": "",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://cipolys.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FCPS].notas"
+        },
+        {
+          "url": "https://cipolys.buap.mx/sites/default/files/Informes%20de%20Labores/TERCER%20informe.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FCPS].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": "La Facultad de Ciencias Políticas y Sociales no publica catálogo de modalidades de titulación en su sitio institucional. Qué intenté: (1) recorrí el sitio completo de https://cipolys.buap.mx/ y extraje todos sus enlaces; (2) abrí las páginas 'Formatos oficiales' (solo formatos de investigación SIEP 2026), 'Procedimientos y solicitudes' (el único PDF es el 'Protocolo para la solicitud, asignación, gestión y comprobación de apoyos económicos para actividades académicas', sin relación con titulación), 'Normatividad' (3 PDFs: Lineamientos del código de ética, protocolo de discriminación y violencia de género, Reglamento general de Estudios de Posgrado; ninguno de titulación), 'Convocatorias abiertas' (solo convocatoria SIEP 2026), 'CUA', 'Organigrama' (vacías), 'Licenciatura en Ciencias Políticas', 'Relaciones Internacionales' y 'Sociología' (solo guías de programa del periodo academico 2023); (3) usé el buscador interno de Drupal con los términos 'titulación', 'modalidad', 'tesis', 'requisitos', 'examen', 'egel', 'ceneval' y 'reglamento': 'titulación' sólo devuelve la ficha del Directorio del Laboratorio Disciplinario y dos notas sobre internacionalización;'tesis', 'requisitos', 'examen', 'egel' y 'ceneval' devuelven cero resultados; (4) probé nueve rutas plausibles del sitio (/content/titulación, /content/modalidades-de-titulación, /content/titulacion, /content/ruta-de-titulación, /content/laboratorio-disciplinario, /content/egreso, /content/titulación-y-egreso, /content/servicios, /content/trámites) y las nueve responden HTTP 404; (5) resolví por DNS (dns.google) seis subdominios plausibles (titulacion, egel, egelceneval, ld, secretaria, admin).cipolys.buap.mx: ninguno existe; (6) consulté el índice del Internet Archive (CDX) para el dominio cipolys.buap.mx filtrando por titul|egres|tesis|mapa|modalidad: el único registro es un PNG de tesis de posgrado en Estudios Sociales; (7) revisé los tres Informes de Labores del director (PRIMER, SEGUNDO y TERCER informe) que la unidad publica, incluido el gráfico 'Oficios emitidos por modalidad de titulación', que está desglosado por carrera y no por modalidad; (8) busqué en el Boletín BUAP (boletin.buap.mx) notas de la unidad: el artículo del 29-sep-2026 sobre el Cuarto Informe de Labores menciona 'incremento de la titulación en todas sus modalidades' y el del 27-jun-2024 da porcentajes de trámites de titulación, pero ninguna enumera las modalidades; (9) revisé los sitios centrales: titulacion.buap.mx (DAE) no publica un catálogo por unidad, y des.buap.mx (Dirección de Educación Superior) tiene vacías las páginas de 'Convocatoria EGEL-CENEVAL', 'Oferta Educativa 2026' y 'Coordinación CENEVAL y de Certificación de Competencias', y serviciosdes.buap.mx exige autenticación. Lo único oficial que se encontró son dos menciones en el TERCER INFORME DE LABORES (periodo junio 2024-junio 2025, https://cipolys.buap.mx/sites/default/files/Informes%20de%20Labores/TERCER%20informe.pdf): 'Se tramitaron 122 dictámenes de examen profesional' y 'Se realizaron tres procesos de convocatoria para examen EGEL-CENEVAL (Agosto y Diciembre 2024 y Marzo 2025)'. Eso acredita que esas dos modalidades se están usando, pero la unidad NO publica sus nombres oficiales, ni sus requisitos, ni un catálogo; por eso no se reportan como modalidades, porque hacerlo sería completar la información con el catálogo genérico del Reglamento, que la tarea prohíbe. Para obtenerlas habría que pedir el catálogo a titulacion.fcps@correo.buap.mx o al Laboratorio Disciplinario de Titulación y Egreso."
     },
     {
       "nombre": "Facultad de Ciencias Químicas",
@@ -109,7 +620,66 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://csquimicas.buap.mx/sites/default/files/titulacion/Infografía%20Titulación.pdf"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://secreacademica.cs.buap.mx/reglamento_general_de_titulacion_de_la_buap.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FCQ].notas"
+        },
+        {
+          "url": "https://repositorio.buap.mx/rcontraloria/public/inf_public/2019/0/reglamento_general_de_titulacion_de_la_buap.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FCQ].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "examen-profesional-por-tesis-fcq",
+          "nombre": "Examen Profesional por Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://csquimicas.buap.mx/sites/default/files/titulacion/Infografía%20Titulación.pdf",
+          "fecha": "Infografía: PDF Adobe Illustrator 25.2, CreationDate 2026-09-24, ModDate 2026-09-24 (servido con Last-Modified 2026-09-25). Detalle de pasos: 'Modalidades de Titulación FCQ.pdf', CreationDate 2026-09-04, ModDate 2026-09-24."
+        },
+        {
+          "modalidadId": "titulacion-automatica-fcq",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://csquimicas.buap.mx/sites/default/files/titulacion/Infografía%20Titulación.pdf",
+          "fecha": "2026-09-24 (infografía) / ModDate 2026-09-24 (documento de pasos)"
+        },
+        {
+          "modalidadId": "memoria-por-experiencia-profesional-o-reporte-tecnico-fcq",
+          "nombre": "Memoria por Experiencia Profesional o Reporte Técnico",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://csquimicas.buap.mx/sites/default/files/titulacion/Infografía%20Titulación.pdf",
+          "fecha": "2026-09-24 (infografía) / ModDate 2026-09-24 (documento de pasos)"
+        },
+        {
+          "modalidadId": "presentacion-del-examen-ceneval-egel-fcq",
+          "nombre": "Presentación del examen CENEVAL-EGEL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://csquimicas.buap.mx/sites/default/files/titulacion/Infografía%20Titulación.pdf",
+          "fecha": "2026-09-24 (infografía) / ModDate 2026-09-24 (documento de pasos)"
+        }
+      ],
+      "salvedad": "La infografía se regeneró en septiembre de 2026, dos semanas antes de esta investigación, de modo que es la fuente más vigente disponible para la FCQ. El reglamento que la FCQ cita como norma marco es el Reglamento General de Titulación de la BUAP; la unidad lo referencia en https://secreacademica.cs.buap.mx/reglamento_general_de_titulacion_de_la_buap.pdf y en https://repositorio.buap.mx/rcontraloria/public/inf_public/2019/0/reglamento_general_de_titulacion_de_la_buap.pdf."
     },
     {
       "nombre": "Facultad de Contaduría Pública",
@@ -119,7 +689,125 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-tesis"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-por-tesis-fcp",
+          "nombre": "Titulación por Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-tesis",
+          "fecha": "Página web sin fecha de publicación publicada. PDF 'Opciones para Titulación': PowerPoint 2016, CreationDate 2022-06-29, ModDate 2022-06-29, Last-Modified 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-elaboracion-de-tesina-fcp",
+          "nombre": "Titulación por Elaboración de Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-elaboraci%C3%B3n-de-tesina",
+          "fecha": "Página web sin fecha de publicación publicada; el listado numerado 1-12 que la respalda está en el PDF de 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-automatica-fcp",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-autom%C3%A1tica",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-examen-ceneval-fcp",
+          "nombre": "Titulación por Examen CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-examen-ceneval",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-asignatura-optativa-fcp",
+          "nombre": "Titulación por Asignatura Optativa",
+          "nombreNormativo": "Asignatura optativa con créditos",
+          "rutaId": "asignatura-optativa",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-asignatura-optativa",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-memoria-de-experiencia-profesional-fcp",
+          "nombre": "Titulación por Memoria de Experiencia Profesional",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-memoria-de-experiencia-profesional",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-informe-de-proyectos-de-servicio-social-y-o-practica-profesional-fcp",
+          "nombre": "Titulación por Informe de Proyectos de Servicio Social y/o Práctica Profesional",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-informe-de-proyectos-de-servicio-social-yo-pr%C3%A1ctica-profesional",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-publicaciones-en-revistas-arbitradas-fcp",
+          "nombre": "Titulación por Publicaciones en Revistas Arbitradas",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-publicaciones-en-revistas-arbitradas",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-elaboracion-de-proyectos-de-vinculacion-fcp",
+          "nombre": "Titulación por Elaboración de Proyectos de Vinculación",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-elaboraci%C3%B3n-de-proyectos-de-vinculaci%C3%B3n",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-elaboracion-de-paquetes-didacticos-de-apoyo-a-la-docencia-fcp",
+          "nombre": "Titulación por Elaboración de Paquetes Didácticos de Apoyo a la Docencia",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-elaboraci%C3%B3n-de-paquetes-did%C3%A1cticos-de-apoyo-la-docencia",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-por-materia-optativa-de-emprendimiento-a-partir-del-tercer-o-cuarto-semestre-fcp",
+          "nombre": "Titulación por Materia Optativa de Emprendimiento a Partir del Tercer o Cuarto Semestre",
+          "nombreNormativo": "Asignatura optativa con créditos",
+          "rutaId": "asignatura-optativa",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-por-materia-optativa-de-emprendimiento-partir-del-tercer-o-cuarto-semestre",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        },
+        {
+          "modalidadId": "titulacion-de-seminario-de-titulacion-con-trabajo-de-investigacion-fcp",
+          "nombre": "Titulación de Seminario de Titulación con Trabajo de Investigación",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "https://contaduria.buap.mx/?q=content/titulaci%C3%B3n-de-seminario-de-titulaci%C3%B3n-con-trabajo-de-investigaci%C3%B3n",
+          "fecha": "Página web sin fecha de publicación publicada; PDF de opciones 2022-06-29."
+        }
+      ],
+      "salvedad": "El PDF 'Opciones para Titulación' (Departamento de Exámenes Profesionales) numera exactamente las mismas 12 formas de titulación que las páginas web, lo que confirma que la lista vigente es de 12. Ninguna de las 12 aparece marcada como suspendida o derogada."
     },
     {
       "nombre": "Facultad de Cultura Física",
@@ -129,7 +817,62 @@
       "telefono": "+52 (222) 229 5500 ext. 7114",
       "responsable": "",
       "notas": "La página de titulación no identifica explícitamente una coordinación de titulación.",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://facufi.buap.mx/sites/default/files/Titulacion/modalidades_titulacion.pdf"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-fcf",
+          "nombre": "Titulación automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://facufi.buap.mx/sites/default/files/Titulacion/modalidades_titulacion.pdf",
+          "fecha": "modalidades_titulacion.pdf: Last-Modified 2022-10-25. opciones de titulacion.pdf: Last-Modified 2026-05-27 (es el cartel más reciente y confirma que la modalidad sigue vigente)."
+        },
+        {
+          "modalidadId": "examen-profesional-por-tesis-fcf",
+          "nombre": "Examen profesional por tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://facufi.buap.mx/sites/default/files/Titulacion/modalidades_titulacion.pdf",
+          "fecha": "modalidades_titulacion.pdf: Last-Modified 2022-10-25. titulacion_por_tesis.pdf: Last-Modified 2022-10-25."
+        },
+        {
+          "modalidadId": "memoria-de-experiencia-profesional-fcf",
+          "nombre": "Memoria de experiencia profesional",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://facufi.buap.mx/sites/default/files/Titulacion/modalidades_titulacion.pdf",
+          "fecha": "modalidades_titulacion.pdf: Last-Modified 2022-10-25. titulacion_por_memoria_de_experiencia_personal.pdf: Last-Modified 2022-10-25."
+        },
+        {
+          "modalidadId": "asignatura-optativa-con-valor-en-creditos-fcf",
+          "nombre": "Asignatura optativa con valor en créditos",
+          "nombreNormativo": "Asignatura optativa con créditos",
+          "rutaId": "asignatura-optativa",
+          "estado": "vigente",
+          "fuente": "https://facufi.buap.mx/sites/default/files/opciones%20de%20titulacion.pdf",
+          "fecha": "Last-Modified 2026-05-27"
+        },
+        {
+          "modalidadId": "diplomado-de-educacion-continua-fcf",
+          "nombre": "Diplomado de educación continua",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://facufi.buap.mx/sites/default/files/opciones%20de%20titulacion.pdf",
+          "fecha": "Last-Modified 2026-05-27"
+        }
+      ],
+      "salvedad": "Discrepancia interna de la unidad: el PDF 'modalidades_titulacion.pdf' (oct-2022) lista solo 3 modalidades para Cultura Física, mientras que el cartel 'opciones de titulacion.pdf' (mayo-2026) lista 4. Se reportan las 4 tomando como vigente el documento más reciente. Advertencia: el archivo 'requisitos_titulacion.pdf' es un mensaje de WhatsApp del responsable a los alumnos, no un reglamento; se cita solo como contacto, no como norma."
     },
     {
       "nombre": "Facultad de Derecho",
@@ -139,7 +882,71 @@
       "telefono": "+52 (222) 229 5500 ext. 7025 y 4051",
       "responsable": "",
       "notas": "No se localizó una coordinación propia de la Facultad de Derecho; se atiende como servicio institucional de la DAE.",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://derecho.buap.mx/sites/default/files/FORMATOS-TITULACION/Tesis-Tesina_Requisitos.pdf"
+      ],
+      "rastroBusqueda": null,
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "tesis-fdere",
+          "nombre": "Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://derecho.buap.mx/sites/default/files/FORMATOS-TITULACION/Tesis-Tesina_Requisitos.pdf",
+          "fecha": "Last-Modified 2026-09-08. La página web que los enlaza no publica fecha."
+        },
+        {
+          "modalidadId": "tesina-fdere",
+          "nombre": "Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://derecho.buap.mx/sites/default/files/FORMATOS-TITULACION/Tesis-Tesina_Requisitos.pdf",
+          "fecha": "Last-Modified 2026-09-08 en ambos archivos."
+        },
+        {
+          "modalidadId": "memoria-de-experiencia-profesional-o-reporte-critico-fdere",
+          "nombre": "Memoria de Experiencia Profesional o Reporte Crítico",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://derecho.buap.mx/sites/default/files/FORMATOS-TITULACION/RUBRICA%20Y%20DICTAMEN%20EXPERIENCIA%20PROFESIONAL.docx",
+          "fecha": "Last-Modified 2026-09-08. La página web que lo enlaza no publica fecha."
+        },
+        {
+          "modalidadId": "memoria-de-servicio-social-y-practica-profesional-critica-fdere",
+          "nombre": "Memoria de Servicio Social y Práctica Profesional Crítica",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://derecho.buap.mx/sites/default/files/FORMATOS-TITULACION/RUBRICA%20Y%20DICTAMEN%20PARA%20MEMORIA%20DE%20SS%20Y%20PP.docx",
+          "fecha": "Last-Modified 2026-09-08. La página web que lo enlaza no publica fecha."
+        },
+        {
+          "modalidadId": "reporte-tecnico-fdere",
+          "nombre": "Reporte Técnico",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://derecho.buap.mx/sites/default/files/FORMATOS-TITULACION/RUBRICA%20Y%20DICTAMEN%20PARA%20REPORTE%20TECNICO.docx",
+          "fecha": "Last-Modified 2026-09-08. La página web que lo enlaza no publica fecha."
+        },
+        {
+          "modalidadId": "diplomado-o-seminario-de-educacion-continua-fdere",
+          "nombre": "Diplomado o Seminario de Educación Continua",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "https://derecho.buap.mx/sites/default/files/FORMATOS-TITULACION/RUBRICA%20Y%20RESULTADO%20PARA%20TESINA-Diplomado%20o%20Seminario.docx",
+          "fecha": "Last-Modified 2026-09-08 (rúbrica). La página de Educación Continua no publica fecha."
+        }
+      ],
+      "salvedad": "El 'Formato 6 Lineamientos y Criterios del Proceso Editorial' enlazado por la unidad es en realidad la publicación de la UNAM Instituto de Investigaciones Jurídicas (2.ª edición, 30 de mayo de 2013); no es un documento de la Facultad."
     },
     {
       "nombre": "Facultad de Economía",
@@ -149,7 +956,105 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/TESIS.pdf"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/Preguntas%20Frecuentes%20de%20Titulaci%C3%B3n.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FECON].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "2-1-tesis-fecon",
+          "nombre": "2.1 Tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/TESIS.pdf",
+          "fecha": "Documento engañoso: el PDF individual marca Last-Modified 2023-10-02, pero la guía completa que lo contiene es 'GUIA PARA TITULACIÓN FACULTAD DE ECONOMÍA - BUAP', creada con Canva el 2023-10-05 y modificada el 2023-10-05, con Last-Modified del servidor 2023-10-06. La página que lo publica sigue en línea al 2026-09-29."
+        },
+        {
+          "modalidadId": "2-2-tesina-fecon",
+          "nombre": "2.2 Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/TESINA.pdf",
+          "fecha": "Last-Modified del PDF 2023-10-02; guía que lo contiene 2023-10-05."
+        },
+        {
+          "modalidadId": "2-3-titulacion-automatica-fecon",
+          "nombre": "2.3 Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/TITULACION%20AUTOMATICA.pdf",
+          "fecha": "Guía que lo contiene: 2023-10-05."
+        },
+        {
+          "modalidadId": "2-4-memoria-de-experiencia-profesional-o-reporte-tecnico-fecon",
+          "nombre": "2.4 Memoria de Experiencia Profesional o Reporte Técnico",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/MEMORIA%20EXP%20PROFESIONAL%20O%20REPORTE%20TEC.pdf",
+          "fecha": "Guía que lo contiene: 2023-10-05."
+        },
+        {
+          "modalidadId": "2-5-presentacion-de-examen-ceneval-egel-fecon",
+          "nombre": "2.5 Presentación de examen CENEVAL-EGEL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/CENEVAL%20EGEL.pdf",
+          "fecha": "Guía que lo contiene: 2023-10-05."
+        },
+        {
+          "modalidadId": "2-6-seminario-de-titulacion-fecon",
+          "nombre": "2.6 Seminario de Titulación",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/SEMINARIO%20DE%20TITULACION.pdf",
+          "fecha": "Guía que lo contiene: 2023-10-05."
+        },
+        {
+          "modalidadId": "2-7-asignatura-optativa-con-valor-en-creditos-durante-el-ultimo-semestre-del-plan-de-estudios-fecon",
+          "nombre": "2.7 Asignatura optativa con valor en créditos durante el último semestre del plan de estudios",
+          "nombreNormativo": "Asignatura optativa con créditos",
+          "rutaId": "asignatura-optativa",
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/ASIGNATURA%20OPTATIVA.pdf",
+          "fecha": "Guía que lo contiene: 2023-10-05."
+        },
+        {
+          "modalidadId": "2-8-monografia-de-practica-profesional-fecon",
+          "nombre": "2.8 Monografía de Práctica Profesional",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/MONOGRAFIA%20PRACTICA%20PROFESIONAL.pdf",
+          "fecha": "Guía que lo contiene: 2023-10-05."
+        },
+        {
+          "modalidadId": "2-9-articulo-en-revista-arbitrada-fecon",
+          "nombre": "2.9 Artículo en Revista Arbitrada",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/ARTICULO%20EN%20REVISTA%20ARBITRADA.pdf",
+          "fecha": "Guía que lo contiene: 2023-10-05."
+        }
+      ],
+      "salvedad": "La guía numera explícitamente 2.1 a 2.9 y no incluye ninguna modalidad marcada como suspendida o derogada. Las preguntas frecuentes de titulación de la unidad (https://economia.buap.mx/sites/default/files/img_guia/Archivos_PDFs/Preguntas%20Frecuentes%20de%20Titulaci%C3%B3n.pdf) mencionan tipos de cambio y fechas de 2022, por lo que conviene citarlas solo para vigencias, no para montos."
     },
     {
       "nombre": "Facultad de Enfermería",
@@ -159,7 +1064,70 @@
       "telefono": "+52 (222) 229 5500 ext. 7025 y 4051",
       "responsable": "",
       "notas": "No se identificó teléfono propio de la facultad; se atiende vía DAE.",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicacion_sin_fuente_registrada",
+      "resultadoBusqueda": "modalidades_sin_fuente_registrada",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FENF].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FENF].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FENF].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-fenf",
+          "nombre": "Titulación automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "egel-ceneval-fenf",
+          "nombre": "EGEL-CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "tesis-fenf",
+          "nombre": "Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "tesina-fenf",
+          "nombre": "Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Estomatología",
@@ -169,7 +1137,79 @@
       "telefono": "+52 (222) 229 5500 ext. 6400, 6402 y 6405",
       "responsable": "",
       "notas": "",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "publicacion_sin_fuente_registrada",
+      "resultadoBusqueda": "modalidades_sin_fuente_registrada",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FESTO].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FESTO].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FESTO].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-festo",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-ceneval-egel-ceneval-festo",
+          "nombre": "Titulación por CENEVAL (EGEL-CENEVAL)",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "tesis-festo",
+          "nombre": "Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "tesina-festo",
+          "nombre": "Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "seminario-de-titulacion-festo",
+          "nombre": "Seminario de Titulación",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Filosofía y Letras",
@@ -179,7 +1219,33 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FFL].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FFL].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FFL].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ingeniería",
@@ -189,7 +1255,33 @@
       "telefono": "+52 (222) 229 5500 ext. 7610",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FING].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FING].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FING].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Ingeniería Química",
@@ -199,7 +1291,115 @@
       "telefono": "+52 (222) 229 5500 ext. 7252",
       "responsable": "Mtro. Juan Carlos Pichardo Macías y Mtro. Carlos Maceda Hernández",
       "notas": "La página de titulación indica que ambos maestros orientan y apoyan el proceso; la documentación se envía a ellos.",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "publicacion_sin_fuente_registrada",
+      "resultadoBusqueda": "modalidades_sin_fuente_registrada",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FIQ].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FIQ].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "modalidades_sin_fuente_registrada",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=FIQ].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-fiq",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-examen-ceneval-fiq",
+          "nombre": "Titulación por Examen CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-reporte-tecnico-fiq",
+          "nombre": "Titulación por Reporte Técnico",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-tesis-fiq",
+          "nombre": "Titulación por Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-tesina-fiq",
+          "nombre": "Titulación por Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-de-tesina-por-diplomado-fiq",
+          "nombre": "Titulación de Tesina por Diplomado",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-autoria-de-articulo-de-investigacion-fiq",
+          "nombre": "Titulación por Autoría de Artículo de investigación",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-creditos-de-maestria-fiq",
+          "nombre": "Titulación por Créditos de Maestría",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-especialidad-fiq",
+          "nombre": "Titulación por Especialidad",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "sin_fuente_registrada",
+          "fuente": null,
+          "fecha": "Consultada 2026-09-29"
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Facultad de Lenguas",
@@ -209,7 +1409,78 @@
       "telefono": "+52 (222) 229 5500",
       "responsable": "",
       "notas": "LEI, LEF y LEFCUME usan titulacion.lenguas@correo.buap.mx; LELI usa lael-i.lenguas@correo.buap.mx.",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://www.facultaddelenguas.com/?seccion=titulacion-automatica"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://recale.facultaddelenguas.com/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FLENG].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-por-promedio-fleng",
+          "nombre": "Titulación automática (por promedio)",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://www.facultaddelenguas.com/?seccion=titulacion-automatica",
+          "fecha": "Sin fecha de publicación visible; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-examen-profesional-defensa-de-tesis-fleng",
+          "nombre": "Titulación por examen profesional (Defensa de Tesis)",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://www.facultaddelenguas.com/?seccion=titulacion-examen",
+          "fecha": "Sin fecha de publicación visible; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-diplomado-fleng",
+          "nombre": "Titulación por diplomado",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://www.facultaddelenguas.com/?seccion=titulacion-diplomado",
+          "fecha": "Sin fecha de publicación visible; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-practica-profesional-docente-en-el-menu-titulacion-por-informe-practica-profesional-fleng",
+          "nombre": "Titulación por Práctica Profesional Docente (en el menú: 'Titulación por informe práctica profesional')",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://www.facultaddelenguas.com/?seccion=titulacion-practica",
+          "fecha": "Sin fecha de publicación visible; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-informe-de-experiencia-profesional-docente-fleng",
+          "nombre": "Titulación por Informe de Experiencia Profesional Docente",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://www.facultaddelenguas.com/?seccion=titulacion-experiencia",
+          "fecha": "Sin fecha de publicación visible; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-de-posgrado-examen-de-grado-de-maestria-fleng",
+          "nombre": "Titulación de posgrado: examen de grado de maestría",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://www.facultaddelenguas.com/?seccion=titulacion-maestria",
+          "fecha": "Sin fecha de publicación visible; página viva consultada el 2026-09-29"
+        }
+      ],
+      "salvedad": null
     },
     {
       "nombre": "Facultad de Medicina",
@@ -219,7 +1490,231 @@
       "telefono": "+52 (222) 229 5500 ext. 6041 y 6052",
       "responsable": "",
       "notas": "",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://medicina.buap.mx/?q=content/licenciatura-en-medicina-titulacion-automatica"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://medicina.buap.mx/?q=content/licenciatura-en-ciencia-forense-titulacion-automatica",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMED].notas"
+        },
+        {
+          "url": "https://mederi.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMED].notas"
+        },
+        {
+          "url": "https://repositorio.buap.mx/rdocencia/public/inf_public/2019/0/197-Reglamento-General-Titulaci%C3%B3n-Gaceta.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMED].notas"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMED].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "licenciatura-en-medicina-titulacion-automatica-fmed",
+          "nombre": "Licenciatura en Medicina - Titulación automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-medicina-titulacion-automatica",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-medicina-titulacion-por-examen-ceneval-fmed",
+          "nombre": "Licenciatura en Medicina - Titulación por Examen CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-medicina-titulacion-por-examen-ceneval",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-medicina-titulacion-por-tesis-fmed",
+          "nombre": "Licenciatura en Medicina - Titulación por tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-medicina-titulacion-por-tesis",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-medicina-diplomado-de-titulacion-fmed",
+          "nombre": "Licenciatura en Medicina - Diplomado de Titulación",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-medicina-diplomado-de-titulacion",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-fisioterapia-titulacion-automatica-fmed",
+          "nombre": "Licenciatura en Fisioterapia - Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-fisioterapia-titulacion-automatica",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-fisioterapia-titulacion-por-diplomado-fmed",
+          "nombre": "Licenciatura en Fisioterapia - Titulación por Diplomado",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-fisioterapia-titulacion-por-diplomado",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-fisioterapia-titulacion-por-tesis-fmed",
+          "nombre": "Licenciatura en Fisioterapia - Titulación por Tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-fisioterapia-titulacion-por-tesis",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-fisioterapia-titulacion-por-examen-ceneval-fmed",
+          "nombre": "Licenciatura en Fisioterapia - Titulación por Examen CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-fisioterapia-titulacion-por-examen-ceneval",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "profesional-asociado-en-imagenologia-titulacion-automatica-fmed",
+          "nombre": "Profesional Asociado en Imagenología - Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/profesional-asociado-en-imagenologia-titulacion-automatica",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "profesional-asociado-en-imagenologia-titulacion-por-tesis-fmed",
+          "nombre": "Profesional Asociado en Imagenología - Titulación por Tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/profesional-asociado-en-imagenologia-titulacion-por-tesis",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "profesional-asociado-en-imagenologia-titulacion-por-memoria-de-experiencia-profesional-fmed",
+          "nombre": "Profesional Asociado en Imagenología - Titulación por Memoria de Experiencia Profesional",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/profesional-asociado-en-imagenologia-titulacion-por-memoria-de-experiencia-profesional",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-nutricion-clinica-titulacion-automatica-fmed",
+          "nombre": "Licenciatura en Nutrición Clínica - Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-nutricion-clinica-titulacion-automatica",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-nutricion-clinica-titulacion-por-ceneval-fmed",
+          "nombre": "Licenciatura en Nutrición Clínica - Titulación por CENEVAL",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-nutrici%C3%ADnica-titulacion-por-ceneval",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-nutricion-clinica-titulacion-por-tesis-fmed",
+          "nombre": "Licenciatura en Nutrición Clínica - Titulación por Tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-nutricion-clinica-titulacion-por-tesis",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "profesional-asociado-en-urgencias-medicas-titulacion-automatica-fmed",
+          "nombre": "Profesional Asociado en Urgencias Médicas - Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/profesional-asociado-en-urgencias-medicas-titulacion-automatica",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "profesional-asociado-en-urgencias-medicas-certificacion-internacional-fmed",
+          "nombre": "Profesional Asociado en Urgencias Médicas – Certificación Internacional",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/profesional-asociado-en-urgencias-medicas-certificacion-internacional",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "profesional-asociado-en-urgencias-medicas-titulacion-por-tesis-fmed",
+          "nombre": "Profesional Asociado en Urgencias Médicas - Titulación por Tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/profesional-asociado-en-urgencias-medicas-titulacion-por-tesis",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "profesional-asociado-en-urgencias-medicas-titulacion-por-memoria-de-experiencia-profesional-mep-fmed",
+          "nombre": "Profesional Asociado en Urgencias Médicas - Titulación por Memoria de Experiencia Profesional (MEP)",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/profesional-asociado-en-urgencias-medicas-titulacion-por-memoria-de-experiencia-profesional",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-biomedicina-titulacion-por-tesis-fmed",
+          "nombre": "Licenciatura en Biomedicina - Titulación por Tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-biomedicina-titulacion-por-tesis",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-biomedicina-titulacion-por-publicacion-en-revista-indexada-fmed",
+          "nombre": "Licenciatura en Biomedicina - Titulación por Publicación en Revista Indexada",
+          "nombreNormativo": null,
+          "rutaId": null,
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-biomedicina-titulacion-por-publicacion-en-revista-indexada",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "licenciatura-en-ciencia-forense-titulacion-por-tesis-fmed",
+          "nombre": "Licenciatura en Ciencia Forense - Titulación por Tesis",
+          "nombreNormativo": null,
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-ciencia-forense-titulaci%C3%B3n-por-tesis",
+          "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29"
+        }
+      ],
+      "salvedad": null
     },
     {
       "nombre": "Facultad de Medicina Veterinaria y Zootecnia",
@@ -229,7 +1724,66 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://veterinaria.buap.mx/pdf/diplomado-con-fines-de-titulaci%C3%B3n-en-producci%C3%B3n-y-salud-animal"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://veterinaria.buap.mx/?q=content/secretaría-académica",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMVZ].notas"
+        },
+        {
+          "url": "https://veterinaria.buap.mx/sites/default/files/seminario%20de%20titulacion%2023.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMVZ].notas"
+        },
+        {
+          "url": "https://veterinaria.buap.mx/sites/default/files/Plan%20de%20Estudios.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMVZ].notas"
+        },
+        {
+          "url": "https://veterinaria.buap.mx/sites/default/files/PLAN%20DE%ESTUDIOS%202024_0.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMVZ].notas"
+        },
+        {
+          "url": "https://veterinaria.buap.mx/?q=pdf/reglamento-de-la-lic-de-la-fmvz",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMVZ].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "diplomado-con-fines-de-titulacion-en-produccion-y-salud-animal-fmvz",
+          "nombre": "Diplomado con fines de Titulación en Producción y Salud Animal",
+          "nombreNormativo": "Diplomado de educación continua",
+          "rutaId": "diplomado",
+          "estado": "vigente",
+          "fuente": "https://veterinaria.buap.mx/pdf/diplomado-con-fines-de-titulaci%C3%B3n-en-producci%C3%B3n-y-salud-animal",
+          "fecha": "Convocatoria 'PROCESO DE ADMISIÓN PRIMAVERA 2026'; flyer PDF en línea al 2026-09-29"
+        },
+        {
+          "modalidadId": "seminario-de-titulacion-asignatura-mvza-268-fmvz",
+          "nombre": "Seminario de Titulación (asignatura MVZA 268)",
+          "nombreNormativo": "Seminario de titulación por convocatoria",
+          "rutaId": "seminario",
+          "estado": "vigente",
+          "fuente": "https://veterinaria.buap.mx/sites/default/files/PLAN%20DE%20ESTUDIOS%202024_0.pdf",
+          "fecha": "Plan de Estudios 2024 (Malla curricular, Vicerrectoría de Docencia); descargado el 2026-09-29"
+        }
+      ],
+      "salvedad": null
     },
     {
       "nombre": "Facultad de Psicología",
@@ -239,7 +1793,99 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://psicologia.buap.mx/_sac/$ruta_tesis25.pdf"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://drive.google.com/file/d/1oRMMvtqpaw-1P8a2pjniJ8Jx_WcxJOjM/preview",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+        },
+        {
+          "url": "https://psicologia.buap.mx/coords/titulacion/prestitulacion.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+        },
+        {
+          "url": "https://des.buap.mx/?q=pdf/convocatoria-egel-ceneval-marzo-2021",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+        },
+        {
+          "url": "https://des.buap.mx/?q=content/examen-general-de-egreso-de-licenciatura-egel-buap",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+        },
+        {
+          "url": "https://bsu.buap.mx/fvx",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+        },
+        {
+          "url": "https://bsu.buap.mx/nD",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-por-tesis-fpsy",
+          "nombre": "Titulación por Tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://psicologia.buap.mx/_sac/$ruta_tesis25.pdf",
+          "fecha": "Ruta 2025 (nombre de archivo ruta_tesis25.pdf); publicada en la Secretaría Académica, consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-tesina-fpsy",
+          "nombre": "Titulación por Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://psicologia.buap.mx/_sac/$ruta_tesina25.pdf",
+          "fecha": "Ruta 2025 (nombre de archivo ruta_tesina25.pdf); publicada en la Secretaría Académica, consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-memoria-de-experiencia-profesional-mep-fpsy",
+          "nombre": "Titulación por Memoria de Experiencia Profesional (MEP)",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://psicologia.buap.mx/_sac/$ruta_mep25.pdf",
+          "fecha": "Ruta 2025 (nombre de archivo ruta_mep25.pdf); publicada en la Secretaría Académica, consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-automatica-solicitud-de-oficio-de-modalidad-de-titulacion-automatica-fpsy",
+          "nombre": "Titulación automática (solicitud de oficio de modalidad de titulación automática)",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)",
+          "fecha": "Infografía vigente en el sitio (© 2026); consultada el 2026-09-29"
+        },
+        {
+          "modalidadId": "titulacion-por-egel-plus-ceneval-solicitud-de-oficio-de-modalidad-de-titulacion-por-egel-plus-fpsy",
+          "nombre": "Titulación por EGEL Plus-CENEVAL (solicitud de oficio de modalidad de titulación por EGEL Plus)",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)",
+          "fecha": "Infografía vigente en el sitio (© 2026); consultada el 2026-09-29"
+        }
+      ],
+      "salvedad": null
     },
     {
       "nombre": "Instituto de Ciencias Sociales y Humanidades Alfonso Vélez Pliego",
@@ -249,7 +1895,39 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.icsyh.com",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=ICSH].notas"
+        },
+        {
+          "url": "https://www.icsyh.com/programasacademicos",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=ICSH].notas"
+        },
+        {
+          "url": "https://www.icsyh.com/ingreso2026",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=ICSH].notas"
+        },
+        {
+          "url": "https://www.icsyh.com/masc",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=ICSH].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": "El ICSyH no publica un catálogo de modalidades de titulación para sus licenciaturas en ningún sitio oficial. Búsqueda realizada: (1) Localicé la ficha institucional del Instituto en el portal de la BUAP y, desde ella, su sitio propio: https://www.icsyh.com (sitio Wix). (2) Recorrí TODAS las páginas públicas del sitio: la portada, https://www.icsyh.com/programasacademicos, https://www.icsyh.com/ingreso2026, https://www.icsyh.com/masc, /nuestrahistoria, /personal, /fondoeditorial, /igualdadlaboral, /comase2026, /fenali2026, y todas las fichas de evento; además probé los slugs /titulacion, /eficienciaterminal y /secretariaacademica (los tres devuelven 404). (3) El menú del sitio no tiene sección de titulación ni de Secretaría Académica; los únicos PDF institucionales colgados son código de ética, protocolo de prevención de discriminación, manual de inducción, política de calidad y antisobornos, contratos colectivos, política de igualdad laboral, reglamento de puntualidad y código de conducta: ninguno trata titulación. (4) 'Programas Académicos' sólo enlaza posgrado (Maestría y Doctorado en Historia, Ciencias del Lenguaje, Sociología, Estudios Socioterritoriales y Antropología); no hay ficha de licenciatura ni de modalidades. (5) Busqué dominios propios del ICSyH: icsh.buap.mx, www.icsh.buap.mx, icsyh.buap.mx y www.icsyh.buap.mx no resuelven en DNS (NXDOMAIN / NODATA), igual que csh, cienciassociales, humanidades, icso, chel, avp e ics; el nombre icsyh.buap.mx existe en la zona pero sin registro A, AAAA, CNAME ni NS. (6) En el portal www.buap.mx la búsqueda interna sólo devuelve la ficha del Instituto; en des.buap.mx el área de Ciencias Sociales y Humanidades muestra fichas de programa y su 'pdf/licenciatura-en-historia' devuelve 'Acceso denegado'. (7) Intenté los buscadores (DuckDuckGo, Bing, Ecosia, Yahoo, Brave) y respondieron con CAPTCHA o con resultados ajenos a la BUAP. CONCLUSIÓN: no hay fuente oficial del ICSyH con modalidades de titulación de licenciatura, por lo que no se registra ninguna modalidad y tampoco se heredan las del Reglamento General de Titulación. Dato aislado, sólo de posgrado: la ficha de la Maestría en Antropología (https://www.icsyh.com/masc) trae un campo 'Formas de Titulación' con el texto 'Presentar una tesis de investigación original en la cual el estudiante demuestre que posee la capacidad para organizar y exponer sistemáticamente los conocimientos adquiridos y la información etnográfica o de archivo recabada, que defenderá en un examen oral público ante el jurado designado por el Comité Académico'. Las demás fichas de posgrado (maestrialenguaje, maestriahistoria, maestriasociologia, maestriasocioterritoriales, doctoradolenguaje, doctoradohistoria, doctoradosociologia, doctoradosocioterritoriales) no publican ese campo."
     },
     {
       "nombre": "Instituto de Ciencias de Gobierno y Desarrollo Estratégico",
@@ -259,7 +1937,45 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicacion_parcial_no_exhaustiva",
+      "resultadoBusqueda": "publicaciones_parciales_no_exhaustivas",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://icgde.buap.mx/content/titulaci%C3%B3n-dcgp"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=ICGDE].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=ICGDE].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=ICGDE].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "examen-profesional-por-tesis-icgde",
+          "nombre": "Examen profesional por tesis",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://icgde.buap.mx/content/titulaci%C3%B3n-dcgp ; https://icgde.buap.mx/content/titulaci%C3%B3n-mopmp ; https://icgde.buap.mx/content/titulaci%C3%B3n-magrcge ; https://icgde.buap.mx/content/formatos-de-ingreso-seguimiento-titulaci%C3%B3n",
+          "fecha": "La página consultada no muestra fecha de publicación/actualización visible; consultada 2026-09-29"
+        }
+      ],
+      "salvedad": "El ICGDE no publica un catálogo único de modalidades para la unidad. Se localizaron páginas de titulación de tres posgrados, con documentación de tesis y la mención de otros mecanismos en una minuta, pero no un catálogo con requisitos completos y fecha de vigencia. No se registran otras modalidades."
     },
     {
       "nombre": "Instituto de Fisiología",
@@ -269,7 +1985,33 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=IF].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=IF].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=IF].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": "El Instituto de Fisiología no publica catálogo de modalidades de titulación en el sitio consultado. Se revisó la portada, el mapa del sitio, Directorio, Posgrados, Reglamento de estudios de posgrado, Seguimiento a egresados, Normatividad institucional y Secretaría/menús; no apareció página, PDF de mapa/ruta de titulación ni requisitos de modalidad."
     },
     {
       "nombre": "Instituto de Física Luis Rivera Terrazas",
@@ -279,7 +2021,33 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=IFI].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=IFI].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=IFI].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": "No se localizó un dominio oficial independiente enlazado para el Instituto de Física Luis Rivera Terrazas en el directorio de unidades académicas de BUAP consultado; el directorio nombra al Instituto pero no le asigna hipervínculo. La búsqueda de sitios y páginas de titulación no produjo una publicación oficial de catálogo, PDF de ruta/mapa, plan vigente de licenciatura o requisitos de modalidad atribuible al Instituto."
     },
     {
       "nombre": "Complejo Regional Centro",
@@ -289,7 +2057,33 @@
       "telefono": "Ext. 3985",
       "responsable": "Sandra F. Cerezo",
       "notas": "",
-      "confianza": "alta"
+      "confianza": "alta",
+      "estadoCatalogo": "unidad_no_publica_catalogo",
+      "resultadoBusqueda": "sin_catalogo_publicado",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRC].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRC].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "sin_catalogo_publicado",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRC].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": "El Complejo Regional Centro no publica catálogo de modalidades de titulación en su sitio consultado. Se revisaron Inicio, Directorio, Consejo de Unidad Académica, Oferta Educativa, Investigación, Contacto y páginas de Secretaría; la navegación solo enlaza Servicios Escolares/DAE y no ofrece página de titulación, mapa gráfico, ruta o PDF con modalidades y requisitos. No se infiere ninguna modalidad del Reglamento marco."
     },
     {
       "nombre": "Complejo Regional Mixteca",
@@ -299,7 +2093,45 @@
       "telefono": "+52 (222) 229 5500 ext. 3588",
       "responsable": "",
       "notas": "El directorio no identifica a la persona titular de la Secretaría Académica.",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicacion_parcial_no_exhaustiva",
+      "resultadoBusqueda": "publicaciones_parciales_no_exhaustivas",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://crmixteca.buap.mx/pdf/titulaci%C3%B3n-por-memoria-de-experiencia-profesional"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRM].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRM].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRM].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-por-memoria-de-experiencia-profesional-crm",
+          "nombre": "Titulación por Memoria de Experiencia Profesional",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://crmixteca.buap.mx/pdf/titulaci%C3%B3n-por-memoria-de-experiencia-profesional ; PDF incrustado: https://crmixteca.buap.mx/sites/default/files/Titulaci%C3%B3n/Convocatoria%20Titulaci%C3%B3n%20por%20Memoria%20de%20Experiencia%20Profesional.pdf",
+          "fecha": "enero de 2026"
+        }
+      ],
+      "salvedad": "El CRM publica una convocatoria específica para Memoria de Experiencia Profesional, pero no un catálogo exhaustivo de todas las modalidades. Por eso solo se registra esa modalidad y no se agregan las demás modalidades del Reglamento."
     },
     {
       "nombre": "Complejo Regional Nororiental",
@@ -309,7 +2141,72 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicacion_parcial_no_exhaustiva",
+      "resultadoBusqueda": "publicaciones_parciales_no_exhaustivas",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://crzn.buap.mx/content/coordinaci%C3%B3n-de-titulaci%C3%B3n-0"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRNO].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRNO].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=CRNO].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "titulacion-automatica-crno",
+          "nombre": "Titulación Automática",
+          "nombreNormativo": "Titulación automática",
+          "rutaId": "promedio",
+          "estado": "vigente",
+          "fuente": "https://crzn.buap.mx/content/coordinaci%C3%B3n-de-titulaci%C3%B3n-0",
+          "fecha": "Pagina sin fecha visible; cita el Reglamento General de Titulacion BUAP 2015. Consulta 2026-09-29."
+        },
+        {
+          "modalidadId": "titulacion-por-examen-general-de-egreso-de-licenciatura-egel-ceneval-crno",
+          "nombre": "Titulación por Examen General de Egreso de Licenciatura (EGEL + CENEVAL)",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://crzn.buap.mx/content/coordinaci%C3%B3n-de-titulaci%C3%B3n-0",
+          "fecha": "Pagina sin fecha visible. Corroboracion central vigente: Convocatoria Unica EGEL-CENEVAL 2026 (https://serviciosdes.buap.mx/registro-ceneval). Consulta 2026-09-29."
+        },
+        {
+          "modalidadId": "titulacion-por-examen-profesional-por-tesis-tesina-crno",
+          "nombre": "Titulación por Examen Profesional por Tesis/Tesina",
+          "nombreNormativo": "Examen profesional por tesis",
+          "rutaId": "tesis",
+          "estado": "vigente",
+          "fuente": "https://crzn.buap.mx/content/coordinaci%C3%B3n-de-titulaci%C3%B3n-0",
+          "fecha": "Pagina sin fecha visible; cita 'Articulos 8 y 10. Reglamento General de Titulacion-BUAP. 2015'. Consulta 2026-09-29."
+        },
+        {
+          "modalidadId": "examen-profesional-por-memoria-de-experiencia-profesional-crno",
+          "nombre": "Examen Profesional por Memoria de Experiencia Profesional",
+          "nombreNormativo": "Memoria de experiencia profesional o reporte técnico",
+          "rutaId": "experiencia-profesional",
+          "estado": "vigente",
+          "fuente": "https://crzn.buap.mx/content/coordinaci%C3%B3n-de-titulaci%C3%B3n-0",
+          "fecha": "Pagina sin fecha visible. Consulta 2026-09-29."
+        }
+      ],
+      "salvedad": ""
     },
     {
       "nombre": "Complejo Regional Norte",
@@ -319,7 +2216,33 @@
       "telefono": "",
       "responsable": "",
       "notas": "",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "publicacion_parcial_no_exhaustiva",
+      "resultadoBusqueda": "publicaciones_parciales_no_exhaustivas",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://serviciosdes.buap.mx/registro-ceneval"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://crnorte.buap.mx",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=CRN].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "presentacion-del-examen-ceneval-egel-modalidad-de-titulacion-por-examen-egel-ceneval-crn",
+          "nombre": "Presentación del examen CENEVAL-EGEL (modalidad de titulación por examen EGEL-CENEVAL)",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://serviciosdes.buap.mx/registro-ceneval",
+          "fecha": "Convocatoria Unica EGEL-CENEVAL, aplicaciones nacionales 2026, con calendario vigente a septiembre de 2026. Criterios institucionales de la modalidad: PDF de la Direccion de Educacion Superior creado el 2024-06-07."
+        }
+      ],
+      "salvedad": "El Complejo Regional Norte NO publica catalogo de modalidades de titulacion en su sitio oficial https://crnorte.buap.mx. Lo que se busco: (1) el menu completo de la portada, 53 enlaces, ninguno de titulacion ni de egreso; (2) la pagina de Directorio, que solo nombra una 'Gestion y Titulacion' de sede y un correo titulacion.crn@correo.buap.mx, sin modalidades; (3) la pagina de Oferta Educativa, que lista 17 programas en 5 sedes sin ninguna referencia a titulacion; (4) la pagina de Requisitos Adicionales 2026, que solo trata el ingreso a Licenciatura en Enfermeria (entrevistas del 23 al 27 de marzo de 2026, resultados el 14 de abril de 2026) y no de titulacion; (5) Enlaces de Interes, Lineamientos, 4 Lineamientos y Contacto, ninguno con contenido de titulacion; (6) el buscador nativo del sitio /search/node/ con los terminos 'titulacion', 'titulación', 'modalidad', 'ruta de titulacion', 'mapa', 'egreso', 'egel', 'tesis', 'examen' y 'servicio', que devuelve literalmente 'Su busqueda no produjo resultados' en los diez casos; (7) doce URLs candidatas probadas una por una (content/titulacion, content/titulaci%C3%B3n, content/coordinaci%C3%B3n-de-titulaci%C3%B3n, content/ruta-de-titulaci%C3%B3n, pdf/ruta-de-titulaci%C3%B3n, content/modalidades-de-titulaci%C3%B3n, content/titulacion-0, pdf/titulacion, content/egel, content/examen-profesional, content/mapa-gr%C3%A1fico, pdf/mapa-gr%C3%A1fico), las doce devuelven HTTP 404; (8) directorios sites/default/files/ y sites/default/files/Normativa%20Universitaria/ (404, listado deshabilitado; el patron equivalente en el Complejo Regional Mixteca si aloja un 'Reglamento de Titulacion', pero no se encontro equivalente en CRN); (9) sitemap.xml (404) y robots.txt (200, sin datos utiles); (10) Wayback CDX, que no devuelve capturas de este dominio; (11) cuatro consultas a Brave Search sin ningun PDF de 'mapa grafico' o 'ruta de titulacion' de CRN; (12) indicio externo de que la modalidad de tesis se usa en CRN: el repositorio institucional de la BUAP indexa tesis con el 'Complejo Regional Norte' como entidad emisora, lo que acredita tesis depositadas, NO un catalogo publicado. Conclusion: no se puede atribuir a CRN ninguna modalidad mas alla de EGEL-CENEVAL, que esta en la lista de la convocatoria central."
     },
     {
       "nombre": "Complejo Regional Sur",
@@ -329,7 +2252,39 @@
       "telefono": "+52 (222) 229 5500",
       "responsable": "",
       "notas": "Se identificó la coordinación por nombre, pero no se publicó un correo propio.",
-      "confianza": "media"
+      "confianza": "media",
+      "estadoCatalogo": "publicacion_parcial_no_exhaustiva",
+      "resultadoBusqueda": "publicaciones_parciales_no_exhaustivas",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": [
+        "https://serviciosdes.buap.mx/registro-ceneval"
+      ],
+      "rastroBusqueda": [
+        {
+          "url": "https://crs.buap.mx",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=CRS].notas"
+        },
+        {
+          "url": "https://crs.buap.mx/sites/default/files/Pagina%20web%20CRS-11.pdf",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "publicaciones_parciales_no_exhaustivas",
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=CRS].notas"
+        }
+      ],
+      "modalidadesConfirmadas": [
+        {
+          "modalidadId": "presentacion-del-examen-ceneval-egel-modalidad-de-titulacion-por-examen-egel-ceneval-crs",
+          "nombre": "Presentación del examen CENEVAL-EGEL (modalidad de titulación por examen EGEL-CENEVAL)",
+          "nombreNormativo": "Presentación del examen CENEVAL-EGEL",
+          "rutaId": "ceneval",
+          "estado": "vigente",
+          "fuente": "https://serviciosdes.buap.mx/registro-ceneval",
+          "fecha": "Convocatoria Unica EGEL-CENEVAL, aplicaciones nacionales 2026, vigente a septiembre de 2026."
+        }
+      ],
+      "salvedad": "El Complejo Regional Sur NO publica catalogo de modalidades de titulacion en su sitio oficial https://crs.buap.mx. Lo que se busco: (1) menu completo de la portada, 34 enlaces, ninguno de titulacion, egreso, secretaria academica, mapa grafico ni ruta de titulacion; (2) Directorio, que nombra la 'Coordinacion de Evaluacion Academica y Titulacion' (Mtra. Maria Deysi Tapia Alvarez) sin modalidades ni correo; (3) Oferta Academica, sin contenido de titulacion; (4) Enlaces de Interes, que solo enlaza Practicas Profesionales y Servicio Social, Becas, Servicios Escolares, Bolsa de Trabajo, Recuperacion de correo y Planta Fisica; (5) pagina de Transparencia (/pdf/transparencia, HTTP 200), revisada, sin catalogo de modalidades; (6) buscador nativo /search/node/ con 'titulación', 'titulacion', 'egel' y 'tesis', que devuelve cero resultados en los cuatro casos; (7) doce URLs candidatas probadas una por una (content/titulacion, content/titulaci%C3%B3n, content/coordinaci%C3%B3n-de-titulaci%C3%B3n, content/ruta-de-titulaci%C3%B3n, pdf/ruta-de-titulaci%C3%B3n, content/modalidades-de-titulaci%C3%B3n, content/titulacion-0, pdf/titulacion, content/egel, content/examen-profesional, content/mapa-gr%C3%A1fico, pdf/mapa-gr%C3%A1fico), las doce devuelven HTTP 404; (8) content/transparencia, content/4-lineamientos, directorios sites/default/files/ y sites/default/files/Normativa%20Universitaria/, todos 404; (9) sitemap.xml 404; (10) una consulta a Brave Search ('Complejo Regional Sur BUAP titulacion modalidades') sin ningun documento de titulacion de CRS; dos consultas posteriores ('...requisitos egel tesis \"titulacion automatica\"' y 'site:crs.buap.mx titulacion') devolvieron HTTP 429 y no pudieron leerse; (11) el PDF de transparencia que publica la unidad (https://crs.buap.mx/sites/default/files/Pagina%20web%20CRS-11.pdf, 185 743 bytes, una pagina, enlazado desde /pdf/transparencia) descargado y revisado con pdftotext: cero coincidencias de 'titul', 'modal', 'egel', 'tesis' o 'egres'. Conclusion: no se puede atribuir a CRS ninguna modalidad mas alla de EGEL-CENEVAL, listada en la convocatoria central de la BUAP. Tampoco se localizo el PDF de 'Mapa Grafico' o 'Ruta de titulacion' que publica CRNO en su pagina de Coordinacion de Titulacion: CRS no tiene pagina equivalente."
     },
     {
       "nombre": "Bachillerato Internacional 5 de Mayo",
@@ -339,7 +2294,34 @@
       "telefono": "",
       "responsable": "",
       "notas": "Nivel bachillerato: usa el proceso de egreso, no el de titulación.",
-      "confianza": "baja"
+      "confianza": "baja",
+      "estadoCatalogo": "no_aplica_nivel_medio_superior",
+      "resultadoBusqueda": "no_aplica",
+      "fechaConsultaCatalogo": "2026-09-29",
+      "fuenteCatalogo": null,
+      "rastroBusqueda": [
+        {
+          "url": "https://www.buap.mx/content/unidades-academicas",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "no_aplica",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=BACH5M].detalle"
+        },
+        {
+          "url": "https://titulacion.buap.mx/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "no_aplica",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=BACH5M].detalle"
+        },
+        {
+          "url": "https://admin.arpa.buap.mx/titulacion/",
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "resultado": "no_aplica",
+          "evidencia": "out/confirmacion-g2.json → confirmaciones[clave=BACH5M].detalle"
+        }
+      ],
+      "modalidadesConfirmadas": [],
+      "salvedad": "El Bachillerato Internacional 5 de Mayo NO publica catalogo de modalidades de titulacion, y no es aplicable: es una unidad de nivel medio superior, no de nivel superior, por lo que no otorga Titulo Profesional ni tiene modalidades de titulacion. Lo que se busco: (1) menu completo de la portada, 62 enlaces, ninguno de titulacion, egreso, egresados, secretaria academica, tramites, ruta de titulacion ni mapa grafico; (2) las cinco paginas internas de la unidad (Bachillerato '5 de Mayo', Programa del Diploma del BI, Informacion Importante del BI, UIG B5M, Igualdad laboral), revisadas, sin contenido de titulacion; (3) la pagina de Correo electronico y Telefono, sin contenido de titulacion; (4) buscador nativo /search/node/ con 'titulación' y 'titulacion', que devuelve cero resultados en ambos casos; (5) siete URLs candidatas probadas una por una (content/titulacion, content/egreso, content/ruta-de-titulaci%C3%B3n, pdf/plan-de-estudios, content/plan-de-estudios - HTTP 403, content/tr%C3%A1mites, menu/tr%C3%A1mites), ninguna existe; (6) sitemap.xml (404) y robots.txt (200, sin datos utiles). Conclusion: la ausencia de catálogo es correcta y esperable, no un hueco de busqueda. La app debe enviar al alumno de B5M al proceso de egreso de bachillerato, no a modalidades de titulacion."
     }
-  ]
+  ],
+  "_notaCatalogo": "Fecha de corte 2026-09-29. `modalidadesConfirmadas` es lo que la unidad publica con fuente y fecha; `estadoCatalogo` distingue catálogo publicado, publicación parcial, unidad sin catálogo y unidad no aplicable. El texto completo de cada modalidad está en assets/json/catalogo_modalidades.json."
 }

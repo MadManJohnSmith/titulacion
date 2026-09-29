@@ -48,13 +48,22 @@ en tu dispositivo.
 1. **Entras con tu matrícula** — la app te busca en la base de alumnos de la
    BUAP (318,374 registros) y toma tu nombre. Si no estás o prefieres no
    buscarla, puedes continuar como invitado.
-2. **Eliges tu unidad académica** — las 33 facultades y escuelas de la BUAP
-   están precargadas con su contacto de titulación.
-3. **Eliges tu ruta de titulación** — titulación por **promedio** (7 niveles),
-   por **CENEVAL** (8 niveles) o por **examen profesional** (6 niveles).
-4. **Recorres el mapa** — cada isla es un nivel de tu trámite, desbloqueado en
+2. **Eliges tu unidad académica** — las 34 facultades, escuelas, institutos y
+   complejos de la BUAP están precargadas con su contacto de titulación.
+3. **Eliges tu modalidad** — la lista se filtra por tu unidad y muestra, de
+   cada modalidad, los **requisitos que publica tu unidad** (y «no publicado»
+   donde no los publica), el **enlace oficial** y la **fecha** de esa fuente.
+   Si tu unidad no publica catálogo, la app te lo dice y te muestra dónde se
+   buscó, en vez de dejarte en una pantalla vacía.
+4. **Eliges tu ruta de titulación** — 8 rutas: **promedio** (8 niveles),
+   **CENEVAL** (9), **examen profesional** (7) y las cinco modalidades del
+   art. 7 del Reglamento General de Titulación: **tesis** (6), **memoria de
+   experiencia profesional o reporte técnico** (6), **diplomado de educación
+   continua** (6), **seminario por convocatoria** (4) y **asignatura optativa con
+   créditos** (4).
+5. **Recorres el mapa** — cada isla es un nivel de tu trámite, desbloqueado en
    orden, con tu mascota lobo avanzando contigo.
-5. **Completas cada nivel** — pasos explicados uno por uno y una lista de
+6. **Completas cada nivel** — pasos explicados uno por uno y una lista de
    documentos para marcar como recogidos. Al terminar todos los niveles, tu
    expediente está listo.
 
@@ -62,9 +71,12 @@ en tu dispositivo.
 
 - 🎮 **Gamificado**: rutas, niveles, mascotas y mapa — el trámite deja de ser
   un laberinto de PDFs.
-- 📋 **49 documentos y 54 pasos** explicados en lenguaje claro, recopilados de
-  la normativa de la BUAP.
-- 🏛️ **Las 33 unidades académicas** con su coordinación de titulación.
+- 📋 **78 documentos y 86 pasos** en 50 niveles, explicados en lenguaje claro.
+- 📑 **Catálogo por unidad**: 137 modalidades registradas de 34 unidades, cada
+  una con su fuente oficial y su fecha, dentro de las ocho modalidades que
+  reconoce el Reglamento General de Titulación (art. 7, H. Consejo Universitario
+  23-nov-2015).
+- 🏛️ **Las 34 unidades académicas** con su coordinación de titulación.
 - 🔍 **Buscador de matrícula offline** sobre 318,374 alumnos: la base va
   comprimida dentro de la app y solo se descomprime la cohorte que toca.
 - 📇 **Directorio BUAP**: búsqueda de 43,025 trabajadores por nombre o
@@ -148,8 +160,9 @@ hardcodeado en el código:
 
 | Archivo | Contenido |
 |---|---|
-| `routes.json` | Las 3 rutas: niveles, pasos y documentos |
-| `facultades.json` | Las 33 unidades académicas y sus contactos |
+| `routes.json` | Las 8 rutas: niveles, pasos, documentos y particularidades por unidad |
+| `facultades.json` | Las 34 unidades académicas y sus contactos |
+| `catalogo_modalidades.json` | Las 137 modalidades con su fuente oficial y su fecha |
 | `links.json` | Enlaces útiles de la BUAP |
 | `contactos.json` | Contactos generales (DAE, CGAU) |
 
@@ -164,10 +177,11 @@ se agrega.
 lib/
   main.dart                  raíz: bienvenida ↔ home
   theme.dart                 paleta y tipografías (Poppins, Bungee, Tajawal)
-  models/models.dart         Ruta, Nivel, Paso, Documento, Facultad, Alumno
+  models/models.dart         Ruta, Nivel, Paso, Documento, Facultad, Alumno,
+                             UnidadCatalogo, ModalidadUnidad, Elegibilidad
   state/app_state.dart       estado + persistencia local del progreso
   services/                  repositorios: contenido JSON, alumnos, trabajadores
-  screens/                   las 10 pantallas de la app
+  screens/                   las 13 pantallas de la app
   widgets/                   componentes reutilizables
 tools/                       script para regenerar las bases desde los .db
 docs/                        privacidad, pendientes, decisiones de diseño
@@ -178,9 +192,11 @@ docs/                        privacidad, pendientes, decisiones de diseño
 La app está **completa y lista para despliegue**: cada tag (`v1.1.0`, …)
 dispara una compilación automática para Android, Windows, macOS y Linux que
 se publica sola en Releases, y cada cambio en `main` actualiza la demo web.
-Lo que queda depende de la BUAP: confirmar algunos textos del diseño
-original, completar los correos de titulación que no están publicados, y la
-firma de release para Play Store. Detalles en
+Verificado hoy: `flutter analyze` sin incidencias, `flutter test` con 116
+pruebas en verde, y compilan web y APK. Lo que queda depende de la BUAP:
+confirmar algunos textos del diseño original, completar los correos de
+titulación que no están publicados, recuperar el catálogo de las 9 unidades que
+no lo publican y la firma de release para Play Store. Detalles en
 [docs/PENDIENTES.md](docs/PENDIENTES.md).
 
 ## 🤝 Contribuir

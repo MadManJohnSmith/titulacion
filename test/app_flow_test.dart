@@ -66,8 +66,9 @@ void main() {
     expect(state.estaRegistrado, isFalse);
   });
 
-  testWidgets('se entra como invitado si no hay matricula en la base',
-      (tester) async {
+  testWidgets('se entra como invitado si no hay matricula en la base', (
+    tester,
+  ) async {
     tester.view.physicalSize = const Size(1080, 2400);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.reset);
@@ -88,30 +89,19 @@ void main() {
     await tester.tap(find.text('Continuar como invitado'));
     await tester.pumpAndSettle();
 
-    // Entra a su casa, con la facultad guardada.
+    // Entra a su casa, con la unidad guardada y su catálogo a la vista.
     expect(state.estaRegistrado, isTrue);
     expect(state.facultadClave, 'FADMON');
-    expect(find.text('Elige tu ruta'), findsOneWidget);
-  });
-
-  testWidgets('el alumno registrado llega a su casa con las tres rutas',
-      (tester) async {
-    final state = await estadoLimpio();
-    await state.registrar(
-      const AlumnoFixture().alumno,
-      facultadClave: 'FING',
+    expect(find.text('Elige tu modalidad de titulación'), findsOneWidget);
+    expect(
+      find.textContaining('Catálogo Sin catálogo publicado'),
+      findsOneWidget,
     );
-
-    await tester.pumpWidget(LoboApp(state: state));
-    await tester.pumpAndSettle();
-
-    expect(find.text('Elige tu ruta'), findsOneWidget);
-    expect(find.text('Titulación por Promedio'), findsOneWidget);
-    expect(find.text('Titulación por CENEVAL'), findsOneWidget);
-    expect(find.text('Titulación por Examen Profesional'), findsOneWidget);
   });
 
-  testWidgets('ruta → mapa → nivel → completar → mapa', (tester) async {
+  testWidgets('una unidad sin catálogo no deja la pantalla vacía', (
+    tester,
+  ) async {
     tester.view.physicalSize = const Size(1080, 2400);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.reset);
@@ -124,33 +114,120 @@ void main() {
     await tester.pumpWidget(LoboApp(state: state));
     await tester.pumpAndSettle();
 
-    // 1. Entrar a la ruta de CENEVAL.
-    await tester.tap(find.text('Titulación por CENEVAL'));
+    // El mensaje es explícito, y sale el rastro de lo que se buscó.
+    expect(find.text('Esta unidad no publica catálogo'), findsOneWidget);
+    expect(
+      find.textContaining('no publica catálogo de modalidades'),
+      findsOneWidget,
+    );
+    expect(find.text('Ver búsqueda y fuentes'), findsOneWidget);
+    // Y la unidad aparece con su nombre, no como una lista global de rutas.
+    expect(
+      find.textContaining('Tu unidad: Facultad de Administración'),
+      findsOneWidget,
+    );
+    // Contacto de respaldo: hay a quién escribirle.
+    expect(
+      find.textContaining('titulacion.fadmon@correo.buap.mx'),
+      findsOneWidget,
+    );
+  });
+
+  testWidgets('la pantalla de búsqueda muestra las URLs que se consultaron', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final state = await estadoLimpio();
+    await state.registrar(
+      const AlumnoFixture().alumno,
+      facultadClave: 'FADMON',
+    );
+
+    await tester.pumpWidget(LoboApp(state: state));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Ver búsqueda y fuentes'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Dónde se buscó'), findsOneWidget);
+    expect(
+      find.text('https://www.buap.mx/content/unidades-academicas'),
+      findsWidgets,
+    );
+    expect(find.textContaining('sin_catalogo_publicado'), findsWidgets);
+  });
+
+  testWidgets('el listado sale filtrado por la unidad académica', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final state = await estadoLimpio();
+    await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FCC');
+
+    await tester.pumpWidget(LoboApp(state: state));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Elige tu modalidad de titulación'), findsOneWidget);
+    expect(
+      find.textContaining('Tu unidad: Facultad de Ciencias de la Computación'),
+      findsOneWidget,
+    );
+    // Las modalidades que publica FCC, con el nombre que usa la unidad.
+    expect(
+      find.textContaining('Tesis (Examen profesional por tesis)'),
+      findsOneWidget,
+    );
+    expect(
+      find.textContaining('Ceneval (Presentación del examen CENEVAL-EGEL)'),
+      findsOneWidget,
+    );
+    // Y nada de lo que publica otra unidad: la oferta global no existe.
+    expect(find.textContaining('Seminario de Titulación'), findsNothing);
+    expect(find.text('Titulación por Examen Profesional'), findsNothing);
+  });
+
+  testWidgets('ruta → mapa → nivel → completar → mapa', (tester) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final state = await estadoLimpio();
+    await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FCC');
+
+    await tester.pumpWidget(LoboApp(state: state));
+    await tester.pumpAndSettle();
+
+    // 1. Entrar a la modalidad de tesis que publica FCC.
+    await tester.tap(
+      find.textContaining('Tesis (Examen profesional por tesis)'),
+    );
     await tester.pumpAndSettle();
 
     expect(find.text('Ver mapa'), findsOneWidget);
+    // La pantalla muestra la fuente y la fecha antes de entrar al mapa.
+    expect(find.text('Fuente'), findsOneWidget);
+    expect(find.text('Promedio general mínimo'), findsOneWidget);
+    expect(find.text('no publicado'), findsWidgets);
 
     // 2. Al mapa.
     await tester.tap(find.text('Ver mapa'));
     await tester.pumpAndSettle();
 
-    // La ruta se guardó como activa.
-    expect(state.rutaActiva, 'ceneval');
-    expect(find.text('Siguiente: Acta de nacimiento'), findsOneWidget);
+    // La modalidad quedó como ruta activa y se guardó su id, no el de la base.
+    expect(state.rutaActiva, 'tesis-fcc');
+    expect(state.modalidadActiva, 'tesis-fcc');
+    expect(state.rutaActivaBase, 'tesis');
+    expect(find.text('Siguiente: Liberación de la Facultad'), findsOneWidget);
 
     // 3. Al primer nivel.
-    await tester.tap(find.text('Acta de nacimiento'));
+    await tester.tap(find.text('Liberación de la Facultad'));
     await tester.pumpAndSettle();
 
     expect(find.text('Nivel 1'), findsOneWidget);
-    expect(find.text('Documentos (0/2)'), findsOneWidget);
 
-    // 4. Marcar un documento.
-    await tester.tap(find.text('Acta de nacimiento en original y actualizada'));
-    await tester.pumpAndSettle();
-    expect(find.text('Documentos (1/2)'), findsOneWidget);
-
-    // 5. Completar el nivel.
+    // 4. Completar el nivel.
     await tester.scrollUntilVisible(
       find.textContaining('Completar nivel'),
       300,
@@ -159,22 +236,109 @@ void main() {
     await tester.tap(find.textContaining('Completar nivel'));
     await tester.pumpAndSettle();
 
-    expect(state.estaCompletado('ceneval', 1), isTrue);
+    expect(state.estaCompletado('tesis-fcc', 1), isTrue);
     // De vuelta en el mapa, con el nivel 2 como siguiente.
-    expect(find.text('Siguiente: Identificación oficial'), findsOneWidget);
+    expect(
+      find.text('Siguiente: Solicitud y certificado de estudios'),
+      findsOneWidget,
+    );
   });
 
-  testWidgets('el contacto de la facultad aparece sobre el general',
-      (tester) async {
+  testWidgets('el avance de una modalidad no se filtra a otra ni a la base', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1080, 2400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final state = await estadoLimpio();
+    await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FCC');
+
+    await tester.pumpWidget(LoboApp(state: state));
+    await tester.pumpAndSettle();
+
+    await tester.tap(
+      find.textContaining('Tesis (Examen profesional por tesis)'),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Ver mapa'));
+    await tester.pumpAndSettle();
+    await state.completarNivel('tesis-fcc', 1);
+
+    // Ni la ruta base ni otra modalidad de la misma unidad se han movido.
+    expect(state.estaCompletado('tesis', 1), isFalse);
+    expect(state.estaCompletado('experiencia-profesional-fcc', 1), isFalse);
+    expect(state.estaCompletado('ceneval-fcc', 1), isFalse);
+  });
+
+  testWidgets(
+    'al elegir una modalidad se ofrece traer el avance de la ruta base',
+    (tester) async {
+      tester.view.physicalSize = const Size(1080, 2400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      final state = await estadoLimpio();
+      await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FCC');
+      // Avance heredado de cuando la app solo tenía rutas globales.
+      await state.completarNivel('tesis', 1);
+      await state.completarNivel('tesis', 2);
+
+      await tester.pumpWidget(LoboApp(state: state));
+      await tester.pumpAndSettle();
+      await tester.tap(
+        find.textContaining('Tesis (Examen profesional por tesis)'),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Ver mapa'));
+      await tester.pumpAndSettle();
+
+      // Nada se copia a sus espaldas: se pregunta.
+      expect(find.text('¿Traer tu avance anterior?'), findsOneWidget);
+      expect(state.estaCompletado('tesis-fcc', 1), isFalse);
+
+      await tester.tap(find.text('Traer mi avance'));
+      await tester.pumpAndSettle();
+
+      expect(state.estaCompletado('tesis-fcc', 1), isTrue);
+      expect(state.estaCompletado('tesis-fcc', 2), isTrue);
+      // El original no se borra.
+      expect(state.estaCompletado('tesis', 1), isTrue);
+    },
+  );
+
+  testWidgets(
+    'el alumno con una ruta global guardada la sigue viendo en el mapa',
+    (tester) async {
+      tester.view.physicalSize = const Size(1080, 2400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      final state = await estadoLimpio();
+      await state.registrar(
+        const AlumnoFixture().alumno,
+        facultadClave: 'FADMON',
+      );
+      // Estado de la versión 1: una ruta global, no una modalidad de la unidad.
+      await state.elegirRuta('ceneval');
+
+      await tester.pumpWidget(LoboApp(state: state));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Mapa'));
+      await tester.pumpAndSettle();
+
+      // El adaptador legado resuelve el id guardado sin consultar el catálogo.
+      expect(find.text('Titulación por CENEVAL'), findsOneWidget);
+    },
+  );
+
+  testWidgets('el contacto de la facultad aparece sobre el general', (
+    tester,
+  ) async {
     final state = await estadoLimpio();
     await state.registrar(
       const AlumnoFixture().alumno,
       facultadClave: 'FADMON',
     );
 
-    await tester.pumpWidget(
-      MaterialApp(home: ContactsScreen(state: state)),
-    );
+    await tester.pumpWidget(MaterialApp(home: ContactsScreen(state: state)));
     await tester.pumpAndSettle();
 
     // La facultad de Administración sí publica su correo de titulación.
@@ -184,17 +348,16 @@ void main() {
     expect(find.text('Contacto general BUAP'), findsOneWidget);
   });
 
-  testWidgets('una facultad sin correo propio lo dice y cae al general',
-      (tester) async {
+  testWidgets('una facultad sin correo propio lo dice y cae al general', (
+    tester,
+  ) async {
     final state = await estadoLimpio();
     await state.registrar(
       const AlumnoFixture().alumno,
       facultadClave: 'FECON', // Facultad de Economía: sin correo publicado.
     );
 
-    await tester.pumpWidget(
-      MaterialApp(home: ContactsScreen(state: state)),
-    );
+    await tester.pumpWidget(MaterialApp(home: ContactsScreen(state: state)));
     await tester.pumpAndSettle();
 
     expect(
@@ -203,17 +366,16 @@ void main() {
     );
   });
 
-  testWidgets('la pestaña de links trae los enlaces de la BUAP',
-      (tester) async {
+  testWidgets('la pestaña de links trae los enlaces de la BUAP', (
+    tester,
+  ) async {
     final state = await estadoLimpio();
     // Superficie alta: si no, la lista de links queda fuera de la vista.
     tester.view.physicalSize = const Size(1080, 2400);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.reset);
 
-    await tester.pumpWidget(
-      MaterialApp(home: ContactsScreen(state: state)),
-    );
+    await tester.pumpWidget(MaterialApp(home: ContactsScreen(state: state)));
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Links'));
@@ -228,15 +390,10 @@ void main() {
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.reset);
     final state = await estadoLimpio();
-    await state.registrar(
-      const AlumnoFixture().alumno,
-      facultadClave: 'FING',
-    );
+    await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FING');
     await state.completarNivel('promedio', 1);
 
-    await tester.pumpWidget(
-      MaterialApp(home: HomeScreen(state: state)),
-    );
+    await tester.pumpWidget(MaterialApp(home: HomeScreen(state: state)));
     await tester.pumpAndSettle();
 
     await tester.tap(find.byIcon(Icons.person));
@@ -247,56 +404,134 @@ void main() {
     expect(find.text('1/7'), findsOneWidget);
   });
 
-  testWidgets('el contenido real tiene las tres rutas con sus niveles',
-      (tester) async {
-    final rutas = await ContentRepository.instance.rutas();
+  testWidgets(
+    'el contenido real conserva las rutas legadas y suma las del art. 7',
+    (tester) async {
+      final rutas = await ContentRepository.instance.rutas();
+      final ids = rutas.map((r) => r.id).toSet();
 
-    expect(rutas.map((r) => r.id).toSet(), {'promedio', 'ceneval', 'profesional'});
-    for (final ruta in rutas) {
-      expect(ruta.nivelesJugables, isNotEmpty, reason: '${ruta.id} sin niveles');
-      expect(ruta.descripcion, isNotEmpty, reason: '${ruta.id} sin descripción');
-      for (final nivel in ruta.nivelesJugables) {
-        expect(nivel.titulo, isNotEmpty);
+      // Las tres legadas no se tocan: su id es la llave del progreso ya guardado.
+      expect({
+        'promedio',
+        'ceneval',
+        'profesional',
+      }, ids.intersection({'promedio', 'ceneval', 'profesional'}));
+      // Las cinco del art. 7 que el catálogo acredita.
+      expect(
+        {
+          'tesis',
+          'diplomado',
+          'experiencia-profesional',
+          'seminario',
+          'asignatura-optativa',
+        },
+        ids.intersection({
+          'tesis',
+          'diplomado',
+          'experiencia-profesional',
+          'seminario',
+          'asignatura-optativa',
+        }),
+      );
+      expect(rutas, hasLength(8));
+
+      for (final ruta in rutas) {
         expect(
-          nivel.pasos.isNotEmpty || nivel.documentos.isNotEmpty,
-          isTrue,
-          reason: 'el nivel ${ruta.id}/${nivel.numero} no tiene contenido',
+          ruta.nivelesJugables,
+          isNotEmpty,
+          reason: '${ruta.id} sin niveles',
         );
+        expect(
+          ruta.descripcion,
+          isNotEmpty,
+          reason: '${ruta.id} sin descripción',
+        );
+        // Toda ruta dice de dónde sale su contenido, aunque sea "no verificado".
+        expect(
+          ruta.citaFuente,
+          isNotEmpty,
+          reason: '${ruta.id} sin fuente ni nota de por qué no la tiene',
+        );
+        for (final nivel in ruta.nivelesJugables) {
+          expect(nivel.titulo, isNotEmpty);
+          expect(
+            nivel.pasos.isNotEmpty || nivel.documentos.isNotEmpty,
+            isTrue,
+            reason: 'el nivel ${ruta.id}/${nivel.numero} no tiene contenido',
+          );
+        }
       }
+    },
+  );
+
+  testWidgets('las rutas nuevas del art. 7 traen fuente verificable y fecha', (
+    tester,
+  ) async {
+    final rutas = await ContentRepository.instance.rutas();
+    for (final ruta in rutas.where((r) => r.esRutaNueva)) {
+      expect(
+        ruta.fuenteBase,
+        isNotEmpty,
+        reason: '${ruta.id} es ruta nueva pero no dice de qué fuente sale',
+      );
+      expect(
+        ruta.fechaBase,
+        isNotEmpty,
+        reason: '${ruta.id} es ruta nueva pero no dice cuándo se consultó',
+      );
+      expect(
+        ruta.alcance,
+        isNotEmpty,
+        reason: '${ruta.id} debe decir qué cubre y qué no',
+      );
+      expect(ruta.mapa, isNotEmpty, reason: '${ruta.id} sin mapa asignado');
+    }
+    // Las tres legadas declaran por escrito que su contenido no está verificado.
+    for (final ruta in rutas.where((r) => !r.esRutaNueva)) {
+      expect(
+        ruta.tieneFuenteVerificada,
+        isFalse,
+        reason: '${ruta.id} es contenido heredado: no puede declarar fuente',
+      );
+      expect(ruta.notaFuente, isNotEmpty);
     }
   });
 
-  testWidgets('todas las carpetas de assets están declaradas en pubspec',
-      (tester) async {
+  testWidgets('todas las carpetas de assets están declaradas en pubspec', (
+    tester,
+  ) async {
     // Declarar solo `assets/images/` NO trae los archivos de sus
     // subdirectorios: el build los deja fuera y en la app salen rotos.
-    final pubspec =
-        File('pubspec.yaml').readAsStringSync();
-    final carpetas = Directory('assets/images')
-        .listSync()
-        .whereType<Directory>()
-        .map((d) => 'assets/images/${d.path.split('/').last}/')
-        .toList();
+    final pubspec = File('pubspec.yaml').readAsStringSync();
+    final carpetas =
+        Directory('assets/images')
+            .listSync()
+            .whereType<Directory>()
+            .map((d) => 'assets/images/${d.path.split('/').last}/')
+            .toList();
 
     for (final carpeta in carpetas) {
       expect(
         pubspec.contains(carpeta),
         isTrue,
-        reason: '$carpeta tiene archivos pero no está declarada en pubspec.yaml',
+        reason:
+            '$carpeta tiene archivos pero no está declarada en pubspec.yaml',
       );
     }
 
     // Y ningún asset puede vivir a dos niveles: Flutter no los empaqueta aunque
     // declares la carpeta intermedia, y en la app salen como imágenes rotas.
-    final anidados = Directory('assets/images')
-        .listSync()
-        .whereType<Directory>()
-        .expand((d) => d.listSync().whereType<Directory>())
-        .toList();
+    final anidados =
+        Directory('assets/images')
+            .listSync()
+            .whereType<Directory>()
+            .expand((d) => d.listSync().whereType<Directory>())
+            .toList();
     expect(
       anidados,
       isEmpty,
-      reason: 'assets anidados a 2 niveles no se empaquetan: '
+      reason:
+          'assets anidados a 2 niveles no se empaquetan: '
           '${anidados.map((d) => d.path).join(", ")}',
     );
   });
@@ -308,24 +543,28 @@ void main() {
     for (final dir in Directory('lib').listSync(recursive: true)) {
       if (dir is File && dir.path.endsWith('.dart')) {
         referenciados.addAll(
-          RegExp(r"assets/[A-Za-z0-9_/.\-]+")
-              .allMatches(dir.readAsStringSync())
-              .map((m) => m.group(0)!),
+          RegExp(
+            r"assets/[A-Za-z0-9_/.\-]+",
+          ).allMatches(dir.readAsStringSync()).map((m) => m.group(0)!),
         );
       }
     }
     for (final j in Directory('assets/json').listSync()) {
       if (j is File && j.path.endsWith('.json')) {
         referenciados.addAll(
-          RegExp(r"assets/[A-Za-z0-9_/.\-]+")
-              .allMatches(j.readAsStringSync())
-              .map((m) => m.group(0)!),
+          RegExp(
+            r"assets/[A-Za-z0-9_/.\-]+",
+          ).allMatches(j.readAsStringSync()).map((m) => m.group(0)!),
         );
       }
     }
     // Las fuentes y las bases comprimidas se declaran en pubspec o se cargan
     // por ruta en tiempo de ejecución, no aparecen como literales.
-    final excepciones = ['assets/fonts/', 'assets/alumnos/', 'assets/trabajadores/'];
+    final excepciones = [
+      'assets/fonts/',
+      'assets/alumnos/',
+      'assets/trabajadores/',
+    ];
 
     final muertos = <String>[];
     for (final f in Directory('assets/images').listSync(recursive: true)) {
@@ -336,11 +575,16 @@ void main() {
       final referenciado = referenciados.any((r) => r.endsWith(base));
       if (!referenciado) muertos.add('$p (${f.lengthSync() ~/ 1024} KB)');
     }
-    expect(muertos, isEmpty, reason: 'assets sin usar en el APK:\n${muertos.join("\n")}');
+    expect(
+      muertos,
+      isEmpty,
+      reason: 'assets sin usar en el APK:\n${muertos.join("\n")}',
+    );
   });
 
-  testWidgets('toda ruta de asset citada en el JSON existe en disco',
-      (tester) async {
+  testWidgets('toda ruta de asset citada en el JSON existe en disco', (
+    tester,
+  ) async {
     final rutas = await ContentRepository.instance.rutas();
     final facultades = await ContentRepository.instance.facultades();
 
@@ -348,6 +592,11 @@ void main() {
     for (final ruta in rutas) {
       if (ruta.mascotaInicio.isNotEmpty) rutasAsset.add(ruta.mascotaInicio);
       if (ruta.pergaminoInicio.isNotEmpty) rutasAsset.add(ruta.pergaminoInicio);
+      if (ruta.tituloAsset.isNotEmpty) rutasAsset.add(ruta.tituloAsset);
+      if (ruta.descripcionAsset.isNotEmpty) {
+        rutasAsset.add(ruta.descripcionAsset);
+      }
+      if (ruta.mapa.isNotEmpty) rutasAsset.add(ruta.mapa);
       for (final nivel in ruta.niveles) {
         if (nivel.icono.isNotEmpty) rutasAsset.add(nivel.icono);
         if (nivel.mascota.isNotEmpty) rutasAsset.add(nivel.mascota);
@@ -378,7 +627,4 @@ class AlumnoFixture {
   get alumno => _alumno;
 }
 
-final _alumno = Alumno(
-  nombre: 'María Fernanda López',
-  matricula: '202145678',
-);
+final _alumno = Alumno(nombre: 'María Fernanda López', matricula: '202145678');

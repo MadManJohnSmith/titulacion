@@ -9,6 +9,50 @@ Complementar con los títulos de los SVG del zip (117 archivos).
 
 ---
 
+## ESTADO REAL (actualizado 2026-09-29)
+
+Lo de abajo es la extracción del `.indd` y sigue siendo el texto **sin validar**.
+Lo que la app carga hoy es otra cosa, y vive en `assets/json/routes.json` y
+`assets/json/catalogo_modalidades.json`. Contados hoy sobre esos archivos:
+
+| | Rutas | Niveles | Pasos | Documentos |
+|---|---|---|---|---|
+| Las 3 rutas del `.indd` (sin cambios en esta corrida) | 3 | 24 | 54 | 49 |
+| Total en la app hoy | **8** | **50** | **86** | **78** |
+
+| Ruta | Niveles en la app | Origen del contenido | Estado de la fuente |
+|---|---|---|---|
+| `promedio` | 8 | `.indd` (sin validar) | Sin fuente oficial; `fuente` y `fechaFuente` en `null` |
+| `ceneval` | 9 | `.indd` (sin validar) | Sin fuente oficial; `fuente` y `fechaFuente` en `null` |
+| `profesional` | 7 | `.indd` (sin validar) | Sin fuente oficial; 0 particularidades por unidad |
+| `tesis` | 6 | Mapa Gráfico – Titulación Tesis, FCC | Fuente oficial consultada 2026-09-29 |
+| `diplomado` | 6 | Mapa Gráfico – Titulación Diplomado, FCC | Fuente oficial consultada 2026-09-29 |
+| `experiencia-profesional` | 6 | Mapa Gráfico – Titulación Experiencia Profesional, FCC | Fuente oficial consultada 2026-09-29 |
+| `seminario` | 4 | Seminario de Titulación, ARPA | Fuente oficial consultada 2026-09-29 |
+| `asignatura-optativa` | 4 | Titulación por Materia Optativa de Emprendimiento, FCP | Fuente oficial consultada 2026-09-29 |
+
+Lo que cambia respecto a este borrador:
+
+1. **Los conteos de niveles del diseño no cuadran con los que la app usa.** El
+   diseño es inconsistente (7 iconos de nivel, 7 fondos de CENEVAL, 6 de
+   profesional, 9 lobos, 9 EPS de texto) y la app quedó en 8 / 9 / 7. La
+   pregunta 1 del final sigue abierta, pero ya no bloquea: los pasos y documentos
+   del `.indd` se conservaron tal cual.
+2. **Las cinco rutas nuevas** (tesis, diplomado, experiencia-profesional,
+   seminario, asignatura-optativa) **no aparecen en este documento**: su texto
+   viene de una fuente oficial de la unidad, no del `.indd`.
+   Sus pasos y documentos están en `routes.json`, no aquí.
+3. **Lo que exige cada unidad ya no está en las rutas**: vive en
+   `particularidadesPorUnidad` de cada ruta y en `catalogo_modalidades.json`,
+   con fuente y fecha por modalidad (137 modalidades, 34 unidades). Ver
+   `out/INFORME-MODALIDADES.md`.
+4. **Arte:** las cinco rutas nuevas no tienen título, descripción ni pergamino
+   propios; usan `lobo_aviador.svg`, `level_icons/nivel_1..5.svg` y
+   `mascot_profesional_lobo_1..5.svg`, y su `mapa` es un PNG generado, no arte
+   del diseñador.
+
+---
+
 ## RUTA A — Titulación por Promedio
 
 Niveles: 7 (según `Mapas/Iconos de niveles p-mapa agua y tierra/Icono nivel 1..7`
@@ -118,3 +162,13 @@ recibir tu logro final. ¡Listo, lo conseguiste!"
 4. **Plazos**: "antigüedad no mayor a ? meses", "1 año + prórroga de 6 meses",
    "certificados 1997 o anteriores". Faltan números.
 5. **¿Los 9 lobos** son 9 niveles o 6 niveles + 3 estados (bloqueado/activo/hecho)?
+
+**Estado de estas preguntas (2026-09-29):** la 1 y la 5 siguen abiertas y solo la
+BUAP o el diseñador las cierran; la app no depende de ellas porque los pasos y
+documentos del `.indd` se conservaron tal cual. La 2, la 3 y la 4 **no se
+inventaron**: los campos que no se pudieron reconstruir siguen con `[?]` o
+`null` en `routes.json` y la app los muestra como «no publicado». Además, el
+catálogo por unidad (`assets/json/catalogo_modalidades.json`) sí trae requisitos
+verificados para 137 modalidades con su fuente y su fecha, así que varias de
+estas preguntas ya tienen respuesta **por unidad** aunque el diseño siga sin
+resolverlas; el detalle está en `out/INFORME-MODALIDADES.md`.

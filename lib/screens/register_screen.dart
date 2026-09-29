@@ -36,6 +36,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String _error = '';
   String _pista = '';
 
+  // Contexto académico opcional: solo sirve para comparar contra lo que la
+  // unidad publica. Nunca es obligatorio y nunca se inventa.
+  final _carrera = TextEditingController();
+  final _plan = TextEditingController();
+  final _anio = TextEditingController();
+  String _estadoCatalogoDe = '';
+
   @override
   void initState() {
     super.initState();
@@ -47,6 +54,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void dispose() {
     _buscador.dispose();
     _buscadorFocus.dispose();
+    _carrera.dispose();
+    _plan.dispose();
+    _anio.dispose();
     super.dispose();
   }
 
@@ -64,6 +74,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
         _cargando = false;
         _error = 'No se pudo cargar la información: $e';
       });
+    }
+  }
+
+  /// El estado del catálogo de la unidad elegida, con su fecha de corte.
+  ///
+  /// Se consulta al vuelo para que el alumno sepa **antes** de entrar si su
+  /// unidad publica modalidades o no: no hay sorpresas después.
+  Future<void> _alElegirUnidad(String? clave) async {
+    setState(() => _facultad = clave);
+    if (clave == null) {
+      setState(() => _estadoCatalogoDe = '');
+      return;
+    }
+    try {
+      final oferta = await _repo.ofertaDeUnidad(clave);
+      if (!mounted || _facultad != clave) return;
+      setState(
+        () =>
+            _estadoCatalogoDe =
+                oferta.unidad == null
+                    ? 'Sin catálogo'
+                    : '${oferta.estadoCatalogo} · corte ${oferta.fechaCorte}',
+      );
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _estadoCatalogoDe = 'No se pudo leer el catálogo: $e');
     }
   }
 
@@ -93,9 +129,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
     _buscadorFocus.unfocus();
 
-    final limpio = _digitos.esMatricula(q)
-        ? q
-        : _digitos.normalizar(q);
+    final limpio = _digitos.esMatricula(q) ? q : _digitos.normalizar(q);
 
     final encontrado = await _alumnosRepo.buscar(limpio);
     if (!mounted) return;
@@ -103,10 +137,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
       _buscando = false;
       if (encontrado == null) {
         _alumno = null;
-        _error = limpio.length == 9
-            ? 'La matrícula $limpio no está en la base de la BUAP. '
-                'Revísala, o continúa como invitado.'
-            : 'No encontramos "$q". Revisa cómo lo escribiste.';
+        _error =
+            limpio.length == 9
+                ? 'La matrícula $limpio no está en la base de la BUAP. '
+                    'Revísala, o continúa como invitado.'
+                : 'No encontramos "$q". Revisa cómo lo escribiste.';
       } else {
         _alumno = encontrado;
         _error = '';
@@ -115,15 +150,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future<void> _continuar() async {
-    if (_facultad == null) {
+    final facultad = _facultad;
+    if (facultad == null || facultad.isEmpty) {
       setState(() => _error = 'Elige tu unidad académica para continuar.');
       return;
     }
     // Si no se encontró en la base, la persona entra como invitada: su
     // progreso se guarda igual en el dispositivo.
-    final alumno = _alumno ??
-        Alumno(nombre: '', matricula: '', facultad: _facultad);
-    await widget.state.registrar(alumno, facultadClave: _facultad);
+    final encontrado = _alumno;
+    final alumno =
+        encontrado == null
+            ? Alumno(nombre: '', matricula: '', facultad: facultad)
+            : Alumno(
+              nombre: encontrado.nombre,
+              matricula: encontrado.matricula,
+              facultad: facultad,
+              carrera: _carrera.text.trim(),
+              plan: _plan.text.trim(),
+              anioIngreso: int.tryParse(_anio.text.trim()),
+            );
+    await widget.state.registrar(alumno, facultadClave: facultad);
     if (!mounted) return;
     Navigator.of(context).popUntil((r) => r.isFirst);
   }
@@ -135,10 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tu cuenta'),
-        leading: const SizedBox(),
-      ),
+      appBar: AppBar(title: const Text('Tu cuenta'), leading: const SizedBox()),
       body: SafeArea(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(20, 8, 20, 24),
@@ -151,7 +194,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             const Text(
               'Busca tu matrícula en la base de la BUAP para empezar tu camino '
               'a la titulación.',
-              style: TextStyle(color: Colors.white70, fontSize: 15, height: 1.4),
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 15,
+                height: 1.4,
+              ),
             ),
             const SizedBox(height: 20),
             if (!kDemoWeb)
@@ -167,16 +214,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   hintText: 'Matrícula o nombre',
                   hintStyle: const TextStyle(color: Colors.white38),
                   prefixIcon: const Icon(Icons.search, color: Colors.white70),
-                  suffixIcon: _buscando
-                      ? const Padding(
-                          padding: EdgeInsets.all(12),
-                          child: SizedBox(
-                            width: 18,
-                            height: 18,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          ),
-                        )
-                      : null,
+                  suffixIcon:
+                      _buscando
+                          ? const Padding(
+                            padding: EdgeInsets.all(12),
+                            child: SizedBox(
+                              width: 18,
+                              height: 18,
+                              child: CircularProgressIndicator(strokeWidth: 2),
+                            ),
+                          )
+                          : null,
                   filled: true,
                   fillColor: Colors.white.withValues(alpha: 0.08),
                   border: OutlineInputBorder(
@@ -215,8 +263,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(Icons.info_outline,
-                        color: Colors.redAccent, size: 18),
+                    const Icon(
+                      Icons.info_outline,
+                      color: Colors.redAccent,
+                      size: 18,
+                    ),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Text(
@@ -241,7 +292,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             const Text(
               'Cada facultad tiene sus requisitos y sus contactos, así que te '
               'mostramos los de la tuya.',
-              style: TextStyle(color: Colors.white70, fontSize: 14, height: 1.4),
+              style: TextStyle(
+                color: Colors.white70,
+                fontSize: 14,
+                height: 1.4,
+              ),
             ),
             const SizedBox(height: 14),
             DropdownButtonFormField<String>(
@@ -257,16 +312,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   borderSide: BorderSide.none,
                 ),
               ),
-              items: _facultades
-                  .map(
-                    (f) => DropdownMenuItem(
-                      value: f.clave,
-                      child: Text(f.nombre, overflow: TextOverflow.ellipsis),
-                    ),
-                  )
-                  .toList(),
-              onChanged: (v) => setState(() => _facultad = v),
+              items:
+                  _facultades
+                      .map(
+                        (f) => DropdownMenuItem(
+                          value: f.clave,
+                          child: Text(
+                            f.nombre,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      )
+                      .toList(),
+              onChanged: _alElegirUnidad,
             ),
+            if (_estadoCatalogoDe.isNotEmpty) ...[
+              const SizedBox(height: 8),
+              Text(
+                'Catálogo de la unidad: $_estadoCatalogoDe',
+                style: const TextStyle(
+                  color: Colors.white54,
+                  fontSize: 12,
+                  height: 1.3,
+                ),
+              ),
+            ],
+            const SizedBox(height: 16),
+            _bloqueContextoAcademico(),
             const SizedBox(height: 28),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
@@ -279,8 +351,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               onPressed: _buscando ? null : _continuar,
               child: Text(
-                _alumno == null ? 'Continuar como invitado' : 'Comenzar mi aventura',
-                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                _alumno == null
+                    ? 'Continuar como invitado'
+                    : 'Comenzar mi aventura',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
               ),
             ),
             const SizedBox(height: 14),
@@ -288,9 +365,75 @@ class _RegisterScreenState extends State<RegisterScreen> {
               'Si no estás en la base todavía puedes entrar: tu progreso se '
               'guarda en este dispositivo.',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white54, fontSize: 13, height: 1.4),
+              style: TextStyle(
+                color: Colors.white54,
+                fontSize: 13,
+                height: 1.4,
+              ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  /// Datos académicos opcionales.
+  ///
+  /// Sirven para comparar tu perfil contra el que publica tu unidad. Ninguna
+  /// unidad publica todavía ese perfil, así que la app **no** puede decirte si
+  /// te aplica o no: lo que hace es dejar el dato listo y, si la unidad algún
+  /// día lo publica, compararlo. Sin esto no pierdes nada.
+  Widget _bloqueContextoAcademico() {
+    return Theme(
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        tilePadding: EdgeInsets.zero,
+        childrenPadding: const EdgeInsets.only(bottom: 8),
+        title: const Text(
+          'Carrera, plan y cohorte (opcional)',
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+        subtitle: const Text(
+          'Solo para comparar contra lo que publica tu unidad. '
+          'Ninguna unidad lo publica todavía.',
+          style: TextStyle(color: Colors.white54, fontSize: 12, height: 1.3),
+        ),
+        children: [
+          _campoOpcional(_carrera, 'Carrera', 'Licenciatura en …'),
+          const SizedBox(height: 10),
+          _campoOpcional(_plan, 'Plan de estudios', 'Plan 2015, plan 2020…'),
+          const SizedBox(height: 10),
+          _campoOpcional(_anio, 'Año de ingreso', '2021', soloDigitos: true),
+        ],
+      ),
+    );
+  }
+
+  Widget _campoOpcional(
+    TextEditingController controller,
+    String etiqueta,
+    String ejemplo, {
+    bool soloDigitos = false,
+  }) {
+    return TextField(
+      controller: controller,
+      keyboardType: soloDigitos ? TextInputType.number : TextInputType.text,
+      autocorrect: false,
+      style: const TextStyle(color: Colors.white, fontSize: 15),
+      decoration: InputDecoration(
+        labelText: etiqueta,
+        hintText: ejemplo,
+        hintStyle: const TextStyle(color: Colors.white38),
+        labelStyle: const TextStyle(color: Colors.white70),
+        filled: true,
+        fillColor: Colors.white.withValues(alpha: 0.06),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(14),
+          borderSide: BorderSide.none,
         ),
       ),
     );
@@ -314,7 +457,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
               children: [
                 Text(
                   _alumno!.nombre,
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
                 ),
                 Text(
                   'Matrícula ${_alumno!.matricula}',

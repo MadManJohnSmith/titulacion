@@ -7,12 +7,16 @@ import '../theme.dart';
 import '../widgets/common.dart';
 import 'contacts_screen.dart';
 import 'directory_screen.dart';
-import 'menu_screen.dart';
 import 'map_screen.dart';
+import 'menu_screen.dart';
 import 'profile_screen.dart';
 import 'route_selection_screen.dart';
 
-/// Pantalla principal: muestra el progreso y deja entrar a las rutas.
+/// Pantalla principal: el avance del alumno y **las modalidades que publica su
+/// unidad académica**, nunca una lista global de rutas.
+///
+/// Lo que la unidad no publica no se sustituye por la ruta genérica: se explica
+/// que no se encontró, con el rastro de las URLs revisadas y un contacto.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.state});
 
@@ -24,8 +28,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _repo = ContentRepository.instance;
-  List<Ruta> _rutas = [];
+  OfertaUnidad? _oferta;
   bool _cargando = true;
+  String _error = '';
 
   @override
   void initState() {
@@ -34,12 +39,30 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _cargar() async {
-    final rutas = await _repo.rutas();
-    if (!mounted) return;
-    setState(() {
-      _rutas = rutas;
-      _cargando = false;
-    });
+    final clave = widget.state.facultadClave;
+    if (clave == null || clave.isEmpty) {
+      setState(() {
+        _oferta = null;
+        _cargando = false;
+        _error = '';
+      });
+      return;
+    }
+    try {
+      final oferta = await _repo.ofertaDeUnidad(clave);
+      if (!mounted) return;
+      setState(() {
+        _oferta = oferta;
+        _cargando = false;
+        _error = '';
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _cargando = false;
+        _error = 'No se pudo leer el catálogo de tu unidad: $e';
+      });
+    }
   }
 
   @override
@@ -73,102 +96,277 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           SafeArea(
-            child: _cargando
-                ? const Center(child: CircularProgressIndicator())
-                : ListView(
-                    padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
-                    children: [
-                      Row(
+            child:
+                _cargando
+                    ? const Center(child: CircularProgressIndicator())
+                    : RefreshIndicator(
+                      onRefresh: _cargar,
+                      child: ListView(
+                        padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
                         children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  _saludo(alumno?.nombre),
-                                  style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                if (alumno != null)
-                                  Text(
-                                    alumno.matricula.isEmpty
-                                        ? 'Sesión de invitado'
-                                        : 'Matrícula ${alumno.matricula}',
-                                    style: const TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                              ],
-                            ),
-                          ),
-                          IconButton(
-                            tooltip: 'Menú',
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => MenuScreen(state: state),
-                              ),
-                            ),
-                            icon: const Icon(Icons.menu, color: Colors.white),
-                          ),
-                          IconButton(
-                            tooltip: 'Mi perfil',
-                            onPressed: () => Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) => ProfileScreen(state: state),
-                              ),
-                            ),
-                            icon: const CircleAvatar(
-                              radius: 18,
-                              backgroundColor: LoboColors.gold,
-                              child: Icon(Icons.person, color: LoboColors.deepBlue),
-                            ),
-                          ),
+                          _encabezado(alumno),
+                          const SizedBox(height: 22),
+                          if (_error.isNotEmpty)
+                            _tarjetaError(_error)
+                          else if (_oferta == null)
+                            _sinUnidad()
+                          else if (_oferta!.vacia)
+                            _sinOferta(_oferta!)
+                          else
+                            _listaOferta(_oferta!),
+                          const SizedBox(height: 20),
+                          _buildFooter(context),
                         ],
                       ),
-                      const SizedBox(height: 24),
-                      Text(
-                        'Elige tu ruta',
-                        style: loboDisplay.copyWith(
-                          fontSize: 19,
-                          color: Colors.white,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        'Tu camino hacia el título comienza ahora.',
-                        style: TextStyle(color: Colors.white70, fontSize: 15),
-                      ),
-                      const SizedBox(height: 16),
-                      ..._rutas.map((r) => _buildRutaCard(context, r)),
-                      const SizedBox(height: 20),
-                      _buildFooter(context),
-                    ],
-                  ),
+                    ),
           ),
         ],
       ),
     );
   }
 
-  String _saludo(String? nombre) {
-    if (nombre == null || nombre.isEmpty) return '¡Hola, viajero!';
-    final primero = nombre.split(' ').first;
-    return '¡Hola, $primero!';
+  Widget _encabezado(Alumno? alumno) {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                _saludo(alumno?.nombre),
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              if (alumno != null)
+                Text(
+                  alumno.matricula.isEmpty
+                      ? 'Sesión de invitado'
+                      : 'Matrícula ${alumno.matricula}',
+                  style: const TextStyle(color: Colors.white70, fontSize: 14),
+                ),
+              if (_oferta != null) ...[
+                const SizedBox(height: 6),
+                Text(
+                  'Tu unidad: ${_oferta!.nombre}',
+                  style: const TextStyle(
+                    color: LoboColors.gold,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  'Catálogo ${_oferta!.estadoExplicado} · corte ${_oferta!.fechaCorte}',
+                  style: const TextStyle(color: Colors.white54, fontSize: 12),
+                ),
+              ],
+            ],
+          ),
+        ),
+        IconButton(
+          tooltip: 'Menú',
+          onPressed:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => MenuScreen(state: widget.state),
+                ),
+              ),
+          icon: const Icon(Icons.menu, color: Colors.white),
+        ),
+        IconButton(
+          tooltip: 'Mi perfil',
+          onPressed:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ProfileScreen(state: widget.state),
+                ),
+              ),
+          icon: const CircleAvatar(
+            radius: 18,
+            backgroundColor: LoboColors.gold,
+            child: Icon(Icons.person, color: LoboColors.deepBlue),
+          ),
+        ),
+      ],
+    );
   }
 
-  Widget _buildRutaCard(BuildContext context, Ruta ruta) {
+  String _saludo(String? nombre) {
+    if (nombre == null || nombre.isEmpty) return '¡Hola, viajero!';
+    return '¡Hola, ${nombre.split(' ').first}!';
+  }
+
+  Widget _tarjetaError(String texto) => Container(
+    padding: const EdgeInsets.all(16),
+    decoration: BoxDecoration(
+      color: Colors.redAccent.withValues(alpha: 0.12),
+      borderRadius: BorderRadius.circular(16),
+    ),
+    child: Text(texto, style: const TextStyle(fontSize: 14, height: 1.4)),
+  );
+
+  Widget _sinUnidad() => Container(
+    padding: const EdgeInsets.all(18),
+    decoration: BoxDecoration(
+      color: Colors.white.withValues(alpha: 0.08),
+      borderRadius: BorderRadius.circular(16),
+    ),
+    child: const Text(
+      'Elige tu unidad académica para ver las modalidades de titulación '
+      'que publica. Sin unidad no se puede filtrar el catálogo.',
+      style: TextStyle(fontSize: 15, height: 1.5),
+    ),
+  );
+
+  /// Unidad sin catálogo. Nunca una lista vacía: se explica qué se buscó.
+  Widget _sinOferta(OfertaUnidad oferta) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Elige tu modalidad de titulación',
+          style: loboDisplay.copyWith(fontSize: 19, color: Colors.white),
+        ),
+        const SizedBox(height: 12),
+        _avisoSinCatalogo(oferta),
+      ],
+    );
+  }
+
+  Widget _avisoSinCatalogo(OfertaUnidad oferta) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(18),
+          decoration: BoxDecoration(
+            color: LoboColors.gold.withValues(alpha: 0.12),
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: LoboColors.gold.withValues(alpha: 0.4)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                children: [
+                  Icon(Icons.search_off, color: LoboColors.gold, size: 22),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Esta unidad no publica catálogo',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 17,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Text(
+                oferta.mensajeSinCatalogo,
+                style: loboCuerpo.copyWith(
+                  color: Colors.white,
+                  fontSize: 15,
+                  height: 1.5,
+                ),
+              ),
+              if (oferta.contacto.correo.isNotEmpty) ...[
+                const SizedBox(height: 10),
+                Text(
+                  'Escríbele a ${oferta.contacto.coordinacion.isEmpty ? 'tu unidad' : oferta.contacto.coordinacion}: '
+                  '${oferta.contacto.correo}',
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 13,
+                    height: 1.4,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+        const SizedBox(height: 12),
+        OutlinedButton.icon(
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Colors.white,
+            side: const BorderSide(color: Colors.white38),
+            padding: const EdgeInsets.symmetric(vertical: 12),
+          ),
+          onPressed:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (_) => RouteSelectionScreen(
+                        oferta: oferta,
+                        state: widget.state,
+                        repository: _repo,
+                      ),
+                ),
+              ),
+          icon: const Icon(Icons.assignment_outlined, size: 18),
+          label: const Text('Ver búsqueda y fuentes'),
+        ),
+        if (oferta.informativas.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Text(
+            '${oferta.informativas.length} modalidad(es) en el registro de '
+            'evidencia, sin ruta acreditada:',
+            style: const TextStyle(color: Colors.white70, fontSize: 13),
+          ),
+          const SizedBox(height: 6),
+          for (final m in oferta.informativas.take(4))
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                '· ${m.nombre}',
+                style: const TextStyle(color: Colors.white54, fontSize: 12),
+              ),
+            ),
+        ],
+      ],
+    );
+  }
+
+  Widget _listaOferta(OfertaUnidad oferta) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Elige tu modalidad de titulación',
+          style: loboDisplay.copyWith(fontSize: 19, color: Colors.white),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          '${oferta.rutas.length} que publica ${oferta.nombre}.',
+          style: const TextStyle(color: Colors.white70, fontSize: 15),
+        ),
+        const SizedBox(height: 16),
+        ...oferta.rutas.map((r) => _buildRutaCard(context, r)),
+        if (oferta.errores.isNotEmpty) ...[
+          const SizedBox(height: 8),
+          Text(
+            '${oferta.errores.length} modalidad(es) quedaron fuera por un '
+            'problema de composición; las demás siguen disponibles.',
+            style: const TextStyle(color: Colors.white54, fontSize: 12),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildRutaCard(BuildContext context, RutaOferta oferta) {
     final state = widget.state;
+    final ruta = oferta.ruta.ruta;
     final total = ruta.nivelesJugables.length;
-    final progreso = state.progresoDe(ruta.id, total);
-    final siguiente = state.siguienteNivel(ruta.id, total);
-    final nivelActual = ruta.nivelesJugables
-        .where((n) => n.numero == siguiente)
-        .firstOrNull;
+    final progreso = state.progresoDe(oferta.id, total);
+    final siguiente = state.siguienteNivel(oferta.id, total);
+    final nivelActual =
+        ruta.nivelesJugables.where((n) => n.numero == siguiente).firstOrNull;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
@@ -177,31 +375,35 @@ class _HomeScreenState extends State<HomeScreen> {
         borderRadius: BorderRadius.circular(18),
         child: InkWell(
           borderRadius: BorderRadius.circular(18),
-          onTap: () async {
-            await state.elegirRuta(ruta.id);
-            if (!context.mounted) return;
-            await Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => RouteSelectionScreen(
-                  ruta: ruta,
-                  state: state,
+          onTap:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (_) => RouteSelectionScreen(
+                        oferta: _oferta!,
+                        ruta: oferta,
+                        state: state,
+                        repository: _repo,
+                      ),
                 ),
               ),
-            );
-          },
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                AssetImageSafe(ruta.mascotaInicio, height: 64, fallbackIcon: Icons.pets),
+                AssetImageSafe(
+                  ruta.mascotaInicio,
+                  height: 64,
+                  fallbackIcon: Icons.pets,
+                ),
                 const SizedBox(width: 14),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        ruta.nombre,
+                        oferta.nombre,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -213,7 +415,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ? (nivelActual == null
                                 ? '¡Ruta completada! 🎉'
                                 : 'Siguiente: ${nivelActual.titulo}')
-                            : '${ruta.nivelesJugables.length} niveles por superar',
+                            : '$total niveles por superar',
                         style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 13,
@@ -227,8 +429,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           value: progreso,
                           minHeight: 6,
                           backgroundColor: Colors.white24,
-                          valueColor:
-                              const AlwaysStoppedAnimation(LoboColors.gold),
+                          valueColor: const AlwaysStoppedAnimation(
+                            LoboColors.gold,
+                          ),
                         ),
                       ),
                     ],
@@ -253,12 +456,13 @@ class _HomeScreenState extends State<HomeScreen> {
               side: const BorderSide(color: Colors.white38),
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => ContactsScreen(state: widget.state),
-              ),
-            ),
+            onPressed:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ContactsScreen(state: widget.state),
+                  ),
+                ),
             icon: const Icon(Icons.support_agent, size: 18),
             label: const Text('Contactos'),
           ),
@@ -271,10 +475,11 @@ class _HomeScreenState extends State<HomeScreen> {
               side: const BorderSide(color: Colors.white38),
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const DirectoryScreen()),
-            ),
+            onPressed:
+                () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const DirectoryScreen()),
+                ),
             icon: const Icon(Icons.badge_outlined, size: 18),
             label: const Text('Directorio'),
           ),
@@ -287,28 +492,45 @@ class _HomeScreenState extends State<HomeScreen> {
               side: const BorderSide(color: Colors.white38),
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
-            onPressed: () async {
-              final rutaActiva = widget.state.rutaActiva;
-              if (rutaActiva == null) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Primero elige una ruta para ver su mapa')),
-                );
-                return;
-              }
-              final ruta = await _repo.rutaPorId(rutaActiva);
-              if (!context.mounted) return;
-              await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => MapScreen(ruta: ruta, state: widget.state),
-                ),
-              );
-            },
+            onPressed: _abrirMapaActivo,
             icon: const Icon(Icons.map, size: 18),
             label: const Text('Mapa'),
           ),
         ),
       ],
+    );
+  }
+
+  /// El botón de mapa resuelve el id guardado: puede ser una modalidad de la
+  /// unidad o una ruta global de las que ya estaban en el dispositivo.
+  Future<void> _abrirMapaActivo() async {
+    final rutaActiva = widget.state.rutaActiva;
+    if (rutaActiva == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Primero elige una modalidad para ver su mapa'),
+        ),
+      );
+      return;
+    }
+    final ruta = await _repo.rutaEfectivaPorId(rutaActiva);
+    if (!mounted) return;
+    if (ruta == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'La modalidad guardada "$rutaActiva" ya no está en el catálogo. '
+            'Elige otra en la lista.',
+          ),
+        ),
+      );
+      return;
+    }
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => MapScreen(ruta: ruta, state: widget.state),
+      ),
     );
   }
 }

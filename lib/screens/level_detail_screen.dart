@@ -41,31 +41,26 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Fondo del nivel; si no hay, el gradiente de la app.
+          // Fondo del nivel. `Image.asset` no sabe decodificar SVG: los doce
+          // fondos que el diseño entrega como `.svg` caían siempre al
+          // `errorBuilder` y el alumno veía el degradote en vez del dibujo.
+          // `AssetImageSafe` va con `SvgPicture.asset`, y el degradado queda
+          // **debajo** para el caso de que el archivo falte de verdad.
           Positioned.fill(
-            child: nivel.fondo.isEmpty
-                ? Container(
-                    decoration: const BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [LoboColors.steelBlue, LoboColors.deepBlue],
-                      ),
-                    ),
-                  )
-                : Image.asset(
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                const _FondoDeNivel(),
+                if (nivel.fondo.isNotEmpty)
+                  AssetImageSafe(
                     nivel.fondo,
+                    width: double.infinity,
+                    height: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [LoboColors.steelBlue, LoboColors.deepBlue],
-                        ),
-                      ),
-                    ),
+                    fallbackIcon: Icons.wallpaper_outlined,
                   ),
+              ],
+            ),
           ),
           Positioned.fill(
             child: DecoratedBox(
@@ -96,8 +91,8 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
                         const SizedBox(height: 24),
                         _buildSeccion('Cómo hacerlo', Icons.map_outlined),
                         ...nivel.pasos.asMap().entries.map(
-                              (e) => _buildPaso(e.key + 1, e.value),
-                            ),
+                          (e) => _buildPaso(e.key + 1, e.value),
+                        ),
                       ],
                       if (nivel.documentos.isNotEmpty) ...[
                         const SizedBox(height: 24),
@@ -106,12 +101,12 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
                           Icons.folder_outlined,
                         ),
                         ...nivel.documentos.asMap().entries.map(
-                              (e) => _buildDocumento(
-                                e.key,
-                                e.value,
-                                marcadosPorDoc[e.key],
-                              ),
-                            ),
+                          (e) => _buildDocumento(
+                            e.key,
+                            e.value,
+                            marcadosPorDoc[e.key],
+                          ),
+                        ),
                       ],
                       const SizedBox(height: 28),
                       _buildBotonCompletar(completado, totalDocs, marcados),
@@ -288,15 +283,21 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Material(
-        color: marcado
-            ? LoboColors.gold.withValues(alpha: 0.18)
-            : Colors.white.withValues(alpha: 0.08),
+        color:
+            marcado
+                ? LoboColors.gold.withValues(alpha: 0.18)
+                : Colors.white.withValues(alpha: 0.08),
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
-          onTap: () => setState(() {
-            _state.alternarDocumento(widget.ruta.id, widget.nivel.numero, indice);
-          }),
+          onTap:
+              () => setState(() {
+                _state.alternarDocumento(
+                  widget.ruta.id,
+                  widget.nivel.numero,
+                  indice,
+                );
+              }),
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Row(
@@ -316,9 +317,10 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
                         style: TextStyle(
                           color: marcado ? Colors.white70 : Colors.white,
                           fontSize: 15,
-                          decoration: marcado
-                              ? TextDecoration.lineThrough
-                              : TextDecoration.none,
+                          decoration:
+                              marcado
+                                  ? TextDecoration.lineThrough
+                                  : TextDecoration.none,
                           decorationColor: Colors.white54,
                         ),
                       ),
@@ -415,6 +417,25 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
             ? 'Completar nivel (faltan ${totalDocs - marcados} docs)'
             : 'Completar nivel',
         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+    );
+  }
+}
+
+/// El degradado de respaldo del fondo del nivel. Va siempre debajo del SVG
+/// para que un asset faltante no deje un hueco negro.
+class _FondoDeNivel extends StatelessWidget {
+  const _FondoDeNivel();
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [LoboColors.steelBlue, LoboColors.deepBlue],
+        ),
       ),
     );
   }

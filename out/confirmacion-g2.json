@@ -1,0 +1,214 @@
+{
+  "fecha_verificacion": "2026-09-29",
+  "fuentes_consultadas": [
+    "https://www.buap.mx/content/unidades-academicas",
+    "https://titulacion.buap.mx/",
+    "https://admin.arpa.buap.mx/titulacion/"
+  ],
+  "confirmaciones": [
+    {
+      "unidad": "Facultad de Administración",
+      "clave": "FADMON",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Arquitectura",
+      "clave": "FABUAP",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Artes Plásticas y Audiovisuales",
+      "clave": "ARPA",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó en https://admin.arpa.buap.mx/titulacion/ (consulta 2026-09-29; HTTP 200) que publica un portal propio y enlaces de Titulación Automática, Seminario de Titulación y Diplomado de Educación Continua; el catálogo local añade Examen ante Jurado."
+    },
+    {
+      "unidad": "Facultad de Ciencias Agrícolas y Pecuarias",
+      "clave": "FCAP",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Ciencias Biológicas",
+      "clave": "FCB",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Ciencias de la Computación",
+      "clave": "FCC",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Ciencias de la Comunicación",
+      "clave": "FCCOM",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Ciencias de la Electrónica",
+      "clave": "FCEL",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Ciencias Físico Matemáticas",
+      "clave": "FCFM",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Ciencias Políticas y Sociales",
+      "clave": "FCPS",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Ciencias Químicas",
+      "clave": "FCQ",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Contaduría Pública",
+      "clave": "FCP",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Cultura Física",
+      "clave": "FCF",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Derecho",
+      "clave": "FDERE",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Economía",
+      "clave": "FECON",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Enfermería",
+      "clave": "FENF",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Estomatología",
+      "clave": "FESTO",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Filosofía y Letras",
+      "clave": "FFL",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Ingeniería",
+      "clave": "FING",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Ingeniería Química",
+      "clave": "FIQ",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Lenguas",
+      "clave": "FLENG",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Medicina",
+      "clave": "FMED",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Facultad de Medicina Veterinaria y Zootecnia",
+      "clave": "FMVZ",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Facultad de Psicología",
+      "clave": "FPSY",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Instituto de Ciencias Sociales y Humanidades Alfonso Vélez Pliego",
+      "clave": "ICSH",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Instituto de Ciencias de Gobierno y Desarrollo Estratégico",
+      "clave": "ICGDE",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Instituto de Fisiología",
+      "clave": "IF",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Instituto de Física Luis Rivera Terrazas",
+      "clave": "IFI",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Complejo Regional Centro",
+      "clave": "CRC",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Complejo Regional Mixteca",
+      "clave": "CRM",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Complejo Regional Nororiental",
+      "clave": "CRNO",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Complejo Regional Norte",
+      "clave": "CRN",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    },
+    {
+      "unidad": "Complejo Regional Sur",
+      "clave": "CRS",
+      "resultado": "confirmada",
+      "detalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad."
+    },
+    {
+      "unidad": "Bachillerato Internacional 5 de Mayo",
+      "clave": "BACH5M",
+      "resultado": "sin-confirmar",
+      "detalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación."
+    }
+  ]
+}

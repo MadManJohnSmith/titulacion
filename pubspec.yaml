@@ -34,6 +34,11 @@ dependencies:
   url_launcher: ^6.2.5
   shared_preferences: ^2.3.0
   archive: ^3.6.1
+  # Actualizador de contenido público: HTTP multiplataforma (incluida la demo
+  # web, que no puede usar dart:io) y SHA-256 para verificar la integridad del
+  # catálogo descargado antes de usarlo.
+  http: ^1.2.0
+  crypto: ^3.0.5
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -42,6 +47,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # El verificador de SVG que usa flutter_svg, para que la prueba de assets
+  # pueda *parsear* cada SVG del JSON y no solo comprobar que el archivo existe.
+  vector_graphics_compiler: ^1.1.16
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
