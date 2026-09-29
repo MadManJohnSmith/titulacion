@@ -53,6 +53,63 @@ class AssetImageSafe extends StatelessWidget {
   }
 }
 
+/// Aviso para la demo web, que no incluye las bases de datos.
+class AvisoDemo extends StatelessWidget {
+  const AvisoDemo(this.texto, {super.key, this.centrado = false});
+
+  final String texto;
+
+  /// true: llena la pantalla (pantallas cuyo contenido completo es la
+  /// búsqueda); false: va encajado entre otros elementos.
+  final bool centrado;
+
+  @override
+  Widget build(BuildContext context) {
+    final contenido = Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(Icons.info_outline, color: LoboColors.gold, size: 34),
+        const SizedBox(height: 12),
+        Text(
+          'No disponible en la demo web',
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          texto,
+          textAlign: TextAlign.center,
+          style: const TextStyle(color: Colors.white70, height: 1.5),
+        ),
+      ],
+    );
+    if (centrado) return Center(child: Padding(padding: const EdgeInsets.all(28), child: contenido));
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: LoboColors.gold.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Icon(Icons.info_outline, color: LoboColors.gold, size: 20),
+          const SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              texto,
+              style: const TextStyle(color: Colors.white, fontSize: 13, height: 1.45),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 /// Botón de la nube que usan las pantallas de pergamino.
 class CloudButton extends StatelessWidget {
   const CloudButton({

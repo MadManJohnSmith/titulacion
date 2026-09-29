@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../demo.dart';
 import '../models/models.dart';
 import '../services/content_repository.dart';
 import '../services/student_repository.dart';
 import '../state/app_state.dart';
 import '../theme.dart';
+import '../widgets/common.dart';
 
 /// Registro del alumno: se busca en la base de la BUAP y se elige la facultad.
 ///
@@ -152,36 +154,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
               style: TextStyle(color: Colors.white70, fontSize: 15, height: 1.4),
             ),
             const SizedBox(height: 20),
-            TextField(
-              controller: _buscador,
-              focusNode: _buscadorFocus,
-              textInputAction: TextInputAction.search,
-              keyboardType: TextInputType.text,
-              autocorrect: false,
-              onSubmitted: (_) => _buscar(),
-              style: const TextStyle(color: Colors.white, fontSize: 16),
-              decoration: InputDecoration(
-                hintText: 'Matrícula o nombre',
-                hintStyle: const TextStyle(color: Colors.white38),
-                prefixIcon: const Icon(Icons.search, color: Colors.white70),
-                suffixIcon: _buscando
-                    ? const Padding(
-                        padding: EdgeInsets.all(12),
-                        child: SizedBox(
-                          width: 18,
-                          height: 18,
-                          child: CircularProgressIndicator(strokeWidth: 2),
-                        ),
-                      )
-                    : null,
-                filled: true,
-                fillColor: Colors.white.withValues(alpha: 0.08),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(14),
-                  borderSide: BorderSide.none,
+            if (!kDemoWeb)
+              TextField(
+                controller: _buscador,
+                focusNode: _buscadorFocus,
+                textInputAction: TextInputAction.search,
+                keyboardType: TextInputType.text,
+                autocorrect: false,
+                onSubmitted: (_) => _buscar(),
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+                decoration: InputDecoration(
+                  hintText: 'Matrícula o nombre',
+                  hintStyle: const TextStyle(color: Colors.white38),
+                  prefixIcon: const Icon(Icons.search, color: Colors.white70),
+                  suffixIcon: _buscando
+                      ? const Padding(
+                          padding: EdgeInsets.all(12),
+                          child: SizedBox(
+                            width: 18,
+                            height: 18,
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          ),
+                        )
+                      : null,
+                  filled: true,
+                  fillColor: Colors.white.withValues(alpha: 0.08),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(14),
+                    borderSide: BorderSide.none,
+                  ),
                 ),
+              )
+            else ...[
+              const AvisoDemo(
+                'La búsqueda por matrícula no viene en la demo web. '
+                'Continúa como invitado: en la app instalada sí puedes '
+                'encontrarte en la base de la BUAP.',
               ),
-            ),
+              const SizedBox(height: 8),
+            ],
             if (_pista.isNotEmpty) ...[
               const SizedBox(height: 10),
               Text(

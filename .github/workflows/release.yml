@@ -1,0 +1,100 @@
+name: Release multiplataforma
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, target: android }
+          - { os: ubuntu-latest, target: linux }
+          - { os: windows-latest, target: windows }
+          - { os: macos-latest, target: macos }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.5
+          cache: true
+
+      - name: Java 17 (para Android)
+        if: matrix.target == 'android'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Dependencias de Linux
+        if: matrix.target == 'linux'
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y libgtk-3-dev ninja-build cmake clang
+
+      - name: Compilar APKs
+        if: matrix.target == 'android'
+        run: flutter build apk --release --split-per-abi
+
+      - name: Compilar Linux
+        if: matrix.target == 'linux'
+        run: flutter build linux --release
+
+      - name: Compilar Windows
+        if: matrix.target == 'windows'
+        run: flutter build windows --release
+
+      - name: Compilar macOS
+        if: matrix.target == 'macos'
+        run: flutter build macos --release
+
+      - name: Empaquetar (Android)
+        if: matrix.target == 'android'
+        run: |
+          mkdir -p dist
+          TAG="${{ github.ref_name }}"
+          cp build/app/outputs/flutter-apk/app-arm64-v8a-release.apk \
+             "dist/LoboApp-${TAG}-android-arm64.apk"
+          cp build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk \
+             "dist/LoboApp-${TAG}-android-armv7.apk"
+
+      - name: Empaquetar (Linux)
+        if: matrix.target == 'linux'
+        run: |
+          mkdir -p dist
+          TAG="${{ github.ref_name }}"
+          tar -czf "dist/LoboApp-${TAG}-linux-x64.tar.gz" \
+              -C build/linux/x64/release bundle
+
+      - name: Empaquetar (Windows)
+        if: matrix.target == 'windows'
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          $tag = "${{ github.ref_name }}"
+          Compress-Archive -Path "build/windows/x64/runner/Release/*" `
+            -DestinationPath "dist/LoboApp-${tag}-windows-x64.zip"
+
+      - name: Empaquetar (macOS)
+        if: matrix.target == 'macos'
+        run: |
+          mkdir -p dist
+          TAG="${{ github.ref_name }}"
+          ditto -ck --keepParent --sequesterRsrc \
+            "build/macos/Build/Products/Release/$(basename "$(ls build/macos/Build/Products/Release/*.app)")" \
+            "dist/LoboApp-${TAG}-macos.zip"
+
+      - name: Publicar en la release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true
+          fail_on_unmatched_files: true

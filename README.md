@@ -21,6 +21,11 @@ trámites hacer, qué documentos pedir y a quién acudir.
 Funciona **100% sin conexión y sin cuenta**: tu progreso se guarda únicamente
 en tu dispositivo.
 
+<p align="center">
+  🌐 <a href="https://madmanjohnsmith.github.io/titulacion/"><strong>Pruébala en el navegador (demo)</strong></a>
+  — versión de muestra sin buscadores; la app completa va en la instalación de abajo.
+</p>
+
 ---
 
 ## 📱 Capturas
@@ -70,20 +75,37 @@ en tu dispositivo.
 
 ## 📲 Instalación
 
+Todas las versiones se publican en la página de
+[**Releases**](https://github.com/MadManJohnSmith/titulacion/releases).
+
 ### Android (recomendado)
 
-Descarga el APK más reciente desde la página de
-[**Releases**](https://github.com/MadManJohnSmith/titulacion/releases)
-de este repositorio, ábrelo en tu teléfono y acepta la instalación
-(necesitas permitir "instalar apps de fuentes desconocidas" la primera vez).
+Descarga el APK más reciente (`LoboApp-x.y.z-android-arm64.apk` para
+teléfonos modernos, `armv7` para equipos antiguos), ábrelo en tu teléfono y
+acepta la instalación (necesitas permitir "instalar apps de fuentes
+desconocidas" la primera vez).
 
-> Instala el APK `arm64-v8a` si tu teléfono es de 2016 en adelante; si no
-> funciona, prueba el `armeabi-v7a`.
+### Windows
+
+Descarga `LoboApp-x.y.z-windows-x64.zip`, descomprímelo donde quieras y
+ejecuta `LoboApp.exe`. No requiere instalación.
+
+### macOS
+
+Descarga `LoboApp-x.y.z-macos.zip`, descomprímelo y arrastra `LoboApp.app` a
+Aplicaciones. Como la app no está firmada con certificado de Apple, la
+primera vez haz clic derecho → **Abrir**.
+
+### Linux
+
+Descarga `LoboApp-x.y.z-linux-x64.tar.gz`, descomprímelo y ejecuta
+`./bundle/LoboApp` (requiere GTK 3, que cualquier escritorio moderno trae).
 
 ### Web
 
-No requiere instalación: se compila y se abre en el navegador
-(ver pasos de más abajo).
+No requiere instalación: usa la
+[demo en el navegador](https://madmanjohnsmith.github.io/titulacion/), o
+compílalo tú (pasos abajo).
 
 ### Compilar desde el código fuente
 
@@ -95,6 +117,7 @@ git clone https://github.com/MadManJohnSmith/titulacion.git
 cd titulacion
 flutter pub get
 flutter run -d chrome            # web
+flutter run -d windows           # (o macos / linux)
 flutter build apk --release      # Android → build/app/outputs/flutter-apk/
 ```
 
@@ -102,7 +125,7 @@ Para verificar que todo está en orden:
 
 ```bash
 flutter analyze   # No issues found!
-flutter test      # 37 pruebas, incluidas de integridad de datos y assets
+flutter test      # todas las pruebas, incluidas de integridad de datos y assets
 ```
 
 ## 🔒 Privacidad
@@ -112,6 +135,9 @@ flutter test      # 37 pruebas, incluidas de integridad de datos y assets
 - La base de alumnos incluida contiene **solo matrícula y nombre** — se
   quitaron todos los correos de alumnos, y de los trabajadores solo se
   conservan los correos institucionales `@correo.buap.mx`.
+- La demo web del navegador **no incluye las bases** (por eso sus buscadores
+  están desactivados): el padrón solo viaja dentro de la app instalada, nunca
+  como archivos descargables.
 - El proceso completo de decisión y cómo quitar las bases si la BUAP lo
   solicita está documentado en [docs/PRIVACIDAD.md](docs/PRIVACIDAD.md).
 
@@ -149,10 +175,12 @@ docs/                        privacidad, pendientes, decisiones de diseño
 
 ## 🚦 Estado del proyecto
 
-La app está **completa y lista para despliegue** (APK y AAB de release
-compilan y las 37 pruebas pasan). Lo que queda depende de la BUAP: confirmar
-algunos textos del diseño original, completar los correos de titulación que
-no están publicados, y la firma de release para Play Store. Detalles en
+La app está **completa y lista para despliegue**: cada tag (`v1.1.0`, …)
+dispara una compilación automática para Android, Windows, macOS y Linux que
+se publica sola en Releases, y cada cambio en `main` actualiza la demo web.
+Lo que queda depende de la BUAP: confirmar algunos textos del diseño
+original, completar los correos de titulación que no están publicados, y la
+firma de release para Play Store. Detalles en
 [docs/PENDIENTES.md](docs/PENDIENTES.md).
 
 ## 🤝 Contribuir

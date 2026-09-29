@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../demo.dart';
 import '../services/staff_repository.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
@@ -53,6 +54,16 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (kDemoWeb) {
+      return Scaffold(
+        appBar: AppBar(title: const Text('Directorio BUAP')),
+        body: const AvisoDemo(
+          'El directorio de trabajadores no viene en la demo web. '
+          'Descarga la app para buscar entre los 43,025 contactos de la BUAP.',
+          centrado: true,
+        ),
+      );
+    }
     return Scaffold(
       appBar: AppBar(title: const Text('Directorio BUAP')),
       body: Column(

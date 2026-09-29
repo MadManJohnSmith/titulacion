@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:archive/archive.dart';
 import 'package:flutter/services.dart';
 
+import '../demo.dart';
+
 /// Un trabajador de la BUAP, del directorio empacado en la app.
 class Trabajador {
   const Trabajador({
@@ -33,6 +35,9 @@ class StaffRepository {
 
   List<Trabajador>? _lista;
   bool _cargando = false;
+
+  /// false solo en la demo web, que no trae el directorio dentro del bundle.
+  static bool get busquedaDisponible => !kDemoWeb;
 
   Future<List<Trabajador>> _cargar() async {
     if (_lista != null) return _lista!;
@@ -71,6 +76,7 @@ class StaffRepository {
   Future<List<Trabajador>> buscar(String query, {int limite = 30}) async {
     final q = query.trim();
     if (q.length < 3) return const [];
+    if (kDemoWeb) return const [];
     final lista = await _cargar();
     if (lista.isEmpty) return const [];
 

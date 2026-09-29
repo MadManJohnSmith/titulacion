@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:archive/archive.dart';
 import 'package:flutter/services.dart';
 
+import '../demo.dart';
 import '../models/models.dart';
 
 /// Busca alumnos en la base de la BUAP empaquetada en la app.
@@ -21,6 +22,9 @@ class StudentRepository {
   Map<String, List<Alumno>>? _cohortes;
   Map<String, String> _rutasPorCohorte = const {};
   bool _cargandoIndice = false;
+
+  /// false solo en la demo web, que no trae la base dentro del bundle.
+  static bool get busquedaDisponible => !kDemoWeb;
 
   /// Carga el índice de archivos (barato). Las cohortes se cargan bajo demanda.
   Future<void> _cargarIndice() async {
@@ -77,6 +81,7 @@ class StudentRepository {
   Future<Alumno?> buscar(String query, {int limite = 20}) async {
     final q = query.trim();
     if (q.length < 3) return null;
+    if (kDemoWeb) return null;
     await _cargarIndice();
     if (_cohortes == null) return null;
 
@@ -111,6 +116,7 @@ class StudentRepository {
   Future<List<Alumno>> sugerencias(String query, {int limite = 8}) async {
     final q = query.trim().toLowerCase();
     if (q.length < 3) return const [];
+    if (kDemoWeb) return const [];
     await _cargarIndice();
     if (_cohortes == null) return const [];
 
