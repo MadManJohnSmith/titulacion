@@ -89,7 +89,7 @@ jobs:
           mkdir -p dist
           TAG="${{ github.ref_name }}"
           ditto -ck --keepParent --sequesterRsrc \
-            "build/macos/Build/Products/Release/$(basename "$(ls build/macos/Build/Products/Release/*.app)")" \
+            build/macos/Build/Products/Release/LoboApp.app \
             "dist/LoboApp-${TAG}-macos.zip"
 
       - name: Publicar en la release
