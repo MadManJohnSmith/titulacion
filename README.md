@@ -114,7 +114,7 @@ superior (y Android SDK solo si quieres el APK):
 
 ```bash
 git clone https://github.com/MadManJohnSmith/LoboApp.git
-cd titulacion
+cd LoboApp
 flutter pub get
 flutter run -d chrome            # web
 flutter run -d windows           # (o macos / linux)
