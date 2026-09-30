@@ -10,6 +10,7 @@ import 'package:titulacion/screens/home_screen.dart';
 import 'package:titulacion/screens/menu_screen.dart';
 import 'package:titulacion/services/content_repository.dart';
 import 'package:titulacion/state/app_state.dart';
+import 'package:titulacion/state/notas_state.dart';
 
 /// Recorre la app como la recorre un alumno: bienvenida → registro → home →
 /// ruta → mapa → nivel → completar → volver al mapa.
@@ -709,6 +710,118 @@ void main() {
       expect(f.clave, isNotEmpty, reason: '${f.nombre} sin clave');
       expect(f.nombre, isNotEmpty);
     }
+  });
+
+  // =====================================================================
+  // Cierre de sesión
+  // =====================================================================
+
+  group('cierre de sesión', () {
+    test('borra del dispositivo todo lo que guardó esa sesión', () async {
+      final s = await estadoLimpio();
+      await s.registrar(
+        const Alumno(nombre: 'María Fernanda López', matricula: '202145678'),
+        facultadClave: 'ARPA',
+      );
+      await s.elegirModalidad('titulacion-automatica-arpa', 'promedio');
+      await s.completarNivel('titulacion-automatica-arpa', 1);
+      await s.completarNivel('titulacion-automatica-arpa', 2);
+      s.alternarDocumento('titulacion-automatica-arpa', 1, 0);
+      await s.guardarContexto(carreraId: 'INFORMATICA', anioIngreso: 2020);
+      await s.notas.guardar(
+        'modalidad:titulacion-automatica-arpa',
+        1,
+        'la DAE es el jueves',
+      );
+
+      // Antes de cerrar, todo está guardado.
+      expect(s.estaRegistrado, isTrue);
+      expect(s.completadosDe('titulacion-automatica-arpa'), [1, 2]);
+
+      await s.cerrarSesion();
+
+      // En memoria no quedan persona, unidad, oferta, avance ni notas.
+      expect(s.estaRegistrado, isFalse);
+      expect(s.alumno, isNull);
+      expect(s.facultadClave, isNull);
+      expect(s.rutaActiva, isNull);
+      expect(s.modalidadActiva, isNull);
+      expect(s.rutaActivaBase, isNull);
+      expect(s.completadosDe('titulacion-automatica-arpa'), isEmpty);
+      expect(s.documentoMarcado('titulacion-automatica-arpa', 1, 0), isFalse);
+      expect(s.notas.todas(), isEmpty);
+      expect(s.carreraId, isEmpty);
+      expect(s.tieneContexto, isFalse);
+
+      // Y en las preferencias tampoco sobrevive ninguna clave de la sesión.
+      final prefs = await SharedPreferences.getInstance();
+      for (final clave in const [
+        'alumno',
+        'facultad',
+        'ruta',
+        'modalidadActiva',
+        'rutaActivaBase',
+        'contextoAlumno',
+        'migracionesProgreso',
+        'estadoSchema',
+        'progreso',
+        NotasState.clavePref,
+      ]) {
+        expect(prefs.getString(clave), isNull, reason: 'sobrevive $clave');
+        expect(
+          prefs.getKeys(),
+          isNot(contains(clave)),
+          reason: 'sobrevive la clave $clave',
+        );
+      }
+    });
+
+    test('quien se registra después en la misma unidad empieza en cero', () async {
+      final s = await estadoLimpio();
+      await s.registrar(
+        const Alumno(nombre: 'María Fernanda López', matricula: '202145678'),
+        facultadClave: 'ARPA',
+      );
+      await s.elegirModalidad('titulacion-automatica-arpa', 'promedio');
+      await s.completarNivel('titulacion-automatica-arpa', 1);
+      s.alternarDocumento('titulacion-automatica-arpa', 1, 0);
+      await s.notas.guardar(
+        'modalidad:titulacion-automatica-arpa',
+        1,
+        'nota de la primera persona',
+      );
+      await s.cerrarSesion();
+
+      // Otra persona, la MISMA unidad: la modalidad se puede volver a elegir.
+      await s.registrar(
+        const Alumno(nombre: 'Bruno Díaz', matricula: '202245678'),
+        facultadClave: 'ARPA',
+      );
+      expect(s.estaRegistrado, isTrue);
+      expect(s.facultadClave, 'ARPA');
+      expect(s.modalidadActiva, isNull);
+
+      await s.elegirModalidad('titulacion-automatica-arpa', 'promedio');
+      expect(s.completadosDe('titulacion-automatica-arpa'), isEmpty);
+      expect(s.documentoMarcado('titulacion-automatica-arpa', 1, 0), isFalse);
+      expect(
+        s.notas.textoDe('modalidad:titulacion-automatica-arpa', 1),
+        isEmpty,
+      );
+    });
+
+    test('el aviso de privacidad dice lo mismo que el código', () {
+      final aviso = File(
+        '${Directory.current.path}/docs/PRIVACIDAD.md',
+      ).readAsStringSync();
+
+      // La promesa anterior: cerrar sesión solo quitaba el registro.
+      expect(aviso, isNot(contains('borrar solo el progreso')));
+      // Y ahora declara qué borra de verdad.
+      expect(aviso, contains('Cerrar sesión borra todo'));
+      expect(aviso, contains('tus notas'));
+      expect(aviso, contains('empieza en cero'));
+    });
   });
 }
 

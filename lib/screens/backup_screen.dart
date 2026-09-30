@@ -279,6 +279,13 @@ class InformeRespaldo {
 /// API no expone esa operación, así que la restauración **suma** lo que falta y
 /// deja lo que ya estaba. El informe lo dice, para que nadie lo descubra
 /// después.
+///
+/// El avance solo se escribe si el respaldo pertenece a **la misma oferta** que
+/// está activa: [RespaldoAlumno.namespace] se compara con el espacio de nombres
+/// que [AppState.namespaceDe] devuelve para la oferta activa. Sin esa
+/// comparación, un respaldo de otra modalidad (o uno de la versión 1, que no
+/// traía namespace) se aplicaría sobre la oferta que el alumno tiene abierta y
+/// el informe anunciaría niveles completados que nunca completó.
 Future<InformeRespaldo> restaurarRespaldo({
   required AppState state,
   required NotasState notas,
@@ -360,31 +367,54 @@ Future<InformeRespaldo> restaurarRespaldo({
       );
     }
   } else {
-    var niveles = 0;
-    for (final n in respaldo.nivelesCompletados) {
-      if (n <= 0 || state.estaCompletado(rutaActiva, n)) continue;
-      await state.completarNivel(rutaActiva, n);
-      niveles++;
+    final nsActiva = state.namespaceDe(rutaActiva);
+    final nsRespaldo = respaldo.namespace;
+    final traeAvance =
+        respaldo.nivelesCompletados.isNotEmpty ||
+        respaldo.documentosMarcados.isNotEmpty;
+
+    if (traeAvance && nsRespaldo != nsActiva) {
+      // Espacios de nombres distintos: no se escribe nada. Es preferible
+      // devolver el avance intacto a anunciarlo como aplicado en otra oferta.
+      informe.avisos.add(
+        nsRespaldo == null
+            ? 'El respaldo no declara el espacio de nombres de su avance, así '
+                  'que no se puede comprobar que sea de la oferta activa '
+                  '("$nsActiva"): no se escribió ningún nivel ni documento.'
+            : 'El avance del respaldo es de "$nsRespaldo" y la oferta activa usa '
+                  '"$nsActiva": no se escribió nada para no mezclar dos avances. '
+                  'Elige la modalidad del respaldo y vuelve a pegarlo.',
+      );
+    } else {
+      var niveles = 0;
+      for (final n in respaldo.nivelesCompletados) {
+        if (n <= 0 || state.estaCompletado(rutaActiva, n)) continue;
+        await state.completarNivel(rutaActiva, n);
+        niveles++;
+      }
+      var docs = 0;
+      for (final claveDoc in respaldo.documentosMarcados) {
+        final partes = claveDoc.split(':');
+        if (partes.length < 3) continue;
+        final n = int.tryParse(partes[partes.length - 2]);
+        final i = int.tryParse(partes[partes.length - 1]);
+        if (n == null || i == null || n <= 0 || i < 0) continue;
+        // La clave del documento también viene con su espacio de nombres: se
+        // compara entero, no solo sus dos últimas partes.
+        if (partes.sublist(0, partes.length - 2).join(':') != nsActiva) continue;
+        if (state.documentoMarcado(rutaActiva, n, i)) continue;
+        // `alternarDocumento` es síncrono en AppState: no se espera.
+        state.alternarDocumento(rutaActiva, n, i);
+        docs++;
+      }
+      informe.aplicados.add(
+        'Avance: $niveles ${niveles == 1 ? 'nivel' : 'niveles'} y $docs '
+        '${docs == 1 ? 'documento' : 'documentos'} nuevos.',
+      );
+      informe.avisos.add(
+        'La restauración suma avance; no borra el que ya estaba en el teléfono.',
+      );
     }
-    var docs = 0;
-    for (final claveDoc in respaldo.documentosMarcados) {
-      final partes = claveDoc.split(':');
-      if (partes.length < 3) continue;
-      final n = int.tryParse(partes[partes.length - 2]);
-      final i = int.tryParse(partes[partes.length - 1]);
-      if (n == null || i == null || n <= 0 || i < 0) continue;
-      if (state.documentoMarcado(rutaActiva, n, i)) continue;
-      // `alternarDocumento` es síncrono en AppState: no se espera.
-      state.alternarDocumento(rutaActiva, n, i);
-      docs++;
-    }
-    informe.aplicados.add(
-      'Avance: $niveles ${niveles == 1 ? 'nivel' : 'niveles'} y $docs '
-      '${docs == 1 ? 'documento' : 'documentos'} nuevos.',
-    );
-    informe.avisos.add(
-      'La restauración suma avance; no borra el que ya estaba en el teléfono.',
-    );
   }
 
   // 5. Notas.

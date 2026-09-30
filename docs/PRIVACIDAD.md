@@ -86,8 +86,19 @@ información de menores.
 ## Tus derechos
 
 Como los datos no salen de tu teléfono, borrarlos es tuyo y es inmediato:
-**desinstalar la app**. Si quieres borrar solo el progreso sin desinstalar, en
-la app: *Menú → Mi perfil → Cerrar sesión*.
+**desinstalar la app**. Si quieres borrarlos sin desinstalar, en la app:
+*Menú → Mi perfil → Cerrar sesión*.
+
+**Cerrar sesión borra todo lo que la app guardó de esa sesión**: tu registro,
+tu unidad académica, tu contexto académico, la modalidad que habías elegido, tu
+avance (niveles completados y documentos marcados, de todas las modalidades) y
+tus notas. Después de eso la app queda como recién instalada, así que la
+siguiente persona que se registre en ese teléfono empieza en cero y no ve nada
+de la anterior.
+
+Lo que **no** se borra con ese botón es el contenido de la propia app
+(catálogo, rutas, padrón de alumnos y directorio), porque no es dato personal
+tuyo. Para borrarlo hace falta desinstalar la app.
 
 Para cualquier duda sobre este aviso o sobre las bases incluidas, escribe a la
 **Coordinación General de Atención a los Universitarios (CGAU)**:

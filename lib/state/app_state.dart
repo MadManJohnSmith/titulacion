@@ -21,6 +21,10 @@ import 'notas_state.dart';
 ///
 /// Eso evita dos cosas a la vez: que un alumno que ya avanzó pierde su avance,
 /// y que el avance de una modalidad aparezca como si fuera de otra.
+///
+/// La única excepción es [cerrarSesion]: esa sí borra, porque es la operación
+/// destructiva que el aviso de privacidad promete y solo ocurre cuando la
+/// persona la pide explícitamente.
 class AppState extends ChangeNotifier {
   AppState(this._prefs) {
     _cargar();
@@ -258,9 +262,35 @@ class AppState extends ChangeNotifier {
     await _marcarEsquema2();
   }
 
+  /// Cierra la sesión: borra del dispositivo **todo** lo que la app guardó de
+  /// esta persona.
+  ///
+  /// Es la única operación que destruye datos: el resto del esquema (cambiar de
+  /// unidad, elegir otra modalidad) **aísla** el avance, nunca lo borra. Se van
+  /// el registro (`alumno`), la unidad académica, el contexto, la oferta
+  /// activa, el avance de todos sus espacios de nombres (`progreso`) y las
+  /// notas, y la app queda como recién instalada: quien entre después en esta
+  /// unidad empieza en cero y no ve nada de quien estuvo antes.
   Future<void> cerrarSesion() async {
     _alumno = null;
+    _facultadClave = null;
+    _carreraId = '';
+    _planId = '';
+    _anioIngreso = 0;
+    _completados = {};
+    _documentosMarcados = {};
+    _migraciones = {};
+    // Primero se deselecciona la oferta: `_marcarEsquema2` se ejecuta dentro y
+    // dejaría la marca de esquema puesta si se borrara antes.
+    await _deseleccionarOferta();
     await _prefs.remove(_kAlumno);
+    await _prefs.remove(_kFacultad);
+    await _prefs.remove(_kContexto);
+    await _prefs.remove(_kMigraciones);
+    await _prefs.remove(_kProgreso);
+    await _prefs.remove(_kEsquema);
+    // Las notas viven en su propia clave, pero son datos de esta misma persona.
+    await notas.borrarTodo();
     notifyListeners();
   }
 

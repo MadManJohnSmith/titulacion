@@ -73,6 +73,17 @@ class NotasState extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Borra todas las notas del dispositivo.
+  ///
+  /// La única operación destructiva de esta clase, y la usa solo
+  /// `AppState.cerrarSesion`: cambiar de unidad o elegir otra modalidad aísla
+  /// las notas por espacio de nombres, nunca las elimina.
+  Future<void> borrarTodo() async {
+    _notas = {};
+    await _prefs.remove(clavePref);
+    notifyListeners();
+  }
+
   Future<void> _persistir() async {
     await _prefs.setString(
       clavePref,

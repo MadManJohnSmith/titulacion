@@ -806,5 +806,134 @@ void main() {
       expect(destino.completadosDe('titulacion-automatica-arpa'), [1]);
       expect(find.textContaining('Alumno 2020401'), findsOneWidget);
     });
+
+    test('un respaldo de otra oferta no escribe nada y lo dice', () async {
+      // Origen: el alumno va por la ruta global heredada de la versión 1.
+      final origen = await estadoDeAlumno('ARPA');
+      await origen.elegirRuta('promedio');
+      await origen.completarNivel('promedio', 1);
+      await origen.completarNivel('promedio', 2);
+      await origen.completarNivel('promedio', 3);
+      origen.alternarDocumento('promedio', 1, 0);
+      final notasOrigen = NotasState(await SharedPreferences.getInstance());
+      final rutaGlobal = await repo.rutaEfectivaPorId('promedio');
+      final texto = construirRespaldo(
+        state: origen,
+        notas: notasOrigen,
+        niveles: rutaGlobal!.niveles,
+      );
+
+      // El respaldo declara en qué espacio de nombres está su avance.
+      final respaldo = RespaldoAlumno.analizar(texto, <String>[])!;
+      expect(respaldo.namespace, 'promedio');
+      expect(respaldo.nivelesCompletados, [1, 2, 3]);
+      expect(respaldo.documentosMarcados, isNotEmpty);
+
+      // Destino: la MISMA persona y la misma unidad, pero con una modalidad
+      // abierta. Registrar no invalida la oferta porque no cambió ni de unidad
+      // ni de persona: la modalidad sigue siendo la misma.
+      final destino = await estadoDeAlumno('ARPA');
+      await destino.elegirModalidad('titulacion-automatica-arpa', 'promedio');
+      final notasDestino = NotasState(await SharedPreferences.getInstance());
+      final informe = await restaurarRespaldo(
+        state: destino,
+        notas: notasDestino,
+        respaldo: respaldo,
+        repo: repo,
+      );
+
+      // El avance del respaldo no se escribe en la modalidad que está abierta.
+      expect(destino.modalidadActiva, 'titulacion-automatica-arpa');
+      expect(destino.completadosDe('titulacion-automatica-arpa'), isEmpty);
+      expect(
+        destino.documentoMarcado('titulacion-automatica-arpa', 1, 0),
+        isFalse,
+      );
+      expect(destino.completadosDe('promedio'), isEmpty);
+      expect(informe.avisos.join(' '), contains('no se escribió nada'));
+      expect(informe.aplicados.join(' '), isNot(contains('Avance:')));
+
+      // Y nada de eso llegó a escribirse en el teléfono.
+      final prefs = await SharedPreferences.getInstance();
+      expect(prefs.getString('progreso'), isNull);
+    });
+
+    test('un respaldo sin namespace no se aplica a ciegas', () async {
+      final s = await estadoDeAlumno('ARPA');
+      await s.elegirModalidad('titulacion-automatica-arpa', 'promedio');
+
+      // Respaldo de la versión 1: no declara de qué oferta es su avance.
+      final respaldo = RespaldoAlumno(
+        generadoEn: '2026-09-29T00:00:00Z',
+        esquemaEstado: 1,
+        alumno: const Alumno(nombre: 'Alma Löwe', matricula: '2020401'),
+        facultadClave: 'ARPA',
+        modalidadActiva: null,
+        rutaActiva: null,
+        rutaActivaBase: null,
+        carreraId: null,
+        planId: null,
+        anioIngreso: null,
+        namespace: null,
+        nivelesCompletados: const [1, 2, 3],
+        documentosMarcados: const [],
+        notas: const {},
+        alcance: const [],
+      );
+
+      final notas = NotasState(await SharedPreferences.getInstance());
+      final informe = await restaurarRespaldo(
+        state: s,
+        notas: notas,
+        respaldo: respaldo,
+        repo: repo,
+      );
+
+      expect(s.completadosDe('titulacion-automatica-arpa'), isEmpty);
+      expect(
+        informe.avisos.join(' '),
+        contains('no declara el espacio de nombres'),
+      );
+    });
+
+    test('si la modalidad del respaldo ya no existe, su avance no se vuelca en la activa', () async {
+      final s = await estadoDeAlumno('ARPA');
+      await s.elegirModalidad('seminario-de-titulacion-arpa', 'seminario');
+
+      final respaldo = RespaldoAlumno(
+        generadoEn: '2026-09-29T00:00:00Z',
+        esquemaEstado: 2,
+        alumno: const Alumno(nombre: 'Alma Löwe', matricula: '2020401'),
+        facultadClave: 'ARPA',
+        modalidadActiva: 'modalidad-que-ya-no-existe',
+        rutaActiva: 'modalidad-que-ya-no-existe',
+        rutaActivaBase: 'promedio',
+        carreraId: null,
+        planId: null,
+        anioIngreso: null,
+        namespace: 'modalidad:modalidad-que-ya-no-existe',
+        nivelesCompletados: const [1, 2, 3],
+        documentosMarcados: const ['modalidad:modalidad-que-ya-no-existe:1:0'],
+        notas: const {},
+        alcance: const [],
+      );
+
+      final notas = NotasState(await SharedPreferences.getInstance());
+      final informe = await restaurarRespaldo(
+        state: s,
+        notas: notas,
+        respaldo: respaldo,
+        repo: repo,
+      );
+
+      expect(s.modalidadActiva, 'seminario-de-titulacion-arpa');
+      expect(s.completadosDe('seminario-de-titulacion-arpa'), isEmpty);
+      expect(
+        s.documentoMarcado('seminario-de-titulacion-arpa', 1, 0),
+        isFalse,
+      );
+      expect(informe.avisos.join(' '), contains('ya no está en el catálogo'));
+      expect(informe.avisos.join(' '), contains('no se escribió nada'));
+    });
   });
 }

@@ -275,7 +275,9 @@ class ProfileScreen extends StatelessWidget {
                       backgroundColor: LoboColors.deepBlue,
                       title: const Text('¿Cerrar sesión?'),
                       content: const Text(
-                        'Se borrarán tu registro y tu progreso en este dispositivo.',
+                        'Se borrarán de este dispositivo tu registro, tu unidad '
+                        'académica, la modalidad que elegiste, tu avance y tus '
+                        'notas. La app y su catálogo no se tocan.',
                       ),
                       actions: [
                         TextButton(
