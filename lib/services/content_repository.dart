@@ -827,6 +827,14 @@ class ContentRepository {
     _catalogo = null;
   }
 
+  /// Assets que las pruebas hacen fallar a propósito. Vacío = ninguno.
+  ///
+  /// Es el mismo fallo que ve la persona cuando el bundle no trae el archivo:
+  /// por eso las pantallas tienen que avisar y dejar de girar, en vez de
+  /// tragarse la excepción suelta.
+  @visibleForTesting
+  static Set<String> assetsRotosDePrueba = const {};
+
   // ------------------------------------------------------------------ I/O
 
   String? _raizProyecto;
@@ -834,6 +842,9 @@ class ContentRepository {
   /// Lee un JSON del proyecto: del disco si se fijó una raíz (tests), del
   /// bundle en la app.
   Future<Map<String, dynamic>> _leer(String path) async {
+    if (assetsRotosDePrueba.contains(path)) {
+      throw StateError('No se pudo leer el asset "$path"');
+    }
     if (_raizProyecto != null) {
       final file = File('$_raizProyecto/$path');
       if (file.existsSync()) {

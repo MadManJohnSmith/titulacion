@@ -23,6 +23,7 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
   List<Trabajador> _resultados = [];
   bool _buscando = false;
   bool _buscado = false;
+  String _error = '';
 
   @override
   void dispose() {
@@ -36,20 +37,33 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
       setState(() {
         _resultados = const [];
         _buscado = false;
+        _error = '';
       });
       return;
     }
     setState(() {
       _buscando = true;
       _buscado = false;
+      _error = '';
     });
-    final r = await _repo.buscar(q);
-    if (!mounted) return;
-    setState(() {
-      _resultados = r;
-      _buscando = false;
-      _buscado = true;
-    });
+    try {
+      final r = await _repo.buscar(q);
+      if (!mounted) return;
+      setState(() {
+        _resultados = r;
+        _buscando = false;
+        _buscado = true;
+      });
+    } catch (e) {
+      // El directorio que no carga se explica; el spinner no se queda girando.
+      if (!mounted) return;
+      setState(() {
+        _resultados = const [];
+        _buscando = false;
+        _buscado = true;
+        _error = 'No se pudo consultar el directorio de la BUAP: $e';
+      });
+    }
   }
 
   @override
@@ -122,6 +136,18 @@ class _DirectoryScreenState extends State<DirectoryScreen> {
       );
     }
     if (_buscando) return const SizedBox();
+    if (_error.isNotEmpty) {
+      return Center(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Text(
+            _error,
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.white70, height: 1.5),
+          ),
+        ),
+      );
+    }
     if (_resultados.isEmpty) {
       return Center(
         child: Padding(

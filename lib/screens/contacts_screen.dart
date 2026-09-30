@@ -23,6 +23,7 @@ class _ContactsScreenState extends State<ContactsScreen> {
   List<LinkBuap> _links = [];
   Facultad? _facultad;
   bool _cargando = true;
+  String _error = '';
 
   @override
   void initState() {
@@ -31,21 +32,41 @@ class _ContactsScreenState extends State<ContactsScreen> {
   }
 
   Future<void> _cargar() async {
-    final resultados = await Future.wait([
-      _repo.contactos(),
-      _repo.links(),
-      if (widget.state.facultadClave != null)
-        _repo.facultadPorClave(widget.state.facultadClave!)
-      else
-        Future.value(null),
-    ]);
-    if (!mounted) return;
+    try {
+      final resultados = await Future.wait([
+        _repo.contactos(),
+        _repo.links(),
+        if (widget.state.facultadClave != null)
+          _repo.facultadPorClave(widget.state.facultadClave!)
+        else
+          Future.value(null),
+      ]);
+      if (!mounted) return;
+      setState(() {
+        _contactos = resultados[0] as List<Contacto>;
+        _links = resultados[1] as List<LinkBuap>;
+        _facultad = resultados.length > 2 ? resultados[2] as Facultad? : null;
+        _cargando = false;
+        _error = '';
+      });
+    } catch (e) {
+      // Un asset que no carga no puede dejar el spinner girando para siempre:
+      // se dice qué pasó y se ofrece reintentar.
+      if (!mounted) return;
+      setState(() {
+        _cargando = false;
+        _error = 'No se pudieron cargar los contactos ni los enlaces: $e';
+      });
+    }
+  }
+
+  /// Reintenta la carga después de un fallo.
+  Future<void> _reintentar() async {
     setState(() {
-      _contactos = resultados[0] as List<Contacto>;
-      _links = resultados[1] as List<LinkBuap>;
-      _facultad = resultados.length > 2 ? resultados[2] as Facultad? : null;
-      _cargando = false;
+      _cargando = true;
+      _error = '';
     });
+    await _cargar();
   }
 
   @override
@@ -67,9 +88,37 @@ class _ContactsScreenState extends State<ContactsScreen> {
         ),
         body: _cargando
             ? const Center(child: CircularProgressIndicator())
-            : TabBarView(
-                children: [_buildContactos(), _buildLinks()],
-              ),
+            : _error.isNotEmpty
+                ? _avisoError()
+                : TabBarView(
+                    children: [_buildContactos(), _buildLinks()],
+                  ),
+      ),
+    );
+  }
+
+  /// Aviso con reintento: la pantalla nunca queda en blanco ni girando.
+  Widget _avisoError() {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.info_outline, color: Colors.white70, size: 28),
+            const SizedBox(height: 12),
+            Text(
+              _error,
+              textAlign: TextAlign.center,
+              style: const TextStyle(height: 1.4),
+            ),
+            const SizedBox(height: 18),
+            ElevatedButton(
+              onPressed: _reintentar,
+              child: const Text('Reintentar'),
+            ),
+          ],
+        ),
       ),
     );
   }

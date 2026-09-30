@@ -138,7 +138,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
     final limpio = _digitos.esMatricula(q) ? q : _digitos.normalizar(q);
 
-    final encontrado = await _alumnosRepo.buscar(limpio);
+    final Alumno? encontrado;
+    try {
+      encontrado = await _alumnosRepo.buscar(limpio);
+    } catch (e) {
+      // La base que no carga no deja el spinner girando: se avisa y la persona
+      // puede continuar como invitada.
+      if (!mounted) return;
+      setState(() {
+        _buscando = false;
+        _alumno = null;
+        _error = 'No se pudo consultar la base de la BUAP: $e';
+      });
+      return;
+    }
     if (!mounted) return;
     setState(() {
       _buscando = false;

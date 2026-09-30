@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:archive/archive.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../demo.dart';
@@ -39,13 +40,31 @@ class StaffRepository {
   /// false solo en la demo web, que no trae el directorio dentro del bundle.
   static bool get busquedaDisponible => !kDemoWeb;
 
+  /// Assets que las pruebas hacen fallar a propósito. Vacío = ninguno.
+  ///
+  /// Reproduce el directorio que no llega a estar en el bundle: la pantalla
+  /// tiene que decirlo y dejar de buscar, no quedarse girando.
+  @visibleForTesting
+  static Set<String> assetsRotosDePrueba = const {};
+
+  /// Olvida la lista en memoria, para que cada prueba parta de cero.
+  @visibleForTesting
+  void invalidarCacheEnMemoria() {
+    _lista = null;
+    _cargando = false;
+  }
+
   Future<List<Trabajador>> _cargar() async {
     if (_lista != null) return _lista!;
     if (_cargando) return const [];
     _cargando = true;
     try {
+      const indiceAsset = 'assets/trabajadores/index.json';
+      if (assetsRotosDePrueba.contains(indiceAsset)) {
+        throw StateError('No se pudo leer el asset "$indiceAsset"');
+      }
       final indice = json.decode(
-        await rootBundle.loadString('assets/trabajadores/index.json'),
+        await rootBundle.loadString(indiceAsset),
       ) as Map<String, dynamic>;
       final ruta = indice['archivo'] as String;
 

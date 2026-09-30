@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:isolate';
 
 import 'package:archive/archive.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import '../demo.dart';
@@ -10,8 +12,10 @@ import '../models/models.dart';
 ///
 /// La base son 318 mil alumnos (~2.9 MB comprimidos) y viene partida por
 /// cohorte: si el alumno escribe su matrícula, el prefijo de 4 dígitos dice en
-/// qué archivo está, y solo se descompresa ese. Buscar por nombre sí necesita
-/// todos, así que esa búsqueda es la lenta.
+/// qué archivo está, y solo se descomprime ese. Buscar por nombre sí necesita
+/// todos, así que esa búsqueda se hace **fuera del isolate de la interfaz**:
+/// descomprimir y recorrer 318 mil nombres es CPU y memoria, y en el isolate de
+/// la UI congelaba la pantalla al teclear.
 ///
 /// Solo se guarda matrícula y nombre: los correos no se empaquetan.
 class StudentRepository {
@@ -23,15 +27,59 @@ class StudentRepository {
   Map<String, String> _rutasPorCohorte = const {};
   bool _cargandoIndice = false;
 
+  /// Etiqueta del isolate donde corre la búsqueda por nombre.
+  ///
+  /// Es lo que permite distinguir, incluso en las pruebas, si el trabajo pesado
+  /// salió del isolate de la interfaz o no.
+  static const String etiquetaIsolateDeBusqueda = 'loboapp-busqueda-nombre';
+
+  /// Etiqueta del isolate en el que corrió la última búsqueda por nombre.
+  /// Vacío = todavía no se ha buscado por nombre.
+  @visibleForTesting
+  static String? ultimoIsolateDeBusqueda;
+
+  /// Assets que las pruebas hacen fallar a propósito. Vacío = ninguno.
+  ///
+  /// Es la base que no llegó a empaquetarse: la pantalla que la consulta tiene
+  /// que decirlo y dejar de girar.
+  @visibleForTesting
+  static Set<String> assetsRotosDePrueba = const {};
+
+  /// Cohortes que quedaron residentes en memoria. 0 = no se cargó ninguna.
+  @visibleForTesting
+  int get cohortesEnMemoria => _cohortes?.length ?? 0;
+
+  /// Olvida el índice y las cohortes en memoria, para que cada prueba parta de
+  /// cero.
+  @visibleForTesting
+  void invalidarCacheEnMemoria() {
+    _cohortes = null;
+    _rutasPorCohorte = const {};
+    _cargandoIndice = false;
+  }
+
   /// false solo en la demo web, que no trae la base dentro del bundle.
   static bool get busquedaDisponible => !kDemoWeb;
+
+  /// Lee los bytes de un asset del padrón, o falla como fallaría en la app.
+  Future<Uint8List> _bytesDeCohorte(String ruta) async {
+    if (assetsRotosDePrueba.contains(ruta)) {
+      throw StateError('No se pudo leer el asset "$ruta"');
+    }
+    final data = await rootBundle.load(ruta);
+    return data.buffer.asUint8List();
+  }
 
   /// Carga el índice de archivos (barato). Las cohortes se cargan bajo demanda.
   Future<void> _cargarIndice() async {
     if (_cohortes != null || _cargandoIndice) return;
     _cargandoIndice = true;
     try {
-      final raw = await rootBundle.loadString('assets/alumnos/index.json');
+      const indiceAsset = 'assets/alumnos/index.json';
+      if (assetsRotosDePrueba.contains(indiceAsset)) {
+        throw StateError('No se pudo leer el asset "$indiceAsset"');
+      }
+      final raw = await rootBundle.loadString(indiceAsset);
       final data = json.decode(raw) as Map<String, dynamic>;
       final cohortes = data['cohorts'] as Map<String, dynamic>;
       _rutasPorCohorte = {
@@ -55,9 +103,9 @@ class StudentRepository {
     final ruta = _rutasPorCohorte[cohorte];
     if (ruta == null) return;
 
-    final data = await rootBundle.load(ruta);
+    final bytes = await _bytesDeCohorte(ruta);
     final texto = utf8.decode(
-      GZipDecoder().decodeBytes(data.buffer.asUint8List()),
+      GZipDecoder().decodeBytes(bytes),
       allowMalformed: true,
     );
 
@@ -99,41 +147,76 @@ class StudentRepository {
       }
     }
 
-    // Búsqueda por nombre: recorre todas las cohortes.
-    final minuscula = q.toLowerCase();
-    for (final cohorte in _rutasPorCohorte.keys) {
-      await _cargarCohorte(cohorte);
-    }
-    for (final lista in _cohortes!.values) {
-      for (final a in lista) {
-        if (a.nombre.toLowerCase().contains(minuscula)) return a;
-      }
-    }
-    return null;
+    // Búsqueda por nombre: recorre todas las cohortes, pero en otro isolate.
+    return _buscarPorNombreLejosDeLaInterfaz(q);
   }
 
-  /// Devuelve hasta [limite] coincidencias parciales, para el autocompletado.
-  Future<List<Alumno>> sugerencias(String query, {int limite = 8}) async {
-    final q = query.trim().toLowerCase();
-    if (q.length < 3) return const [];
-    if (kDemoWeb) return const [];
-    await _cargarIndice();
-    if (_cohortes == null) return const [];
-
-    final encontrados = <Alumno>[];
-    for (final cohorte in _rutasPorCohorte.keys) {
-      await _cargarCohorte(cohorte);
+  /// Búsqueda por nombre sin tocar el isolate de la interfaz.
+  ///
+  /// Leer los ~3 MB comprimidos es E/S y puede quedar aquí; descomprimir y
+  /// recorrer 318 mil nombres es CPU y memoria, y eso va a [_primerAlumnoPorNombre]
+  /// en un isolate aparte. El padrón tampoco se queda guardado en memoria: solo
+  /// vuelve la coincidencia.
+  Future<Alumno?> _buscarPorNombreLejosDeLaInterfaz(String query) async {
+    final minuscula = query.trim().toLowerCase();
+    final cohortes = <Uint8List>[];
+    for (final ruta in _rutasPorCohorte.values) {
+      cohortes.add(await _bytesDeCohorte(ruta));
     }
-    for (final lista in _cohortes!.values) {
-      for (final a in lista) {
-        if (a.nombre.toLowerCase().contains(q)) {
-          encontrados.add(a);
-          if (encontrados.length >= limite) return encontrados;
-        }
+    if (cohortes.isEmpty) return null;
+
+    final resultado = await compute(
+      _primerAlumnoPorNombre,
+      _PeticionBusqueda(cohortes, minuscula),
+      debugLabel: etiquetaIsolateDeBusqueda,
+    );
+    ultimoIsolateDeBusqueda = resultado.isolate;
+    return resultado.alumno;
+  }
+}
+
+/// Lo que viaja al isolate: los bytes ya leídos y el texto que se busca.
+class _PeticionBusqueda {
+  const _PeticionBusqueda(this.cohortes, this.minuscula);
+
+  final List<Uint8List> cohortes;
+  final String minuscula;
+}
+
+/// Lo que vuelve del isolate: la coincidencia y dónde se ejecutó.
+class _ResultadoBusqueda {
+  const _ResultadoBusqueda(this.alumno, this.isolate);
+
+  final Alumno? alumno;
+  final String isolate;
+}
+
+/// Corre en un isolate aparte (`compute`), nunca en el de la interfaz.
+///
+/// No construye la lista completa de alumnos: solo el que coincide, para no
+/// retener los 318 mil en memoria mientras la persona escribe.
+_ResultadoBusqueda _primerAlumnoPorNombre(_PeticionBusqueda peticion) {
+  final isolate = Isolate.current.debugName ?? '';
+  for (final bytes in peticion.cohortes) {
+    final texto = utf8.decode(
+      GZipDecoder().decodeBytes(bytes),
+      allowMalformed: true,
+    );
+    for (final linea in texto.split('\n')) {
+      if (linea.isEmpty) continue;
+      final corte = linea.indexOf('\t');
+      if (corte <= 0) continue;
+      final nombre = linea.substring(corte + 1).trim();
+      if (nombre.isEmpty) continue;
+      if (nombre.toLowerCase().contains(peticion.minuscula)) {
+        return _ResultadoBusqueda(
+          Alumno(nombre: nombre, matricula: linea.substring(0, corte)),
+          isolate,
+        );
       }
     }
-    return encontrados;
   }
+  return _ResultadoBusqueda(null, isolate);
 }
 
 /// Detecta si un texto parece una matrícula de la BUAP (9 dígitos, cohorte 2020+).
