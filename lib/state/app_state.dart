@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/models.dart';
+import 'notas_state.dart';
 
 /// Estado global de la app: quién es el alumno, en qué unidad está, qué
 /// modalidad eligió y hasta dónde llegó.
@@ -26,6 +27,13 @@ class AppState extends ChangeNotifier {
   }
 
   final SharedPreferences _prefs;
+
+  /// Las notas que el alumno escribe en cada nivel.
+  ///
+  /// Vive aquí y no en las pantallas para que ambas compartan la misma
+  /// instancia: una nota escrita en el nivel se ve en el listado y sale en el
+  /// respaldo sin tener que releer las preferencias.
+  late final NotasState notas = NotasState(_prefs);
 
   // Claves de la versión 1. No se tocan.
   static const _kAlumno = 'alumno';

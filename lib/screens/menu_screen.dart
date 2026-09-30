@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../state/app_state.dart';
 import '../theme.dart';
+import 'backup_screen.dart';
 import 'contacts_screen.dart';
 import 'directory_screen.dart';
+import 'eligibility_screen.dart';
+import 'notes_screen.dart';
 import 'profile_screen.dart';
 
 /// El menú hamburguesa: el punto de entrada a todo lo que no es jugar.
@@ -80,6 +83,45 @@ class MenuScreen extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (_) => const DirectoryScreen()),
+            ),
+          ),
+          const SizedBox(height: 10),
+          _item(
+            context,
+            icon: Icons.rule_folder_outlined,
+            titulo: '¿Cuál modalidad me corresponde?',
+            subtitulo: 'Tu promedio y tus créditos contra los requisitos reales',
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => EligibilityScreen(state: state),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          _item(
+            context,
+            icon: Icons.sticky_note_2_outlined,
+            titulo: 'Mis notas',
+            subtitulo: 'Lo que te falta en cada nivel, anotado por ti',
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => NotesScreen(state: state, notas: state.notas),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          _item(
+            context,
+            icon: Icons.save_alt,
+            titulo: 'Respaldar mi avance',
+            subtitulo: 'Guarda o recupera tu avance y tus notas en un archivo',
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => BackupScreen(state: state, notas: state.notas),
+              ),
             ),
           ),
           const SizedBox(height: 10),

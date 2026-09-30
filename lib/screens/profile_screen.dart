@@ -7,11 +7,86 @@ import '../theme.dart';
 import 'contacts_screen.dart';
 import 'register_screen.dart';
 
+/// Una fila de "Mi progreso".
+///
+/// El [id] es el que guardó el avance, no el de la ruta base global: si no,
+/// el perfil marcaría cero en todo lo que el alumno sí completó.
+class _FilaProgreso {
+  const _FilaProgreso({
+    required this.id,
+    required this.nombre,
+    required this.total,
+    this.nota = '',
+  });
+
+  final String id;
+  final String nombre;
+  final int total;
+
+  /// Por qué esta modalidad no se puede jugar, cuando es el caso.
+  final String nota;
+}
+
+/// Lo que el alumno ve en "Mi progreso", ya resuelto contra su unidad.
+class _Progreso {
+  const _Progreso({required this.filas, required this.mensaje});
+
+  final List<_FilaProgreso> filas;
+  final String mensaje;
+}
+
 /// Perfil del alumno: sus datos, su facultad, su progreso y su progreso total.
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.state});
 
   final AppState state;
+
+  /// Arma las filas con las modalidades que publica la unidad del alumno.
+  ///
+  /// Sin unidad elegida se cae al catálogo global, que es lo único honesto que
+  /// hay que mostrar: rutas de otras unidades no se atribuyen a este alumno.
+  Future<_Progreso> _progreso(ContentRepository repo) async {
+    final clave = state.facultadClave;
+    if (clave != null && clave.isNotEmpty) {
+      final oferta = await repo.ofertaDeUnidad(clave);
+      return _Progreso(
+        filas: [
+          for (final r in oferta.rutas)
+            _FilaProgreso(
+              id: r.id,
+              nombre: r.nombre,
+              total: r.ruta.ruta.nivelesJugables.length,
+            ),
+          for (final m in oferta.informativas)
+            _FilaProgreso(
+              id: '',
+              nombre: m.nombre,
+              total: 0,
+              nota: 'Publicada por tu unidad, sin ruta jugable: ${m.motivo}',
+            ),
+        ],
+        mensaje: oferta.vacia
+            ? (oferta.existe
+                  ? oferta.mensajeSinCatalogo
+                  : 'No encontramos el catálogo de $clave en el catálogo de la BUAP.')
+            : '',
+      );
+    }
+    final rutas = await repo.rutas();
+    return _Progreso(
+      filas: [
+        for (final r in rutas)
+          _FilaProgreso(
+            id: r.id,
+            nombre: r.nombre,
+            total: r.nivelesJugables.length,
+          ),
+      ],
+      mensaje: rutas.isEmpty
+          ? 'Elige tu unidad académica para ver las modalidades que publica.'
+          : '',
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +95,11 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(title: const Text('Mi perfil')),
-      body: FutureBuilder<List<Ruta>>(
-        future: repo.rutas(),
+      body: FutureBuilder<_Progreso>(
+        future: _progreso(repo),
         builder: (context, snapshot) {
-          final rutas = snapshot.data ?? const <Ruta>[];
+          final progreso = snapshot.data;
+          final filas = progreso?.filas ?? const <_FilaProgreso>[];
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
@@ -108,12 +184,18 @@ class ProfileScreen extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               const SizedBox(height: 10),
-              if (rutas.isEmpty)
+              if (snapshot.connectionState == ConnectionState.waiting)
                 const Text('Cargando rutas…', style: TextStyle(color: Colors.white70))
+              else if (filas.isEmpty)
+                Text(
+                  progreso?.mensaje.isNotEmpty == true
+                      ? progreso!.mensaje
+                      : 'Tu unidad no publica modalidades todavía.',
+                  style: const TextStyle(color: Colors.white70),
+                )
               else
-                ...rutas.map((r) {
-                  final total = r.nivelesJugables.length;
-                  final p = state.progresoDe(r.id, total);
+                ...filas.map((r) {
+                  final p = state.progresoDe(r.id, r.total);
                   final hechos = state.completadosDe(r.id).length;
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),
@@ -131,26 +213,36 @@ class ProfileScreen extends StatelessWidget {
                                     style: const TextStyle(fontWeight: FontWeight.w600),
                                   ),
                                 ),
-                                Text(
-                                  '$hechos/$total',
-                                  style: const TextStyle(
-                                    color: LoboColors.gold,
-                                    fontWeight: FontWeight.bold,
+                                if (r.total > 0)
+                                  Text(
+                                    '$hechos/${r.total}',
+                                    style: const TextStyle(
+                                      color: LoboColors.gold,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
-                                ),
                               ],
                             ),
                             const SizedBox(height: 8),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(4),
-                              child: LinearProgressIndicator(
-                                value: p,
-                                minHeight: 7,
-                                backgroundColor: Colors.white24,
-                                valueColor:
-                                    const AlwaysStoppedAnimation(LoboColors.gold),
+                            if (r.total > 0)
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(4),
+                                child: LinearProgressIndicator(
+                                  value: p,
+                                  minHeight: 7,
+                                  backgroundColor: Colors.white24,
+                                  valueColor:
+                                      const AlwaysStoppedAnimation(LoboColors.gold),
+                                ),
+                              )
+                            else
+                              Text(
+                                r.nota,
+                                style: const TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 12.5,
+                                ),
                               ),
-                            ),
                           ],
                         ),
                       ),

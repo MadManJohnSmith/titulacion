@@ -147,7 +147,10 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
 
     // El pergamino del diseño va **detrás** del texto, no en vez de él: los
     // SVG de marco son ilustración, y el título y la descripción tienen que
-    // seguir siendo texto real para que se puedan leer y traducir.
+    // seguir siendo texto real para que se puedan leer y traducir. El papel va
+    // dentro del mismo contenedor que el texto: un Container sin hijo dentro de
+    // un Stack se encoge a su padding y tapa media línea en vez de hacer de
+    // fondo.
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -166,7 +169,7 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
         // no queda sobre un hueco.
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 26),
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           decoration: BoxDecoration(
             color: LoboColors.parchment,
             borderRadius: BorderRadius.circular(20),
@@ -178,9 +181,6 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
               ),
             ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 30),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

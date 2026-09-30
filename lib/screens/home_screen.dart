@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 Text(
-                  'Catálogo ${_oferta!.estadoExplicado} · corte ${_oferta!.fechaCorte}',
+                  '${_oferta!.estadoExplicado} · corte ${_oferta!.fechaCorte}',
                   style: const TextStyle(color: Colors.white54, fontSize: 12),
                 ),
               ],

@@ -36,11 +36,20 @@ en tu dispositivo.
 
 | Tu ruta | Mapa de niveles | Detalle del nivel |
 |:---:|:---:|:---:|
-| ![Pergamino](screenshots/ruta_pergamino.png) | ![Mapa](screenshots/mapa.png) | ![Nivel](screenshots/nivel.png) |
+| ![Pergamino](screenshots/ruta_modalidad.png) | ![Mapa](screenshots/mapa.png) | ![Nivel](screenshots/nivel_detalle.png) |
+
+| Requisitos y fuente | ¿Cuál me corresponde? | Respaldo |
+|:---:|:---:|:---:|
+| ![Requisitos](screenshots/ruta_fuente.png) | ![Calculadora](screenshots/calculadora.png) | ![Respaldo](screenshots/respaldo.png) |
+
+| Tus notas | Menú |
+|:---:|:---:|
+| ![Notas](screenshots/notas.png) | ![Menú](screenshots/menu.png) |
 
 <p align="center">
   <img src="screenshots/perfil.png" alt="Perfil con tu avance" width="260"/><br/>
-  <em>Tu perfil guarda la facultad elegida y el avance de cada ruta.</em>
+  <em>Tu perfil guarda la facultad elegida y el avance de cada modalidad que
+  publica tu unidad.</em>
 </p>
 
 ## 🗺️ ¿Cómo funciona?
@@ -66,6 +75,11 @@ en tu dispositivo.
 6. **Completas cada nivel** — pasos explicados uno por uno y una lista de
    documentos para marcar como recogidos. Al terminar todos los niveles, tu
    expediente está listo.
+7. **Si no sabes cuál te toca** — el apartado *«¿Cuál modalidad me
+   corresponde?»* compara tu promedio y tus créditos contra los requisitos que
+   publica tu unidad y te dice qué se cumple, qué no y **qué no se puede
+   confirmar** con lo que capturaste. Nunca decide por ti: cada respuesta trae
+   el enlace oficial y la fecha con la que se comparó.
 
 ## ✨ Características
 
@@ -82,6 +96,11 @@ en tu dispositivo.
 - 📇 **Directorio BUAP**: búsqueda de 43,025 trabajadores por nombre o
   matrícula.
 - ☎️ **Contactos y enlaces útiles**: DAE, CGAU, trámites en línea.
+- 🧮 **Calculadora de elegibilidad**: tu promedio y tus créditos contra los
+  requisitos reales de cada modalidad de tu unidad, con «por confirmar» donde la
+  unidad no publica el dato.
+- 🗒️ **Tus notas y tu respaldo**: anotas lo que falta y exportas/importas tu
+  avance en un archivo, para no perderlo si cambias de teléfono.
 - 🔒 **Privado por diseño**: sin servidor, sin cuenta, sin analítica. Nada
   sale de tu teléfono. [Detalles de privacidad](docs/PRIVACIDAD.md).
 

@@ -7,6 +7,7 @@ import 'package:titulacion/main.dart';
 import 'package:titulacion/models/models.dart';
 import 'package:titulacion/screens/contacts_screen.dart';
 import 'package:titulacion/screens/home_screen.dart';
+import 'package:titulacion/screens/menu_screen.dart';
 import 'package:titulacion/services/content_repository.dart';
 import 'package:titulacion/state/app_state.dart';
 
@@ -93,10 +94,11 @@ void main() {
     expect(state.estaRegistrado, isTrue);
     expect(state.facultadClave, 'FADMON');
     expect(find.text('Elige tu modalidad de titulación'), findsOneWidget);
-    expect(
-      find.textContaining('Catálogo Sin catálogo publicado'),
-      findsOneWidget,
-    );
+    // Una unidad que no publica catálogo lo dice, en vez de dejar la pantalla
+    // vacía o de inventar modalidades. El texto NO lleva la palabra
+    // "Catálogo" delante: se repite, porque el estado ya lo dice.
+    expect(find.textContaining('Sin catálogo publicado'), findsOneWidget);
+    expect(find.textContaining('Catálogo Catálogo'), findsNothing);
   });
 
   testWidgets('una unidad sin catálogo no deja la pantalla vacía', (
@@ -390,8 +392,11 @@ void main() {
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.reset);
     final state = await estadoLimpio();
-    await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FING');
-    await state.completarNivel('promedio', 1);
+    await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FCC');
+    // El avance se guarda bajo la modalidad que la unidad compone, que es el
+    // mismo id que usan el mapa y el detalle del nivel.
+    await state.elegirModalidad('tesis-fcc', 'tesis');
+    await state.completarNivel('tesis-fcc', 1);
 
     await tester.pumpWidget(MaterialApp(home: HomeScreen(state: state)));
     await tester.pumpAndSettle();
@@ -400,8 +405,95 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('Mi progreso'), findsOneWidget);
-    // La ruta de promedio tiene 7 niveles jugables; con 1 completado, 1/7.
-    expect(find.text('1/7'), findsOneWidget);
+    final compuesta = await ContentRepository.instance.rutaCompuestaPorModalidad(
+      'tesis-fcc',
+    );
+    final total = compuesta!.totalNiveles;
+    // Con un nivel completado, el perfil lo tiene que mostrar.
+    expect(find.text('1/$total'), findsOneWidget);
+  });
+
+  testWidgets(
+    'el perfil lista las modalidades que publica la unidad del alumno',
+    (tester) async {
+      tester.view.physicalSize = const Size(1080, 4000);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      final state = await estadoLimpio();
+      await state.registrar(
+        const AlumnoFixture().alumno,
+        facultadClave: 'FING',
+      );
+
+      await tester.pumpWidget(MaterialApp(home: HomeScreen(state: state)));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.person));
+      await tester.pumpAndSettle();
+
+      final oferta = await ContentRepository.instance.ofertaDeUnidad('FING');
+      for (final r in oferta.rutas) {
+        expect(find.text(r.nombre), findsOneWidget);
+      }
+      // El catálogo global no es de esta unidad: sus rutas no se le atribuyen.
+      final global = await ContentRepository.instance.rutas();
+      final nombresDeFING = oferta.rutas.map((r) => r.nombre).toSet();
+      for (final g in global) {
+        if (nombresDeFING.contains(g.nombre)) continue;
+        expect(find.text(g.nombre), findsNothing);
+      }
+    },
+  );
+
+  testWidgets('el menú abre todo lo que la app promises', (tester) async {
+    tester.view.physicalSize = const Size(1080, 3200);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final state = await estadoLimpio();
+    await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FCC');
+    await state.elegirModalidad('tesis-fcc', 'tesis');
+
+    await tester.pumpWidget(MaterialApp(home: MenuScreen(state: state)));
+    await tester.pumpAndSettle();
+
+    // Ninguna de estas pantallas puede quedar sin puerta de entrada.
+    const entradas = <String, String>{
+      'Mis notas': 'Mis notas por nivel',
+      'Respaldar mi avance': 'Respaldo de mi avance',
+    };
+    for (final entrada in entradas.keys) {
+      expect(find.text(entrada), findsOneWidget, reason: 'falta $entrada en el menú');
+      await tester.tap(find.text(entrada));
+      await tester.pumpAndSettle();
+      expect(
+        find.text(entradas[entrada]!),
+        findsOneWidget,
+        reason: '$entrada no abrió su pantalla',
+      );
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+    }
+  });
+
+  testWidgets('el perfil sin unidad elegida cae al catálogo global', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(1080, 4000);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final state = await estadoLimpio();
+
+    await tester.pumpWidget(MaterialApp(home: HomeScreen(state: state)));
+    await tester.pumpAndSettle();
+    await tester.tap(find.byIcon(Icons.person));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Mi progreso'), findsOneWidget);
+    final rutas = await ContentRepository.instance.rutas();
+    expect(rutas, isNotEmpty);
+    // Sin unidad no hay a quién atribuirle un catálogo: se muestra el global.
+    for (final r in rutas) {
+      expect(find.text(r.nombre), findsOneWidget);
+    }
   });
 
   testWidgets(
