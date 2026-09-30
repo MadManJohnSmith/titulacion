@@ -95,6 +95,12 @@ avance (niveles completados y documentos marcados, de todas las modalidades) y
 tus notas. Después de eso la app queda como recién instalada, así que la
 siguiente persona que se registre en ese teléfono empieza en cero y no ve nada
 de la anterior.
+**Registrar a otra persona no borra lo anterior**: el avance y las notas se
+guardan por modalidad y no por persona, así que si registras a otra persona en
+la misma unidad y elige la misma modalidad, verá los niveles completados, los
+documentos marcados y las notas que había. La app te avisa antes de cambiar el
+registro y te recuerda la salida: **Cerrar sesión**. Desinstalar la app borra
+todo, también lo de la otra persona.
 
 Lo que **no** se borra con ese botón es el contenido de la propia app
 (catálogo, rutas, padrón de alumnos y directorio), porque no es dato personal

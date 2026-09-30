@@ -189,9 +189,60 @@ class _RegisterScreenState extends State<RegisterScreen> {
               plan: _plan.text.trim(),
               anioIngreso: int.tryParse(_anio.text.trim()),
             );
+    // El avance y las notas se guardan por modalidad, no por persona: registrar
+    // a otra persona en este teléfono no borra nada de la anterior, solo deja de
+    // mostrar su oferta. Por eso se avisa antes, con la salida que sí limpia.
+    if (_esOtraPersona(alumno)) {
+      final continuar = await _advertirDatosDeOtraPersona();
+      if (continuar != true) return;
+    }
     await widget.state.registrar(alumno, facultadClave: facultad);
     if (!mounted) return;
     Navigator.of(context).popUntil((r) => r.isFirst);
+  }
+
+  /// ¿Lo que se va a registrar es otra persona que la que ya está en el
+  /// teléfono? Usa la misma regla que [AppState.registrar], para que el aviso y
+  /// el comportamiento nunca discrepen.
+  bool _esOtraPersona(Alumno alumno) {
+    final previo = widget.state.alumno;
+    if (previo == null) return false;
+    return previo.matricula != alumno.matricula ||
+        previo.nombre != alumno.nombre;
+  }
+
+  /// Aviso antes de registrar a otra persona: lo que queda en el teléfono, de
+  /// quién es, y el único botón que lo borra.
+  Future<bool?> _advertirDatosDeOtraPersona() {
+    final previo = widget.state.alumno!;
+    final quien = previo.nombre.trim().isEmpty
+        ? 'la persona que estaba registrada'
+        : previo.nombre.trim();
+    return showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Vas a registrar a otra persona'),
+        content: Text(
+          'El avance (niveles completados y documentos marcados) y las notas '
+          'de $quien siguen guardados en este teléfono: registrarse otra vez no '
+          'los borra. Si esa persona elige una modalidad, los verá como si '
+          'fueran suyos.\n\n'
+          'En un teléfono compartido, cierra la sesión antes: Menú → Mi perfil '
+          '→ Cerrar sesión borra el registro, la unidad, el avance de todas las '
+          'modalidades y las notas.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('Cancelar'),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(context).pop(true),
+            child: const Text('Registrar de todos modos'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override

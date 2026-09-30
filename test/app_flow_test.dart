@@ -864,6 +864,12 @@ void main() {
         await tester.pumpAndSettle();
         await tester.tap(find.text('Continuar como invitado'));
         await tester.pumpAndSettle();
+        // F-12: se está registrando a otra persona en este mismo teléfono, así
+        // que el registro avisa antes de seguir (el avance y las notas de la
+        // anterior se conservan y solo se borran con "Cerrar sesión").
+        expect(find.text('Vas a registrar a otra persona'), findsOneWidget);
+        await tester.tap(find.text('Registrar de todos modos'));
+        await tester.pumpAndSettle();
 
         // La unidad guardada es la nueva...
         expect(state.facultadClave, 'FCCOM');

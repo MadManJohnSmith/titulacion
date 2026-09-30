@@ -570,7 +570,24 @@ class _HomeScreenState extends State<HomeScreen> {
       );
       return;
     }
-    final ruta = await _repo.rutaEfectivaPorId(rutaActiva);
+    Ruta? ruta;
+    try {
+      ruta = await _repo.rutaEfectivaPorId(rutaActiva);
+    } catch (e) {
+      // El catálogo no llegó (asset ausente o ilegible). Antes la excepción se
+      // escapaba suelta del manejador de pulsaciones y el botón no respondía
+      // nada; ahora se dice, como ya hacen contactos, directorio y registro.
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'No se pudo abrir el mapa: esta app no pudo leer su catálogo '
+            '($e).',
+          ),
+        ),
+      );
+      return;
+    }
     if (!mounted) return;
     if (ruta == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -583,10 +600,13 @@ class _HomeScreenState extends State<HomeScreen> {
       );
       return;
     }
+    // `final` local: una variable normal no se promueve dentro del closure del
+    // builder, y `MapScreen` exige una `Ruta`, no una `Ruta?`.
+    final rutaResuelta = ruta;
     await Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => MapScreen(ruta: ruta, state: widget.state),
+        builder: (_) => MapScreen(ruta: rutaResuelta, state: widget.state),
       ),
     );
   }

@@ -302,13 +302,23 @@ Future<InformeRespaldo> restaurarRespaldo({
   } else if (clave == null) {
     informe.avisos.add('El respaldo no trae unidad académica: no se registró.');
   } else {
-    final facultad = await repo.facultadPorClave(clave);
-    if (facultad == null) {
+    var catalogoLegible = true;
+    var unidadValida = false;
+    try {
+      unidadValida = await repo.facultadPorClave(clave) != null;
+    } catch (e) {
+      catalogoLegible = false;
+      informe.avisos.add(
+        'No se pudo leer el catálogo de esta app ($e): no se registró al alumno '
+        'del respaldo.',
+      );
+    }
+    if (catalogoLegible && !unidadValida) {
       informe.avisos.add(
         'La unidad "$clave" no existe en el catálogo de esta app: no se '
         'registró el alumno.',
       );
-    } else {
+    } else if (catalogoLegible) {
       await state.registrar(
         Alumno(
           nombre: a.nombre,
@@ -335,11 +345,21 @@ Future<InformeRespaldo> restaurarRespaldo({
     informe.aplicados.add('Contexto académico (carrera, plan, cohorte).');
   }
 
-  // 3. Oferta activa, solo si la modalidad sigue existiendo en el catálogo.
+  // 3. Oferta activa: la modalidad del respaldo o, si no trae, la ruta global
+  //    de la que viene su avance.
   final modalidad = respaldo.modalidadActiva;
   if (modalidad != null) {
     final base = respaldo.rutaActivaBase;
-    final existe = await _modalidadExiste(repo, modalidad);
+    final bool existe;
+    try {
+      existe = await _modalidadExiste(repo, modalidad);
+    } catch (e) {
+      informe.avisos.add(
+        'No se pudo leer el catálogo de esta app ($e): no se seleccionó la '
+        'modalidad del respaldo.',
+      );
+      return _cerrar(informe, state, notas, respaldo);
+    }
     if (!existe) {
       informe.avisos.add(
         'La modalidad "$modalidad" ya no está en el catálogo de esta app: no se '
@@ -354,6 +374,42 @@ Future<InformeRespaldo> restaurarRespaldo({
       await state.elegirModalidad(modalidad, base);
       informe.aplicados.add('Modalidad $modalidad sobre la ruta $base.');
     }
+  } else if (respaldo.rutaActiva != null && state.rutaActiva == null) {
+    // Respaldo heredado de la versión 1: no trae modalidad, y su avance vive en
+    // el espacio de nombres de la ruta global (el propio `rutaId`). La única
+    // forma de que ese espacio coincida con el de la oferta activa es activar
+    // esa ruta, y eso sí es una operación real del estado
+    // ([AppState.elegirRuta]); antes esta rama no existía y el respaldo quedaba
+    // sin salida: el paso 4 solo sabía pedir una modalidad que el respaldo no
+    // traía y que la interfaz tampoco deja elegir.
+    //
+    // Solo cuando el teléfono **no** tiene oferta activa. Si ya tiene una
+    // abierta, la app no se la cambia por sorpresa al pegar un respaldo: esa es
+    // la regla de F-02, y el desajuste lo explica el paso 4.
+    final rutaId = respaldo.rutaActiva!;
+    final bool existe;
+    try {
+      existe = await _rutaExiste(repo, rutaId);
+    } catch (e) {
+      informe.avisos.add(
+        'No se pudo leer el catálogo de esta app ($e): no se activó la ruta '
+        'global del respaldo.',
+      );
+      return _cerrar(informe, state, notas, respaldo);
+    }
+    if (!existe) {
+      informe.avisos.add(
+        'El respaldo viene sin modalidad y su ruta global "$rutaId" no está en '
+        'el catálogo de esta app: no se seleccionó oferta ni se restauró su '
+        'avance.',
+      );
+    } else {
+      await state.elegirRuta(rutaId);
+      informe.aplicados.add(
+        'Ruta global $rutaId activada: el respaldo no trae modalidad y su '
+        'avance pertenece a esa ruta.',
+      );
+    }
   }
 
   // 4. Avance de la oferta activa. Solo suma: la API pública no permite quitar.
@@ -361,9 +417,17 @@ Future<InformeRespaldo> restaurarRespaldo({
   if (rutaActiva == null) {
     if (respaldo.nivelesCompletados.isNotEmpty ||
         respaldo.documentosMarcados.isNotEmpty) {
+      // El aviso dice lo que pasó, no lo que había que hacer: pedir "elige una
+      // modalidad y vuelve a pegar el respaldo" era la mitad del defecto, porque
+      // repetir el paso no podía cambiar el resultado (si la modalidad del
+      // respaldo se puede elegir, el paso 3 ya la eligió).
       informe.avisos.add(
-        'El respaldo trae avance pero no hay oferta activa: elige una '
-        'modalidad y vuelve a pegar el respaldo.',
+        modalidad == null
+            ? 'El respaldo trae avance pero no hay oferta activa y su ruta no '
+                  'se pudo activar: no se escribió ningún nivel ni documento.'
+            : 'El respaldo trae avance pero no hay oferta activa (la modalidad '
+                  'del respaldo no se pudo seleccionar): no se escribió ningún '
+                  'nivel ni documento.',
       );
     }
   } else {
@@ -381,9 +445,14 @@ Future<InformeRespaldo> restaurarRespaldo({
             ? 'El respaldo no declara el espacio de nombres de su avance, así '
                   'que no se puede comprobar que sea de la oferta activa '
                   '("$nsActiva"): no se escribió ningún nivel ni documento.'
-            : 'El avance del respaldo es de "$nsRespaldo" y la oferta activa usa '
-                  '"$nsActiva": no se escribió nada para no mezclar dos avances. '
-                  'Elige la modalidad del respaldo y vuelve a pegarlo.',
+            : modalidad == null
+                ? 'El respaldo viene sin modalidad y su avance es de la ruta '
+                      'global "$nsRespaldo", que no es la oferta activa '
+                      '("$nsActiva"): no se escribió nada para no mezclar dos '
+                      'avances.'
+                : 'El avance del respaldo es de "$nsRespaldo" y la oferta activa usa '
+                      '"$nsActiva": no se escribió nada para no mezclar dos avances. '
+                      'Elige la modalidad del respaldo y vuelve a pegarlo.',
       );
     } else {
       var niveles = 0;
@@ -418,7 +487,20 @@ Future<InformeRespaldo> restaurarRespaldo({
     }
   }
 
-  // 5. Notas.
+  return _cerrar(informe, state, notas, respaldo);
+}
+
+/// Los pasos 5 y 6 (notas y avisos del respaldo de origen), compartidos por
+/// todas las salidas: las notas no dependen de que la oferta se haya podido
+/// activar, y es exactamente eso lo que el
+/// hallazgo F-10 reprocha: el aviso solo hablaba del avance y las notas si se
+/// escribían.
+Future<InformeRespaldo> _cerrar(
+  InformeRespaldo informe,
+  AppState state,
+  NotasState notas,
+  RespaldoAlumno respaldo,
+) async {
   final escritas = await notas.aplicarDesdeRespaldo(respaldo.notas);
   if (escritas > 0) {
     informe.aplicados.add('$escritas notas escritas.');
@@ -432,6 +514,16 @@ Future<InformeRespaldo> restaurarRespaldo({
     }
   }
   return informe;
+}
+
+/// ¿El catálogo todavía publica esa ruta global de la versión 1?
+Future<bool> _rutaExiste(ContentRepository repo, String rutaId) async {
+  try {
+    await repo.rutaPorId(rutaId);
+    return true;
+  } on StateError {
+    return false;
+  }
 }
 
 Future<bool> _modalidadExiste(ContentRepository repo, String modalidadId) async {
@@ -480,6 +572,11 @@ class _BackupScreenState extends State<BackupScreen> {
   InformeRespaldo? _informe;
   bool _ocupado = false;
 
+  /// Lo que pasó al resolver la oferta activa. Antes la excepción se escapaba de
+  /// `initState` y `_niveles` se quedaba en `null` sin que nadie lo dijera: el
+  /// respaldo salía sin los documentos marcados y sin una palabra de por qué.
+  String _errorRuta = '';
+
   @override
   void initState() {
     super.initState();
@@ -492,9 +589,27 @@ class _BackupScreenState extends State<BackupScreen> {
       if (mounted) setState(() => _niveles = null);
       return;
     }
-    final ruta = await _repo.rutaEfectivaPorId(id);
-    if (!mounted) return;
-    setState(() => _niveles = ruta?.niveles);
+    try {
+      final ruta = await _repo.rutaEfectivaPorId(id);
+      if (!mounted) return;
+      setState(() {
+        _niveles = ruta?.niveles;
+        _errorRuta = '';
+      });
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _niveles = null;
+        _errorRuta =
+            'No se pudieron cargar los niveles de tu oferta: $e. El respaldo '
+            'se puede copiar igual, pero sin los documentos marcados.';
+      });
+    }
+  }
+
+  Future<void> _reintentarRuta() async {
+    setState(() => _errorRuta = '');
+    await _cargarRuta();
   }
 
   String _construir() => construirRespaldo(
@@ -546,17 +661,55 @@ class _BackupScreenState extends State<BackupScreen> {
     final informe = _informe;
     if (informe == null || !informe.sePuedeRestaurar) return;
     setState(() => _ocupado = true);
-    final nuevo = await restaurarRespaldo(
-      state: widget.state,
-      notas: widget.notas,
-      respaldo: informe.respaldo!,
-      repo: _repo,
-    );
+    InformeRespaldo nuevo;
+    try {
+      nuevo = await restaurarRespaldo(
+        state: widget.state,
+        notas: widget.notas,
+        respaldo: informe.respaldo!,
+        repo: _repo,
+      );
+    } catch (e) {
+      // Nada se traga: si la restauración falla entera, el informe lo dice y
+      // los botones vuelven a estar disponibles.
+      nuevo = InformeRespaldo(
+        respaldo: informe.respaldo,
+        avisos: ['No se pudo restaurar el respaldo: $e'],
+      );
+    }
     if (!mounted) return;
     setState(() {
       _informe = nuevo;
       _ocupado = false;
     });
+  }
+
+  /// Aviso de la carga de la oferta, con reintento. El respaldo se puede
+  /// copiar igual: `construirRespaldo` dice en su propio bloque que los
+  /// documentos marcados no viajan cuando no hay niveles.
+  Widget _avisoRuta() {
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color(0xFFE5735D).withValues(alpha: 0.15),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            _errorRuta,
+            style: const TextStyle(height: 1.4, fontSize: 13),
+          ),
+          const SizedBox(height: 10),
+          OutlinedButton.icon(
+            onPressed: _ocupado ? null : _reintentarRuta,
+            icon: const Icon(Icons.refresh),
+            label: const Text('Reintentar'),
+          ),
+        ],
+      ),
+    );
   }
 
   @override
@@ -578,6 +731,10 @@ class _BackupScreenState extends State<BackupScreen> {
             'sin enviarlo a ningún servidor.',
             style: TextStyle(height: 1.5, fontSize: 13),
           ),
+          if (_errorRuta.isNotEmpty) ...[
+            const SizedBox(height: 16),
+            _avisoRuta(),
+          ],
           const SizedBox(height: 16),
           FilledButton.icon(
             onPressed: _ocupado ? null : _exportar,
