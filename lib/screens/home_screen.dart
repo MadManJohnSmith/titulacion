@@ -418,9 +418,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _buildRutaCard(BuildContext context, RutaOferta oferta) {
     final state = widget.state;
     final ruta = oferta.ruta.ruta;
-    final total = ruta.nivelesJugables.length;
-    final progreso = state.progresoDe(oferta.id, total);
-    final siguiente = state.siguienteNivel(oferta.id, total);
+    final numeros = ruta.numerosJugables;
+    final total = numeros.length;
+    final progreso = state.progresoDe(oferta.id, numeros);
+    final siguiente = state.siguienteNivel(oferta.id, numeros);
     final nivelActual =
         ruta.nivelesJugables.where((n) => n.numero == siguiente).firstOrNull;
 

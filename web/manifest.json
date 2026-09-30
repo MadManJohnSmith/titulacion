@@ -1,11 +1,11 @@
 {
-    "name": "titulacion",
-    "short_name": "titulacion",
+    "name": "LoboApp",
+    "short_name": "LoboApp",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "background_color": "#0B233A",
+    "theme_color": "#0B233A",
+    "description": "Demo web de LoboApp: rutas, herramientas y orientación de la BUAP para el proceso de graduación.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

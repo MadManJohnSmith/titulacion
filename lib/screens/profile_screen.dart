@@ -15,13 +15,16 @@ class _FilaProgreso {
   const _FilaProgreso({
     required this.id,
     required this.nombre,
-    required this.total,
+    required this.numeros,
     this.nota = '',
   });
 
   final String id;
   final String nombre;
-  final int total;
+
+  /// Los números de los niveles jugables: el avance se cuenta sobre ellos, no
+  /// sobre su cantidad.
+  final List<int> numeros;
 
   /// Por qué esta modalidad no se puede jugar, cuando es el caso.
   final String nota;
@@ -55,13 +58,13 @@ class ProfileScreen extends StatelessWidget {
             _FilaProgreso(
               id: r.id,
               nombre: r.nombre,
-              total: r.ruta.ruta.nivelesJugables.length,
+              numeros: r.ruta.ruta.numerosJugables,
             ),
           for (final m in oferta.informativas)
             _FilaProgreso(
               id: '',
               nombre: m.nombre,
-              total: 0,
+              numeros: const [],
               nota: 'Publicada por tu unidad, sin ruta jugable: ${m.motivo}',
             ),
         ],
@@ -79,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
           _FilaProgreso(
             id: r.id,
             nombre: r.nombre,
-            total: r.nivelesJugables.length,
+            numeros: r.numerosJugables,
           ),
       ],
       mensaje: rutas.isEmpty
@@ -195,8 +198,9 @@ class ProfileScreen extends StatelessWidget {
                 )
               else
                 ...filas.map((r) {
-                  final p = state.progresoDe(r.id, r.total);
-                  final hechos = state.completadosDe(r.id).length;
+                  final p = state.progresoDe(r.id, r.numeros);
+                  final hechos =
+                      r.numeros.where((n) => state.estaCompletado(r.id, n)).length;
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),
                     child: Card(
@@ -213,9 +217,9 @@ class ProfileScreen extends StatelessWidget {
                                     style: const TextStyle(fontWeight: FontWeight.w600),
                                   ),
                                 ),
-                                if (r.total > 0)
+                                if (r.numeros.isNotEmpty)
                                   Text(
-                                    '$hechos/${r.total}',
+                                    '$hechos/${r.numeros.length}',
                                     style: const TextStyle(
                                       color: LoboColors.gold,
                                       fontWeight: FontWeight.bold,
@@ -224,7 +228,7 @@ class ProfileScreen extends StatelessWidget {
                               ],
                             ),
                             const SizedBox(height: 8),
-                            if (r.total > 0)
+                            if (r.numeros.isNotEmpty)
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(4),
                                 child: LinearProgressIndicator(

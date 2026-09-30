@@ -125,8 +125,9 @@ class MapScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final niveles = ruta.nivelesJugables;
-    final total = niveles.length;
-    final siguiente = state.siguienteNivel(ruta.id, total);
+    final numeros = ruta.numerosJugables;
+    final total = numeros.length;
+    final siguiente = state.siguienteNivel(ruta.id, numeros);
 
     // Cada isla se coloca a lo largo del mapa en zigzag, como en el diseño.
     final posiciones = <Alignment>[];
@@ -157,7 +158,7 @@ class MapScreen extends StatelessWidget {
           SafeArea(
             child: Column(
               children: [
-                _buildHeader(context, total, siguiente),
+                _buildHeader(context, numeros, siguiente),
                 Expanded(
                   child: Stack(
                     children: [
@@ -167,7 +168,7 @@ class MapScreen extends StatelessWidget {
                           child: LevelIsland(
                             fraccion: posiciones[i].y,
                             nivel: niveles[i],
-                            estado: _estadoDe(niveles[i].numero, siguiente),
+                            estado: _estadoDe(niveles[i].numero, siguiente, numeros),
                             onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -191,15 +192,17 @@ class MapScreen extends StatelessWidget {
     );
   }
 
-  LevelState _estadoDe(int numero, int siguiente) {
+  LevelState _estadoDe(int numero, int siguiente, List<int> numeros) {
     if (state.estaCompletado(ruta.id, numero)) return LevelState.hecho;
     if (numero == siguiente) return LevelState.actual;
-    if (state.nivelDesbloqueado(ruta.id, numero)) return LevelState.actual;
+    if (state.nivelDesbloqueado(ruta.id, numero, numeros)) {
+      return LevelState.actual;
+    }
     return LevelState.bloqueado;
   }
 
-  Widget _buildHeader(BuildContext context, int total, int siguiente) {
-    final progreso = state.progresoDe(ruta.id, total);
+  Widget _buildHeader(BuildContext context, List<int> numeros, int siguiente) {
+    final progreso = state.progresoDe(ruta.id, numeros);
     final nivelActual = ruta.nivelesJugables
         .where((n) => n.numero == siguiente)
         .firstOrNull;

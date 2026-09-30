@@ -465,18 +465,35 @@ class AppState extends ChangeNotifier {
   bool estaCompletado(String rutaId, int nivel) =>
       completadosDe(rutaId).contains(nivel);
 
-  /// El siguiente nivel por hacer: el menor número que no esté completado.
-  int siguienteNivel(String rutaId, int totalNiveles) {
+  /// El siguiente nivel por hacer: el menor **número jugable** sin completar.
+  ///
+  /// [numeros] son los números de los niveles jugables de la ruta (ver
+  /// `Ruta.numerosJugables`), no su cantidad. Antes se recibía el total, que
+  /// es la cantidad: con los niveles 1, 2 y 7 devolvía 3, un nivel que no
+  /// existe, y el mapa se quedaba sin "Siguiente" y con el 7 bloqueado para
+  /// siempre. Si la ruta ya está completa, devuelve el último número.
+  int siguienteNivel(String rutaId, List<int> numeros) {
+    final orden = List<int>.from(numeros)..sort();
+    if (orden.isEmpty) return 0;
     final hechos = completadosDe(rutaId).toSet();
-    for (var i = 1; i <= totalNiveles; i++) {
-      if (!hechos.contains(i)) return i;
+    for (final n in orden) {
+      if (!hechos.contains(n)) return n;
     }
-    return totalNiveles;
+    return orden.last;
   }
 
-  bool nivelDesbloqueado(String rutaId, int nivel) {
-    if (nivel <= 1) return true;
-    return estaCompletado(rutaId, nivel - 1);
+  /// ¿Se puede abrir [nivel]? El primer nivel jugable siempre; los demás,
+  /// cuando está completado el nivel jugable que lo precede en [numeros].
+  ///
+  /// Se compara contra el número anterior *de la lista* y no contra
+  /// [nivel] - 1: en una numeración con huecos, el nivel anterior puede no
+  /// existir, y mirar sucompletion dejaba el nivel bloqueado para siempre.
+  bool nivelDesbloqueado(String rutaId, int nivel, List<int> numeros) {
+    final orden = List<int>.from(numeros)..sort();
+    if (!orden.contains(nivel)) return false;
+    final previos = orden.where((n) => n < nivel).toList();
+    if (previos.isEmpty) return true;
+    return estaCompletado(rutaId, previos.last);
   }
 
   Future<void> completarNivel(String rutaId, int nivel) async {
@@ -515,9 +532,14 @@ class AppState extends ChangeNotifier {
   }
 
   /// Progreso 0..1 de una ruta, para la barra del mapa.
-  double progresoDe(String rutaId, int totalNiveles) {
-    if (totalNiveles == 0) return 0;
-    final hechos = completadosDe(rutaId).where((n) => n <= totalNiveles).length;
-    return (hechos / totalNiveles).clamp(0.0, 1.0);
+  ///
+  /// Cuenta los niveles jugables completados sobre los jugables que hay
+  /// ([numeros]). Antes se comparaba contra la cantidad, así que un nivel con
+  /// número mayor que el total no se contaba nunca y la barra no llegaba al
+  /// 100 % aunque el alumno lo hubiera terminado.
+  double progresoDe(String rutaId, List<int> numeros) {
+    if (numeros.isEmpty) return 0;
+    final hechos = numeros.where((n) => estaCompletado(rutaId, n)).length;
+    return (hechos / numeros.length).clamp(0.0, 1.0);
   }
 }

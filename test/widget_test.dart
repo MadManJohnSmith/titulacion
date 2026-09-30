@@ -101,6 +101,12 @@ void main() {
   group('Progreso', () {
     late AppState state;
 
+    // Los números de nivel, que no son la cantidad de niveles: el avance se
+    // calcula sobre ellos, así que las pruebas los pasan explícitamente.
+    final siete = <int>[1, 2, 3, 4, 5, 6, 7];
+    final ocho = <int>[1, 2, 3, 4, 5, 6, 7, 8];
+    final cinco = <int>[1, 2, 3, 4, 5];
+
     setUp(() async {
       SharedPreferences.setMockInitialValues({});
       state = AppState(await SharedPreferences.getInstance());
@@ -109,9 +115,9 @@ void main() {
     test(
       'sin progreso, el primer nivel es el siguiente y está desbloqueado',
       () {
-        expect(state.siguienteNivel('promedio', 7), 1);
-        expect(state.nivelDesbloqueado('promedio', 1), isTrue);
-        expect(state.nivelDesbloqueado('promedio', 2), isFalse);
+        expect(state.siguienteNivel('promedio', siete), 1);
+        expect(state.nivelDesbloqueado('promedio', 1, siete), isTrue);
+        expect(state.nivelDesbloqueado('promedio', 2, siete), isFalse);
       },
     );
 
@@ -119,16 +125,16 @@ void main() {
       await state.completarNivel('promedio', 1);
 
       expect(state.estaCompletado('promedio', 1), isTrue);
-      expect(state.siguienteNivel('promedio', 7), 2);
-      expect(state.nivelDesbloqueado('promedio', 2), isTrue);
-      expect(state.nivelDesbloqueado('promedio', 3), isFalse);
+      expect(state.siguienteNivel('promedio', siete), 2);
+      expect(state.nivelDesbloqueado('promedio', 2, siete), isTrue);
+      expect(state.nivelDesbloqueado('promedio', 3, siete), isFalse);
     });
 
     test('el progreso se calcula sobre el total de niveles', () async {
-      expect(state.progresoDe('ceneval', 8), 0);
+      expect(state.progresoDe('ceneval', ocho), 0);
       await state.completarNivel('ceneval', 1);
       await state.completarNivel('ceneval', 2);
-      expect(state.progresoDe('ceneval', 8), 0.25);
+      expect(state.progresoDe('ceneval', ocho), 0.25);
     });
 
     test('el progreso sobrevive a una recarga de la app', () async {
@@ -180,9 +186,9 @@ void main() {
       expect(() => s.completadosDe('tesis'), returnsNormally);
       expect(s.completadosDe('tesis'), isEmpty);
       expect(s.estaCompletado('tesis', 1), isFalse);
-      expect(s.siguienteNivel('tesis', 5), 1);
-      expect(s.nivelDesbloqueado('tesis', 2), isFalse);
-      expect(s.progresoDe('tesis', 5), 0);
+      expect(s.siguienteNivel('tesis', cinco), 1);
+      expect(s.nivelDesbloqueado('tesis', 2, cinco), isFalse);
+      expect(s.progresoDe('tesis', cinco), 0);
       expect(s.documentoMarcado('tesis', 1, 0), isFalse);
       expect(s.nivelesAMigrar('tesis'), 0);
       expect(s.migracionDisponible('tesis-fcc', 'tesis'), isFalse);
@@ -218,7 +224,7 @@ void main() {
 
       expect(s.completadosDe('tesis'), [2, 1]);
       expect(s.estaCompletado('tesis', 1), isTrue);
-      expect(s.siguienteNivel('tesis', 5), 3);
+      expect(s.siguienteNivel('tesis', cinco), 3);
       expect(s.documentoMarcado('tesis', 1, 0), isTrue);
       expect(s.migracionDisponible('tesis-fcc', 'tesis'), isTrue);
     });

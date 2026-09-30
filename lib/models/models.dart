@@ -996,6 +996,22 @@ class Ruta {
   List<Nivel> get nivelesJugables =>
       niveles.where((n) => !n.esInicio).toList(growable: false);
 
+  /// Los **números** de los niveles jugables, de menor a mayor.
+  ///
+  /// El número de un nivel y la cantidad de niveles no son lo mismo: una ruta
+  /// con los niveles 1, 2 y 7 tiene tres niveles jugables y su último número es
+  /// 7. Todo lo que progresa sobre la ruta usa esta lista, no
+  /// `nivelesJugables.length`, para que una numeración con huecos no deje
+  /// niveles bloqueados ni avance por debajo del total.
+  List<int> get numerosJugables {
+    final numeros = niveles
+        .where((n) => !n.esInicio)
+        .map((n) => n.numero)
+        .toList();
+    numeros.sort();
+    return numeros;
+  }
+
   /// Cita corta de la fuente de esta ruta, o la explicación de por qué no hay.
   String get citaFuente {
     if (fuenteBase.isNotEmpty) {
