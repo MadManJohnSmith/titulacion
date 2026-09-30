@@ -82,7 +82,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   /// Se consulta al vuelo para que el alumno sepa **antes** de entrar si su
   /// unidad publica modalidades o no: no hay sorpresas después.
   Future<void> _alElegirUnidad(String? clave) async {
-    setState(() => _facultad = clave);
+    setState(() {
+      _facultad = clave;
+      // El aviso de "elige tu unidad" ya no aplica si acaba de elegirla.
+      if (clave != null && clave.isNotEmpty &&
+          _error == 'Elige tu unidad académica para continuar.') {
+        _error = '';
+      }
+    });
     if (clave == null) {
       setState(() => _estadoCatalogoDe = '');
       return;
