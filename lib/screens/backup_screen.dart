@@ -403,8 +403,9 @@ Future<InformeRespaldo> restaurarRespaldo({
         // compara entero, no solo sus dos últimas partes.
         if (partes.sublist(0, partes.length - 2).join(':') != nsActiva) continue;
         if (state.documentoMarcado(rutaActiva, n, i)) continue;
-        // `alternarDocumento` es síncrono en AppState: no se espera.
-        state.alternarDocumento(rutaActiva, n, i);
+        // Se espera cada marca: sin esto el informe contaría documentos que
+        // todavía no están escritos y se perderían al cerrar la app.
+        await state.alternarDocumento(rutaActiva, n, i);
         docs++;
       }
       informe.aplicados.add(

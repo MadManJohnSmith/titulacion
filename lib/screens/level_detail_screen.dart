@@ -290,14 +290,17 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
-          onTap:
-              () => setState(() {
-                _state.alternarDocumento(
-                  widget.ruta.id,
-                  widget.nivel.numero,
-                  indice,
-                );
-              }),
+          onTap: () async {
+            // Primero se espera la escritura y después se repinta: la casilla
+            // que ve el alumno ya está en el disco cuando la muestra marcada.
+            await _state.alternarDocumento(
+              widget.ruta.id,
+              widget.nivel.numero,
+              indice,
+            );
+            if (!mounted) return;
+            setState(() {});
+          },
           child: Padding(
             padding: const EdgeInsets.all(12),
             child: Row(

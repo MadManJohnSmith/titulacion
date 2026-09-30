@@ -133,13 +133,94 @@ void main() {
 
     test('el progreso sobrevive a una recarga de la app', () async {
       await state.completarNivel('promedio', 1);
-      state.alternarDocumento('promedio', 1, 0);
+      await state.alternarDocumento('promedio', 1, 0);
 
       // Una instancia nueva lee lo que se guardó.
       final recargado = AppState(await SharedPreferences.getInstance());
 
       expect(recargado.estaCompletado('promedio', 1), isTrue);
       expect(recargado.documentoMarcado('promedio', 1, 0), isTrue);
+    });
+
+    test('marcar un documento espera a que quede escrito', () async {
+      // La API es asíncrona a propósito: la casilla marcada se anuncia cuando
+      // la marca ya está en el disco, no cuando solo está en memoria.
+      final pendiente = state.alternarDocumento('promedio', 1, 0);
+      expect(pendiente, isA<Future<void>>());
+      await pendiente;
+
+      final prefs = await SharedPreferences.getInstance();
+      final escrito = json.decode(prefs.getString('progreso')!) as Map;
+      expect((escrito['documentos'] as List).cast<String>(), contains('promedio:1:0'));
+
+      // Y otra instancia lo lee: nadie depende de un Future que nadie esperó.
+      final recargado = AppState(await SharedPreferences.getInstance());
+      expect(recargado.documentoMarcado('promedio', 1, 0), isTrue);
+
+      // Desmarcar también espera.
+      await recargado.alternarDocumento('promedio', 1, 0);
+      final otro = AppState(await SharedPreferences.getInstance());
+      expect(otro.documentoMarcado('promedio', 1, 0), isFalse);
+    });
+
+    test('un nivel que no es entero no llega a la interfaz', () async {
+      // `List.cast<int>()` es una vista perezosa: la carga pasaba y el fallo
+      // reventaba en mapa, perfil o notas. Con un nivel mezclado la app
+      // arranca en cero, como promete el comentario de la carga.
+      SharedPreferences.setMockInitialValues({
+        'progreso': json.encode({
+          'completados': {
+            'tesis': [1, '2'],
+          },
+          'documentos': ['tesis:1:0'],
+        }),
+      });
+      final s = AppState(await SharedPreferences.getInstance());
+
+      expect(() => s.completadosDe('tesis'), returnsNormally);
+      expect(s.completadosDe('tesis'), isEmpty);
+      expect(s.estaCompletado('tesis', 1), isFalse);
+      expect(s.siguienteNivel('tesis', 5), 1);
+      expect(s.nivelDesbloqueado('tesis', 2), isFalse);
+      expect(s.progresoDe('tesis', 5), 0);
+      expect(s.documentoMarcado('tesis', 1, 0), isFalse);
+      expect(s.nivelesAMigrar('tesis'), 0);
+      expect(s.migracionDisponible('tesis-fcc', 'tesis'), isFalse);
+      // Y la pantalla sigue funcionando: se puede volver a avanzar de verdad.
+      await s.completarNivel('tesis', 1);
+      expect(s.estaCompletado('tesis', 1), isTrue);
+      expect(AppState(await SharedPreferences.getInstance()).estaCompletado('tesis', 1), isTrue);
+    });
+
+    test('una clave de documento que no es texto tampoco llega', () async {
+      SharedPreferences.setMockInitialValues({
+        'progreso': json.encode({
+          'completados': <String, List<int>>{},
+          'documentos': ['tesis:1:0', 7],
+        }),
+      });
+      final s = AppState(await SharedPreferences.getInstance());
+
+      expect(() => s.documentoMarcado('tesis', 1, 0), returnsNormally);
+      expect(s.documentoMarcado('tesis', 1, 0), isFalse);
+    });
+
+    test('un progreso bien escrito se lee exactamente igual que antes', () async {
+      SharedPreferences.setMockInitialValues({
+        'progreso': json.encode({
+          'completados': {
+            'tesis': [2, 1],
+          },
+          'documentos': ['tesis:1:0'],
+        }),
+      });
+      final s = AppState(await SharedPreferences.getInstance());
+
+      expect(s.completadosDe('tesis'), [2, 1]);
+      expect(s.estaCompletado('tesis', 1), isTrue);
+      expect(s.siguienteNivel('tesis', 5), 3);
+      expect(s.documentoMarcado('tesis', 1, 0), isTrue);
+      expect(s.migracionDisponible('tesis-fcc', 'tesis'), isTrue);
     });
 
     test('registrar guarda el alumno y su facultad', () async {
@@ -687,7 +768,7 @@ void main() {
         facultadClave: 'FCC',
       );
       await state.completarNivel('tesis', 1);
-      state.alternarDocumento('tesis', 2, 0);
+      await state.alternarDocumento('tesis', 2, 0);
 
       await state.elegirModalidad('tesis-fcc', 'tesis');
       await state.migrarProgreso('tesis-fcc', 'tesis');

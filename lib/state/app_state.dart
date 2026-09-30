@@ -149,22 +149,69 @@ class AppState extends ChangeNotifier {
     if (progJson != null) {
       try {
         final map = json.decode(progJson) as Map<String, dynamic>;
-        _completados =
-            map['completados'] == null
-                ? <String, List<int>>{}
-                : (map['completados'] as Map<String, dynamic>).map(
-                  (k, v) => MapEntry(k, (v as List<dynamic>).cast<int>()),
-                );
-        _documentosMarcados =
-            ((map['documentos'] as List<dynamic>?) ?? [])
-                .cast<String>()
-                .toSet();
+        _completados = _leerCompletados(map['completados']);
+        _documentosMarcados = _leerDocumentos(map['documentos']);
       } catch (_) {
         // Progreso corrupto: la app arranca en cero en vez de no arrancar.
         _completados = {};
         _documentosMarcados = {};
       }
     }
+  }
+
+  /// Lee `completados` **validando cada elemento**.
+  ///
+  /// `List.cast<int>()` es una vista perezosa: no falla al construirla, falla
+  /// cuando el mapa, el perfil o las notas la recorren. Eso convertía un dato
+  /// local corrupto en una pantalla en rojo. Aquí se copia nivel por nivel y
+  /// cualquier valor que no sea un entero se rechaza en la carga, que es donde
+  /// el comentario de arriba promete que se corta.
+  static Map<String, List<int>> _leerCompletados(Object? bruto) {
+    if (bruto == null) return <String, List<int>>{};
+    if (bruto is! Map) {
+      throw FormatException('progreso.completados no es un mapa: $bruto');
+    }
+    final salida = <String, List<int>>{};
+    for (final entrada in bruto.entries) {
+      final clave = '${entrada.key}';
+      final valor = entrada.value;
+      if (valor is! List) {
+        throw FormatException(
+          'progreso.completados["$clave"] no es una lista de niveles: $valor',
+        );
+      }
+      final niveles = <int>[];
+      for (final nivel in valor) {
+        if (nivel is! int) {
+          throw FormatException(
+            'progreso.completados["$clave"] trae "$nivel", que no es un '
+            'nivel entero',
+          );
+        }
+        niveles.add(nivel);
+      }
+      salida[clave] = niveles;
+    }
+    return salida;
+  }
+
+  /// Lee `documentos` **validando cada elemento**, por la misma razón que
+  /// [_leerCompletados]: una clave que no es texto reventaría en `contains`.
+  static Set<String> _leerDocumentos(Object? bruto) {
+    if (bruto == null) return <String>{};
+    if (bruto is! List) {
+      throw FormatException('progreso.documentos no es una lista: $bruto');
+    }
+    final salida = <String>{};
+    for (final clave in bruto) {
+      if (clave is! String) {
+        throw FormatException(
+          'progreso.documentos trae "$clave", que no es una clave de texto',
+        );
+      }
+      salida.add(clave);
+    }
+    return salida;
   }
 
   /// Escribe el bloque `progreso` una sola vez, siempre con las tres claves.
@@ -451,12 +498,19 @@ class AppState extends ChangeNotifier {
   bool documentoMarcado(String rutaId, int nivel, int indice) =>
       _documentosMarcados.contains(_docKey(rutaId, nivel, indice));
 
-  void alternarDocumento(String rutaId, int nivel, int indice) {
+  /// Marca o desmarca un documento y **espera a que quede escrito**.
+  ///
+  /// Antes devolvía `void` y tiraba el `Future` de [_guardarProgreso]: quien la
+  /// llamaba no podía saber si la marca llegó al disco, y un fallo de
+  /// preferencias se convertía en una excepción suelta. Ahora es `Future<void>`
+  /// y todas las pantallas la esperan, así que lo que la interfaz da por hecho
+  /// escrito ya está escrito cuando lo dice.
+  Future<void> alternarDocumento(String rutaId, int nivel, int indice) async {
     final key = _docKey(rutaId, nivel, indice);
     if (!_documentosMarcados.remove(key)) {
       _documentosMarcados.add(key);
     }
-    _guardarProgreso();
+    await _guardarProgreso();
     notifyListeners();
   }
 

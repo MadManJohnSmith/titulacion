@@ -612,7 +612,7 @@ void main() {
       final s = await estadoDeAlumno('ARPA');
       await s.elegirModalidad('titulacion-automatica-arpa', 'promedio');
       await s.completarNivel('titulacion-automatica-arpa', 1);
-      s.alternarDocumento('titulacion-automatica-arpa', 2, 0);
+      await s.alternarDocumento('titulacion-automatica-arpa', 2, 0);
       final notas = NotasState(await SharedPreferences.getInstance());
       await notas.guardar('modalidad:titulacion-automatica-arpa', 2, 'falta la foto');
 
@@ -635,7 +635,7 @@ void main() {
       await origen.elegirModalidad('titulacion-automatica-arpa', 'promedio');
       await origen.completarNivel('titulacion-automatica-arpa', 1);
       await origen.completarNivel('titulacion-automatica-arpa', 2);
-      origen.alternarDocumento('titulacion-automatica-arpa', 3, 0);
+      await origen.alternarDocumento('titulacion-automatica-arpa', 3, 0);
       final notasOrigen = NotasState(await SharedPreferences.getInstance());
       await notasOrigen.guardar('modalidad:titulacion-automatica-arpa', 1, 'en la DAE');
 
@@ -814,7 +814,7 @@ void main() {
       await origen.completarNivel('promedio', 1);
       await origen.completarNivel('promedio', 2);
       await origen.completarNivel('promedio', 3);
-      origen.alternarDocumento('promedio', 1, 0);
+      await origen.alternarDocumento('promedio', 1, 0);
       final notasOrigen = NotasState(await SharedPreferences.getInstance());
       final rutaGlobal = await repo.rutaEfectivaPorId('promedio');
       final texto = construirRespaldo(

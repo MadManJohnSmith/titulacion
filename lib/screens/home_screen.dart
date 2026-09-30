@@ -17,6 +17,11 @@ import 'route_selection_screen.dart';
 ///
 /// Lo que la unidad no publica no se sustituye por la ruta genérica: se explica
 /// que no se encontró, con el rastro de las URLs revisadas y un contacto.
+///
+/// La lista sigue a la unidad: cuando el alumno cambia de unidad académica, la
+/// pantalla escucha a [AppState] y vuelve a leer el catálogo. Las modalidades de
+/// la unidad anterior no se quedan pintadas, y con ellas tampoco queda la
+/// tarjeta que las hacía elegibles.
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.state});
 
@@ -32,17 +37,65 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _cargando = true;
   String _error = '';
 
+  /// La unidad para la que se pintó [_oferta].
+  ///
+  /// Es lo que se compara cuando [AppState] avisa de un cambio: si la unidad ya
+  /// no es la misma, la lista se vuelve a leer. Sin esto, cambiar de unidad
+  /// dejaba en pantalla las modalidades de la anterior y sus tarjetas seguían
+  /// siendo elegibles.
+  String? _claveCargada;
+
+  /// Número de la lectura en curso. Si el alumno cambia de unidad dos veces
+  /// seguidas, solo se pinta la última: la respuesta lenta de la unidad
+  /// anterior ya no puede llegar después.
+  int _lectura = 0;
+
   @override
   void initState() {
     super.initState();
+    widget.state.addListener(_alCambiarElEstado);
     _cargar();
   }
 
+  @override
+  void didUpdateWidget(HomeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.state != widget.state) {
+      oldWidget.state.removeListener(_alCambiarElEstado);
+      widget.state.addListener(_alCambiarElEstado);
+      _cargar();
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.state.removeListener(_alCambiarElEstado);
+    super.dispose();
+  }
+
+  /// Recarga cuando cambia la unidad académica.
+  ///
+  /// El resto de los cambios (avance, modalidad activa) los trae el mismo
+  /// [AppState] y los pinta el rebuild que dispara quien lo escucha.
+  void _alCambiarElEstado() {
+    if (!mounted) return;
+    if (widget.state.facultadClave != _claveCargada) _cargar();
+  }
+
   Future<void> _cargar() async {
+    final lectura = ++_lectura;
     final clave = widget.state.facultadClave;
+    final cambiaDeUnidad = clave != _claveCargada;
+    if (cambiaDeUnidad && mounted && !_cargando) {
+      // Mientras se lee el catálogo nuevo no se pintan las tarjetas del
+      // anterior: son de otra unidad y no se pueden elegir.
+      setState(() => _cargando = true);
+    }
     if (clave == null || clave.isEmpty) {
+      if (!mounted || lectura != _lectura) return;
       setState(() {
         _oferta = null;
+        _claveCargada = clave;
         _cargando = false;
         _error = '';
       });
@@ -50,15 +103,18 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     try {
       final oferta = await _repo.ofertaDeUnidad(clave);
-      if (!mounted) return;
+      if (!mounted || lectura != _lectura) return;
       setState(() {
         _oferta = oferta;
+        _claveCargada = clave;
         _cargando = false;
         _error = '';
       });
     } catch (e) {
-      if (!mounted) return;
+      if (!mounted || lectura != _lectura) return;
       setState(() {
+        _oferta = null;
+        _claveCargada = clave;
         _cargando = false;
         _error = 'No se pudo leer el catálogo de tu unidad: $e';
       });

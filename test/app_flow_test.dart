@@ -726,7 +726,7 @@ void main() {
       await s.elegirModalidad('titulacion-automatica-arpa', 'promedio');
       await s.completarNivel('titulacion-automatica-arpa', 1);
       await s.completarNivel('titulacion-automatica-arpa', 2);
-      s.alternarDocumento('titulacion-automatica-arpa', 1, 0);
+      await s.alternarDocumento('titulacion-automatica-arpa', 1, 0);
       await s.guardarContexto(carreraId: 'INFORMATICA', anioIngreso: 2020);
       await s.notas.guardar(
         'modalidad:titulacion-automatica-arpa',
@@ -784,7 +784,7 @@ void main() {
       );
       await s.elegirModalidad('titulacion-automatica-arpa', 'promedio');
       await s.completarNivel('titulacion-automatica-arpa', 1);
-      s.alternarDocumento('titulacion-automatica-arpa', 1, 0);
+      await s.alternarDocumento('titulacion-automatica-arpa', 1, 0);
       await s.notas.guardar(
         'modalidad:titulacion-automatica-arpa',
         1,
@@ -822,6 +822,76 @@ void main() {
       expect(aviso, contains('tus notas'));
       expect(aviso, contains('empieza en cero'));
     });
+  });
+
+  // =====================================================================
+  // Cambio de unidad académica
+  // =====================================================================
+
+  group('cambio de unidad académica', () {
+    testWidgets(
+      'la portada recarga el catálogo y no deja elegir modalidades de la unidad anterior',
+      (tester) async {
+        tester.view.physicalSize = const Size(1080, 6000);
+        tester.view.devicePixelRatio = 1.0;
+        addTearDown(tester.view.reset);
+        final state = await estadoLimpio();
+        await state.registrar(const AlumnoFixture().alumno, facultadClave: 'FCC');
+
+        await tester.pumpWidget(LoboApp(state: state));
+        await tester.pumpAndSettle();
+
+        // La unidad A publica esto, y esto es lo único que se pinta.
+        final deA = await ContentRepository.instance.ofertaDeUnidad('FCC');
+        expect(deA.rutas, isNotEmpty);
+        expect(
+          find.textContaining('Tu unidad: Facultad de Ciencias de la Computación'),
+          findsOneWidget,
+        );
+        for (final r in deA.rutas) {
+          expect(find.text(r.nombre), findsOneWidget, reason: 'falta ${r.nombre}');
+        }
+
+        // El flujo real del alumno: perfil → cambiar de unidad → registro.
+        await tester.tap(find.byIcon(Icons.person));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Facultad de Ciencias de la Computación'));
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.byType(DropdownButtonFormField<String>));
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Facultad de Ciencias de la Comunicación').last);
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('Continuar como invitado'));
+        await tester.pumpAndSettle();
+
+        // La unidad guardada es la nueva...
+        expect(state.facultadClave, 'FCCOM');
+        expect(
+          find.textContaining('Tu unidad: Facultad de Ciencias de la Comunicación'),
+          findsOneWidget,
+        );
+        // ...y las tarjetas que se pintan son las que publica ella.
+        final deB = await ContentRepository.instance.ofertaDeUnidad('FCCOM');
+        expect(deB.rutas, isNotEmpty);
+        for (final r in deB.rutas) {
+          expect(
+            find.text(r.nombre),
+            findsOneWidget,
+            reason: 'falta ${r.nombre}, que sí publica la unidad nueva',
+          );
+        }
+        // Y ninguna modalidad de la unidad anterior quedó en pantalla: elegir
+        // una de ésas metía al alumno en una oferta que su unidad no publica.
+        for (final r in deA.rutas) {
+          expect(
+            find.text(r.nombre),
+            findsNothing,
+            reason: '${r.nombre} es de la unidad anterior y sigue pintada',
+          );
+        }
+      },
+    );
   });
 }
 
