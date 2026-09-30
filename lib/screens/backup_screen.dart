@@ -350,29 +350,51 @@ Future<InformeRespaldo> restaurarRespaldo({
   final modalidad = respaldo.modalidadActiva;
   if (modalidad != null) {
     final base = respaldo.rutaActivaBase;
-    final bool existe;
-    try {
-      existe = await _modalidadExiste(repo, modalidad);
-    } catch (e) {
+    // La pregunta no es "¿existe en el catálogo?", sino "¿la publica la unidad
+    // del alumno?", que es la que fijó el paso 1: F-13. Con la pregunta anterior
+    // un respaldo con una modalidad de otra unidad dejaba activa una oferta que
+    // la unidad del alumno no publica, con su avance y sus notas.
+    final unidadAlumno = state.facultadClave;
+    if (unidadAlumno == null) {
       informe.avisos.add(
-        'No se pudo leer el catálogo de esta app ($e): no se seleccionó la '
+        'No hay unidad académica registrada en el teléfono: no se seleccionó la '
         'modalidad del respaldo.',
       );
-      return _cerrar(informe, state, notas, respaldo);
-    }
-    if (!existe) {
-      informe.avisos.add(
-        'La modalidad "$modalidad" ya no está en el catálogo de esta app: no se '
-        'seleccionó.',
-      );
-    } else if (base == null) {
-      informe.avisos.add(
-        'La modalidad "$modalidad" no trae ruta base en el respaldo: no se '
-        'seleccionó.',
-      );
     } else {
-      await state.elegirModalidad(modalidad, base);
-      informe.aplicados.add('Modalidad $modalidad sobre la ruta $base.');
+      _ModalidadEnUnidad publicacion;
+      try {
+        publicacion = await _publicaModalidad(repo, unidadAlumno, modalidad);
+      } catch (e) {
+        informe.avisos.add(
+          'No se pudo leer el catálogo de esta app ($e): no se seleccionó la '
+          'modalidad del respaldo.',
+        );
+        return _cerrar(informe, state, notas, respaldo);
+      }
+      if (publicacion == _ModalidadEnUnidad.unidadSinCatalogo) {
+        informe.avisos.add(
+          'La unidad "$unidadAlumno" del respaldo no publica catálogo en esta '
+          'app: no se seleccionó la modalidad.',
+        );
+      } else if (publicacion == _ModalidadEnUnidad.unidadSinModalidades) {
+        informe.avisos.add(
+          'La unidad "$unidadAlumno" del respaldo no publica modalidades en esta '
+          'app: no se seleccionó la modalidad.',
+        );
+      } else if (publicacion == _ModalidadEnUnidad.otraUnidad) {
+        informe.avisos.add(
+          'La modalidad "$modalidad" ya no está en el catálogo de la unidad '
+          '"$unidadAlumno" del respaldo: no se seleccionó.',
+        );
+      } else if (base == null) {
+        informe.avisos.add(
+          'La modalidad "$modalidad" no trae ruta base en el respaldo: no se '
+          'seleccionó.',
+        );
+      } else {
+        await state.elegirModalidad(modalidad, base);
+        informe.aplicados.add('Modalidad $modalidad sobre la ruta $base.');
+      }
     }
   } else if (respaldo.rutaActiva != null && state.rutaActiva == null) {
     // Respaldo heredado de la versión 1: no trae modalidad, y su avance vive en
@@ -526,14 +548,45 @@ Future<bool> _rutaExiste(ContentRepository repo, String rutaId) async {
   }
 }
 
-Future<bool> _modalidadExiste(ContentRepository repo, String modalidadId) async {
-  final cat = await repo.catalogo();
-  for (final u in cat.unidades) {
-    for (final m in u.modalidades) {
-      if (m.modalidadId == modalidadId) return true;
-    }
+/// Qué publica la unidad del alumno de una modalidad que trae el respaldo.
+///
+/// Antes [restaurarRespaldo] solo preguntaba si la modalidad estaba en
+/// *alguna* unidad del catálogo ([_modalidadExiste]), así que una modalidad de
+/// otra unidad pasaba el filtro y quedaba activa. F-13.
+enum _ModalidadEnUnidad {
+  /// La unidad del alumno la publica.
+  deLaUnidad,
+
+  /// Está en el catálogo, pero es de otra unidad.
+  otraUnidad,
+
+  /// La unidad del alumno no publica catálogo en esta app.
+  unidadSinCatalogo,
+
+  /// La unidad está en el catálogo, pero no publica ninguna modalidad.
+  unidadSinModalidades,
+}
+
+/// ¿La unidad [unidadClave] publica la modalidad [modalidadId]?
+///
+/// Solo se mira esa unidad, nunca el catálogo completo: la validación tiene que
+/// ser la del alumno, no la de cualquier otra.
+Future<_ModalidadEnUnidad> _publicaModalidad(
+  ContentRepository repo,
+  String unidadClave,
+  String modalidadId,
+) async {
+  final unidad = await repo.unidadPorClave(unidadClave);
+  if (unidad == null || unidad.noPublicaCatalogo) {
+    return _ModalidadEnUnidad.unidadSinCatalogo;
   }
-  return false;
+  for (final m in unidad.modalidades) {
+    if (m.modalidadId == modalidadId) return _ModalidadEnUnidad.deLaUnidad;
+  }
+  if (unidad.modalidades.isEmpty) {
+    return _ModalidadEnUnidad.unidadSinModalidades;
+  }
+  return _ModalidadEnUnidad.otraUnidad;
 }
 
 /// Pantalla de respaldo: copia el estado al portapapeles y lo restaura desde

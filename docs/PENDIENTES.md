@@ -1,11 +1,20 @@
 # Lo que falta para publicar LoboApp
 
-Fecha: 2026-09-29. La app **compila, pasa las 116 pruebas y ya genera AAB y
-APKs de release**. Comprobado hoy en `titulacion/`: `flutter analyze` →
-`No issues found!`, `flutter test` → `+116: All tests passed!`, `flutter build
-web` → `✓ Built build/web`, `flutter build apk --debug` →
+Fecha: 2026-09-29 (comprobación completa de aquella corrida). La app
+**compila, pasa las 116 pruebas de aquel día y ya genera AAB y APKs de release**.
+Comprobado entonces en `titulacion/`: `flutter analyze` → `No issues found!`,
+`flutter test` → `+116: All tests passed!`, `flutter build web` →
+`✓ Built build/web`, `flutter build apk --debug` →
 `✓ Built build/app/outputs/flutter-apk/app-debug.apk`. Lo de aquí son cosas que
 dependen de la BUAP o de una decisión de ellos, no bugs.
+
+**Revisado el 2026-09-30.** El 116 de arriba es el dato histórico de la corrida
+del 2026-09-29, no el estado de hoy: la suite ya no tiene 116 pruebas, porque las
+reparaciones F-01 a F-13 traen las suyas. Con el código de hoy, `flutter test` da
+`+166: All tests passed!` (las 161 que ya pasaban más las 5 de F-13) y
+`flutter analyze` da `No issues found!`. Esa revisión volvió a correr solo esas
+dos; los `flutter build` que se citan siguen siendo los del 2026-09-29. Para citar
+una cifra, vuélvela a medir antes de escribirla.
 
 **Nota de versión:** la app cambió de 3 a 8 rutas y de 33 a 34 unidades, y el
 alumno ahora elige una **modalidad** (con requisitos, fuente y fecha) en vez de
@@ -198,12 +207,16 @@ modalidades, cada una con su fuente y su fecha. Lo que falta:
    El zip de diseño además trae 7 carpetas vacías.
 5. **Sin deltas por unidad**: `operaciones` va `[]` en las 137 modalidades; no se
    verificó ningún paso adicional que exija una unidad sobre su ruta base.
-6. **Tres pantallas escritas y probadas pero no conectadas**: elegibilidad
-   (`lib/screens/eligibility_screen.dart`), notas por nivel
+6. ~~**Tres pantallas escritas y probadas pero no conectadas**~~ — **ya están
+   conectadas** (revisado el 2026-09-30; el documento decía todavía lo contrario).
+   Elegibilidad (`lib/screens/eligibility_screen.dart`), notas por nivel
    (`lib/screens/notes_screen.dart`) y respaldo del avance
-   (`lib/screens/backup_screen.dart`). Hoy ningún `lib/screens/*.dart` las
-   importa; solo las alcanzan las pruebas de `test/features_test.dart`. Falta
-   decidir dónde van en la navegación.
+   (`lib/screens/backup_screen.dart`) se alcanzan hoy desde el menú hamburguesa:
+   `lib/screens/menu_screen.dart` las importa (líneas 5-9) y ofrece una entrada
+   para cada una (89-126), junto con contactos y directorio, y el menú se abre
+   desde la portada (`lib/screens/home_screen.dart:223-233`). No queda nada por
+   decidir sobre dónde van, y sus pruebas ya no son el único camino para
+   llegar a ellas.
 7. **Una errata en la fuente**: el mapa gráfico de Experiencia Profesional de la
    FCC trae «Se参加 en las Convocatorias…» con un carácter no latino. Se conservó
    la cita literal marcada como anomalía; hay que revisar el PDF original.
