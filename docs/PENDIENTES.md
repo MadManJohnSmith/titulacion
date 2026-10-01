@@ -16,6 +16,13 @@ reparaciones F-01 a F-13 traen las suyas. Con el código de hoy, `flutter test` 
 dos; los `flutter build` que se citan siguen siendo los del 2026-09-29. Para citar
 una cifra, vuélvela a medir antes de escribirla.
 
+**Revisado el 2026-10-01** al cerrar la release **v1.3.0**: `flutter test` da
+`+248: All tests passed!` y `flutter analyze` da `No issues found!`. La release
+publicó los cuatro binarios de escritorio y móvil desde el tag `v1.3.0`, y CI
+corrrió `flutter analyze --fatal-infos` en verde sobre ese mismo código. El
+número de modalidades de la §6 también era impreciso: son **170** en total, de
+las cuales 99 son jugables, 119 confirmadas y 18 quedan sin fuente registrada.
+
 **Nota de versión:** la app cambió de 3 a 8 rutas y de 33 a 34 unidades, y el
 alumno ahora elige una **modalidad** (con requisitos, fuente y fecha) en vez de
 una ruta suelta. Los pendientes de ese trabajo están en §6 y el detalle
@@ -175,8 +182,10 @@ Anotados porque son fáciles de volver a meter:
 `perf-optimization-round1`) son de otro proyecto o están sin integrar. Ver
 `docs/INVENTARIO.md`.
 
-**No hice commit.** Todo está en el working tree para que lo revises antes de que
-exista un commit con cientos de archivos.
+**Ya está commiteado y publicado.** El 2026-10-01 el working tree se vació en
+dos commits sobre `main` (`9cf6fd3` con el contenido y `669927b` con el salto a
+1.3.0) y se publicó la release `v1.3.0` con los cuatro binarios. Esta nota se
+queda porque las ramas que se mencionan arriba no se tocaron.
 
 ---
 
@@ -190,18 +199,28 @@ modalidades, cada una con su fuente y su fecha. Lo que falta:
    art. 7 la pone dentro de *asignatura optativa con créditos*. Hoy el alumno ve
    el trámite de tesis de la FCC en vez de la exposición ante jurado. Es el
    pendiente que más afecta a un alumno.
+   **Parcialmente mitigado el 2026-10-01 (v1.3.0):** la app ya detecta el caso
+   (nombre de modalidad con «tesina» sobre la ruta `tesis`) y muestra un aviso
+   que explica la diferencia entre el art. 7 fr. I y el fr. VII y pide confirmar
+   con la unidad. **No se reclasificó el mapeo**, porque hay universidades que
+   usan «tesina» como nombre de una tesis corta y cambiarlo sin preguntar a
+   esas 8 unidades sería afirmar algo que nadie comprobó. Para cerrarlo de
+   verdad hay que preguntar a FCP, FDERE, FECON, FENF, FESTO, FIQ, FPSY y CRNO.
 2. **Faltan identificadores de carrera y plan por unidad.** Van `null` en las
    137 modalidades porque ninguna fuente los trae, y por eso la Facultad de
    Medicina muestra sus 21 modalidades a cualquier alumno.
 3. **Unas unidades no publican catálogo y otras tienen modalidades sin URL
-   oficial.** El catálogo marca como «no publica catálogo» a FADMON, FABUAP,
-   FCPS, **FFL**, FING, ICSH, IF, IFI y CRC, y como «sin fuente registrada» a
-   FIQ, FESTO y FENF (18 modalidades). **Ojo con FFyL: ese estado es incorrecto**
-   — `out/investigacion-g3.json` documenta un catálogo de 33 modalidades en 5
-   licenciaturas (PDF de 2018, aprobado por su CUA el 6-feb-2018, enlazado hoy
-   desde su Secretaría Académica) que se perdió al consolidar; hay que rehacer su
-   fila y arreglar `build_catalog.py`, que es la causa de que también se perdieran
-   FADMON y FABUAP. Detalle en `out/INFORME-MODALIDADES.md` §7.
+   oficial.** Hoy el registro es de 14 unidades que **no publican catálogo** —
+   FADMON, FABUAP, FCPS, FING, ICSH, ICGDE, IF, IFI, CRC, CRM, CRNO, CRN,
+   CRS y BACH5M — y 18 modalidades con `estado: "sin_fuente_registrada"`. La
+   app lo explica y deja el rastro de dónde se buscó, sin rellenar nada.
+   **FFyL ya está corregido (2026-09-30):** publica catálogo con sus 33
+   modalidades en 5 licenciaturas, leído del PDF de 2018 aprobado por su CUA el
+   6-feb-2018. Su salvedad —que el catálogo es por licenciatura y no una lista
+   única para la facultad— está en el JSON y ahora se muestra en pantalla.
+   Lo que sigue pendiente es **`build_catalog.py`**, que es la causa de que
+   FADMON y FABUAP perdieran su fila: todavía no reproduce el JSON actual.
+   Detalle en `out/INFORME-MODALIDADES.md` §7.
 4. **Sin arte propio**: las cinco rutas nuevas no tienen título, descripción,
    pergamino ni mascota del diseño, y sus mapas son PNG generados, no del zip.
    El zip de diseño además trae 7 carpetas vacías.
@@ -217,13 +236,78 @@ modalidades, cada una con su fuente y su fecha. Lo que falta:
    desde la portada (`lib/screens/home_screen.dart:223-233`). No queda nada por
    decidir sobre dónde van, y sus pruebas ya no son el único camino para
    llegar a ellas.
-7. **Una errata en la fuente**: el mapa gráfico de Experiencia Profesional de la
-   FCC trae «Se参加 en las Convocatorias…» con un carácter no latino. Se conservó
-   la cita literal marcada como anomalía; hay que revisar el PDF original.
-8. **Otros documentos del repo quedaron desactualizados** y no se tocaron en
-   esta corrida porque no estaban en el encargo: `docs/TIENDA.md` («33
-   facultades», «3 rutas»), `docs/DECISIONES.md` («8 de las 33 unidades») y
-   `docs/INVENTARIO.md` («Elige tu ruta (3 rutas)»). `docs/PLAN.md` describe el
-   plan original y se dejó como histórico.
+7. ~~**Una errata en la fuente**~~ — **resuelto el 2026-09-30.** El mapa gráfico
+   de Experiencia Profesional de la FCC traía «Se参加 en las Convocatorias…» con
+   un carácter no latino. Se bajó el PDF original, se leyó la frase completa y
+   quedó «Si ha participado en las Convocatorias de Titulación por Experiencia
+   Profesional…». La versión corregida es la que se muestra hoy; una prueba
+   (`test/enlaces_test.dart`) falla si vuelve a colarse un carácter de otra
+   escritura.
+8. ~~**Otros documentos del repo quedaron desactualizados**~~ — **corregido el
+   2026-10-01.** `docs/TIENDA.md` describía 33 facultades y 3 rutas; ahora dice
+   34 unidades y 170 modalidades con sus 8 rutas base. `docs/DECISIONES.md`
+   decía «8 de las 33 unidades» con correo verificado; ahora son 22 de 34.
+   `docs/INVENTARIO.md` enumeraba archivos que ya no existen, así que se
+   encabezó como foto histórica del 2026-09-28, con su §3 marcada como
+   lo que decía ese día y no como estado actual. `docs/PLAN.md` describe
+   el plan original y se dejó como histórico.
 
 Detalle y evidencia: `out/INFORME-MODALIDADES.md`.
+
+---
+
+## 7. Auditoría de contenido y trazabilidad (2026-10-01, v1.3.0)
+
+La revisión que precedió a la release encontró una pauta que se repitió:
+había datos verificados en el JSON que **ninguna pantalla mostraba**. No
+faltaba información; la información existía y se perdía entre el archivo y el
+alumno.
+
+### Resuelto
+
+1. **Enlaces que no respondían.** `estadoEnlace` y `notaEnlace` estaban
+   escritos en 63 lugares y ningún modelo Dart los leía: el botón «Abrir
+   documento oficial» salía igual para un PDF vivo y para un servidor caído.
+   Ahora el estado llega a la pantalla, la fila solo abre lo comprobado y el
+   botón sin comprobar se rotula «Reintentar el enlace». Dos documentos ni
+   siquiera declaraban su enlace muerto.
+2. **Requisitos por unidad invisibles.** Las 114 `particularidadesPorUnidad`
+   se armaban y se cargaban en `RutaOferta.particularidad`, pero ninguna
+   pantalla las pintaba. Ahora aparecen con la cita oficial, el estado de
+   publicación de la unidad y su fuente.
+3. **El resto de la metadata descartada:** `mapaNota`,
+   `fuenteDeParticularidades`, `articuloAplicado`, `fuenteCatalogo`,
+   `salvedad`, `textoPublicacion`, `citaFuente`, `notaContacto`,
+   `enlaceRetirado`, `sinEnlace` y la página del directorio con su fecha.
+   Se comprobó con un barrido que de las 138 claves del JSON solo queden 10
+   sin leer, y se verificó una por una que están vacías o duplicadas en el
+   catálogo que la app sí consume.
+4. **Directorio sin fuente.** `DirectorioUnidad` leía `url` y `consultadoEn`
+   y guardaba solo la lista de personas: la app mandaba a un cubículo
+   concreto sin decir de dónde salió.
+5. **Rastros incompletos.** Cuatro unidades (FENF, FESTO, FFL, FIQ) solo
+   tenían su rastro de búsqueda en `facultades.json` y no en el catálogo que
+   la app lee, así que decían «sin fuente registrada» sin decir dónde
+   buscó. Se completaron 12 registros.
+6. **Errata de transcripción** en una ubicación de la FADMON («Edficio» →
+   «Edificio»). La página oficial no respondió al reintentarla, así que la
+   corrección quedó **declarada** en ambas fuentes en vez de darse por
+   verificada.
+
+### Pendiente
+
+7. **Confirmar con ocho unidades qué es una tesina en su caso.** Ver §6.1.
+   La app avisa; el mapeo sigue apuntando a `tesis`.
+8. **Reintentar los cuatro enlaces caídos desde otra red:** `mederi.buap.mx`,
+   `webserver.siiaa.siu.buap.mx`, `des.buap.mx/?q=…` (403) y
+   `autoservicios.buap.mx` (503). Todos respondieron igual desde esta red.
+9. **`build_catalog.py` y `build_assets.py` ya no reproducen el JSON
+   actual.** Correrlos perdería el directorio, el catálogo de FFyL, las 114
+   particularidades y todo lo de esta sesión. Nadie los ha ejecutado desde el
+   2026-09-29.
+10. **`assets/json/directorios.json` está huérfano.** Su contenido está
+    embebido en `facultades.json` y el archivo no lo lee nadie. Hoy es
+    inocuo porque se comprobó que coinciden en las 26 unidades, pero es una
+    fuente duplicada que puede divergir sin que nada lo note.
+11. **8 unidades sin directorio** y **0 de 137 modalidades** con carrera o
+    plan publicados: sin fuente oficial, la app no los inventa.

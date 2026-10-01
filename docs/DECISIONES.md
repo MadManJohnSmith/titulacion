@@ -25,17 +25,20 @@ Bungee plano.
 
 ## Los contactos sin fuente verificada están vacíos
 
-Solo 8 de las 33 unidades académicas publican un correo de titulación que se
-haya podido verificar; esas 8 van con `confianza: "alta"`. Las otras 25
-tienen el correo vacío y la app muestra el contacto general de la DAE en su
-lugar, en vez de inventar un correo. Agregar los faltantes es solo editar
+22 de las 34 unidades académicas publican un correo de titulación que se haya
+podido verificar; esas 22 van con `confianza: "alta"`. Las otras 12 tienen el
+correo vacío y la app muestra el contacto general de la DAE en su lugar, en
+vez de inventar un correo. Agregar los faltantes es solo editar
 `facultades.json`.
 
 ## Cada ruta tiene su mapa
 
 El mapa de agua venía en el zip de diseño. Los de tierra y aire estaban vacíos
 en el diseño, así que se generaron con la paleta de cada ruta para que las
-tres rutas tengan el mismo nivel de pulido.
+rutas tengan el mismo nivel de pulido. Hoy las ocho rutas de `routes.json`
+comparten uno de esos tres mapas: cada una declara en `mapaNota` por qué usa
+ese y cuáles carpetas del diseño vinieron vacías, para que el fondo no se
+presente como arte propio cuando no lo es.
 
 ## La base de alumnos va partida por cohorte
 

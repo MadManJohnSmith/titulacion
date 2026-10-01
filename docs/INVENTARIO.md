@@ -2,6 +2,20 @@
 
 Fecha de recuperación: 2026-09-28
 
+> **Este documento es una foto del prototipo del 2026-09-28 y se conserva como
+> histórico, no como descripción del código actual.** Casi ninguno de los
+> archivos que enumera sigue existiendo: `promedio_screen.dart`,
+> `ceneval_screen.dart`, `profesional_screen.dart`, `levels_screen.dart`,
+> `splash_screen.dart`, `test.dart` y `curved_text.dart` se eliminaron al
+> reconstruir la navegación. La afirmación de la §3 de que «las 3 rutas caen
+> al mismo /levels» y de que «el juego no existe todavía» fue cierta ese día y
+> es falsa hoy.
+>
+> Estado real al 2026-10-01: 14 pantallas en `lib/screens/`, 8 rutas base en
+> `routes.json` con 50 niveles, y un alumno que elige **modalidad** dentro de
+> su unidad académica en vez de una ruta suelta. Para el estado vigente ver
+> `docs/PENDIENTES.md` y el propio árbol de archivos.
+
 ## 1. Dónde está la app
 
 | Ruta | Qué es |

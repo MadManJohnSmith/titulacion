@@ -23,18 +23,21 @@ Tu camino a la titulación, paso a paso.
 Tu proceso de titulación no es un trámite: es un camino. LoboApp te lo muestra
 como una aventura.
 
-Elige tu ruta —por promedio, por examen CENEVAL o por examen profesional— y ve
-avanzando nivel por nivel en un mapa. Cada nivel te dice exactamente qué
-documentos necesitas y cómo conseguirlos: paso a paso, con los enlaces
-directos de la BUAP y el detalle de cada trámite.
+Elige tu unidad académica y luego tu modalidad de titulación, y ve avanzando
+nivel por nivel en un mapa. Cada nivel te dice exactamente qué documentos
+necesitas y cómo conseguirlos: paso a paso, con los enlaces directos de la
+BUAP y el detalle de cada trámite. Cada modalidad muestra además lo que
+publica tu propia unidad y de dónde salió cada dato.
 
 QUÉ TE OFRECE
 
-• Tres rutas de titulación con sus 7, 8 y 6 niveles
-• 49 documentos y trámites explicados paso a paso
+• 170 modalidades de titulación de 34 unidades académicas
+• 8 rutas base con sus 50 niveles, 86 pasos y 78 documentos
 • Checklist para que marques lo que ya tienes
+• Deshacer el último paso si te equivocaste
 • Tu progreso se guarda en tu teléfono
 • Contactos de tu unidad académica
+• Directorio de tu unidad, con puesto y lugar dónde encontrarlo
 • Directorio de la BUAP para buscar a quién preguntar
 • Directorio de alumnos y trabajadores
 
@@ -97,8 +100,8 @@ completo está en `docs/PRIVACIDAD.md`.
 Toma 5-8 en un teléfono. La app ya se ve bien; estas pantallas sirven:
 
 1. Bienvenida (fondo azul marino con LoboApp y el lobo)
-2. Registro (matrícula + lista de las 33 facultades)
-3. Inicio (las 3 rutas con su barra de progreso y sus lobos)
+2. Registro (matrícula + lista de las 34 unidades)
+3. Inicio (las modalidades de tu unidad con su barra de progreso y sus lobos)
 4. Pergamino de la ruta (papel con el título y la mascota)
 5. **Mapa con las islas** ← la mejor pantalla para enseñar
 6. Nivel (documentos con palomitas y pasos)
