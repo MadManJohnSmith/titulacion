@@ -28,6 +28,16 @@ alumno ahora elige una **modalidad** (con requisitos, fuente y fecha) en vez de
 una ruta suelta. Los pendientes de ese trabajo están en §6 y el detalle
 completo en `out/INFORME-MODALIDADES.md`.
 
+**Revisado el 2026-10-01** al cerrar la release **v1.3.2**: `flutter test` da
+`+248: All tests passed!` y `flutter analyze --fatal-infos` da
+`No issues found!`. v1.3.1 es la primera firmada de forma permanente; v1.3.2
+sigue esa misma clave y por lo tanto **sí se instala encima de v1.3.1 sin
+desinstalar**. Lo único que añade sobre v1.3.1 son los directorios oficiales
+recuperados con `dirsearch`: FCFM (26 personas), FPSY (coordinación de
+Titulación) y CRS (16 responsables), con lo que el directorio pasa de 364
+personas en 26 unidades a **407 en 29**, cada una con su URL de fuente y su
+fecha de consulta.
+
 ---
 
 ## 1. Lo que necesito de la BUAP
