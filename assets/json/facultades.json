@@ -1228,7 +1228,195 @@
           "fecha": "Consultada 2026-09-29"
         }
       ],
-      "salvedad": ""
+      "salvedad": "",
+      "directorio": {
+        "url": "https://www.fcfm.buap.mx/nosotros/directorio/personal-administrativo",
+        "consultadoEn": "2026-10-01",
+        "personas": [
+          {
+            "nombre": "C. Castillo Cruz Gustavo Oscar",
+            "puesto": "Asistente",
+            "correo": "gcastillo@fcfm.buap.mx",
+            "telefono": "Ext. 7554",
+            "ubicacion": "Edificio FM1 - 105, Secretaría Académica"
+          },
+          {
+            "nombre": "C. Castillo García Gines",
+            "puesto": "Auxiliar de Servicios",
+            "correo": "gines.castillo@correo.buap.mx",
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Cuautle Tepox Noé",
+            "puesto": "Técnico",
+            "correo": "ncuautle@fcfm.buap.mx",
+            "telefono": "Ext. 7569",
+            "ubicacion": "Edificio FM6 - 106A, Taller Mecánico"
+          },
+          {
+            "nombre": "Psc. Romel Carlos Carrera Solís",
+            "puesto": "Psicólogo",
+            "correo": null,
+            "telefono": "Ext. 3695",
+            "ubicacion": "Edificio FM6 - Cubículo 310"
+          },
+          {
+            "nombre": "Lic. García Martínez Abigail",
+            "puesto": "Asistente",
+            "correo": "abi@fcfm.buap.mx",
+            "telefono": "Ext. 7509",
+            "ubicacion": "Edificio FM9 - 303, Laboratorio de Educación Matemática"
+          },
+          {
+            "nombre": "C. Gil García Salvador",
+            "puesto": "Bibliotecario",
+            "correo": "salvador.gil@correo.buap.mx",
+            "telefono": "Ext. 2120",
+            "ubicacion": "Edificio FM2 - 101, Biblioteca Nicolás Copérnico"
+          },
+          {
+            "nombre": "Lic. González Altamirano Patricia",
+            "puesto": "Asistente",
+            "correo": "paty@fcfm.buap.mx",
+            "telefono": "Ext. 7554",
+            "ubicacion": "Edificio FM1 - 105, Secretaría Académica"
+          },
+          {
+            "nombre": "C. González Flores Javier",
+            "puesto": "Auxiliar de Servicios",
+            "correo": "javier.gonzalezfl@correo.buap.mx",
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C.P. Gutiérrez Chávez César",
+            "puesto": "Contador",
+            "correo": "cesar.gutierrezchavez@correo.buap.mx",
+            "telefono": "Ext. 4560",
+            "ubicacion": "Edificio FM1 - 103, Secretaría Administrativa"
+          },
+          {
+            "nombre": "Mtra. Hernández Rodríguez Carina",
+            "puesto": "Asistente",
+            "correo": "carina@fcfm.buap.mx",
+            "telefono": "Ext. 7554",
+            "ubicacion": "Edificio FM1 - 105, Secretaría Académica"
+          },
+          {
+            "nombre": "C. Martínez Jiménez María Antonia",
+            "puesto": "Auxiliar de Servicios",
+            "correo": null,
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C.P. Meneses Pérez María del Pilar",
+            "puesto": "Contadora",
+            "correo": "maria.menesesp@correo.buap.mx",
+            "telefono": "Ext. 5636",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Millan Aguilar Silvina",
+            "puesto": "Auxiliar de Servicios",
+            "correo": "silvina.millan@correo.buap.mx",
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Montes Garzón Salvador",
+            "puesto": "Auxiliar de Servicios",
+            "correo": null,
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Pérez González María Concepción Nabora",
+            "puesto": "Auxiliar de Servicios",
+            "correo": "maria.perezg@correo.buap.mx",
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Pimentel Ximello Jaime",
+            "puesto": "Técnico",
+            "correo": null,
+            "telefono": "Ext. 3686",
+            "ubicacion": "Edificio FM6 - 105, Taller de Pulido"
+          },
+          {
+            "nombre": "C. Ponce Arenas Olivia",
+            "puesto": "Asistente",
+            "correo": "oli@fcfm.buap.mx",
+            "telefono": "Ext. 7552",
+            "ubicacion": "Edificio FM1 - 101, Dirección"
+          },
+          {
+            "nombre": "C. Rivera Velázquez María Teresa",
+            "puesto": "Asistente",
+            "correo": "tere@fcfm.buap.mx",
+            "telefono": "Ext. 7555",
+            "ubicacion": "Edificio FM1 - 104, Secretaría de Investigación y Estudios de Posgrado"
+          },
+          {
+            "nombre": "C.P. Sánchez Salazar Erika",
+            "puesto": "Asistente",
+            "correo": "eriksa@fcfm.buap.mx",
+            "telefono": "Ext. 2167",
+            "ubicacion": "Edificio FM1 - 103, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Santiago Antonio María Elena",
+            "puesto": "Asistente",
+            "correo": "male@fcfm.buap.mx",
+            "telefono": "Ext. 7555",
+            "ubicacion": "Edificio FM1 - 104, Secretaría de Investigación y Estudios de Posgrado"
+          },
+          {
+            "nombre": "Arq. Silva Gómez Ángeles Eulalia",
+            "puesto": "Asistente",
+            "correo": "asilva@fcfm.buap.mx",
+            "telefono": "Ext. 7551",
+            "ubicacion": "Edificio FM1 - 103, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Tlacomulco Mastranzo Joaquín",
+            "puesto": "Asistente",
+            "correo": "jtlacomulco@fcfm.buap.mx",
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "C. Torres Cortés Abraham",
+            "puesto": "Auxiliar de Servicios",
+            "correo": "abraham.torresc@correo.buap.mx",
+            "telefono": "Ext. 7550",
+            "ubicacion": "Edificio FM1 - 102, Secretaría Administrativa"
+          },
+          {
+            "nombre": "Lic. Uribe Hernández Judith",
+            "puesto": "Bibliotecaria",
+            "correo": "judith.uribe@correo.buap.mx",
+            "telefono": "Ext. 2120",
+            "ubicacion": "Edificio FM2 - 101, Biblioteca Nicolás Copérnico"
+          },
+          {
+            "nombre": "C. Velasco Genis María Concepción",
+            "puesto": "Asistente",
+            "correo": "cvelasco@fcfm.buap.mx",
+            "telefono": "Ext. 7552",
+            "ubicacion": "Edificio FM1 - 101, Dirección"
+          },
+          {
+            "nombre": "C. Zenteno Melchor Guillermo",
+            "puesto": "Bibliotecario",
+            "correo": "guillermo.zenteno@correo.buap.mx",
+            "telefono": "Ext. 2120",
+            "ubicacion": "Edificio FM2 - 101, Biblioteca Nicolás Copérnico"
+          }
+        ]
+      }
     },
     {
       "nombre": "Facultad de Ciencias Políticas y Sociales",
@@ -4025,7 +4213,20 @@
           "citaFuente": "(infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)"
         }
       ],
-      "salvedad": null
+      "salvedad": null,
+      "directorio": {
+        "url": "https://psicologia.buap.mx/coords/titulacion/",
+        "consultadoEn": "2026-10-01",
+        "personas": [
+          {
+            "nombre": "Coordinación de Titulación",
+            "puesto": "Coordinación de Titulación",
+            "correo": "coordinaciontitulacion.psicologia@correo.buap.mx",
+            "telefono": null,
+            "ubicacion": null
+          }
+        ]
+      }
     },
     {
       "nombre": "Instituto de Ciencias Sociales y Humanidades Alfonso Vélez Pliego",
@@ -5031,7 +5232,125 @@
           "fecha": "Convocatoria Unica EGEL-CENEVAL, aplicaciones nacionales 2026, vigente a septiembre de 2026."
         }
       ],
-      "salvedad": "El Complejo Regional Sur NO publica catalogo de modalidades de titulacion en su sitio oficial https://crs.buap.mx. Lo que se busco: (1) menu completo de la portada, 34 enlaces, ninguno de titulacion, egreso, secretaria academica, mapa grafico ni ruta de titulacion; (2) Directorio, que nombra la 'Coordinacion de Evaluacion Academica y Titulacion' (Mtra. Maria Deysi Tapia Alvarez) sin modalidades ni correo; (3) Oferta Academica, sin contenido de titulacion; (4) Enlaces de Interes, que solo enlaza Practicas Profesionales y Servicio Social, Becas, Servicios Escolares, Bolsa de Trabajo, Recuperacion de correo y Planta Fisica; (5) pagina de Transparencia (/pdf/transparencia, HTTP 200), revisada, sin catalogo de modalidades; (6) buscador nativo /search/node/ con 'titulación', 'titulacion', 'egel' y 'tesis', que devuelve cero resultados en los cuatro casos; (7) doce URLs candidatas probadas una por una (content/titulacion, content/titulaci%C3%B3n, content/coordinaci%C3%B3n-de-titulaci%C3%B3n, content/ruta-de-titulaci%C3%B3n, pdf/ruta-de-titulaci%C3%B3n, content/modalidades-de-titulaci%C3%B3n, content/titulacion-0, pdf/titulacion, content/egel, content/examen-profesional, content/mapa-gr%C3%A1fico, pdf/mapa-gr%C3%A1fico), las doce devuelven HTTP 404; (8) content/transparencia, content/4-lineamientos, directorios sites/default/files/ y sites/default/files/Normativa%20Universitaria/, todos 404; (9) sitemap.xml 404; (10) una consulta a Brave Search ('Complejo Regional Sur BUAP titulacion modalidades') sin ningun documento de titulacion de CRS; dos consultas posteriores ('...requisitos egel tesis \"titulacion automatica\"' y 'site:crs.buap.mx titulacion') devolvieron HTTP 429 y no pudieron leerse; (11) el PDF de transparencia que publica la unidad (https://crs.buap.mx/sites/default/files/Pagina%20web%20CRS-11.pdf, 185 743 bytes, una pagina, enlazado desde /pdf/transparencia) descargado y revisado con pdftotext: cero coincidencias de 'titul', 'modal', 'egel', 'tesis' o 'egres'. Conclusion: no se puede atribuir a CRS ninguna modalidad mas alla de EGEL-CENEVAL, listada en la convocatoria central de la BUAP. Tampoco se localizo el PDF de 'Mapa Grafico' o 'Ruta de titulacion' que publica CRNO en su pagina de Coordinacion de Titulacion: CRS no tiene pagina equivalente."
+      "salvedad": "El Complejo Regional Sur NO publica catalogo de modalidades de titulacion en su sitio oficial https://crs.buap.mx. Lo que se busco: (1) menu completo de la portada, 34 enlaces, ninguno de titulacion, egreso, secretaria academica, mapa grafico ni ruta de titulacion; (2) Directorio, que nombra la 'Coordinacion de Evaluacion Academica y Titulacion' (Mtra. Maria Deysi Tapia Alvarez) sin modalidades ni correo; (3) Oferta Academica, sin contenido de titulacion; (4) Enlaces de Interes, que solo enlaza Practicas Profesionales y Servicio Social, Becas, Servicios Escolares, Bolsa de Trabajo, Recuperacion de correo y Planta Fisica; (5) pagina de Transparencia (/pdf/transparencia, HTTP 200), revisada, sin catalogo de modalidades; (6) buscador nativo /search/node/ con 'titulación', 'titulacion', 'egel' y 'tesis', que devuelve cero resultados en los cuatro casos; (7) doce URLs candidatas probadas una por una (content/titulacion, content/titulaci%C3%B3n, content/coordinaci%C3%B3n-de-titulaci%C3%B3n, content/ruta-de-titulaci%C3%B3n, pdf/ruta-de-titulaci%C3%B3n, content/modalidades-de-titulaci%C3%B3n, content/titulacion-0, pdf/titulacion, content/egel, content/examen-profesional, content/mapa-gr%C3%A1fico, pdf/mapa-gr%C3%A1fico), las doce devuelven HTTP 404; (8) content/transparencia, content/4-lineamientos, directorios sites/default/files/ y sites/default/files/Normativa%20Universitaria/, todos 404; (9) sitemap.xml 404; (10) una consulta a Brave Search ('Complejo Regional Sur BUAP titulacion modalidades') sin ningun documento de titulacion de CRS; dos consultas posteriores ('...requisitos egel tesis \"titulacion automatica\"' y 'site:crs.buap.mx titulacion') devolvieron HTTP 429 y no pudieron leerse; (11) el PDF de transparencia que publica la unidad (https://crs.buap.mx/sites/default/files/Pagina%20web%20CRS-11.pdf, 185 743 bytes, una pagina, enlazado desde /pdf/transparencia) descargado y revisado con pdftotext: cero coincidencias de 'titul', 'modal', 'egel', 'tesis' o 'egres'. Conclusion: no se puede atribuir a CRS ninguna modalidad mas alla de EGEL-CENEVAL, listada en la convocatoria central de la BUAP. Tampoco se localizo el PDF de 'Mapa Grafico' o 'Ruta de titulacion' que publica CRNO en su pagina de Coordinacion de Titulacion: CRS no tiene pagina equivalente.",
+      "directorio": {
+        "url": "https://crs.buap.mx/content/directorio",
+        "consultadoEn": "2026-10-01",
+        "personas": [
+          {
+            "nombre": "Mtro. Sául Sánchez Alcántara",
+            "puesto": "Dirección",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Dr. Francisco Lázaro Balderas Gómez",
+            "puesto": "Secretaría Académica",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Ing. Jesús Encarnación Mejía Luna",
+            "puesto": "Secretaría Administrativa",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtra. Cecilia Doger Amador",
+            "puesto": "Coordinación de Vínculación Institucional",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtro. Alonso Erick Gómez Trujillo",
+            "puesto": "Coordinación de la Unidad de Vinculación Social y Departamento de Lenguas Extranjeras",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtro. Sabino Martinez Juárez",
+            "puesto": "Coordinación de Educación Continua",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Dr. Miguel Nuño Mosqueda",
+            "puesto": "Coordinación de Bufete Jurídico",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtro. Edgardo Romero Gil",
+            "puesto": "Coodinación de Servicio Social y Práctica Profesional",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtra. Maria Deysi Tapia Alvarez",
+            "puesto": "Coordinación de Evaluación Académica y Titulación",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtra. Beatriz Arguellez Macías",
+            "puesto": "Coordinación de Gestión Práctica Profesional Crítica Área de la Salud",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtra. Ignacia Morales Reyes",
+            "puesto": "Coordinación de Planeación y Movilidad Nacional e Internacional",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtro. Jesús Rivera Carrasco",
+            "puesto": "Coordinación de Laboratorios Especializados",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Dr. Francisco Lázaro Balderas Gómez",
+            "puesto": "Coordinación de Investigación del Área de la Salud",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Dr. Rafael Lara Martínez",
+            "puesto": "Coordinación de Publicaciones e investigación Derecho y Ciencias Sociales",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtra. Erika Graciela Guerrero Buendía",
+            "puesto": "Coordinación de Tutores, Mentoría y Becas",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          },
+          {
+            "nombre": "Mtra. Maria Eugenia Hernández Fuentes",
+            "puesto": "Cordinación de Bolsa de Trabajo y Evaluación Docente",
+            "correo": null,
+            "telefono": null,
+            "ubicacion": null
+          }
+        ]
+      }
     },
     {
       "nombre": "Bachillerato Internacional 5 de Mayo",
@@ -5071,5 +5390,5 @@
     }
   ],
   "_notaCatalogo": "Fecha de corte 2026-09-29. `modalidadesConfirmadas` es lo que la unidad publica con fuente y fecha; `estadoCatalogo` distingue catálogo publicado, publicación parcial, unidad sin catálogo y unidad no aplicable. El texto completo de cada modalidad está en assets/json/catalogo_modalidades.json.",
-  "_notaDirectorio": "El directorio se leyó literalmente de la página oficial de cada unidad el 2026-09-30. Puesto, correo, teléfono y ubicación son los que la unidad publica; lo que no aparece está en null y no se rellena por suposición. Corrección de 2026-10-01: en FADMON la ubicación decía «Edficio ADM1 Oficina 201» y se corrigió la grafía a «Edificio». La página oficial no respondió al reintentarlo, así que la corrección no se pudo volver a comprobar contra la fuente: queda declarada aquí en vez de darse por verificada."
+  "_notaDirectorio": "El directorio se leyó literalmente de la página oficial de cada unidad el 2026-09-30. Puesto, correo, teléfono y ubicación son los que la unidad publica; lo que no aparece está en null y no se rellena por suposición. Corrección de 2026-10-01: en FADMON la ubicación decía «Edficio ADM1 Oficina 201» y se corrigió la grafía a «Edificio». La página oficial no respondió al reintentarlo, así que la corrección no se pudo volver a comprobar contra la fuente: queda declarada aquí en vez de darse por verificada. El 2026-10-01 se recuperaron directorios que antes aparecían vacíos mediante descubrimiento de rutas públicas con dirsearch: FCFM (26 personas del directorio administrativo), FPSY (contacto publicado de la Coordinación de Titulación) y CRS (16 responsables publicados en el directorio). No se inventaron correos, teléfonos ni ubicaciones ausentes."
 }

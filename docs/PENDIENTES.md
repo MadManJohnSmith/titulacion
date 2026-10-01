@@ -311,7 +311,14 @@ alumno.
    2026-09-29.
 10. **`assets/json/directorios.json` está huérfano.** Su contenido está
     embebido en `facultades.json` y el archivo no lo lee nadie. Hoy es
-    inocuo porque se comprobó que coinciden en las 26 unidades, pero es una
+    inocuo porque se comprobó que coinciden en las 29 unidades, pero es una
     fuente duplicada que puede divergir sin que nada lo note.
-11. **8 unidades sin directorio** y **0 de 137 modalidades** con carrera o
-    plan publicados: sin fuente oficial, la app no los inventa.
+11. **5 unidades sin directorio** y **0 de 137 modalidades** con carrera o
+    plan publicados: sin fuente oficial, la app no los inventa. El
+    2026-10-01 se usó `dirsearch` con una lista acotada y dos hilos sobre
+    hosts públicos de la BUAP: se recuperaron FCFM (26 personas), FPSY
+    (contacto de Coordinación de Titulación) y CRS (16 responsables). Siguen
+    sin directorio FCEL, FCP, IF, CRNO y BACH5M. En FCP se encontró el PDF
+    oficial «Directorio 2025», pero es una lámina de una página cuya
+    extracción mezcla nombres, correos y cargos; no se importó para no
+    atribuir datos a la persona equivocada.

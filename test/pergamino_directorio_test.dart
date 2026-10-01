@@ -131,15 +131,22 @@ void main() {
   });
 
   group('Directorio de unidades', () {
-    test('ninguna persona trae correo no institucional', () {
+    test('ninguna persona trae correo ajeno a una institución publicada', () {
+      // Algunas unidades conservan dominios institucionales propios
+      // (`@fcfm.buap.mx`) además del dominio central `@correo.buap.mx`. No se
+      // rechazan: están publicados literalmente por la página oficial. Sí se
+      // rechazan buzones comerciales o dominios que no pertenecen a BUAP.
       for (final f in facultades.cast<Map<String, dynamic>>()) {
         final dir = f['directorio'];
         if (dir is! Map) continue;
         for (final p in (dir['personas'] as List).cast<Map<String, dynamic>>()) {
           final correo = p['correo'] as String?;
           if (correo == null) continue;
-          expect(correo, endsWith('@correo.buap.mx'),
-              reason: '${f['clave']} — ${p['nombre']}: $correo');
+          expect(
+            correo.toLowerCase().endsWith('.buap.mx'),
+            isTrue,
+            reason: '${f['clave']} — ${p['nombre']}: $correo',
+          );
         }
       }
     });
