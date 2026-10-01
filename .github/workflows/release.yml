@@ -85,8 +85,13 @@ jobs:
             "$TOOLS/apksigner" verify --verbose --print-certs "$APK" \
               > "$RUNNER_TEMP/signature.txt"
             grep -q '^Verifies$' "$RUNNER_TEMP/signature.txt"
-            ACTUAL=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' \
-              "$RUNNER_TEMP/signature.txt" | tr -d ':' | tr '[:upper:]' '[:lower:]')
+            # Las versiones recientes de apksigner traducen el rótulo según el
+            # locale del runner; la huella hexadecimal conserva el mismo
+            # formato. Extraer el primer SHA-256 de 64 caracteres evita
+            # depender del texto «Signer #1 certificate…».
+            ACTUAL=$(grep -Eio '[0-9a-f]{64}' "$RUNNER_TEMP/signature.txt" \
+              | head -1 | tr '[:upper:]' '[:lower:]')
+            test -n "$ACTUAL"
             test "$ACTUAL" = "$EXPECTED" || {
               echo "Firma inesperada en $APK" >&2
               echo "Esperada: $EXPECTED" >&2
