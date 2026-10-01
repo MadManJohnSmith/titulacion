@@ -80,7 +80,8 @@ jobs:
           test -x "$TOOLS/apksigner"
           test -x "$TOOLS/aapt"
           test -n "$EXPECTED_CERT_SHA256"
-          EXPECTED=$(printf '%s' "$EXPECTED_CERT_SHA256" | tr -d ':' | tr '[:upper:]' '[:lower:]')
+          EXPECTED=$(printf '%s' "$EXPECTED_CERT_SHA256" \
+            | tr -cd '[:xdigit:]' | tr '[:upper:]' '[:lower:]')
           for APK in build/app/outputs/flutter-apk/app-*-release.apk; do
             "$TOOLS/apksigner" verify --verbose --print-certs "$APK" \
               > "$RUNNER_TEMP/signature.txt"
