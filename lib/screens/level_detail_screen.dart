@@ -129,6 +129,11 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
           icon: const Icon(Icons.arrow_back, color: Colors.white),
           tooltip: 'Volver al mapa',
         ),
+// Aquí el número va en texto porque el icono del nivel no se dibuja en
+        // esta pantalla: lo que se ve es la mascota. El SVG `nivel_N.svg` sí
+        // trae la cifra, y por eso en «Tu ruta» —donde ese icono sí aparece— el
+        // número no se repite. Aquí no hay con qué repetirlo, y quitarlo dejaba
+        // al alumno sin saber en qué nivel está.
         Expanded(
           child: Center(
             child: Text(
@@ -291,6 +296,13 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
           onTap: () async {
+            // Tocar la fila abre el documento oficial solo cuando el enlace se
+            // comprobó; si está caído, la fila sigue sirviendo para marcar el
+            // documento y el botón explica que hay que reintentar más tarde.
+            if (doc.enlaceVerificado) {
+              await abrirUrl(context, doc.url!);
+              return;
+            }
             // Primero se espera la escritura y después se repinta: la casilla
             // que ve el alumno ya está en el disco cuando la muestra marcada.
             await _state.alternarDocumento(
@@ -339,18 +351,103 @@ class _LevelDetailScreenState extends State<LevelDetailScreen> {
                             ),
                           ),
                         ),
-                      if (doc.url != null && doc.url!.isNotEmpty)
-                        InkWell(
-                          onTap: () => abrirUrl(context, doc.url!),
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 4),
-                            child: Text(
-                              'Ver más',
-                              style: TextStyle(
-                                color: LoboColors.gold.withValues(alpha: 0.9),
-                                fontSize: 13,
-                                decoration: TextDecoration.underline,
+                      if (doc.sinEnlace.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 2),
+                          child: Text(
+                            doc.sinEnlace,
+                            style: const TextStyle(
+                              color: Colors.white38,
+                              fontSize: 11,
+                              height: 1.35,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
+                        ),
+                      if (doc.url != null && doc.url!.startsWith('http'))
+                        // Botón propio: si dependiera solo del onTap de la fila,
+                        // el enlace quedaba indistinguible de marcar la casilla.
+                        // El aviso va **encima**: si el servidor está caído, el
+                        // botón sigue sirviendo —el trámite es real y el alumno
+                        // lo tiene que hacer—, pero no puede parecer que un
+                        // enlace que no responde es lo mismo que uno vivo.
+                        if (doc.estadoEnlace.isNotEmpty)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 8),
+                            child: Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                color: LoboColors.gold.withValues(alpha: 0.10),
+                                borderRadius: BorderRadius.circular(8),
+                                border: Border.all(
+                                  color: LoboColors.gold.withValues(alpha: 0.35),
+                                ),
                               ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Icon(
+                                    Icons.warning_amber_rounded,
+                                    size: 15,
+                                    color: LoboColors.gold,
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Expanded(
+                                    child: Text(
+                                      'El enlace no se pudo comprobar. '
+                                      '${doc.avisoEnlace}',
+                                      style: const TextStyle(
+                                        color: Colors.white70,
+                                        fontSize: 11,
+                                        height: 1.35,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 8),
+                          child: OutlinedButton.icon(
+                            onPressed: () => abrirUrl(context, doc.url!),
+                            icon: const Icon(Icons.open_in_new, size: 15),
+                            // Un enlace sin comprobar no puede salir con el
+                            // mismo rótulo que uno vivo: el botón sigue ahí
+                            // porque el trámite es real y el servidor puede
+                            // volver, pero el alumno tiene que saber que va
+                            // a ciegas.
+                            label: Text(
+                              doc.enlaceVerificado
+                                  ? 'Abrir documento oficial'
+                                  : 'Reintentar el enlace',
+                            ),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: LoboColors.gold,
+                              side: BorderSide(
+                                color: LoboColors.gold.withValues(alpha: 0.6),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 6,
+                              ),
+                              textStyle: const TextStyle(fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      // De dónde sale el dato y de cuándo: sin esto el requisito
+                      // es una afirmación sin respaldo.
+                      if (doc.fuente.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(top: 6),
+                          child: Text(
+                            doc.fecha.isEmpty
+                                ? 'Fuente: ${doc.fuente}'
+                                : 'Fuente: ${doc.fuente} · ${doc.fecha}',
+                            style: const TextStyle(
+                              color: Colors.white38,
+                              fontSize: 11,
+                              height: 1.35,
                             ),
                           ),
                         ),

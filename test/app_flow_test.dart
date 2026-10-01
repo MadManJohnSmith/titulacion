@@ -228,7 +228,10 @@ void main() {
     await tester.tap(find.text('Liberación de la Facultad'));
     await tester.pumpAndSettle();
 
+    // Aquí sí se dice el número: en esta pantalla se ve la mascota, no el icono
+    // numerado que lo dibuja en «Tu ruta».
     expect(find.text('Nivel 1'), findsOneWidget);
+    expect(find.text('Nivel'), findsNothing);
 
     // 4. Completar el nivel.
     await tester.scrollUntilVisible(
@@ -357,7 +360,9 @@ void main() {
     final state = await estadoLimpio();
     await state.registrar(
       const AlumnoFixture().alumno,
-      facultadClave: 'FECON', // Facultad de Economía: sin correo publicado.
+      // Instituto de Fisiología: la BUAP no publica un correo propio para
+      // esta unidad, verificado el 2026-09-30.
+      facultadClave: 'IF',
     );
 
     await tester.pumpWidget(MaterialApp(home: ContactsScreen(state: state)));
@@ -367,6 +372,43 @@ void main() {
       find.textContaining('no publica un correo de titulación propio'),
       findsOneWidget,
     );
+  });
+
+  testWidgets('una unidad con correo verificado lo muestra sin advertencias', (
+    tester,
+  ) async {
+    final state = await estadoLimpio();
+    await state.registrar(
+      const AlumnoFixture().alumno,
+      // Economía publica el área de Titulación; correo verificado el 2026-09-30.
+      facultadClave: 'FECON',
+    );
+
+    await tester.pumpWidget(MaterialApp(home: ContactsScreen(state: state)));
+    await tester.pumpAndSettle();
+
+    expect(find.text('titulacion.economia@correo.buap.mx'), findsOneWidget);
+    expect(
+      find.textContaining('no publica un correo de titulación propio'),
+      findsNothing,
+    );
+  });
+
+  testWidgets('ningún correo del catálogo está vacío ni es inventado', (
+    tester,
+  ) async {
+    final state = await estadoLimpio();
+    await state.registrar(
+      const AlumnoFixture().alumno,
+      facultadClave: 'FADMON',
+    );
+
+    await tester.pumpWidget(MaterialApp(home: ContactsScreen(state: state)));
+    await tester.pumpAndSettle();
+
+    // Ningún correo mostrado puede ser de ejemplo ni estar mal formado.
+    expect(find.textContaining('example.com'), findsNothing);
+    expect(find.textContaining('@correo.buap.mx'), findsWidgets);
   });
 
   testWidgets('la pestaña de links trae los enlaces de la BUAP', (

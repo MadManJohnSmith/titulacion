@@ -1,0 +1,2764 @@
+{
+  "schemaVersion": "1.0",
+  "fechaCorte": "2026-09-30",
+  "generadoEn": "2026-09-30",
+  "nota": "Directorios del personal de las unidades académicas de la BUAP, leídos literalmente de las páginas oficiales de cada unidad. Solo se incluyen nombres, puesto, correo, teléfono y ubicación que la propia unidad publica; lo que no aparece queda en null y no se rellena por suposición. Fuentes y fecha de consulta en cada unidad. Corrección de 2026-10-01: en FADMON la ubicación decía «Edficio ADM1 Oficina 201» y se corrigió la grafía a «Edificio». La página oficial no respondió al reintentarlo, así que la corrección no se pudo volver a comprobar contra la fuente: queda declarada aquí en vez de darse por verificada.",
+  "unidades": [
+    {
+      "clave": "FADMON",
+      "nombreUnidad": "Facultad de Administración",
+      "urlDirectorio": "https://administracion.buap.mx/content/secretar%C3%ADa-acad%C3%A9mica",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dr José Mauro Larios Sánchez",
+          "puesto": "Secretaría Académica",
+          "correo": "secretariaacademica.fadmon@correo.buap.mx",
+          "telefono": "+52 2222295500 Ext. 7755",
+          "ubicacion": "Edificio ADM1 Oficina 201"
+        },
+        {
+          "nombre": "Mtro. Sergio Moreno Altamirano",
+          "puesto": "Coordinación de Licenciatura en Administración Pública y Gestión para el Desarrollo",
+          "correo": "admonpublica.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 138"
+        },
+        {
+          "nombre": "Mtro. Alejandro Herrera Olvera",
+          "puesto": "Coordinación de Licenciatura en Administración de Empresas",
+          "correo": "admonempresas.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 123"
+        },
+        {
+          "nombre": "Mtra. María Teresa Romano Cadena",
+          "puesto": "Coordinación de la Licenciatura en Administración Turística",
+          "correo": "turismo.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 125"
+        },
+        {
+          "nombre": "Mtra. María Elena Cuapio Salvador",
+          "puesto": "Unidad de Titulación y EGEL CENEVAL",
+          "correo": "titulacion.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM4 Cubículo 108B"
+        },
+        {
+          "nombre": "Mtro. Jorge Ricardo Rodríguez Jiménez",
+          "puesto": "Coordinación de la Licenciatura en Administración de Empresas Distancia",
+          "correo": "modalidaddistancia.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 129"
+        },
+        {
+          "nombre": "Mtra. Martha Patricia Tello Cano",
+          "puesto": "Coordinación de la Licenciatura en Negocios Internacionales Distancia",
+          "correo": "lni_mdistancia.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM4 Cubículo 128"
+        },
+        {
+          "nombre": "Mtra. Patricia Terrón Pérez",
+          "puesto": "Coordinación de la Licenciatura en Administración de Empresas Semiescolarizado",
+          "correo": null,
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM4 Cubículo 311"
+        },
+        {
+          "nombre": "Mtro. César Guadalupe Casarrubias Sánchez",
+          "puesto": "Coordinación de Práctica Profesional Crítica",
+          "correo": "ssypp.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: 7751",
+          "ubicacion": "Edificio ADM1 Cubículo 132"
+        },
+        {
+          "nombre": "Mra. Adalinda Rodríguez Oroza",
+          "puesto": "Coordinación de Tutores",
+          "correo": "tutores.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: 4175",
+          "ubicacion": "Edificio ADM1 Cubículo 126"
+        },
+        {
+          "nombre": "Lic. Blanca Antonia Águilar Nuñez",
+          "puesto": "Unidad de Servicios Escolares",
+          "correo": "serviciosescolares.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM4 Cubículo 108B"
+        },
+        {
+          "nombre": "Mtro. Nicolás Bonilla Maldonado",
+          "puesto": "Unidad de Movilidad Estudiantil",
+          "correo": "movilidadestudiantil.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Oficina 134"
+        },
+        {
+          "nombre": "Mtra. Arturo Juárez Moya",
+          "puesto": "Unidad de Planeación",
+          "correo": "playeva.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 201C"
+        },
+        {
+          "nombre": "Mtra. Sandra Elisa Trejo Velasco",
+          "puesto": "Unidad de Desarrollo Académico",
+          "correo": "desarrolloacademico.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: 7----",
+          "ubicacion": "Edificio ADM1 Cubículo 201A"
+        },
+        {
+          "nombre": "Mtra. Aleyois Sánchez Angulo",
+          "puesto": "Coordinación de Evaluación y Seguimiento Académico",
+          "correo": "cease.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 130"
+        },
+        {
+          "nombre": "Mtro. Jorge Ángel Maldonado Reséndiz",
+          "puesto": "Coordinación de la Licenciatura en Gastronomía",
+          "correo": "gastro.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 135"
+        },
+        {
+          "nombre": "Mtro. Jesús Ismael Morales Sánchez",
+          "puesto": "Coordinación de la Licenciatura en Negocios Internacionales",
+          "correo": "negociosinter.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 137"
+        },
+        {
+          "nombre": "Mtro. Emilio Adolfo Calderón Mora",
+          "puesto": "Coordinación de Licenciatura en Comercio Internacional",
+          "correo": "clci.fadmon@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1 Cubículo 124"
+        },
+        {
+          "nombre": "Adalinda Rodríguez Oroza",
+          "puesto": "Coordinación de Tutores",
+          "correo": "adalinda.rodriguez@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1"
+        },
+        {
+          "nombre": "Mtra. Consuelo Ortega Vázquez",
+          "puesto": "Asistente Secretaria Académica",
+          "correo": "consuelo.ortega@correo.buap.mx",
+          "telefono": "22 22 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio ADM1"
+        }
+      ]
+    },
+    {
+      "clave": "ARPA",
+      "nombreUnidad": "Facultad de Artes Plásticas y Audiovisuales",
+      "urlDirectorio": "https://arpa.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Víctor Alejandro Ruiz Ramírez",
+          "puesto": "Director",
+          "correo": "victor.ruizramirez@correo.buap.mx",
+          "telefono": "Ext. 2378",
+          "ubicacion": "Edificio Sur 1, Primer Piso"
+        },
+        {
+          "nombre": "Héctor Adrián Díaz Furlong",
+          "puesto": "Secretaría Académica",
+          "correo": "secreacademica.arpa@correo.buap.mx",
+          "telefono": "Ext. 2434",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Luis Daniel Aguilar Davidov",
+          "puesto": "Secretario Administrativo",
+          "correo": "daniel.davidov@correo.buap.mx",
+          "telefono": "Ext. 2375",
+          "ubicacion": "Edificio Sur 1, Primer Piso"
+        },
+        {
+          "nombre": "Sandra Luz Guevara Castillo",
+          "puesto": "Gestora de Recursos Institucionales",
+          "correo": "sandra.guevara@correo.buap.mx",
+          "telefono": "Ext. 3730",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Enrique Moctezuma Malacara",
+          "puesto": "Productor Audiovisual",
+          "correo": "enrique.moctezuma@correo.buap.mx",
+          "telefono": "Ext. 3742",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Hugo Enrique Rojas Cisneros",
+          "puesto": "Coordinación del Colegio de Arte Digital",
+          "correo": "coordinaciondigital.arpa@correo.buap.mx",
+          "telefono": "Ext. 3734",
+          "ubicacion": "Edificio Sur 1, Primer Piso"
+        },
+        {
+          "nombre": "Felipe Guzmán Lucero",
+          "puesto": "Coordinación del Colegio de Artes Plásticas",
+          "correo": "coordinacion.plasticas@correo.buap.mx",
+          "telefono": "Ext. 2377",
+          "ubicacion": "Edificio Sur 1"
+        },
+        {
+          "nombre": "Tanit Guadalupe Serrano Arias",
+          "puesto": "Coordinación del Colegio de Cinematografía",
+          "correo": "coordinacioncine.arpa@correo.buap.mx",
+          "telefono": "Ext. 3739",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Edgar Gómez Camargo",
+          "puesto": "Gestor de Proyectos Audiovisuales",
+          "correo": "edgar.gomez@correo.buap.mx",
+          "telefono": "Ext. 3731",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Elsa Herrera Bautista",
+          "puesto": "Coordinación Evaluación Académica",
+          "correo": "evalacademica.arpa@correo.buap.mx",
+          "telefono": "Ext. 3738",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Yonatan Puón Castro",
+          "puesto": "Coordinador de Innovación para la Internacionalización",
+          "correo": "yonatan.puon@correo.buap.mx",
+          "telefono": "Edificio ARPA 1",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Abraham Ronquillo Bolaños",
+          "puesto": "Coordinación de Laboratorios Disciplinarios",
+          "correo": "laboratorios.arpa@correo.buap.mx",
+          "telefono": "Ext. 3732",
+          "ubicacion": "Edificio EMA1CC"
+        },
+        {
+          "nombre": "Martha Érika Mateos Genis",
+          "puesto": "Coordinación de la Lic. en Mercadotecnia y Medios Digitales - Modalidad a distancia",
+          "correo": "mymd.comunicacion@correo.buap.mx",
+          "telefono": "Ext. 3735",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Alba Tapia Ramírez",
+          "puesto": "Gestora de Exposiciones",
+          "correo": "alba.tapia@correo.buap.mx",
+          "telefono": "Ext. 3737",
+          "ubicacion": "Edificio Sur 1, Primer Piso"
+        },
+        {
+          "nombre": "Marleni Reyes Monreal",
+          "puesto": "Coordinadora del Proyecto de Posgrado",
+          "correo": "marleni.reyes@correo.buap.mx",
+          "telefono": "Ext. 3734",
+          "ubicacion": "Edificio Sur 1, Planta Baja"
+        },
+        {
+          "nombre": "Miguel Mejía Juárez",
+          "puesto": "Coordinación de Tutores",
+          "correo": "tutoria.arpa@correo.buap.mx",
+          "telefono": "Ext. 3743",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Claudia Gracida Olvera",
+          "puesto": "Coordinación de Vinculación",
+          "correo": "vinculacion.arpa@correo.buap.mx",
+          "telefono": "Ext. 3740",
+          "ubicacion": "Edificio Sur 1"
+        },
+        {
+          "nombre": "Miguel Mejía Juárez",
+          "puesto": "Coordinador de Planeación Académica",
+          "correo": "tutoria.arpa@correo.buap.mx",
+          "telefono": "Edificio ARPA 1 Planta Alta",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Adriana Peregrina Espadas",
+          "puesto": "Gestora Patrimonial",
+          "correo": "adriana.peregrina@correo.buap.mx",
+          "telefono": "Ext. 3733",
+          "ubicacion": "Edificio Sur 1"
+        },
+        {
+          "nombre": "Ana Luisa Horán Díaz",
+          "puesto": "Gestora Académica",
+          "correo": "analu.horan@correo.buap.mx",
+          "telefono": "Ext. 3741",
+          "ubicacion": "Edificio ARPA 1"
+        },
+        {
+          "nombre": "Elsa Isabel Ramírez Martínez",
+          "puesto": "Gestora Administrativa de Dirección",
+          "correo": null,
+          "telefono": "Edificio Sur 1",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FCPS",
+      "nombreUnidad": "Facultad de Ciencias Políticas y Sociales",
+      "urlDirectorio": "https://cipolys.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dra. Mirza Aguilar Pérez",
+          "puesto": "Directora",
+          "correo": "mirza.aguilar@correo.buap.mx; direccion.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Yessika Mabel Cepeda Arellano",
+          "puesto": "Secretaria Académica",
+          "correo": "academica.fcps@correo.buap.mx; recepcionacademica.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Octavio Humberto Moreno Velador",
+          "puesto": "Secretario de Investigación y Estudios de Posgrado",
+          "correo": "posgrado.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Martha Consuelo Nava Galicia",
+          "puesto": "Secretaria Administrativa",
+          "correo": "administrativa.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Erika Flores Flores",
+          "puesto": "Coordinadora de Ciencias Políticas",
+          "correo": "cienciaspoliticas.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Yobanni Cuahutle Zamora",
+          "puesto": "Coordinador de Relaciones Internacionales",
+          "correo": "relacionesinternacionales.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Joel David Garzón",
+          "puesto": "Coordinador de Sociología",
+          "correo": "sociologia.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Francisco Sánchez Espinoza",
+          "puesto": "Coordinador",
+          "correo": "maestriacipol.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Oscar Calderón Morillón",
+          "puesto": "Coordinador",
+          "correo": "estudiossociales.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Marisol Pérez Díaz",
+          "puesto": "Coordinadora",
+          "correo": "maestria.ridh@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Linda Margarita Romero Orduña",
+          "puesto": "Coordinadora de Laboratorio Disciplinario: Titulación y Egreso",
+          "correo": "titulacion.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Ciro Adrián Acevedo Cisneros",
+          "puesto": "Coordinador de Práctica Profesional Crítica",
+          "correo": "practicaprofesionalcritica.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. María de Jesús Ofelia Tobón Ramírez",
+          "puesto": "Educación Continua y Vinculación",
+          "correo": "madejesus.tobon@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Hervey Rivera González",
+          "puesto": "Coordinador de Laboratorios disciplinarios: Proyectos especiales",
+          "correo": "hervey.rivera@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Jazmín García Gómez",
+          "puesto": "Coordinadora de Divulgación y Extensión de la Cultura",
+          "correo": "divulgacionyextensioncultural.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Eduardo Talavera Sardaneta",
+          "puesto": "Coordinador de Evaluación Académica",
+          "correo": "evaluacionacademica.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Christopher Mejía Rosas",
+          "puesto": "Coordinador de Deportes y Ecología",
+          "correo": "crisopher.mejiaaro@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. José Raúl Vázquez de Lara Cisneros",
+          "puesto": "Coordinador de Movilidad e Internacionalización",
+          "correo": null,
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Norma Bertha Cerezo Morales",
+          "puesto": "Coordinadora de Planeación y Calidad",
+          "correo": "planeacion.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Montserrat Miquel Hernández",
+          "puesto": "Coordinadora de Tutores / Lobomentores",
+          "correo": "lobomentoria.fcps@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Omar Eduardo Mayorga Gallardo",
+          "puesto": "Coordinador de Comunicación Científica",
+          "correo": "omar.mayorga@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Javier Bautista Álvarez",
+          "puesto": "Servicios Escolares",
+          "correo": "javier.bautista@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FESTO",
+      "nombreUnidad": "Facultad de Estomatología",
+      "urlDirectorio": "https://estomatologia.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "M.C. Fernando de Jesús Martínez Arroniz",
+          "puesto": "DIRECTOR",
+          "correo": "direccion.estomatologia@correo.buap.mx",
+          "telefono": "Teléfono: 2 29 55 00 Ext. 6400.",
+          "ubicacion": "Edificio EST9 2do piso"
+        },
+        {
+          "nombre": "Mtra. Brenda Castillo Silva",
+          "puesto": "SECRETARIA ACADÉMICA",
+          "correo": "academica.estomatologia@correo.buap.mx",
+          "telefono": "Teléfono: 2 29 55 00 Ext. 6402.",
+          "ubicacion": "Edificio EST5 Exterior."
+        },
+        {
+          "nombre": "Mtro. Farid Alfonso Dipp Velázquez",
+          "puesto": "SECRETARIO DE INVESTIGACIÓN Y ESTUDIOS DE POSGRADO",
+          "correo": "posgrado.estomatologia@correo.buap.mx",
+          "telefono": "Teléfono: 2 29 55 00 Ext. 5526.",
+          "ubicacion": "Edificio EST2"
+        },
+        {
+          "nombre": "Mtro. Antonio Andrade Torres",
+          "puesto": "COORDINADOR ADMINISTRATIVO DE UNIDAD ACADÉMICA",
+          "correo": "administrativa.estomatologia@correo.buap.mx",
+          "telefono": "Teléfono: 2 29 55 00 Ext. 6405.",
+          "ubicacion": "Edificio EST5 Interior."
+        },
+        {
+          "nombre": "Mtro. Floriberto Calixto Arellano",
+          "puesto": "COORDINADOR DE EDUCACIÓN CONTINUA",
+          "correo": "educon.estomatologia@correo.buap.mx",
+          "telefono": "Teléfono: 2 29 55 00 Ext. 6478.",
+          "ubicacion": "Edificio EST9 Atrás de Clínicas"
+        },
+        {
+          "nombre": "Mtra. María del Rocío Pedraza Espejel",
+          "puesto": "RESPONSABLE DE RADIOLOGÍA",
+          "correo": "rocio.pedraza@correo.buap.mx",
+          "telefono": "Teléfono: 2 29 55 00 Ext. 6412.",
+          "ubicacion": "Edificio EST1"
+        },
+        {
+          "nombre": "Mtro. Gustavo Cruz Venegas",
+          "puesto": "COORDINADOR DE SERVICIO SOCIAL",
+          "correo": null,
+          "telefono": null,
+          "ubicacion": "Edificio EST5 Interior."
+        },
+        {
+          "nombre": "Mtro. Jorge Sebastián Salinas González",
+          "puesto": "RESPONSABLE DE PRÁCTICA PROFESIONAL",
+          "correo": null,
+          "telefono": null,
+          "ubicacion": "Edificio EST9 Exterior."
+        }
+      ]
+    },
+    {
+      "clave": "FIQ",
+      "nombreUnidad": "Facultad de Ingeniería Química",
+      "urlDirectorio": "https://ingenieriaquimica.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Mtra. Ma. Guadalupe Tita Vázquez Espinosa de los Monteros",
+          "puesto": "Dirección Facultad de Ingeniería Química",
+          "correo": null,
+          "telefono": "7251",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Valeria Jordana González Coronel",
+          "puesto": "Secretaria Académica",
+          "correo": null,
+          "telefono": "7252",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Esmeralda Vidal Robles",
+          "puesto": "Secretaría de Investigación y Estudios de Posgrado",
+          "correo": null,
+          "telefono": "7261",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Daniel Cruz González",
+          "puesto": "Coordinador Administrativo",
+          "correo": null,
+          "telefono": "7254",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Francisco Manuel Pacheco Aguirre",
+          "puesto": "Coordinador Ingeniería Química",
+          "correo": null,
+          "telefono": "2972",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. José Carlos Mendoza Hernández",
+          "puesto": "Coordinador de Ingeniería Ambiental",
+          "correo": null,
+          "telefono": "2973",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Héctor Ruiz Espinosa",
+          "puesto": "Coordinador de Ingeniería en Alimentos",
+          "correo": null,
+          "telefono": "2971",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Miguel Ángel García Castro",
+          "puesto": "Coordinador de Ingeniería en Materiales",
+          "correo": null,
+          "telefono": "2970",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Imelda Luz Lembrino Pérez",
+          "puesto": "Coordinadora de Servicio Social y Prácticas Profesionales",
+          "correo": null,
+          "telefono": "7256",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Ma. Magdalena Thelma de Gante Ceballos",
+          "puesto": "Coordinadores de Titulación",
+          "correo": null,
+          "telefono": "7257",
+          "ubicacion": null
+        },
+        {
+          "nombre": "M.I. Juan Carlos Pichardo Macías",
+          "puesto": "Coordinadores de Titulación",
+          "correo": null,
+          "telefono": "7257",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Ita Yetzy Gutiérrez Ortiz",
+          "puesto": "Coordinadora de Vinculación",
+          "correo": null,
+          "telefono": "7255",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Gerardo López Ortega",
+          "puesto": "Coordinador de Cultura y Deporte",
+          "correo": null,
+          "telefono": "7255",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Ma. Dolores Guevara Espinosa",
+          "puesto": "Coordinadora de Mentoría",
+          "correo": null,
+          "telefono": "2975",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Ma. Catalina Rivera Morales",
+          "puesto": "Coordinadora de Tutoría",
+          "correo": null,
+          "telefono": "2975",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Ma. Dolores Guevara Espinosa",
+          "puesto": "Coordinador de Becas",
+          "correo": null,
+          "telefono": "2975",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Raquel Castillo López",
+          "puesto": "Recepción FIQ",
+          "correo": null,
+          "telefono": "7250",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Ing. Paul Castañeda",
+          "puesto": "Recepción Secretario Administrativo",
+          "correo": null,
+          "telefono": "7258",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Laura Limón Duran",
+          "puesto": "Recepción Secretaría Académica",
+          "correo": null,
+          "telefono": "7259",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Manuel Sánchez Cantú",
+          "puesto": "Laboratorio de Biodiesel",
+          "correo": null,
+          "telefono": "7265",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Ing. Adán Cuevas Chávez",
+          "puesto": "Laboratorio de Operaciones Unitarias",
+          "correo": null,
+          "telefono": "7266",
+          "ubicacion": null
+        },
+        {
+          "nombre": "C.P. Adrián Ramírez Vázquez",
+          "puesto": "Área de contabilidad",
+          "correo": null,
+          "telefono": "7253",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Juana Deisy Santamaría Juárez",
+          "puesto": "Coordinadora de laboratorios FIQ",
+          "correo": null,
+          "telefono": "7260",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FLENG",
+      "nombreUnidad": "Facultad de Lenguas",
+      "urlDirectorio": "https://www.facultaddelenguas.com/?seccion=directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dra. María Amelia Xique Suárez",
+          "puesto": "Directora",
+          "correo": "direccion.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5810",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Miguel Ángel Rodríguez Vega",
+          "puesto": "Secretario Administrativo",
+          "correo": "administrativa.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5804",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Marco Antonio Aparicio Fernández",
+          "puesto": "Secretario Académico",
+          "correo": "academica.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5803; Ext. 5813",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. María Lilia López López",
+          "puesto": "Sec. de Inv. y Estudios de Posgrado",
+          "correo": "siep.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5826",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Maribel Guzmán Mijangos",
+          "puesto": "Licenciatura en la Enseñanza del Inglés (LEI)",
+          "correo": "licenciaturaingles.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5820; Ext. 5821",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Stéphanie Marie Brigitte Voisin",
+          "puesto": "Licenciatura en la Enseñanza del Francés (LEF)",
+          "correo": "lef.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5838",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Stéphanie Marie Brigitte Voisin",
+          "puesto": "Licenciatura en Lengua Francesa, Cultura y Mediación",
+          "correo": "licenciaturafrances.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5838",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Rocío Rodríguez Rivera",
+          "puesto": "Licenciatura en la Enseñanza de Lenguas - Inglés (Modalidad Mixta) (LELI)",
+          "correo": "lic.abierta.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5834 y 5827",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Gabriela Alhor Martínez",
+          "puesto": "Maestría en la Enseñanza del Inglés (MEI)",
+          "correo": "mei.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5828",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Benjamín Gutiérrez Gutiérrez",
+          "puesto": "Maestría en Innovación en la Enseñanza de Lenguas (MIEL)",
+          "correo": "miel.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5828",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Elizabeth Flores Salgado",
+          "puesto": "Coordinación del Doctorado en Enseñanza y Aprendizaje de Lenguas",
+          "correo": "deal.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5828",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Ofelia Martínez Fuentes",
+          "puesto": "Centro de Lenguas Extranjeras - CU (CELE-CU)",
+          "correo": "cele_cu.lenguas@correo.buap.mx",
+          "telefono": "Ext. 2800; Ext. 2802; Ext. 2806",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Sandra Guadalupe López Arellano",
+          "puesto": "Centro de Lenguas Extranjeras - Centro (CELE-Humboldt)",
+          "correo": "cele_centro.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5801; Ext. 5823",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Maritza del Carmen Rosas Alvarez",
+          "puesto": "FGMA/FGUS/FGUM/TCU -Inglés y Francés",
+          "correo": "cleingles.fl@correo.buap.mx",
+          "telefono": "Ext. 7916; Ext. 2801",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Patricia Salgado Nochebuena",
+          "puesto": "Laboratorios Disciplinarios",
+          "correo": "caa.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5815",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. María Isabel Reyes Osorio",
+          "puesto": "Educación Continua",
+          "correo": "educontinua.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5830",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Dora del Carmen Morales Galindo",
+          "puesto": "Centro de Certificaciones Internacionales y Acreditación (CCIA)",
+          "correo": "ccia.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5819; Ext. 2807",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Norma Lucero Pérez Rodríguez",
+          "puesto": "Tutorías",
+          "correo": "tutorias.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5831",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Mónica Zamora Hernández",
+          "puesto": "Práctica Profesional",
+          "correo": "practicaprofesional.lenguas@correo.buap.mx",
+          "telefono": "Ext. 1707",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Mónica Zamora Hernández",
+          "puesto": "Servicio Social",
+          "correo": "serviciosocial.fl@correo.buap.mx",
+          "telefono": "Ext. 5822",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Ernesto Chávez Santillán",
+          "puesto": "Titulación",
+          "correo": "titulacion.lenguas@correo.buap.mx",
+          "telefono": "Ext. 1711",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Julio Alejandro Flores Martínez",
+          "puesto": "Cursos de Extensión Universitaria - Humboldt (CEU-Humboldt)",
+          "correo": "ceuhumboldt.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5811",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Eva María Sánchez Rodríguez",
+          "puesto": "Cursos de Extensión Universitaria - CU (CEU-CU)",
+          "correo": "ceu_cu.lenguas@correo.buap.mx",
+          "telefono": "Ext. 1708",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Samuel Fernández Ramírez",
+          "puesto": "Cursos de Extensión Universitaria - Complejo Cultural Universitario (CEU-CCU)",
+          "correo": "cursosextensionccu.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5816",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Ana Isabel Muñoz Palacios",
+          "puesto": "Cursos de Extensión Universitaria - Distancia (CEUD)",
+          "correo": "cursosextensiondistancia.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5837",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Melina Gertrude Muehr",
+          "puesto": "Casa de la Lengua Alemana",
+          "correo": null,
+          "telefono": "Ext. 5812",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Iveth Lozano Palacios",
+          "puesto": "Casa de la Lengua Francesa",
+          "correo": "casafrancesa.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5812",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Jeanette Sandre Cuautle",
+          "puesto": "Casa de la Lengua Inglesa",
+          "correo": "casainglesa.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5806",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. José Santos Nava Badillo",
+          "puesto": "Departamento Integral de traducción: Inglés",
+          "correo": "traduccioningles.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5818",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Eveling Zenteno Villarce",
+          "puesto": "Departamento Integral de traducción: Francés",
+          "correo": "traduccioningles.lenguas@correo.buap.mx",
+          "telefono": "Extt. 5818",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Aurora Fernandez Del Campo Herrera",
+          "puesto": "Becas",
+          "correo": "becas.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5817",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Marsha Jane Way Souder",
+          "puesto": "Eventos Culturales",
+          "correo": null,
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Olivia Ruiz Escalona",
+          "puesto": "Librería",
+          "correo": "libreria.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5800",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Ana Korina López Gámez",
+          "puesto": "Unidad de Género",
+          "correo": "genero.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5797",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Agustín Antonio Huerta Ramírez",
+          "puesto": "Oficina de Difusión y Comunicación",
+          "correo": "difusion.lenguas@correo.buap.mx",
+          "telefono": "Ext. 5833",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FMED",
+      "nombreUnidad": "Facultad de Medicina",
+      "urlDirectorio": "https://medicina.buap.mx/?q=content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "DC. Celso Enrique Cortés Romero",
+          "puesto": "Directorio personal Administrativo",
+          "correo": "direccion.facmed@correo.buap.mx",
+          "telefono": "222-2295500 ext: 6047 o 6048",
+          "ubicacion": "MED 1 - 211"
+        },
+        {
+          "nombre": "MC. María Arany Hernández Cortez",
+          "puesto": "Secretaría Académica",
+          "correo": "academica.facmed@correo.buap.mx",
+          "telefono": "222-2295500 ext: 6092, 6093, 6049",
+          "ubicacion": "MED 1 - 209"
+        },
+        {
+          "nombre": "Dr. Martín Benito Pineda Germán",
+          "puesto": "Secretaría Administrativa",
+          "correo": "administrativa.facmed@correo.buap.mx",
+          "telefono": "222-2295500 ext: 6044, 6090",
+          "ubicacion": "MED 1 - 108"
+        },
+        {
+          "nombre": "Dra Yaneth Martínez Tovilla",
+          "puesto": "Secretaría de Investigación y Estudios de Posgrado",
+          "correo": "posgrado.facmed@correo.buap.mx",
+          "telefono": "222-2295500 ext: 6301 y 6304",
+          "ubicacion": "POS 1"
+        },
+        {
+          "nombre": "Dr. Emmanuel Seseña Méndez",
+          "puesto": "Coordinación de la Licenciatura en Biomedicina",
+          "correo": "biomedicina.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6346",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Verónica Montalvo Alcalá",
+          "puesto": "Coordinación de la Licenciatura en Ciencia Forense",
+          "correo": "forense.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6098",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DC. Jaime Rebollo Vázquez",
+          "puesto": "Coordinación de la Licenciatura en Fisioterapia",
+          "correo": "fisioterapia.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6089, 6071",
+          "ubicacion": null
+        },
+        {
+          "nombre": "D.C. Yali Carolina Escribano Cadena",
+          "puesto": "Coordinación de la Licenciatura en Medicina",
+          "correo": "medicina.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6051, 6094",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MC. Marcela Vélez Pliego",
+          "puesto": "Coordinación de la Licenciatura en Nutrición Clínica",
+          "correo": "nutricion.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6081",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Karla Herrera Olvera",
+          "puesto": "Coordinación de la Carrera de Profesional Asociado en Imagenología",
+          "correo": "imagenologia.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6072, 6073",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Ariel Farit Guitierrez Alexander",
+          "puesto": "Coordinación de la Carrera de Profesional Asociado en Urgencias Médicas",
+          "correo": "urgencias.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6032",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DC. Blanca Guadalupe Baez Duarte",
+          "puesto": "Coordinación de la Maestría en Ciencias Médicas e Investigación",
+          "correo": "mcmi.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6317",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DC. Carlos Omar Muñoz Guarneros",
+          "puesto": "Coordinación de la Maestría en Administración de Servicios de Salud",
+          "correo": "mass.facmed@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Adelina Jazmín Castillo Sánchez",
+          "puesto": "Coordinación de Educación Continua",
+          "correo": "educacioncontinua.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6099",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Isamar Salvatierra Alcalde",
+          "puesto": "Coordinación de Práctica Clínica Profesional LMED",
+          "correo": "practica.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6340",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DC. Christian Javier Vázquez Reyes",
+          "puesto": "Coordinación de Internado Rotatorio de Pregrado LMED",
+          "correo": "internado.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6097 y 6027",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DC. Minou del Carmen Arévalo Ramírez",
+          "puesto": "Coordinación de Servicio Social LMED",
+          "correo": "serviciosocial.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6096 y 6076",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Marisol Velasco Villa",
+          "puesto": "Coordinación de Titulación y Eficiencia Terminal",
+          "correo": "eficienciaterminal.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6041 y 6052",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. María Guadalupe Trinidad Jiménez Díaz",
+          "puesto": "Coordinación de Tutores y Lobomentores",
+          "correo": "tutores.facmed@correo.buap.mx; lobomentores.facmed@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Guadalupe Jiménez Pérez.",
+          "puesto": "Coordinación de Especialidades Médicas",
+          "correo": "siep_especialidades.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6256 y 6031",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Victoria Espinosa Texis",
+          "puesto": "Contabilidad de la Facultad de Medicina",
+          "correo": "contabilidad.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6045",
+          "ubicacion": null
+        },
+        {
+          "nombre": "C. Javier Ortíz Vargas",
+          "puesto": "Administración del Almacén de la Facultad",
+          "correo": "javier.vargaso@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6067",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Anabel Romero Cervantes",
+          "puesto": "Coordinación de Planeación y Eventos de Vinculación Estudiantil",
+          "correo": "planeacion.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6070",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Renata Sánchez Méndez",
+          "puesto": "Administración del Auditorio Julio Glockner",
+          "correo": "auditorioglockner.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6450 y 6457",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. María del Rosario Vargas Benítez",
+          "puesto": "Enlace al Comité para la Igualdad Laboral y No Discriminación NMX025",
+          "correo": "nom025.facmed@correo.buap.mx",
+          "telefono": "Teléfono: 222-2295500 Extensión: 6043",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "CRC",
+      "nombreUnidad": "Complejo Regional Centro",
+      "urlDirectorio": "https://crc.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Armando José José",
+          "puesto": "Director",
+          "correo": "armando.jose@correo.buap.mx",
+          "telefono": "Ext 3985",
+          "ubicacion": "Complejo Regional Centro"
+        },
+        {
+          "nombre": "Sandra Fany Cerezo Ramírez",
+          "puesto": "Secretaria Académica",
+          "correo": "sandraf.cerezo@correo.buap.mx",
+          "telefono": "Ext 3985",
+          "ubicacion": "Complejo Regional Centro"
+        },
+        {
+          "nombre": "María del Pilar Amador Alarcón",
+          "puesto": "Secretaria Administrativa",
+          "correo": "pilar.amadora@correo.buap.mx",
+          "telefono": "Ext 3985",
+          "ubicacion": "Complejo Regional Centro"
+        },
+        {
+          "nombre": "Rosa María Casiano",
+          "puesto": "Preparatoria de Acajete, Puebla del Complejo Regional Centro",
+          "correo": "rosa.casiano@correo.buap.mx",
+          "telefono": "Ext 3851",
+          "ubicacion": "Acajete"
+        },
+        {
+          "nombre": "Guadalupe Tenorio Iturbide",
+          "puesto": "Preparatoria de Acatzingo, Puebla del Complejo Regional Centro",
+          "correo": "guadalupe.tenorio@correo.buap.mx",
+          "telefono": "Ext 8303",
+          "ubicacion": "Acatzingo"
+        },
+        {
+          "nombre": "Martha Elena Galicia Rosas",
+          "puesto": "Preparatoria de Amozoc, Puebla del Complejo Regional Centro, Turno Matutino",
+          "correo": "martha.galicia@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Amozoc"
+        },
+        {
+          "nombre": "Kenya Alina Arroyo Aldana",
+          "puesto": "Preparatoria de Amozoc, Puebla del Complejo Regional Centro, Turno Vespertino",
+          "correo": "kenya.arroyo@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Amozoc"
+        },
+        {
+          "nombre": "Joshua Adán Flores Pérez",
+          "puesto": "Preparatoria de Ciudad Serdán, Puebla del Complejo Regional Centro",
+          "correo": "joshua.floresadan@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Ciudad Serdán"
+        },
+        {
+          "nombre": "Martin López García",
+          "puesto": "Bachillerato Tecnológico de San José Chiapa, Puebla del Complejo Regional Centro",
+          "correo": "martin.lopezg@correo.buap.mx",
+          "telefono": "Ext 1591",
+          "ubicacion": "San José Chiapa"
+        },
+        {
+          "nombre": "Juan Sebastián Merino Flores",
+          "puesto": "Preparatoria de San Salvador El Seco, Puebla del Complejo Regional Centro",
+          "correo": "juan.merinof@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "San Salvador El Seco"
+        },
+        {
+          "nombre": "Alejandro Díaz Cerezo",
+          "puesto": "Preparatoria de Tepeaca, Puebla del Complejo Regional Centro",
+          "correo": "alejandro.diazc@correo.buap.mx",
+          "telefono": "Ext 2465",
+          "ubicacion": "Tepeaca"
+        },
+        {
+          "nombre": "Delfino Vázquez Quintero",
+          "puesto": "Licenciatura en Derecho",
+          "correo": "delfino.vazquezq@correo.buap.mx",
+          "telefono": "Ext 1524",
+          "ubicacion": "Acajete"
+        },
+        {
+          "nombre": "Mario Rosas Hernández",
+          "puesto": "Licenciatura en Administración de Empresas",
+          "correo": "mario.rosas@correo.buap.mx",
+          "telefono": "Ext 8304",
+          "ubicacion": "Acatzingo"
+        },
+        {
+          "nombre": "María Claudia Denicia Carral",
+          "puesto": "Licenciatura en Ingeniería en Sistemas y Tecnologías de la Información Industrial",
+          "correo": "claudia.denicia@correo.buap.mx",
+          "telefono": "Ext 1524",
+          "ubicacion": "San José Chiapa"
+        },
+        {
+          "nombre": "Henry Xochipiltecatl Carreto",
+          "puesto": "Licenciatura en Ingeniería en Automatización y Autotrónica",
+          "correo": "henry.xochipiltecatl@correo.buap.mx",
+          "telefono": "Ext 1543",
+          "ubicacion": "San José Chiapa"
+        },
+        {
+          "nombre": "Héctor Medina Cruz",
+          "puesto": "Licenciatura en Ingeniería en Procesos y Gestión Industrial",
+          "correo": "hector.medinacruz@correo.buap.mx",
+          "telefono": "Ext 1533",
+          "ubicacion": "San José Chiapa"
+        },
+        {
+          "nombre": "Manuel Abraham López Pacheco",
+          "puesto": "Técnico Superior en Innovación del Mantenimiento Industrial",
+          "correo": "manuel.lopezpa@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "San Salvador El Seco"
+        },
+        {
+          "nombre": "Raymundo Hernández Loma",
+          "puesto": "Licenciatura en Ingeniería Agroindustrial",
+          "correo": "raymundo.hernandezl@correo.buap.mx",
+          "telefono": "Ext 3985",
+          "ubicacion": "Tecamachalco"
+        },
+        {
+          "nombre": "Gilberto Castillo Luna",
+          "puesto": "Licenciatura en Ingeniería Agronómica y Zootecnia",
+          "correo": "gilberto.castillol@correo.buap.mx",
+          "telefono": "Ext 8212",
+          "ubicacion": "Los Reyes de Juárez"
+        },
+        {
+          "nombre": "Ada Myriam Aldave Bernal",
+          "puesto": "Licenciatura en Administración y Dirección de Pequeñas y Medianas Empresas",
+          "correo": "ada.aldaveb@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Tepeaca"
+        },
+        {
+          "nombre": "Eduardo Gómez García",
+          "puesto": "Licenciatura en Arquitectura",
+          "correo": "eduardo.gomezga@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Tepeaca"
+        },
+        {
+          "nombre": "Isis Pérez Flores",
+          "puesto": "Licenciatura en Negocios Internacionales",
+          "correo": "isis.perez@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Tepeaca"
+        }
+      ]
+    },
+    {
+      "clave": "FABUAP",
+      "nombreUnidad": "Facultad de Arquitectura",
+      "urlDirectorio": "https://arquitectura.buap.mx/content/direcci%C3%B3n",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dra. G. Carola Santiago Azpiazu",
+          "puesto": "Dirección",
+          "correo": "asistentedireccion.farq@correo.buap.mx",
+          "telefono": "Ext. 7968",
+          "ubicacion": "1ARQ-1"
+        },
+        {
+          "nombre": "Mtra. Nelly Ruiz Vázquez",
+          "puesto": "Secretaria Académica",
+          "correo": "academica.fabuap@correo.buap.mx",
+          "telefono": "Ext. 7950",
+          "ubicacion": "1ARQ-1"
+        },
+        {
+          "nombre": "Arq. Arquímedes Lucho Sulvarán",
+          "puesto": "Secretario Administrativo",
+          "correo": "secretaria_administrativa.fabuap@correo.buap.mx",
+          "telefono": "Ext.7952",
+          "ubicacion": "1ARQ-1"
+        },
+        {
+          "nombre": "Dra. Ma. Lourdes Guevara Romero",
+          "puesto": "Secretaria de Investigación y Estudios de Posgrado",
+          "correo": "siep.fabuap@correo.buap.mx",
+          "telefono": "Ext. 7969",
+          "ubicacion": "1ARQ-1"
+        }
+      ]
+    },
+    {
+      "clave": "FCAP",
+      "nombreUnidad": "Facultad de Ciencias Agrícolas y Pecuarias",
+      "urlDirectorio": "https://agrohidraulica.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dr. Armando Ibáñez Martínez Armando",
+          "puesto": "Director",
+          "correo": "armando.ibanez@correo.buap.mx",
+          "telefono": "Tel. 222 229 55 00, Ext.1067",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Martha Laura Sánchez Marín",
+          "puesto": "Asistente",
+          "correo": null,
+          "telefono": "Tel. 222 229 55 00, Ext. 1066",
+          "ubicacion": "Unidad San Juan Acateno"
+        },
+        {
+          "nombre": "Sagrario Ruiz Bernal",
+          "puesto": "Asistente",
+          "correo": null,
+          "telefono": "Tel. 222 229 55 00, Ext. 1062",
+          "ubicacion": "Unidad Tlatlauquitepec"
+        },
+        {
+          "nombre": "Dr. Numa Pompilio Castro González",
+          "puesto": "Secretario Académico",
+          "correo": "numa.castro@correo.buap.mx",
+          "telefono": "Tel. 222 229 55 00, Ext. 1063",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Raúl Berdeja Arbeu",
+          "puesto": "Secretario de Investigación",
+          "correo": "raul.berdeja@correo.buap.mx",
+          "telefono": "Tel. 222 229 55 00, Ext. 1063",
+          "ubicacion": null
+        },
+        {
+          "nombre": "M.C. José Méndez Gómez",
+          "puesto": "Secretario Administrativo",
+          "correo": "jose.mendezgomez@correo.buap.mx",
+          "telefono": "Tel. 222 229 55 00, Ext. 1064",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Gisela Romero Andrade",
+          "puesto": "Asistente",
+          "correo": null,
+          "telefono": "Tel. 222 229 55 00, Ext. 1063",
+          "ubicacion": "Unidad San Juan Acateno"
+        },
+        {
+          "nombre": "Lic. Rocío Valerio Lozano",
+          "puesto": "Contadora",
+          "correo": null,
+          "telefono": "Tel. 222 229 55 00, Ext. 1065",
+          "ubicacion": "Unidad San Juan Acateno"
+        }
+      ]
+    },
+    {
+      "clave": "FCB",
+      "nombreUnidad": "Facultad de Ciencias Biológicas",
+      "urlDirectorio": "https://csbiologicas.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dra. López Morales Dolores",
+          "puesto": "Directorio",
+          "correo": "direccion.fcb@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Martínez Torres Abigail",
+          "puesto": "Secretaria Académica",
+          "correo": "academica.fcb@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "M. C. López Téllez María Concepción",
+          "puesto": "Secretaria de Investigación y Estudios de Posgrado",
+          "correo": "posgrado.fcb@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "C.P. Alejandra Verónica López Alavez",
+          "puesto": "Secretaria Administrativa",
+          "correo": "administrativa.fcb@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "C.P. Graciela Jiménez Sánchez",
+          "puesto": "Contadora",
+          "correo": "graciela.jimenez@correo.buap.mx",
+          "telefono": "7085",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Ariadna Arzate Valdés",
+          "puesto": "Secretaria",
+          "correo": "ariadna.arzate@correo.buap.mx",
+          "telefono": "2724",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Karina Sarabia García",
+          "puesto": "Secretaria",
+          "correo": "karina.sarabia@correo.buap.mx",
+          "telefono": "7084",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Danya Yeimy Olarte ",
+          "puesto": " Secretaria",
+          "correo": "danya.olarterdz@correo.buap.mx",
+          "telefono": "7087",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FCC",
+      "nombreUnidad": "Facultad de Ciencias de la Computación",
+      "urlDirectorio": "https://www.cs.buap.mx/Directivos.php",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "M.I. María del Consuelo Molina García",
+          "puesto": "DIRECTORA",
+          "correo": "direccion.fcc@correo.buap.mx",
+          "telefono": "Ext. 5673",
+          "ubicacion": "CCO4-211"
+        },
+        {
+          "nombre": "Dra. María Teresa Torrijos Muñoz",
+          "puesto": "SECRETARIA ACADÉMICA",
+          "correo": "secretariaacademica.fcc@correo.buap.mx",
+          "telefono": "Ext. 7204",
+          "ubicacion": "CCO4-209"
+        },
+        {
+          "nombre": "Dra. María Josefa Somodevilla García",
+          "puesto": "SECRETARIA DE INVESTIGACIÓN Y ESTUDIOS DE POSGRADO",
+          "correo": "maria.somodevilla@correo.buap.mx",
+          "telefono": "Ext. 7202",
+          "ubicacion": "CCO1-211A"
+        },
+        {
+          "nombre": "Mtro. Guillermo Marín Dorado",
+          "puesto": "SECRETARIO ADMINISTRATIVO",
+          "correo": "administrativa.fcc@correo.buap.mx",
+          "telefono": "Ext. 7207",
+          "ubicacion": "CCO4-208A"
+        }
+      ]
+    },
+    {
+      "clave": "FCCOM",
+      "nombreUnidad": "Facultad de Ciencias de la Comunicación",
+      "urlDirectorio": "https://facultadcomunicacion.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dra. C. Angélica Mendieta Ramírez",
+          "puesto": "Directora Facultad de Ciencias de la Comunicación",
+          "correo": "direccion.fccom@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Guillermo Carrera García",
+          "puesto": "Secretario de Investigación y Estudios de Posgrado",
+          "correo": "guillermo.carrera@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Alejandra Ponce Morales",
+          "puesto": "Secretaria Académica",
+          "correo": "academica.fccom@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Andrea Estupiñán Villanueva",
+          "puesto": "Coordinadora Administrativa",
+          "correo": "andrea.estupinan@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Helios J. R. Valencia Ortega",
+          "puesto": "Coordinador de la Licenciatura en Comunicación Presencial",
+          "correo": "helios.valencia@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Alejandro Vergara Berra",
+          "puesto": "Coordinador de la Licenciatura en Comunicación Semiescolarizada",
+          "correo": "alejandro.vergaraberra@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Eloísa M. Platas Casillas",
+          "puesto": "Coordinador de la Licenciatura en Comunicación Distancia",
+          "correo": "eloisa.platas@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Carlos A. Berriel Mastretta",
+          "puesto": "Coordinador de la Licenciatura en Mercadotecnia y Medios Digitales Presencial",
+          "correo": "carlos.berriel@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Germán Cruz Guzmán",
+          "puesto": "Coordinador de la Licenciatura en Mercadotecnia y Medios Digitales Distancia",
+          "correo": "german.cruz@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Leticia Montagner García",
+          "puesto": "Coordinadora de la Licenciatura en Periodismo Semiescolarizada",
+          "correo": "leticia.montagner@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Alejandro George Cruz",
+          "puesto": "Coordinador de la Maestría en Comunicación Estratégica",
+          "correo": "alejandro.george@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Ketzalcóatl Pérez Pérez",
+          "puesto": "Coordinador de Tutorías y Becas",
+          "correo": "ketzalcoatl.perez@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Beatriz Flores Bazán",
+          "puesto": "Coordinadora de Practica Profesional Crítica",
+          "correo": "beatriz.bazan@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. José Luis Estrada Rodríguez",
+          "puesto": "Coordinador de Educación Continua",
+          "correo": "jluis.estrada@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. S. Cecilia Deloya Robledo",
+          "puesto": "Coordinadora de PIEVA y PISE",
+          "correo": "sara.deloya@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Andrea Aguilar De Gante",
+          "puesto": "Coordinadora de Movilidad Estudiantil",
+          "correo": "andrea.aguilardegante@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Laura Álvarez Padua",
+          "puesto": "Coordinadora de Planeación",
+          "correo": "laura.alvarez@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Luis Emmanuel Pétriz Lira",
+          "puesto": "Coordinador de Comunicación Interna",
+          "correo": "emmanuel.petriz@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FCQ",
+      "nombreUnidad": "Facultad de Ciencias Químicas",
+      "urlDirectorio": "https://csquimicas.buap.mx/?q=content/coordinaciones",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "D.C. Sandra Luz Cabrera Hilerio",
+          "puesto": "Lic. en Químico Farmacobiólogo",
+          "correo": "coordqfb.fcq@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 7372",
+          "ubicacion": "FCQ9, Dirección, Coordinación 115A"
+        },
+        {
+          "nombre": "M.C. José Mariano Marrot Mateos",
+          "puesto": "Lic. en Farmacia",
+          "correo": "coord.farm@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 7372",
+          "ubicacion": "FCQ9, Dirección, Coordinación 115A"
+        },
+        {
+          "nombre": "D.C. Mario González Perea",
+          "puesto": "Lic. en Química",
+          "correo": "coord.quim@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 7372",
+          "ubicacion": "FCQ9, Dirección, Coordinación 115A"
+        },
+        {
+          "nombre": "D.C. Raúl Ávila Sosa Sánchez",
+          "puesto": "Coordinación de Planeación",
+          "correo": "coordplan.fcq@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 2824",
+          "ubicacion": "FCQ9, Dirección, Cubículo 115"
+        },
+        {
+          "nombre": "M.E.C. Obdulia Vera López",
+          "puesto": "Evaluación Académica",
+          "correo": "coordevac.fcq@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "FCQ9, Dirección, Cubículo 115"
+        },
+        {
+          "nombre": "D.E.D. Ana Bertha Escobedo López",
+          "puesto": "Tutores y Titulación",
+          "correo": "coordtit.fcq@correo.buap.mx; coordtut.fcq@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 2847",
+          "ubicacion": "FCQ9, Dirección, Oficina 122"
+        },
+        {
+          "nombre": "M.C. Arlette Andrade Madrigal",
+          "puesto": "Práctica Profesional Crítica",
+          "correo": "coordserest.fcq@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 7369",
+          "ubicacion": "FCQ9, Dirección, Cubículo 113"
+        },
+        {
+          "nombre": "M.C. Hugo Flores Alcivar",
+          "puesto": "Laboratorios disciplinados",
+          "correo": "clabdis.fcq@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 2843",
+          "ubicacion": "FCQ9, Dirección, Cubículo 115"
+        },
+        {
+          "nombre": "D.C. Julio Manuel Hernández Pérez",
+          "puesto": "Educación Continua y Vinculación",
+          "correo": "ceducon.fcq@correo.buap.mx",
+          "telefono": "229 55 00 Extensión 7395",
+          "ubicacion": "FCQ9, Coordinación y Extensión de Difusión 119"
+        },
+        {
+          "nombre": "M.C. Martha Virginia Sosa Rivadeneyra",
+          "puesto": "Enlace CU2",
+          "correo": "martha.sosa@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FCF",
+      "nombreUnidad": "Facultad de Cultura Física",
+      "urlDirectorio": "https://facufi.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dra. Andrea Flores Flores",
+          "puesto": "DIRECTORA",
+          "correo": "andrea.floresf@correo.buap.mx",
+          "telefono": "Ext.7110",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MC. Benjamín Flores Chico",
+          "puesto": "SECRETARIO ACADÉMICO",
+          "correo": "benjamin.floresch@correo.buap.mx",
+          "telefono": "Ext.7114",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Elizabeth Suárez Castillo",
+          "puesto": "SECRETARIA ADMINISTRATIVA",
+          "correo": "elizabeth.suarez@correo.buap.mx",
+          "telefono": "Ext.7129",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Esther Romero Flores",
+          "puesto": "SECRETARIA DE INVESTIGACIÓN Y ESTUDIOS DE POSGRADO",
+          "correo": "posgrado.facufi@correo.buap.mx",
+          "telefono": "Ext.7120",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Leticia Hernández Báez",
+          "puesto": "CeSFI recepción",
+          "correo": null,
+          "telefono": "Ext.7132",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Leticia Hernández Báez",
+          "puesto": "Recepción FACUFI",
+          "correo": null,
+          "telefono": "Ext.7111",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FDERE",
+      "nombreUnidad": "Facultad de Derecho",
+      "urlDirectorio": "https://derecho.buap.mx/?q=content/coordinadores-de-gesti%C3%B3n-0",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Norma Elena Lezama Coutiño",
+          "puesto": "Titulación y Egreso",
+          "correo": "titulacion.fder@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio DER3, cubículo 104"
+        },
+        {
+          "nombre": "María del Rosario Analco Mendoza",
+          "puesto": "Vinculación Profesional",
+          "correo": "vinculacion.fder@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio DER3, cubículo 102 y 112"
+        },
+        {
+          "nombre": "Indira Tepalcingo Domínguez",
+          "puesto": "Educación Contínua",
+          "correo": "educacioncontinua.fder@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio DER9, cubículo 208"
+        },
+        {
+          "nombre": "Ana Karla Lizaola Merchant",
+          "puesto": "Becas, Tutores y Lobomentores",
+          "correo": "tutoresybecas@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio DER8, cubículo 211 y 213"
+        },
+        {
+          "nombre": "Abigail Meza Flores",
+          "puesto": "Unidad de Género",
+          "correo": "abigail.mezafl@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ---",
+          "ubicacion": "Edificio DER8, cubículo 207 y 208"
+        },
+        {
+          "nombre": "Lourdes Monserrat Caba Rios",
+          "puesto": "Laboratorios Disciplinarios de Criminología",
+          "correo": "laboratoriocriminologia@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ----",
+          "ubicacion": "Edificio DER8, cubículo 216"
+        },
+        {
+          "nombre": "Carlos Martínez Osio",
+          "puesto": "Laboratorios Disciplinarios de Inglés",
+          "correo": "carlos.martinezosio@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ---",
+          "ubicacion": "Edificio DER9, cubículo 217"
+        },
+        {
+          "nombre": "Jacob del Castillo Reyes",
+          "puesto": "Planeación",
+          "correo": "jacob.delcastillo@correo.buap.mx",
+          "telefono": "01 (222) 2 29 55 00 Extensión: ---",
+          "ubicacion": "Edificio DER9, cubículo 21"
+        }
+      ]
+    },
+    {
+      "clave": "FECON",
+      "nombreUnidad": "Facultad de Economía",
+      "urlDirectorio": "https://economia.buap.mx/?q=content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "DR. JUAN ALBERTO VÁZQUEZ MUÑOZ",
+          "puesto": "DIRECCIÓN",
+          "correo": "economia@correo.buap.mx",
+          "telefono": "5605",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Beatriz Martínez Carreño",
+          "puesto": "Unidad de Vinculación y Gestión del Conocimiento",
+          "correo": "educontinua.economia@correo.buap.mx",
+          "telefono": "7802",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Gabriela León Valentín",
+          "puesto": "Unidad de Planeación",
+          "correo": "planeacion.economia@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "DR. JOSÉ FERNANDO CAMACHO ACEVO",
+          "puesto": "Secretaría Académica",
+          "correo": "academica.economia@correo.buap.mx",
+          "telefono": "7803 7807",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Israel Deolarte George",
+          "puesto": "Coordinación de la Licenciatura en Economía",
+          "correo": "cooreco.economia@correo.buap.mx",
+          "telefono": "1187",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. José Arturo Ramírez Roque",
+          "puesto": "Coordinación de la Licenciatura en Finanzas",
+          "correo": "coorfinan.economia@correo.buap.mx",
+          "telefono": "1187",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Rosa María Patricia Pérez García",
+          "puesto": "Coordinación de Tutores y Unidad de Apoyo al Estudiante",
+          "correo": "tutores.economia@correo.buap.mx; apoyoestudiante.economia@correo.buap.mx",
+          "telefono": "7841",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Jorge Hugo González Paredes",
+          "puesto": "Coordinación de Práctica Profesional Crítica",
+          "correo": "serviciosocial.economia@correo.buap.mx",
+          "telefono": "2896",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Janet Jiménez Barroso",
+          "puesto": "Coordinación de Evaluación Académica",
+          "correo": "pieva.economia@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Laura Naxhielly Cortes Ramírez",
+          "puesto": "Área de Titulación",
+          "correo": "titulacion.economia@correo.buap.mx",
+          "telefono": "7807",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DR. Juan Isaías Aguilar Huerta",
+          "puesto": "Secretaría de Investigación y Estudios de Posgrado",
+          "correo": "posgrado.economia@correo.buap.mx",
+          "telefono": "7808 7842",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Michelle Texis Flores",
+          "puesto": "Coordinación de la Maestría en Economía",
+          "correo": "coordinacionmaestria.economia@correo.buap.mx",
+          "telefono": "5601",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. José de Jesús Rivera de la Rosa",
+          "puesto": "Coordinación de la Maestría en Desarrollo Económico y Cooperación Internacional",
+          "correo": "mdeci@correo.buap.mx",
+          "telefono": "2880",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Vania del Carmen López Toache",
+          "puesto": "Coordinación del Doctorado en Economía Política del Desarrollo",
+          "correo": "depd@correo.buap.mx",
+          "telefono": "2891",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. María Isabel Angoa Pérez",
+          "puesto": "Coordinación del Doctorado Interinstitucional en Economía Social Solidaria",
+          "correo": "diess.fecom@correo.buap.mx",
+          "telefono": "2889",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MTRO. OSCAR OMAR CHÁVEZ RODRÍGUEZ",
+          "puesto": "Secretaría Administrativa",
+          "correo": "administrativa.economia@correo.buap.mx",
+          "telefono": "7806",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Héctor Javier Becerril Mejía",
+          "puesto": "Coordinación del Centro Integral de Servicios en Informática",
+          "correo": "cisi.economia@correo.buap.mx",
+          "telefono": "7805",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FENF",
+      "nombreUnidad": "Facultad de Enfermería",
+      "urlDirectorio": "https://enfermeria.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "MCE. Erika Pérez Noriega",
+          "puesto": "DIRECTORA",
+          "correo": "erika.perez@correo.buap.mx; direccion.enfermeria@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Elsa Cruz Mendoza",
+          "puesto": "Asistente de Dirección",
+          "correo": "direccion.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 5618",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DCE. Vianet Nava Navarro",
+          "puesto": "SECRETARÍA ACADÉMICA",
+          "correo": "academica.fe@correo.buap.mx",
+          "telefono": "Ext. 6511, 6521",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MCE. Rosa María Teresa Tlalpan Hernández",
+          "puesto": "Jefe del Departamento de Educación en Enfermería Clínica.",
+          "correo": "deeclinica.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6528",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Israel Rojas Balbuena",
+          "puesto": "Coordinador de Tutoría Académica",
+          "correo": "ctutores.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6508",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DCE. Maricarmen Moreno Tochihuitl",
+          "puesto": "Coordinadora de Educación Continua y Vinculación",
+          "correo": "ceducacioncontinua.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6500",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MCE. Ma. Araceli García López",
+          "puesto": "Coordinadora de Práctica Profesional y Servicio Social",
+          "correo": "cpracticaprofesional.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6506",
+          "ubicacion": null
+        },
+        {
+          "nombre": "ME. Carmen Cruz Rivera",
+          "puesto": "Gestora de Prácticas Clínicas y Comunitarias",
+          "correo": "carmen.cruz@correo.buap.mx",
+          "telefono": "Ext. 6523",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MCE. Sebastiana del Rosario Gargantúa Águila",
+          "puesto": "Coordinadora de Evaluación Académica",
+          "correo": "cevaluacionacademica.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6526",
+          "ubicacion": null
+        },
+        {
+          "nombre": "ME. Alejandro Torres Reyes",
+          "puesto": "Coordinador de Laboratorios Disciplinarios (Central de Recursos Educativos)",
+          "correo": "claboratorios.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6510",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MSP. Erika Lozada Perezmitre",
+          "puesto": "Coordinadora de Laboratorios Disciplinarios (CECACVI San Andrés Azumiatla)",
+          "correo": "cecacviazumiatla.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6540",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MCE. Ma. del Rosario Ricardez Ramírez",
+          "puesto": "Coordinadora de Laboratorios Disciplinarios (CECACVI Santa Ana Coatepec)",
+          "correo": "cecacvisantaana.enfermeria@correo.buap.mx",
+          "telefono": "Tel. 01 (244) 103 00 48",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MCE. Inés Tenahua Quilt",
+          "puesto": "Responsable de Titulación",
+          "correo": "titulacion.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6507, 6511, 6521",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MCE. Verónica Pérez Badillo",
+          "puesto": "Responsable de ECAAS",
+          "correo": "ecaas.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6523",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DCE. Francisco Javier Báez Hernández",
+          "puesto": "SECRETARIO DE INVESTIGACIÓN Y ESTUDIOS DE POSGRADO",
+          "correo": "siep.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6548",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DCE. Vianet Nava Navarro",
+          "puesto": "Coordinadora del PE de Maestría en Enfermería",
+          "correo": "maestria.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6593",
+          "ubicacion": null
+        },
+        {
+          "nombre": "ME.Francisco Adrián Morales Castillo",
+          "puesto": "Coordinador del PE de Especialidad en Enfermería",
+          "correo": "cespecialidades.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6590",
+          "ubicacion": null
+        },
+        {
+          "nombre": "ME. Miguel Ángel Zenteno López",
+          "puesto": "Responsable de Titulación de Posgrado",
+          "correo": "titulacionposgrado.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6589",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MCE. Yara Gracia Verónica",
+          "puesto": "SECRETARIA ADMINISTRATIVA",
+          "correo": "administrativa.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6522, 6520",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DCE. María Claudia Morales Rodríguez",
+          "puesto": "Coordinadora de Planeación",
+          "correo": "cplaneacion.enfermeria@correo.buap.mx",
+          "telefono": "Ext. 6523",
+          "ubicacion": null
+        },
+        {
+          "nombre": "CP. Yesica Campos Ortiz",
+          "puesto": "Contabilidad",
+          "correo": "contabilidad.fe@correo.buap.mx",
+          "telefono": "Ext. 6512",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Pedro Hernández García",
+          "puesto": "Laboratorio de Cómputo",
+          "correo": null,
+          "telefono": "Ext. 6519",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FFL",
+      "nombreUnidad": "Facultad de Filosofía y Letras",
+      "urlDirectorio": "https://filosofia.buap.mx/content/secretar%C3%ADa-acad%C3%A9mica",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dr. Rosendo Edgar Gómez Bonilla",
+          "puesto": "Secretario Académico",
+          "correo": "sriaacademica.ffyl@correo.buap.mx",
+          "telefono": "Teléfono: 229-55-00 ext. 5429 y 5438",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "FING",
+      "nombreUnidad": "Facultad de Ingeniería",
+      "urlDirectorio": "https://ingenieria.buap.mx/content/direcci%C3%B3n",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "M.I. Angel Cecilio Guerrero Zamora",
+          "puesto": "Dirección",
+          "correo": "direccion.ingenieria@correo.buap.mx",
+          "telefono": "(222) 2 29 55 00 ext. 7610",
+          "ubicacion": "Edificio ING-4"
+        },
+        {
+          "nombre": "Dr. Alberto Varguez Flores",
+          "puesto": "Coordinador de Planeación y Desarrollo",
+          "correo": "alberto.varguez@correo.buap.mx",
+          "telefono": "(222) 2 29 55 00 ext. 7605",
+          "ubicacion": "Edificio ING-4"
+        },
+        {
+          "nombre": "M.V. América N. Barajas Sánchez",
+          "puesto": "Asistente de dirección",
+          "correo": "america.barajas@correo.buap.mx",
+          "telefono": "(222) 2 29 55 00 ext. 7610",
+          "ubicacion": "Edificio ING 4"
+        }
+      ]
+    },
+    {
+      "clave": "FMVZ",
+      "nombreUnidad": "Facultad de Medicina Veterinaria y Zootecnia",
+      "urlDirectorio": "https://veterinaria.buap.mx/?q=content/directivos",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dr. Fernando Utrera Quinta",
+          "puesto": "DIRECTOR",
+          "correo": "direccion.fmvz@correo.buap.mx",
+          "telefono": "249 135 6877",
+          "ubicacion": null
+        },
+        {
+          "nombre": "C. Hilda Torres Peña",
+          "puesto": "ASISTENTE DE DIRECCIÓN",
+          "correo": "hilda.torres@correo.buap.mx",
+          "telefono": "249 112 1253",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Consuelo Silva Valdivia",
+          "puesto": "SECRETARIA ACADÉMICA",
+          "correo": "consuelo.silva@correo.buap.mx",
+          "telefono": "222 277 2131",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Lic. Mariel Ortiz Juárez",
+          "puesto": "ASISTENTE DE SECRETARÍA ACADÉMICA",
+          "correo": "secretaria.academica.fmvz@correo.buap.mx",
+          "telefono": "249 112 6362",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Alberto Pérez Rosas",
+          "puesto": "COORDINADOR ADMINISTRATIVO",
+          "correo": "alberto.perezrosas@correo.buap.mx",
+          "telefono": "249 115 7309",
+          "ubicacion": null
+        },
+        {
+          "nombre": "LAE. Araceli Ramírez González",
+          "puesto": "CONTADORA ADMINISTRATIVA DE LA FMVZ",
+          "correo": "araceli.ramirezg@correo.buap.mx",
+          "telefono": "Tel. 2222295500 Ext. 2445",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. José Manuel Robles Robles",
+          "puesto": "SECRETARIO DE INVESTIGACIÓN Y ESTUDIOS DE POSGRADO",
+          "correo": "manuel.roblesr@correo.buap.mx",
+          "telefono": "222 554 8165",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Juana Inés Martínez Rodríguez",
+          "puesto": "ASISTENTE DE POSGRADO",
+          "correo": "juana.martinezr@correo.buap.mx",
+          "telefono": "Tel. 2222295500 Ext. 3998",
+          "ubicacion": null
+        },
+        {
+          "nombre": "DC. Felipe Patricio Martínez",
+          "puesto": "COORDINADOR DE LA MAESTRÍA EN PRODUCCIÓN ANIMAL SOSTENIBLE",
+          "correo": "felipe.patriciomtz@correo.buap.mx",
+          "telefono": "222 313 3089",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Álvaro Oidor Méndez",
+          "puesto": "COORDINADOR DEL HOSPITAL VETERINARIO PARA PEQUEÑAS ESPECIES",
+          "correo": "alvaro.oidor@correo.buap.mx",
+          "telefono": "Tel.222 229 5674, Tel. 2222295500 Ext. 2180",
+          "ubicacion": null
+        },
+        {
+          "nombre": "C. Margarita Solar García",
+          "puesto": "ASISTENTE DEL HVPE",
+          "correo": "margarita.solarg@correo.buap.mx",
+          "telefono": "Tel.222 229 5674, Tel. 2222295500 Ext. 2180",
+          "ubicacion": null
+        },
+        {
+          "nombre": "C.P Ana María Ramírez Rodríguez",
+          "puesto": "CONTADORA DEL HVPE",
+          "correo": "ana.ramirezr@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "M en C. Briseida Lucía Castro Bautista",
+          "puesto": "COORDINADORA DE PRÁCTICA PROFESIONAL ASESORADA Y SERVICIO SOCIAL",
+          "correo": "ppcritica.fmvz@correo.buap.mx",
+          "telefono": "249 100 9898",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Jorge Ezequiel Hernández",
+          "puesto": "COORDINADOR DE TITULACIÓN",
+          "correo": "jorge.hernandez@correo.buap.mx",
+          "telefono": "222 845 5759",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Srita. Liliana Román Rojas",
+          "puesto": "ASISTENTE DE PP, SS Y TITULACIÓN",
+          "correo": "liliana.romanr@correo.buap.mx",
+          "telefono": "237 100 7937",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MVZ. Herminio I. Jiménez Cortez",
+          "puesto": "COORDINADOR DE VINCULACIÓN Y EDUCACIÓN CONTINUA",
+          "correo": "herminio.jimenez@correo.buap.mx",
+          "telefono": "222 630 6025",
+          "ubicacion": null
+        },
+        {
+          "nombre": "MVZ. Jacqueline Baltazar Pérez",
+          "puesto": "COORDINADORA DE TUTORÍA Y MENTORÍA",
+          "correo": "jacqueline.baltazar@correo.buap.mx",
+          "telefono": "249 149 2265",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Miguel Ángel Zambrano González",
+          "puesto": "COORDINADOR DE PLANEACIÓN",
+          "correo": "miguel.zambranog@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtro. Catarino Abel Isaac Salgado",
+          "puesto": "COORDINADOR DEL LABORATORIO MULTIDISCIPLINARIO DE LA POSTA ZOOTECNICA",
+          "correo": "abel.isaac@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. María Guadalupe Núñez Carrera",
+          "puesto": "RESPONSABLE DE ECAAS (Evaluación Colegiada del Aprendizaje por Asignatura)",
+          "correo": "maria.nunezcar@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "ICSH",
+      "nombreUnidad": "Instituto de Ciencias Sociales y Humanidades Alfonso Vélez Pliego",
+      "urlDirectorio": "https://www.buap.mx/content/instituto-de-ciencias-sociales-y-humanidades-alfonso-velez-pliego",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dr. Giuseppe Lo Brutto",
+          "puesto": "Director",
+          "correo": null,
+          "telefono": null,
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "ICGDE",
+      "nombreUnidad": "Instituto de Ciencias de Gobierno y Desarrollo Estratégico",
+      "urlDirectorio": "https://icgde.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dr. Jorge Luis Castillo Durán",
+          "puesto": "Director",
+          "correo": "jorge.castillo@correo.buap.mx",
+          "telefono": "+52 [222] 229 5559",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Reyna Madai Bañuelos Ramírez",
+          "puesto": "Especialista de Operaciones Académicas",
+          "correo": "reyna.banuelos@correo.buap.mx",
+          "telefono": "+52 [222] 229 5500 ext. 3476",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dinorah Polin",
+          "puesto": "Asistente Administrativo",
+          "correo": "dinorah.polin@correo.buap.mx",
+          "telefono": "+52 [222] 229 5559",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Leonardo Antonio Valdés Zurita",
+          "puesto": "Secretario de Investigación y Estudios de Posgrado",
+          "correo": "leonardo.valdes@correo.buap.mx",
+          "telefono": "+52 [222] 229 5500 Ext.3453",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Ana María González Mora",
+          "puesto": "Asistente de Secretaría de Investigación y Estudios de Posgrado",
+          "correo": "siep.icgde@correo.buap.mx",
+          "telefono": "+52 [222] 229 5500 Ext.3456",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Carlos Enrique Ahuactzin Martínez",
+          "puesto": "Secretario Académico",
+          "correo": "carlos.ahua@correo.buap.mx",
+          "telefono": "+52 [222] 229 5500 Ext.3452",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Denny Aleksandra García Gutiérrez",
+          "puesto": "Coordinación Administrativa",
+          "correo": "denny.garciagtz@correo.buap.mx",
+          "telefono": "+52 [222] 229 5500 Ext.3451",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Mario Miguel Carrillo Huerta",
+          "puesto": "Coordinador del Doctorado en Ciencias de Gobierno y Desarrollo (Programa PNPC)",
+          "correo": "mario.carrillo@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500 ext. 3568",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Ma. del Rayo García Téllez",
+          "puesto": "Asistente del Doctorado en Ciencias de Gobierno y Desarrollo",
+          "correo": "doctorado.icgde@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500. Ext. 3460",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Ignacio Daniel Torres Rodríguez",
+          "puesto": "Coordinador de la Maestría en Política y Opinión Pública",
+          "correo": "ignacio.torres@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500. Ext. 3462",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Margarita Lumbreras Hernández",
+          "puesto": "Coordinadora de la Maestría en Auditoría Gubernamental Rendición de Cuentas y Gestión Estratégica",
+          "correo": "margarita.lumbreras@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500. Ext. 3495",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Carla Irene Ríos Calleja",
+          "puesto": "Coordinadora de la Maestría en Ciencias de Gobierno y Desarrollo Sostenible",
+          "correo": "carla.rios@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500. Ext. 3466",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Fernando Treviño Martínez",
+          "puesto": "Encargado de proceso de selección e ingreso",
+          "correo": "fernando.trevino@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500 Ext. 3464",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Nelly Morales Luna",
+          "puesto": "Encargada de seguimiento académico",
+          "correo": "erika.morales@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500 Ext. 3463",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Patricia Meza Morales",
+          "puesto": "Encargada de titulación y seguimiento al egresado",
+          "correo": "patricia.meza@correo.buap.mx",
+          "telefono": "+52 (222) 229 5500. Ext. 3461",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "IFI",
+      "nombreUnidad": "Instituto de Física Luis Rivera Terrazas",
+      "urlDirectorio": "https://www.ifuap.buap.mx/organizacion/direccion.php",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Dr. Felipe Pérez Rodríguez",
+          "puesto": "Director",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1720, 5610",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Alberto Escalante Hernández",
+          "puesto": "Secretario Académico",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1720, 5610",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Guadalupe Terrón Meléndez",
+          "puesto": "Secretaria Administrativa",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1720, 5610",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Luis Octavio Meza Espinoza",
+          "puesto": "Secretario de Investigación y de Estudios de Posgrado",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1720, 5610",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dr. Juan Mauricio Torres Gonzalez",
+          "puesto": "Coordinador del Posgrado en Fisica",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1720, 5610",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Dra. Mou Pal",
+          "puesto": "Coordinadora del Posgrado en Ciencia de Materiales",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1720, 5610",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Mtra. Guadalupe Terrón Meléndez",
+          "puesto": "Secretaria Administrativa",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2081",
+          "ubicacion": "Edificio IF1, Oficina 109"
+        },
+        {
+          "nombre": "Mtra. Mónica Hernández Ramos",
+          "puesto": "Asistente de Secretaría de Investigación y Estudios de Posgrado",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2017",
+          "ubicacion": "Edificio IF1, Oficina 117"
+        },
+        {
+          "nombre": "Mtra. Neith Flores Robles",
+          "puesto": "Coordinadora de Apoyos Etiquetados",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1721",
+          "ubicacion": "Edificio IF1, Oficina 103"
+        },
+        {
+          "nombre": "Ma. Rosario Huerta Cortez",
+          "puesto": "Recepción IF1",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1720",
+          "ubicacion": "Edificio IF1, Oficina 121"
+        },
+        {
+          "nombre": "Lic. Norma Claudia Ramírez Contreras",
+          "puesto": "Apoyo al Coordinador del Posgrado CM y a la Sec. Académica",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1722",
+          "ubicacion": "Edificio IF1, Oficina 120C"
+        },
+        {
+          "nombre": "Mtra. Margarita Muñoz Díaz",
+          "puesto": "Apoyo al Coordinador del Posgrado en Física y a la Sec. Académica",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 1717",
+          "ubicacion": "Edificio IF1, Oficina 120D"
+        },
+        {
+          "nombre": "Mtra. Lucrecia Hernández Ramos",
+          "puesto": "Asistente de Secretaría Académica",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2007",
+          "ubicacion": "Edificio IF1, Oficina 116"
+        },
+        {
+          "nombre": "C. P. Angélica Hernández Soto",
+          "puesto": "Contadora General y Administradora de Recursos CONAHCYT",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2022",
+          "ubicacion": "Edificio IF1, Oficina 119"
+        },
+        {
+          "nombre": "C. P. Beatriz Cruz Caballero",
+          "puesto": "Responsable de Bienes Patrimoniales",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2060",
+          "ubicacion": "Edificio IF1, Oficina 119"
+        },
+        {
+          "nombre": "Mtro. Enrique Hernández Tenorio",
+          "puesto": "Administrador de Recursos CONAHCYT",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2009",
+          "ubicacion": "Edificio IF1, Oficina 118"
+        },
+        {
+          "nombre": "Ing. Efraín Fernández Sánchez",
+          "puesto": "Responsable de Mantenimiento General",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2051",
+          "ubicacion": "Edificio IF2, Oficina 100A"
+        },
+        {
+          "nombre": "Sandra Sánchez Silva",
+          "puesto": "Asistente de Dirección",
+          "correo": null,
+          "telefono": "+52 (222) 229 55 00, Ext. 2008",
+          "ubicacion": "Edificio IF1, Oficina 102"
+        }
+      ]
+    },
+    {
+      "clave": "CRM",
+      "nombreUnidad": "Complejo Regional Mixteca",
+      "urlDirectorio": "https://crmixteca.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Mtra. Sara Cecilia Vega Cervantes",
+          "puesto": "Director Complejo Regional Mixteca",
+          "correo": "sara.vega@correo.buap.mx",
+          "telefono": "Teléfono: 222.229.55.00 Ext. 3580",
+          "ubicacion": null
+        }
+      ]
+    },
+    {
+      "clave": "CRN",
+      "nombreUnidad": "Complejo Regional Norte",
+      "urlDirectorio": "https://crnorte.buap.mx/content/directorio",
+      "consultadoEn": "2026-09-30",
+      "personas": [
+        {
+          "nombre": "Ariadna Leecet González Solís",
+          "puesto": "Directora",
+          "correo": "direccion.crn@correo.buap.mx",
+          "telefono": "Teléfono 22 22 29 55 00 Ext. 1780",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Elsa Morales Castañeda",
+          "puesto": "Secretaria Académica",
+          "correo": "academica.crn@correo.buap.mx",
+          "telefono": "Teléfono 22 22 29 55 00 Ext. 1781",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Rafael Hernández Oropeza",
+          "puesto": "Secretario Administrativo",
+          "correo": "administrativa.crn@correo.buap.mx",
+          "telefono": "Teléfono 22 22 29 55 00 Ext. 1434",
+          "ubicacion": null
+        },
+        {
+          "nombre": "Maribel Rivera Huerta",
+          "puesto": "Derecho",
+          "correo": "derechochigna.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Chignahuapan"
+        },
+        {
+          "nombre": "Luis Ángel Millán Sánchez",
+          "puesto": "Administración Turística",
+          "correo": "turismochigna.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Chignahuapan"
+        },
+        {
+          "nombre": "Olivia Herrera Márquez",
+          "puesto": "Administración de Empresas",
+          "correo": "admonchigna.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Chignahuapan"
+        },
+        {
+          "nombre": "Saray Barrios Aldana",
+          "puesto": "Preparatoria",
+          "correo": "prepachigna.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Chignahuapan"
+        },
+        {
+          "nombre": "Carmela Leyva Torres",
+          "puesto": "Administración de Empresas",
+          "correo": "admonhuauchi.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Huauchinango"
+        },
+        {
+          "nombre": "Alejandra Castro López",
+          "puesto": "Arquitectura",
+          "correo": "arquitecturahuauchi.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Huauchinango"
+        },
+        {
+          "nombre": "María del Carmen Téllez Picazo",
+          "puesto": "Derecho",
+          "correo": "derechohuauchi.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Huauchinango"
+        },
+        {
+          "nombre": "Maleni Bonilla Vázquez",
+          "puesto": "Enfermería",
+          "correo": "enfermeriatetela.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Tetela De Ocampo"
+        },
+        {
+          "nombre": "Benjamín Barrios Díaz",
+          "puesto": "Ingeniería Agroforestal",
+          "correo": "agroforestaltetela.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Tetela De Ocampo"
+        },
+        {
+          "nombre": "Karla Marian Martínez García",
+          "puesto": "Preparatoria",
+          "correo": "prepavcarranza.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Venustiano Carranza"
+        },
+        {
+          "nombre": "Edith Hernández Díaz",
+          "puesto": "Arquitectura",
+          "correo": "arquitecturazacatlan.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Zacatlán"
+        },
+        {
+          "nombre": "Avelina Posadas Luna",
+          "puesto": "Contaduría Pública",
+          "correo": "contaduriazacatlan.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Zacatlán"
+        },
+        {
+          "nombre": "Victor Hugo Sánchez Castillo",
+          "puesto": "Diseño Gráfico",
+          "correo": "diseñozacatlan.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Zacatlán"
+        },
+        {
+          "nombre": "Angélica Aguilar Xochicale",
+          "puesto": "Preparatoria",
+          "correo": "prepazacatlan.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Zacatlán"
+        },
+        {
+          "nombre": "Elier Cuevas Cortés",
+          "puesto": "Gestión y Educación Continua y Vinculación",
+          "correo": "sedechignahuapan.crn@correo.buap.mx; educon.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Chignahuapan"
+        },
+        {
+          "nombre": "Miltón Gustavo Luna Velázquez",
+          "puesto": "Actividades Deportivas",
+          "correo": "deportes.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Chignahuapan"
+        },
+        {
+          "nombre": "Enedina Gómez Vigueras",
+          "puesto": "Gestión y Práctica Profesional Crítica",
+          "correo": "titulacion.crn@correo.buap.mx; ssypp.crn@correo.buap.mx; sedehuauchinango.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Huauchinango"
+        },
+        {
+          "nombre": "Israel Hernández Treviño",
+          "puesto": "Gestión y Titulación",
+          "correo": "sedetetela.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Tetela De Ocampo"
+        },
+        {
+          "nombre": "Guadalupe Antonio González",
+          "puesto": "Práctica Profesional Crítica Área de la Salud",
+          "correo": "guadalupe.antonio@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Tetela De Ocampo"
+        },
+        {
+          "nombre": "Jaime Morales Rodríguez",
+          "puesto": "Gestión y Actividades Culturales",
+          "correo": "sedevcarranza.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Venustiano Carranza"
+        },
+        {
+          "nombre": "Nohemí Hernández Rodríguez",
+          "puesto": "Gestión y Tutoría, Mentoría y Lobomentoría",
+          "correo": "sedezacatlan.crn@correo.buap.mx; tutores.crn@correo.buap.mx",
+          "telefono": null,
+          "ubicacion": "Sede Zacatlán"
+        }
+      ]
+    }
+  ]
+}

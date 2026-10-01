@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../services/content_repository.dart';
 import '../state/app_state.dart';
 import '../theme.dart';
 import 'backup_screen.dart';
 import 'contacts_screen.dart';
 import 'directory_screen.dart';
+import 'directorio_unidad_screen.dart';
 import 'eligibility_screen.dart';
 import 'notes_screen.dart';
 import 'profile_screen.dart';
@@ -14,9 +16,10 @@ import 'profile_screen.dart';
 /// No venía en el zip de diseño (la carpeta estaba vacía), así que se hizo con
 /// los colores y las formas de las demás pantallas.
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({super.key, required this.state});
+  MenuScreen({super.key, required this.state});
 
   final AppState state;
+  final _repo = ContentRepository.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +87,26 @@ class MenuScreen extends StatelessWidget {
               context,
               MaterialPageRoute(builder: (_) => const DirectoryScreen()),
             ),
+          ),
+          const SizedBox(height: 10),
+          _item(
+            context,
+            icon: Icons.groups_outlined,
+            titulo: 'Directorio de mi unidad',
+            subtitulo:
+                'A quién acudir, con su puesto y el lugar donde encontrarlo',
+            onTap: () async {
+              final clave = state.facultadClave;
+              if (clave == null) return;
+              final f = await _repo.facultadPorClave(clave);
+              if (f == null || !context.mounted) return;
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => DirectorioUnidadScreen(facultad: f),
+                ),
+              );
+            },
           ),
           const SizedBox(height: 10),
           _item(

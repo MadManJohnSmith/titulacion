@@ -206,10 +206,29 @@ Future<void> abrirUrl(BuildContext context, String url) async {
 
 /// Un ítem de lista que abre un enlace.
 class LinkTile extends StatelessWidget {
-  const LinkTile({super.key, required this.titulo, required this.url});
+  const LinkTile({
+    super.key,
+    required this.titulo,
+    required this.url,
+    this.estadoEnlace = '',
+    this.notaEnlace = '',
+  });
 
   final String titulo;
   final String url;
+  final String estadoEnlace;
+  final String notaEnlace;
+
+  /// Un enlace que no se pudo comprobar se declara antes de abrirlo. El
+  /// trámite sigue siendo real —por eso el botón no desaparece— pero no puede
+  /// salir igual que uno que sí respondió.
+  bool get verificado => url.isNotEmpty && estadoEnlace.isEmpty;
+
+  String get aviso {
+    if (estadoEnlace.isEmpty) return '';
+    if (notaEnlace.isNotEmpty) return notaEnlace;
+    return 'El enlace no se pudo comprobar.';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -255,6 +274,31 @@ class LinkTile extends StatelessWidget {
                       decoration: TextDecoration.underline,
                     ),
                   ),
+                  if (!verificado)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Icon(
+                            Icons.warning_amber_rounded,
+                            size: 13,
+                            color: LoboColors.gold,
+                          ),
+                          const SizedBox(width: 5),
+                          Expanded(
+                            child: Text(
+                              aviso,
+                              style: const TextStyle(
+                                color: Colors.white54,
+                                fontSize: 11,
+                                height: 1.35,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                 ],
               ),
             ),

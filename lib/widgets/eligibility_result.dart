@@ -147,6 +147,7 @@ class VeredictoModalidad {
     required this.avisoPerfil,
     required this.citaFuente,
     required this.rutaBaseId,
+    this.textoPublicacion = '',
   });
 
   final String modalidadId;
@@ -168,6 +169,11 @@ class VeredictoModalidad {
   final String citaFuente;
 
   final String rutaBaseId;
+
+  /// Los requisitos de ingreso en el texto de la unidad. 39 modalidades lo
+  /// publican y no se mostraba: el alumno comparaba un perfil estructurado sin
+  /// ver las condiciones que la unidad escribe.
+  final String textoPublicacion;
 
   bool get puedeAspirar => estado == EstadoModalidad.puedeAspirar;
 
@@ -279,6 +285,7 @@ class CalculadoraElegibilidad {
       requisitos: veredictos,
       perfil: perfil,
       avisoPerfil: _avisoPerfil(m, perfil),
+      textoPublicacion: m?.perfil.textoPublicacion ?? '',
       citaFuente: oferta.ruta.citaFuente,
       rutaBaseId: oferta.rutaBaseId,
     );
@@ -639,6 +646,38 @@ class EligibilityResultView extends StatelessWidget {
               color: Colors.white70,
               fontSize: 12,
               height: 1.4,
+            ),
+          ),
+        ],
+        if (veredicto.textoPublicacion.isNotEmpty) ...[
+          const SizedBox(height: 10),
+          Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: Colors.white.withValues(alpha: 0.06),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Lo que publica la unidad como requisito de ingreso',
+                  style: TextStyle(
+                    color: LoboColors.gold,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  veredicto.textoPublicacion,
+                  style: const TextStyle(
+                    color: Colors.white70,
+                    fontSize: 12,
+                    height: 1.45,
+                  ),
+                ),
+              ],
             ),
           ),
         ],

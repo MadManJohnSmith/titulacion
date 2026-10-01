@@ -507,6 +507,30 @@ class AppState extends ChangeNotifier {
     }
   }
 
+  /// El último nivel completado en [rutaId], o `null` si no hay ninguno.
+  ///
+  /// Se usa para «deshacer el último paso»: el alumno retrocede en su avance
+  /// sin que el botón atrás del teléfono se confunda con eso.
+  int? ultimoCompletado(String rutaId) {
+    final lista = completadosDe(rutaId);
+    return lista.isEmpty ? null : lista.last;
+  }
+
+  /// Deshace el último avance de [rutaId] y **espera a que quede escrito**.
+  ///
+  /// Devuelve el nivel que se deshizo, o `null` si no había nada que deshacer.
+  /// No borra el avance: el nivel vuelve a quedar pendiente y, como sigue
+  /// estando completado el que le precede, el alumno puede volver a marcarlo.
+  Future<int?> deshacerProgreso(String rutaId) async {
+    final ns = namespaceDe(rutaId);
+    final lista = _completados[ns];
+    if (lista == null || lista.isEmpty) return null;
+    final nivel = lista.removeLast();
+    await _guardarProgreso();
+    notifyListeners();
+    return nivel;
+  }
+
   // ------------------------------------------------------------- documentos
 
   String _docKey(String rutaId, int nivel, int indice) =>

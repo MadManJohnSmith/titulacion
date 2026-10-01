@@ -151,7 +151,7 @@ class _EligibilityScreenState extends State<EligibilityScreen> {
           const SizedBox(height: 12),
           for (final r in oferta.rastro)
             Text(
-              '· ${r.resultado} — ${r.url} (consultado ${r.consultadoEn})',
+              '· ${r.resultado} — ${r.url} (consultado ${r.fecha})',
               style: const TextStyle(color: Colors.white54, fontSize: 12),
             ),
           const SizedBox(height: 20),

@@ -33,6 +33,18 @@ String _texto(dynamic v) {
   return v.toString();
 }
 
+/// Una fecha guardada es un dato de máquina (`2026-09-29T00:00:00Z`); lo que
+/// lee el alumno es una fecha a secas.
+///
+/// El JSON conserva el instante entero porque ordena y compara igual, pero
+/// paintarlo en pantalla dejaba «consultado 2026-09-29T00:00:00Z» en el
+/// rastreo de fuentes. Aquí se quita la parte horaria y nada más: el día es el
+/// dato, y una hora de ceros no es información de nada.
+String fechaLegible(String iso) {
+  if (iso.isEmpty) return '';
+  return iso.split('T').first;
+}
+
 // ---------------------------------------------------------------------------
 // Trazabilidad
 // ---------------------------------------------------------------------------
@@ -44,6 +56,7 @@ class NormaMarco {
     this.organo = '',
     this.fechaAprobacion = '',
     this.articuloModalidades = '',
+    this.articuloAplicado = '',
     this.consultadoEn = '',
     this.fuente = '',
   });
@@ -56,6 +69,10 @@ class NormaMarco {
 
   /// Artículo que reconoce las modalidades, tal como lo cita el JSON.
   final String articuloModalidades;
+
+  /// Artículo del Reglamento que se aplica a esta ruta concreta. Ocho rutas lo
+  /// declaran y el modelo lo descartaba.
+  final String articuloAplicado;
 
   /// Momento de la consulta (`YYYY-MM-DDTHH:MM:SSZ`).
   final String consultadoEn;
@@ -75,6 +92,7 @@ class NormaMarco {
       organo: json['organo'] as String? ?? '',
       fechaAprobacion: json['fechaAprobacion'] as String? ?? '',
       articuloModalidades: json['articuloModalidades'] as String? ?? '',
+      articuloAplicado: json['articuloAplicado'] as String? ?? '',
       consultadoEn: json['consultadoEn'] as String? ?? '',
       fuente: json['fuente'] as String? ?? '',
     );
@@ -108,7 +126,9 @@ class Fuente {
   }
 
   String get _fechaVisible =>
-      fechaPublicacion.isNotEmpty ? fechaPublicacion : consultadoEn;
+      fechaPublicacion.isNotEmpty
+          ? fechaLegible(fechaPublicacion)
+          : fechaLegible(consultadoEn);
 
   factory Fuente.fromJson(Map<String, dynamic> json) => Fuente(
     id: json['id'] as String? ?? '',
@@ -127,6 +147,9 @@ class RastroConsulta {
     this.consultadoEn = '',
     this.resultado = '',
     this.evidencia = '',
+    this.estadoEnlace = '',
+    this.notaEnlace = '',
+    this.enlaceRetirado = '',
   });
 
   final String url;
@@ -134,11 +157,35 @@ class RastroConsulta {
   final String resultado;
   final String evidencia;
 
+  /// Por qué se quitó el enlace si se quitó. Sin esto, una URL sin destino
+  /// parece un error de la app y no una convocatoria que ya no existe.
+  final String enlaceRetirado;
+
+  /// `no_verificado` cuando la URL no se pudo comprobar.
+  ///
+  /// El rastro dice «se buscó aquí y no salió»; si además la página no
+  /// respondió, decirlo evita que el alumno la tome como una búsqueda
+  /// comprobada. Dos unidades tienen esa advertencia y no se mostraba.
+  final String estadoEnlace;
+  final String notaEnlace;
+
+  /// El día de la consulta, sin la hora de máquina.
+  String get fecha => fechaLegible(consultadoEn);
+
+  String get avisoEnlace {
+    if (estadoEnlace.isEmpty) return '';
+    if (notaEnlace.isNotEmpty) return notaEnlace;
+    return 'El enlace no se pudo comprobar.';
+  }
+
   factory RastroConsulta.fromJson(Map<String, dynamic> json) => RastroConsulta(
     url: json['url'] as String? ?? '',
     consultadoEn: json['consultadoEn'] as String? ?? '',
     resultado: json['resultado'] as String? ?? '',
     evidencia: json['evidencia'] as String? ?? '',
+    estadoEnlace: json['estadoEnlace'] as String? ?? '',
+    notaEnlace: json['notaEnlace'] as String? ?? '',
+    enlaceRetirado: json['enlaceRetirado'] as String? ?? '',
   );
 }
 
@@ -352,12 +399,18 @@ class PerfilAplicacion {
     this.planes,
     this.cohortesDesde,
     this.cohortesHasta,
+    this.textoPublicacion = '',
   });
 
   final List<String>? carreraIds;
   final List<String>? planes;
   final int? cohortesDesde;
   final int? cohortesHasta;
+
+  /// Los requisitos de ingreso **tal como los publica la unidad**, en su texto.
+  /// 39 modalidades lo traen y no se mostraba: el alumno veía el perfil
+  /// estructurado y nunca las condiciones que la unidad escribe.
+  final String textoPublicacion;
 
   /// true cuando la unidad publica al menos un criterio de aplicación.
   bool get publicado =>
@@ -367,6 +420,7 @@ class PerfilAplicacion {
     if (json == null) return const PerfilAplicacion();
     final cohortes = json['cohortes'];
     return PerfilAplicacion(
+      textoPublicacion: _texto(json['textoPublicacion']),
       carreraIds: _listaDeTextos(json['carreraIds']),
       planes: _listaDeTextos(json['planes']),
       cohortesDesde: switch (cohortes) {
@@ -486,11 +540,37 @@ class ModalidadUnidad {
     this.seleccionable = false,
     this.pendiente = '',
     this.fuentes = const [],
+    this.notaContacto = '',
+    this.contactoInstitucional = '',
   });
 
   final String modalidadId;
   final String unidadClave;
   final String unidadNombre;
+
+  /// Advertencia de la unidad sobre a quién escribir.
+  ///
+  /// Seis modalidades de la FCFM publican un buzón personal y declaran aquí
+  /// que la vía estable es la Secretaría Académica. El texto oficial se
+  /// endosaba al alumno al correo personal sin esa advertencia, que existía
+  /// en el JSON y nadie leía.
+  final String notaContacto;
+
+  /// La vía institucional estable, cuando la unidad la declara.
+  final String contactoInstitucional;
+
+  /// La unidad publica «Tesina» pero el catálogo la encamina a la ruta de
+  /// tesis.
+  ///
+  /// Son cosas distintas en el Reglamento General de Titulación: la tesis es
+  /// el art. 7 fr. I —protocolo, director, jurado y defensa— y la tesina el
+  /// art. 7 fr. VII, una asignatura optativa con créditos. Hay unidades que
+  /// usan «tesina» como nombre de una tesis corta, así que **no** se corrige
+  /// el mapeo sin comprobarla: lo que se hace es decirlo, para que el alumno
+  /// confirme en su unidad antes de
+  /// seguir una ruta que puede no ser la suya.
+  bool get tesinaEnRutaDeTesis =>
+      rutaId == 'tesis' && nombreOficial.toLowerCase().contains('esina');
 
   /// Ruta base de `routes.json`; `null` cuando la unidad no tiene ruta acreditada.
   final String? rutaId;
@@ -586,6 +666,8 @@ class ModalidadUnidad {
       seleccionable: json['seleccionable'] as bool? ?? false,
       pendiente: json['pendiente'] as String? ?? '',
       fuentes: fuentes,
+      notaContacto: _texto(json['notaContacto']),
+      contactoInstitucional: json['contactoInstitucional'] as String? ?? '',
     );
   }
 }
@@ -856,6 +938,7 @@ class ParticularidadUnidad {
     this.detalle = '',
     this.fuente = '',
     this.fecha = '',
+    this.citaFuente = '',
     this.textoCompletoEnCatalogo = '',
   });
 
@@ -872,6 +955,10 @@ class ParticularidadUnidad {
   final String fuente;
   final String fecha;
 
+  /// Cita oficial tal como la escribió quien armó el catálogo: el artículo, la
+  /// convocatoria o el PDF concreto. Diez de las 114 la traen y se perdían.
+  final String citaFuente;
+
   /// Dónde está el texto íntegro de los requisitos.
   final String textoCompletoEnCatalogo;
 
@@ -885,6 +972,7 @@ class ParticularidadUnidad {
         detalle: json['detalle'] as String? ?? '',
         fuente: json['fuente'] as String? ?? '',
         fecha: json['fecha'] as String? ?? '',
+        citaFuente: json['citaFuente'] as String? ?? '',
         textoCompletoEnCatalogo:
             json['textoCompletoEnCatalogo'] as String? ?? '',
       );
@@ -932,6 +1020,7 @@ class Ruta {
     required this.niveles,
     this.mascotaInicio = '',
     this.pergaminoInicio = '',
+    this.pergaminoRelacion,
     this.mapa = '',
     this.tituloAsset = '',
     this.descripcionAsset = '',
@@ -947,6 +1036,8 @@ class Ruta {
     this.requisitosBase = const Requisitos(),
     this.norma = const NormaMarco(),
     this.particularidades = const [],
+    this.fuenteDeParticularidades = '',
+    this.mapaNota = '',
     this.publicacionesRelacionadas = const [],
   });
 
@@ -956,6 +1047,10 @@ class Ruta {
 
   final String mascotaInicio;
   final String pergaminoInicio;
+
+  /// Relación de aspecto (ancho/alto) del rollo de pergamino, tomada de su
+  /// `viewBox`. Sin ella la UI no puede saber que el dibujo es vertical.
+  final double? pergaminoRelacion;
 
   /// Fondo del mapa de la ruta. Cada una tiene su propio mapa.
   final String mapa;
@@ -987,6 +1082,18 @@ class Ruta {
 
   /// Qué exige cada unidad cuando la unidad publica esa modalidad.
   final List<ParticularidadUnidad> particularidades;
+
+  /// De dónde salió [particularidades]: el JSON lo declara por ruta y antes se
+  /// descartaba, dejando requisitos de unidad sin poder citar su origen.
+  final String fuenteDeParticularidades;
+
+  /// Por qué el mapa de esta ruta es el que es.
+  ///
+  /// Importa porque en cinco rutas el arte **no** viene del diseño de la BUAP
+  /// (carpetas vacías o nomenclatura contradictoria del designer). Decirlo es
+  /// lo que separa «esto es un mapa de la BUAP» de «esto se acomodó aquí».
+  final String mapaNota;
+
   final List<PublicacionRelacionada> publicacionesRelacionadas;
 
   /// Nivel 0 es la pantalla de inicio de la ruta; el resto son niveles de juego.
@@ -1050,6 +1157,7 @@ class Ruta {
     niveles: niveles ?? this.niveles,
     mascotaInicio: mascotaInicio,
     pergaminoInicio: pergaminoInicio,
+    pergaminoRelacion: pergaminoRelacion,
     mapa: mapa,
     tituloAsset: tituloAsset,
     descripcionAsset: descripcionAsset,
@@ -1065,6 +1173,8 @@ class Ruta {
     requisitosBase: requisitosBase,
     norma: norma,
     particularidades: particularidades,
+    fuenteDeParticularidades: fuenteDeParticularidades,
+    mapaNota: mapaNota,
     publicacionesRelacionadas: publicacionesRelacionadas,
   );
 
@@ -1078,6 +1188,7 @@ class Ruta {
             .toList(),
     mascotaInicio: json['mascotaInicio'] as String? ?? '',
     pergaminoInicio: json['pergaminoInicio'] as String? ?? '',
+    pergaminoRelacion: _doble(json['pergaminoRelacion']),
     mapa: json['mapa'] as String? ?? '',
     tituloAsset: json['tituloAsset'] as String? ?? '',
     descripcionAsset: json['descripcionAsset'] as String? ?? '',
@@ -1102,6 +1213,9 @@ class Ruta {
               (p) => ParticularidadUnidad.fromJson(p as Map<String, dynamic>),
             )
             .toList(),
+    fuenteDeParticularidades:
+        json['fuenteDeParticularidades'] as String? ?? '',
+    mapaNota: json['mapaNota'] as String? ?? '',
     publicacionesRelacionadas:
         (json['publicacionesRelacionadas'] as List<dynamic>? ?? [])
             .map(
@@ -1195,6 +1309,9 @@ class DocumentoRequisito {
     this.url,
     this.fuente = '',
     this.fecha = '',
+    this.estadoEnlace = '',
+    this.notaEnlace = '',
+    this.sinEnlace = '',
   });
 
   final String nombre;
@@ -1203,6 +1320,32 @@ class DocumentoRequisito {
   final String fuente;
   final String fecha;
 
+  /// Por qué este documento no trae enlace. Un requisito sin dirección se ve
+  /// como un requisito a medio llenar si no se explica.
+  final String sinEnlace;
+
+  /// `no_verificado` cuando el enlace no se pudo comprobar.
+  ///
+  /// El JSON ya lo traía, pero nadie lo leía: el botón «Abrir documento
+  /// oficial» salía igual para un PDF vivo que para un servidor caído, y eso
+  /// es dar por bueno un dato que no se sabe si sirve.
+  final String estadoEnlace;
+
+  /// Por qué no se pudo comprobar, con la fecha en que se intentó.
+  final String notaEnlace;
+
+  /// El enlace existe y se comprobó: solo entonces se ofrece abrirlo.
+  bool get enlaceVerificado =>
+      url != null && url!.startsWith('http') && estadoEnlace.isEmpty;
+
+  /// El alumno tiene que saber que el enlace puede no servir **antes** de
+  /// tocarlo, no descubrirlo cuando la pantalla quede en blanco.
+  String get avisoEnlace {
+    if (estadoEnlace.isEmpty) return '';
+    if (notaEnlace.isNotEmpty) return notaEnlace;
+    return 'El enlace no se pudo comprobar.';
+  }
+
   factory DocumentoRequisito.fromJson(Map<String, dynamic> json) =>
       DocumentoRequisito(
         nombre: json['nombre'] as String? ?? '',
@@ -1210,6 +1353,9 @@ class DocumentoRequisito {
         url: json['url'] as String?,
         fuente: json['fuente'] as String? ?? '',
         fecha: json['fecha'] as String? ?? '',
+        estadoEnlace: json['estadoEnlace'] as String? ?? '',
+        notaEnlace: json['notaEnlace'] as String? ?? '',
+        sinEnlace: json['sinEnlace'] as String? ?? '',
       );
 }
 
@@ -1230,6 +1376,9 @@ class Facultad {
     this.estadoCatalogo = '',
     this.resultadoBusqueda = '',
     this.fechaConsultaCatalogo = '',
+    this.fuenteCatalogo = const [],
+    this.salvedad = '',
+    this.directorio = const DirectorioUnidad(clave: ''),
   });
 
   final String nombre;
@@ -1250,6 +1399,20 @@ class Facultad {
   final String resultadoBusqueda;
   final String fechaConsultaCatalogo;
 
+  /// Páginas de las que se leyó el catálogo de esta unidad (21 de 34 lo
+  /// declaran). Antes el modelo solo guardaba la fecha, así que «publicado»
+  /// aparecía sin poder decir de dónde salía.
+  final List<String> fuenteCatalogo;
+
+  /// Advertencia de la propia unidad sobre su catálogo, cuando publica una.
+  /// Quince unidades la traen y describen qué se buscó y qué no se encontró.
+  final String salvedad;
+  /// Personal que la unidad publica en su directorio oficial, con la página de
+  /// la que se leyó. Antes se guardaba solo la lista y se perdía la fuente.
+  final DirectorioUnidad directorio;
+  List<PersonaDirectorio> get personasDirectorio => directorio.personas;
+  bool get tieneDirectorio => directorio.hayPersonas;
+
   /// Un contacto está completo solo si tiene correo.
   bool get tieneContacto => correo.isNotEmpty;
 
@@ -1258,6 +1421,7 @@ class Facultad {
     clave: json['clave'] as String? ?? json['nombre'] as String,
     coordinacion: json['coordinacion'] as String? ?? '',
     correo: json['correo'] as String? ?? '',
+    directorio: _directorioDe(json['directorio']),
     telefono: json['telefono'] as String? ?? '',
     responsable: json['responsable'] as String? ?? '',
     notas: json['notas'] as String? ?? '',
@@ -1265,6 +1429,137 @@ class Facultad {
     estadoCatalogo: json['estadoCatalogo'] as String? ?? '',
     resultadoBusqueda: json['resultadoBusqueda'] as String? ?? '',
     fechaConsultaCatalogo: json['fechaConsultaCatalogo'] as String? ?? '',
+    fuenteCatalogo:
+        (json['fuenteCatalogo'] as List? ?? const [])
+            .map((e) => e.toString())
+            .where((e) => e.isNotEmpty)
+            .toList(),
+    salvedad: _texto(json['salvedad']),
+  );
+}
+
+/// Una persona del directorio de una unidad académica.
+///
+/// Todo lo que la unidad no publica viene en `null`, no se rellena por
+/// suposición: un cubículo inventado hace que el alumno vaya a un sitio
+/// donde no está nadie.
+class PersonaDirectorio {
+  const PersonaDirectorio({
+    required this.nombre,
+    this.puesto,
+    this.correo,
+    this.telefono,
+    this.ubicacion,
+  });
+
+  final String nombre;
+  final String? puesto;
+  final String? correo;
+  final String? telefono;
+  /// Cubículo, edificio o piso, tal como lo publica la unidad.
+  final String? ubicacion;
+
+  /// Lo que ayuda a encontrar a esta persona: el puesto y dónde está.
+  bool get tienePuesto => puesto != null && puesto!.isNotEmpty;
+  bool get tieneUbicacion => ubicacion != null && ubicacion!.isNotEmpty;
+
+  factory PersonaDirectorio.fromJson(Map<String, dynamic> json) =>
+      PersonaDirectorio(
+        nombre: json['nombre'] as String? ?? '',
+        puesto: _vacioANull(json['puesto']),
+        correo: _vacioANull(json['correo']),
+        telefono: _vacioANull(json['telefono']),
+        ubicacion: _vacioANull(json['ubicacion']),
+      );
+
+  static String? _vacioANull(Object? v) {
+    if (v is! String) return null;
+    final t = v.trim();
+    return t.isEmpty ? null : t;
+  }
+}
+
+/// El directorio completo que publica una unidad.
+class DirectorioUnidad {
+  const DirectorioUnidad({
+    required this.clave,
+    this.url = '',
+    this.consultadoEn = '',
+    this.personas = const [],
+  });
+
+  final String clave;
+
+  /// Página oficial de la que se leyó el directorio.
+  ///
+  /// Antes se leía del JSON y se conservaba solo la lista de personas: la app
+  /// decía «ve a CCO4-211» sin decir de dónde salió ese cubículo, que es
+  /// justo lo que hace falta para poder comprobarlo o corregirlo.
+  final String url;
+
+  /// Día de la consulta, tal como lo publica la fuente.
+  final String consultadoEn;
+
+  final List<PersonaDirectorio> personas;
+
+  bool get hayPersonas => personas.isNotEmpty;
+
+  /// Cita de la fuente. Vacía solo si el JSON no trajo la URL.
+  String get cita =>
+      url.isEmpty ? '' : 'Fuente: $url · consultado $consultadoEn';
+
+  /// Busca por nombre o puesto, sin distinguir mayúsculas ni acentos.
+  List<PersonaDirectorio> buscar(String texto) => buscarEn(personas, texto);
+
+  /// Filtra una lista de personas con el mismo criterio, para que la pantalla
+  /// pueda filtrar sobre la lista ya cargada.
+  static List<PersonaDirectorio> buscarEn(
+    List<PersonaDirectorio> personas,
+    String texto,
+  ) {
+    final q = _busquedaNormalizada(texto);
+    if (q.isEmpty) return personas;
+    return personas.where((p) {
+      return _busquedaNormalizada(p.nombre).contains(q) ||
+          _busquedaNormalizada(p.puesto ?? '').contains(q) ||
+          _busquedaNormalizada(p.ubicacion ?? '').contains(q);
+    }).toList();
+  }
+
+  factory DirectorioUnidad.fromJson(Map<String, dynamic> json) =>
+      DirectorioUnidad(
+        clave: json['clave'] as String? ?? '',
+        url: json['url'] as String? ?? '',
+        consultadoEn: fechaLegible(json['consultadoEn'] as String? ?? ''),
+        personas:
+            (json['personas'] as List? ?? const [])
+                .cast<Map<String, dynamic>>()
+                .map(PersonaDirectorio.fromJson)
+                .where((p) => p.nombre.isNotEmpty)
+                .toList(),
+      );
+
+  /// Quita acentos y pasa a minúsculas para que la búsqueda del alumno
+  /// encuentre «Contaduria» aunque escriba «Contaduría».
+  static String _busquedaNormalizada(String s) {
+    // El mapa incluye también las mayúsculas acentuadas: si no, escribir
+    // «pÉREZ» no encuentra «Pérez», porque «É» no está en el mapa.
+    const from = 'áàäâãÁÀÄÂÃéèëêÉÈËÊíìïîÍÌÏÎóòöôõÓÒÖÔÕúùüûÚÙÜÛñÑçÇ';
+    const to = 'aaaaaaAAAAeeeeEEEEeeeeIIIIIIoooooOOOOOUUUUUUnncCc';
+    final buf = StringBuffer();
+    for (final ch in s.toLowerCase().split('')) {
+      final i = from.indexOf(ch);
+      buf.write(i >= 0 ? to[i] : ch);
+    }
+    return buf.toString();
+  }
+}
+
+/// Lee el directorio embebido en la facultad, si viene.
+DirectorioUnidad _directorioDe(Object? json) {
+  if (json is! Map) return const DirectorioUnidad(clave: '');
+  return DirectorioUnidad.fromJson(
+    json.map((k, v) => MapEntry(k.toString(), v)),
   );
 }
 
@@ -1317,16 +1612,29 @@ class LinkBuap {
     required this.titulo,
     required this.url,
     this.categoria = '',
+    this.estadoEnlace = '',
+    this.notaEnlace = '',
   });
 
   final String titulo;
   final String url;
   final String categoria;
+  final String estadoEnlace;
+  final String notaEnlace;
+
+  bool get enlaceVerificado => url.isNotEmpty && estadoEnlace.isEmpty;
+  String get avisoEnlace {
+    if (estadoEnlace.isEmpty) return '';
+    if (notaEnlace.isNotEmpty) return notaEnlace;
+    return 'El enlace no se pudo comprobar.';
+  }
 
   factory LinkBuap.fromJson(Map<String, dynamic> json) => LinkBuap(
     titulo: json['titulo'] as String? ?? '',
     url: json['url'] as String? ?? '',
     categoria: json['categoria'] as String? ?? '',
+    estadoEnlace: json['estadoEnlace'] as String? ?? '',
+    notaEnlace: json['notaEnlace'] as String? ?? '',
   );
 }
 
@@ -1397,6 +1705,9 @@ class RutaCompuesta {
 
   final String estadoCatalogoUnidad;
 
+  /// De dónde salen los requisitos que publica la unidad, si lo declara.
+  String get fuenteDeParticularidades => ruta.fuenteDeParticularidades;
+
   /// Id con el que se guarda el progreso. Es el id de la modalidad cuando la
   /// ruta viene de una unidad, y el id legado cuando es la ruta global.
   String get id => ruta.id;
@@ -1457,7 +1768,7 @@ class RutaCompuesta {
   String get citaFuente {
     final m = modalidad;
     if (m != null && m.fuente.isNotEmpty) {
-      final fecha = m.fecha.isNotEmpty ? m.fecha : m.consultadoEn;
+      final fecha = m.fecha.isNotEmpty ? m.fecha : fechaLegible(m.consultadoEn);
       return fecha.isEmpty ? m.fuente : '${m.fuente} — $fecha';
     }
     return rutaBase.citaFuente;

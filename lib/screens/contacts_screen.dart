@@ -208,8 +208,12 @@ class _ContactsScreenState extends State<ContactsScreen> {
   }
 
   Widget _contactoFila(IconData icono, String texto, {String? mailto, String? tel}) {
+    // El teléfono necesita su esquema `tel:`: sin él la URI no la abre ningún
+    // sistema y tocar la fila no llamaba a nadie. El correo ya viene como
+    // `mailto:` y los demás casos son enlaces `https:`.
+    final destino = mailto ?? (tel != null ? 'tel:$tel' : texto);
     return InkWell(
-      onTap: () => abrirUrl(context, mailto ?? tel ?? texto),
+      onTap: () => abrirUrl(context, destino),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6),
         child: Row(
@@ -299,7 +303,14 @@ class _ContactsScreenState extends State<ContactsScreen> {
               ),
             ),
             ...porCategoria[cat]!.map(
-              (l) => LinkTile(titulo: l.titulo, url: l.url),
+              (l) => LinkTile(
+                titulo: l.titulo,
+                url: l.url,
+                // `links.json` declara cuáles no respondieron; sin pasarlos
+                // aquí el alumno veía un enlace muerto como uno que funciona.
+                estadoEnlace: l.estadoEnlace,
+                notaEnlace: l.notaEnlace,
+              ),
             ),
             const Divider(color: Colors.white24, height: 24),
           ],

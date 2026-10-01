@@ -31,6 +31,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   List<Facultad> _facultades = [];
   Alumno? _alumno;
   String? _facultad;
+  /// La unidad elegida como modelo, para poder mostrar su fuente de catálogo y
+  /// su salvedad. `_facultad` es solo la clave.
+  Facultad? _facultadObj;
   bool _cargando = true;
   bool _buscando = false;
   String _error = '';
@@ -96,14 +99,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
     try {
       final oferta = await _repo.ofertaDeUnidad(clave);
+      final modelo =
+          _facultades.where((f) => f.clave == clave).firstOrNull;
       if (!mounted || _facultad != clave) return;
-      setState(
-        () =>
-            _estadoCatalogoDe =
-                oferta.unidad == null
-                    ? 'Sin catálogo'
-                    : '${oferta.estadoCatalogo} · corte ${oferta.fechaCorte}',
-      );
+      setState(() {
+        _facultadObj = modelo;
+        _estadoCatalogoDe =
+            oferta.unidad == null
+                ? 'Sin catálogo'
+                : '${oferta.estadoCatalogo} · corte ${oferta.fechaCorte}';
+      });
     } catch (e) {
       if (!mounted) return;
       setState(() => _estadoCatalogoDe = 'No se pudo leer el catálogo: $e');
@@ -407,6 +412,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 1.3,
                 ),
               ),
+              // «Publicado» sin decir de dónde sale no es comprobable. La
+              // unidad puede además advertir que su catálogo no es exhaustivo.
+              if (_facultadObj?.fuenteCatalogo.isNotEmpty ?? false)
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    'Fuente: ${_facultadObj!.fuenteCatalogo.join(' · ')}',
+                    style: const TextStyle(
+                      color: Colors.white38,
+                      fontSize: 11,
+                      height: 1.35,
+                    ),
+                  ),
+                ),
+              if ((_facultadObj?.salvedad.isNotEmpty ?? false)) ...[
+                const SizedBox(height: 6),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    color: LoboColors.gold.withValues(alpha: 0.10),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    _facultadObj!.salvedad,
+                    style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 11,
+                      height: 1.4,
+                    ),
+                  ),
+                ),
+              ],
             ],
             const SizedBox(height: 16),
             _bloqueContextoAcademico(),

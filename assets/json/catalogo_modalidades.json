@@ -171,7 +171,7 @@
           "fuenteIds": [
             "titulacion-automatica-arpa"
           ],
-          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-automatica/ ; guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2022/09/Titulacion-Automatica-SD.pdf",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-automatica/",
           "fecha": "Guía PDF creada 2022-09-26 (metadato interno). Página consultada 2026-09-29.",
           "requisitosTexto": "Promedio general mínimo de 8.50 y no haber recursado ninguna asignatura (Art. 15 del RGT). Trámite en 5 pasos: certificados de estudios, servicio social y práctica profesional → oficio de modalidad (5 a 10 días hábiles) → acta de titulación automática (requiere certificado de no adeudo bibliotecario) → acreditar segunda lengua → título.",
           "requisitos": {
@@ -195,7 +195,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2022/09/Titulacion-Automatica-SD.pdf"
         },
         {
           "modalidadId": "titulacion-por-examen-ante-un-jurado-ruta-arpa",
@@ -212,7 +213,7 @@
           "fuenteIds": [
             "titulacion-por-examen-ante-un-jurado-ruta-arpa"
           ],
-          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-examen-profesional/ ; guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/09/TitulacionExamenProfesional_080926.pdf",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-examen-profesional/",
           "fecha": "Guía PDF creada 2026-09-08 16:26 CST. Es el documento de trámite más reciente encontrado en cualquiera de las cinco unidades.",
           "requisitosTexto": "La titulación por examen profesional engloba varias opciones; todas exigen registro de proyecto, autorización con un año máximo para concluirlo, entrega de carta aval y trabajo, asignación de jurado, Payment de acta 15 días hábiles antes del examen y acreditación de segunda lengua. Se presenta ante jurado con veredicto I. aprobado por unanimidad, II. aprobado por mayoría, III. no aprobado.",
           "requisitos": {
@@ -233,7 +234,8 @@
           },
           "operaciones": [],
           "seleccionable": false,
-          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5)."
+          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5).",
+          "citaFuente": "guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/09/TitulacionExamenProfesional_080926.pdf"
         },
         {
           "modalidadId": "seminario-de-titulacion-arpa",
@@ -250,7 +252,7 @@
           "fuenteIds": [
             "seminario-de-titulacion-arpa"
           ],
-          "fuente": "https://admin.arpa.buap.mx/titulacion/seminario-de-titulacion/ ; convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Seminario_P2026.jpg",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/seminario-de-titulacion/",
           "fecha": "Convocatoria Primavera 2026, fecha de inicio 2026-04-16; imagen publicada en la carpeta /2026/07/ de WordPress. Leída 2026-09-29.",
           "requisitosTexto": "Curso de duración mínima de 150 horas, con calificación no menor de 8 y asistencia mínima del 90 %, más un trabajo escrito sobre el tema del seminario. Se abre por convocatoria de la unidad académica (Art. 19 del RGT). Convocatoria Primavera 2026: 8 semanas, inicio 16 de abril de 2026, modalidad mixta (en línea jueves 19:00 h; presencial sábado 10:00 h). Requisitos de ingreso: generación 2013-2017, solicitud de ingreso, kardex legalizado o certificado de estudios, certificado de servicio social y constancia de prácticas profesionales.",
           "requisitos": {
@@ -274,7 +276,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Seminario_P2026.jpg"
         },
         {
           "modalidadId": "titulacion-por-diplomado-de-educacion-continua-arpa",
@@ -291,7 +294,7 @@
           "fuenteIds": [
             "titulacion-por-diplomado-de-educacion-continua-arpa"
           ],
-          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-diplomado-de-educacion-continua/ ; convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Diplomado_O2026.jpg",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-diplomado-de-educacion-continua/",
           "fecha": "Convocatoria Otoño 2026, fecha de inicio 2026-08-20; imagen publicada en la carpeta /2026/07/ de WordPress. Leída 2026-09-29.",
           "requisitosTexto": "Dirigido a quienes cumplen el 100 % del plan de estudios; el diplomado debe estar aprobado por el Consejo de Unidad Académica y avalado por el Consejo de Docencia, y acreditarse con uno de estos trabajos: Tesina, Portafolio Profesional, Formación Profesional Específica o Certificación Profesional. Todos los diplomados deben estar registrados en la Dirección General de Educación Continua. Art. 22 del RGT. Convocatoria Otoño 2026: 'Diplomado de Titulación por Portafolio Profesional', inicio 20 de agosto, para generaciones 2013-2017 que hayan hecho estancia, práctica o intercambio.",
           "requisitos": {
@@ -314,7 +317,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Diplomado_O2026.jpg"
         }
       ]
     },
@@ -732,42 +736,47 @@
         {
           "id": "titulacion-automatica-fcb",
           "titulo": "Titulación Automática",
-          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4 y 4.1)",
+          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "urlCompleta": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4 y 4.1)",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "citaFuente": "(art. 4 y 4.1)"
         },
         {
           "id": "examen-profesional-fcb",
           "titulo": "Examen Profesional",
-          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4.2) y https://csbiologicas.buap.mx/menu/formatos",
+          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "urlCompleta": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4.2) y https://csbiologicas.buap.mx/menu/formatos",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "citaFuente": "(art. 4.2) y https://csbiologicas.buap.mx/menu/formatos"
         },
         {
           "id": "examen-de-conocimientos-egel-bio-ceneval-fcb",
           "titulo": "Examen de conocimientos EGEL-BIO CENEVAL",
-          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5, 5.1, 5.1.1 a 5.1.3)",
+          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "urlCompleta": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5, 5.1, 5.1.1 a 5.1.3)",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "citaFuente": "(art. 5, 5.1, 5.1.1 a 5.1.3)"
         },
         {
           "id": "reporte-laboral-fcb",
           "titulo": "Reporte Laboral",
-          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.2 a 5.2.4, Apéndice 1)",
+          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "urlCompleta": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.2 a 5.2.4, Apéndice 1)",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "citaFuente": "(art. 5 y 5.2 a 5.2.4, Apéndice 1)"
         },
         {
           "id": "articulo-cientifico-fcb",
           "titulo": "Artículo científico",
-          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.3 a 5.3.2)",
+          "url": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "urlCompleta": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.3 a 5.3.2)",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "citaFuente": "(art. 5 y 5.3 a 5.3.2)"
         }
       ],
       "fuentesConsulta": [],
@@ -795,7 +804,7 @@
           "fuenteIds": [
             "titulacion-automatica-fcb"
           ],
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4 y 4.1)",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09 (actualización del CUA); PDF creado 2022-02-22",
           "requisitosTexto": "Promedio general mínimo de 8.5, no haber recursado asignaturas y cumplir los requisitos del artículo 61 del Lineamiento de Procedimientos de la BUAP. Solo para egresados de Biología y Biotecnología.",
           "requisitos": {
@@ -820,7 +829,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "(art. 4 y 4.1)"
         },
         {
           "modalidadId": "examen-profesional-fcb",
@@ -837,7 +847,7 @@
           "fuenteIds": [
             "examen-profesional-fcb"
           ],
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4.2) y https://csbiologicas.buap.mx/menu/formatos",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09; guías de 2022",
           "requisitosTexto": "Trabajo de tesis bajo los procedimientos vigentes del Lineamiento de Tesis de la Facultad. La unidad publica además guías operativas: 'Guía para la elaboración de tesis de revisión documental', 'Guía para la realización de Examen Profesional. Modalidad en línea' y 'Lineamiento BUAP Examen Profesional en línea'.",
           "requisitos": {
@@ -860,7 +870,8 @@
           },
           "operaciones": [],
           "seleccionable": false,
-          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5)."
+          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5).",
+          "citaFuente": "(art. 4.2) y https://csbiologicas.buap.mx/menu/formatos"
         },
         {
           "modalidadId": "examen-de-conocimientos-egel-bio-ceneval-fcb",
@@ -877,7 +888,7 @@
           "fuenteIds": [
             "examen-de-conocimientos-egel-bio-ceneval-fcb"
           ],
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5, 5.1, 5.1.1 a 5.1.3)",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09",
           "requisitosTexto": "Aplicación del EGEL-BIO del CENEVAL. Solo con testimonio de desempeño satisfactorio (TDS) o sobresaliente (TDSS). La vigencia del testimonio es máximo 1 año desde su presentación; si en ese plazo no se hacen los trámites internos, hay que repetir la prueba. Tiempos y contenidos se consultan con CENEVAL o el representante institucional.",
           "requisitos": {
@@ -900,7 +911,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "(art. 5, 5.1, 5.1.1 a 5.1.3)"
         },
         {
           "modalidadId": "reporte-laboral-fcb",
@@ -917,7 +929,7 @@
           "fuenteIds": [
             "reporte-laboral-fcb"
           ],
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.2 a 5.2.4, Apéndice 1)",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09",
           "requisitosTexto": "Egresado laborando en el área biológica o biotecnológica con experiencia mínima comprobable de 3 años en el mismo empleo. Presenta carta de antigüedad con situación laboral actual y resumen de actividades de máximo una cuartilla. El reporte es revisado por una Comisión de 3 profesores asignados por la Secretaría Académica (en Biotecnología, el comité académico multidisciplinario), que emite dictamen inapelable en máximo 30 días naturales; después el alumno presenta oralmente ante esa comisión. Estructura obligatoria en el Apéndice 1: resumen, introducción o marco teórico, actividades desempeñadas (cronograma), contribución como profesionista, conclusiones y bibliografía.",
           "requisitos": {
@@ -940,7 +952,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "(art. 5 y 5.2 a 5.2.4, Apéndice 1)"
         },
         {
           "modalidadId": "articulo-cientifico-fcb",
@@ -957,7 +970,7 @@
           "fuenteIds": [
             "articulo-cientifico-fcb"
           ],
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.3 a 5.3.2)",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09",
           "requisitosTexto": "Un artículo científico aceptado o publicado en revista arbitrada o indizada, registrado en tiempo y forma ante la Secretaría Académica (en Biotecnología, ante el comité académico multidisciplinario). En revista arbitrada con varios autores el egresado debe ser primer autor y solo uno puede titularse por trabajo; en revista indizada se permite aparecer como primero, segundo o tercero y hasta tres alumnos. Se entrega solicitud con copia del artículo y de la carta de aceptación, o el sobretiro si ya está publicado.",
           "requisitos": {
@@ -980,7 +993,8 @@
           },
           "operaciones": [],
           "seleccionable": false,
-          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5)."
+          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5).",
+          "citaFuente": "(art. 5 y 5.3 a 5.3.2)"
         }
       ]
     },
@@ -1266,7 +1280,7 @@
           ],
           "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.016378_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Experiencia%20Profesional.pdf",
           "fecha": "Consultada 2026-09-29",
-          "requisitosTexto": "Paso 1: obtener la Constancia de Suficiencia. Se参加 en las Convocatorias de Titulación por Experiencia Profesional o por Experiencia Profesional Docente de la unidad y, con esa constancia, presentar la documentación siguiente.\nConstancia de Suficiencia (original) emitida por el Comité de Evaluación para la Titulación por Experiencia Profesional (CETEP) o por Experiencia Profesional Docente (CETEPD). Archivo: Matrícula_Nombre completo_Constancia Suficiencia. Vigencia: 6 meses a partir de su emisión.\nPaso 2: verificar los requisitos del oficio de modalidad publicados en la página de Secretaría Académica.\nPaso 3: liberación de la Facultad (Laboratorio de Hardware, Departamento de Vinculación, Coordinación Administrativa).\nComprobante de Lengua Extranjera acreditada (original, CCIA) o kardex simple. Archivo: Matrícula_Nombre completo_INGLES.\nEncuesta de seguimiento a egresados y comprobante. Archivo: Matrícula_Nombre completo_ENCUESTA.\nUna vez obtenido el folio de liberación de la Facultad, cargar los datos y documentos en el formulario en línea; entrega impresa; la Constancia de Suficiencia vencida obliga a arrancar de nuevo el trámite de titulación ante la DAE.",
+          "requisitosTexto": "Paso 1: obtener la Constancia de Suficiencia. Si ha participado en las Convocatorias de Titulación por Experiencia Profesional o Titulación por Experiencia Profesional Docente de la unidad y, con esa constancia, presentar la documentación siguiente.\nConstancia de Suficiencia (original) emitida por el Comité de Evaluación para la Titulación por Experiencia Profesional (CETEP) o por Experiencia Profesional Docente (CETEPD). Archivo: Matrícula_Nombre completo_Constancia Suficiencia. Vigencia: 6 meses a partir de su emisión.\nPaso 2: verificar los requisitos del oficio de modalidad publicados en la página de Secretaría Académica.\nPaso 3: liberación de la Facultad (Laboratorio de Hardware, Departamento de Vinculación, Coordinación Administrativa).\nComprobante de Lengua Extranjera acreditada (original, CCIA) o kardex simple. Archivo: Matrícula_Nombre completo_INGLES.\nEncuesta de seguimiento a egresados y comprobante. Archivo: Matrícula_Nombre completo_ENCUESTA.\nUna vez obtenido el folio de liberación de la Facultad, cargar los datos y documentos en el formulario en línea; entrega impresa; la Constancia de Suficiencia vencida obliga a arrancar de nuevo el trámite de titulación ante la DAE.",
           "requisitos": {
             "promedioMinimo": null,
             "permiteRecursar": null,
@@ -1329,8 +1343,8 @@
         {
           "id": "memoria-de-experiencia-profesional-fccom",
           "titulo": "Memoria de Experiencia Profesional",
-          "url": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM(1).pdf",
-          "urlCompleta": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM(1).pdf",
+          "url": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM%20(1).pdf",
+          "urlCompleta": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM%20(1).pdf",
           "fechaPublicacion": null,
           "consultadoEn": "2026-09-29T00:00:00Z"
         }
@@ -1486,7 +1500,7 @@
           "fuenteIds": [
             "memoria-de-experiencia-profesional-fccom"
           ],
-          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM(1).pdf",
+          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM%20(1).pdf",
           "fecha": "Consultada 2026-09-29",
           "requisitosTexto": "Paso 1 — Revisa que cumplas con los requisitos: 100% de créditos cursados en kárdex; contar con evidencias de las actividades profesionales en Comunicación desarrolladas durante un periodo no menor a un año después de haber egresado.\nPaso 2 — Para iniciar: busca un asesor y regístralo con el Formato de Solicitud de Director por Memoria de Experiencia Profesional; realiza el Anteproyecto para Memoria siguiendo el Formato Plantilla de Memoria de Experiencia Profesional; obtén el visto bueno de tu asesor; solicita lectores llenando el Formato de Solicitud de Lectores; obtén los Votos Aprobatorios de tus lectores. El trámite es en línea, a titulacion.fccom@correo.buap.mx con copia a lilian.terrazas@correo.buap.mx.\nPaso 3 — Realiza el trámite de tus documentos: Certificado de Estudios de Licenciatura, Certificado de Servicio Social y Constancia de Práctica Profesional.\nPaso 4 — Tramita en línea tu oficio de la modalidad de titulación a titulación.fccom@correo.buap.mx, con copia a academica.fccom@correo.buap.mx y lilian.terrazas@correo.buap.mx. Documentos en un solo PDF: 3 votos aprobatorios; reporte de Turnitin generado por el Asesor de Memoria; certificado de estudios de licenciatura; certificado de servicio social; constancia de prácticas profesionales; kárdex simple. Asunto: 'SOLICITUD DE OFICIO DE TITULACIÓN POR MEMORIA DE EXPERIENCIA PROFESIONAL'. Tiempo de trámite: 3 días hábiles. Se envían por correo el oficio y la fecha y aula del examen, y se informa al director y lectores.\nPaso 5 — Acta de examen en DAE: cita previa en Autoservicios, $350.00 M.N., 15 días hábiles, con certificado de estudios del nivel anterior, certificado de estudios de licenciatura, oficio de modalidad, certificado de liberación de bibliotecas, certificado de servicio social, dos fotografías (ropa clara, blanco y negro, óvalo mignon, papel mate, adheribles) y póliza de pago con voucher original de Acta de Examen.\nPaso 6 — Realiza tu defensa de memoria: acude a tu cita para la evaluación del jurado.\nPaso 7 — Título en DAE: $500.00 M.N., 15 días hábiles, con INE original, CURP certificada, acta de nacimiento original y actualizada, certificado de estudios de preparatoria legalizado, formato original de validación, certificado de estudios de licenciatura, certificado de servicio social, acta de titulación, voucher de derechos del Título Profesional en original y dos copias, dos fotografías (ropa oscura, tamaño título, plastificadas y adheribles) y comprobante de la encuesta a egresados.",
           "requisitos": {
@@ -1532,7 +1546,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "id": "titulacion-automatica-fcel",
@@ -1540,7 +1556,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "id": "memoria-de-experiencia-profesional-o-reporte-tecnico-fcel",
@@ -1548,7 +1566,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "id": "presentacion-de-examen-ceneval-egel-fcel",
@@ -1556,7 +1576,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "id": "seminario-de-titulacion-fcel",
@@ -1564,7 +1586,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "id": "diplomado-de-educacion-continua-fcel",
@@ -1572,7 +1596,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "id": "asignatura-obligatoria-con-valor-en-creditos-que-incorpora-el-examen-ceneval-egel-fcel",
@@ -1580,7 +1606,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "id": "asignatura-optativa-con-valor-de-creditos-fcel",
@@ -1588,7 +1616,9 @@
           "url": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "urlCompleta": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         }
       ],
       "fuentesConsulta": [],
@@ -1640,7 +1670,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "modalidadId": "titulacion-automatica-fcel",
@@ -1682,7 +1714,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "modalidadId": "memoria-de-experiencia-profesional-o-reporte-tecnico-fcel",
@@ -1723,7 +1757,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "modalidadId": "presentacion-de-examen-ceneval-egel-fcel",
@@ -1764,7 +1800,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "modalidadId": "seminario-de-titulacion-fcel",
@@ -1805,7 +1843,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "modalidadId": "diplomado-de-educacion-continua-fcel",
@@ -1846,7 +1886,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "modalidadId": "asignatura-obligatoria-con-valor-en-creditos-que-incorpora-el-examen-ceneval-egel-fcel",
@@ -1887,7 +1929,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "modalidadId": "asignatura-optativa-con-valor-de-creditos-fcel",
@@ -1925,7 +1969,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         }
       ]
     },
@@ -2045,7 +2091,9 @@
           },
           "operaciones": [],
           "seleccionable": false,
-          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5)."
+          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5).",
+          "notaContacto": "El procedimiento oficial de la Facultad de Ciencias Físico Matemáticas publica paty@fcfm.buap.mx como contacto para el oficio de modalidad, pero es un buzón personal: si deja de funcionar, el trámite sigue con Secretaría Académica (secretaria.academica.fcfm@correo.buap.mx, cubículo FM3/208, extensión 7554), que es la vía estable. Todos los formatos están en https://www.fcfm.buap.mx/servicios/tramites.",
+          "contactoInstitucional": "secretaria.academica.fcfm@correo.buap.mx"
         },
         {
           "modalidadId": "titulacion-automatica-fcfm",
@@ -2085,7 +2133,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "notaContacto": "El procedimiento oficial de la Facultad de Ciencias Físico Matemáticas publica paty@fcfm.buap.mx como contacto para el oficio de modalidad, pero es un buzón personal: si deja de funcionar, el trámite sigue con Secretaría Académica (secretaria.academica.fcfm@correo.buap.mx, cubículo FM3/208, extensión 7554), que es la vía estable. Todos los formatos están en https://www.fcfm.buap.mx/servicios/tramites.",
+          "contactoInstitucional": "secretaria.academica.fcfm@correo.buap.mx"
         },
         {
           "modalidadId": "titulacion-por-experiencia-profesional-modalidad-i-trabajo-en-los-sectores-productivos-fcfm",
@@ -2125,7 +2175,9 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "notaContacto": "El procedimiento oficial de la Facultad de Ciencias Físico Matemáticas publica paty@fcfm.buap.mx como contacto para el oficio de modalidad, pero es un buzón personal: si deja de funcionar, el trámite sigue con Secretaría Académica (secretaria.academica.fcfm@correo.buap.mx, cubículo FM3/208, extensión 7554), que es la vía estable. Todos los formatos están en https://www.fcfm.buap.mx/servicios/tramites.",
+          "contactoInstitucional": "secretaria.academica.fcfm@correo.buap.mx"
         },
         {
           "modalidadId": "titulacion-por-experiencia-profesional-modalidad-ii-acreditaciones-para-el-ejercicio-profesional-fcfm",
@@ -2281,9 +2333,13 @@
           },
           "operaciones": [],
           "seleccionable": false,
-          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5)."
+          "pendiente": "Modalidad publicada por la unidad sin ruta base en routes.json: la app solo puede mostrarla como información (plan técnico §5).",
+          "notaContacto": "El procedimiento oficial de la Facultad de Ciencias Físico Matemáticas publica paty@fcfm.buap.mx como contacto para el oficio de modalidad, pero es un buzón personal: si deja de funcionar, el trámite sigue con Secretaría Académica (secretaria.academica.fcfm@correo.buap.mx, cubículo FM3/208, extensión 7554), que es la vía estable. Todos los formatos están en https://www.fcfm.buap.mx/servicios/tramites.",
+          "contactoInstitucional": "secretaria.academica.fcfm@correo.buap.mx"
         }
-      ]
+      ],
+      "notaContacto": "El procedimiento oficial de la Facultad de Ciencias Físico Matemáticas publica paty@fcfm.buap.mx como contacto para el oficio de modalidad, pero es un buzón personal: si deja de funcionar, el trámite sigue con Secretaría Académica (secretaria.academica.fcfm@correo.buap.mx, cubículo FM3/208, extensión 7554), que es la vía estable. Todos los formatos están en https://www.fcfm.buap.mx/servicios/tramites.",
+      "contactoInstitucional": "secretaria.academica.fcfm@correo.buap.mx"
     },
     {
       "clave": "FCPS",
@@ -4207,14 +4263,26 @@
       "clave": "FENF",
       "nombreOficial": "Facultad de Enfermería",
       "nombreCatalogo": "Facultad de Enfermería",
-      "estadoCatalogo": "publicacion_sin_fuente_registrada",
-      "resultadoBusqueda": "modalidades_sin_fuente_registrada",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
       "veredictoConfirmacion": "confirmada",
       "veredictoDetalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad.",
       "publicaCatalogo": true,
-      "salvedad": "",
-      "fuentes": [],
+      "salvedad": "Anexo «A» — Requisitos para Oficio de Modalidad para Acta de Examen (Titulación automática, EGEL-CENEVAL, Tesis o Tesina), 26 de agosto de 2024. Alcance: Nivel Técnico Enfermería, Podología, Licenciatura Escolarizada y Complementaria en Enfermería. Verificado el 2026-09-30.",
+      "fuentes": [
+        {
+          "url": "https://enfermeria.buap.mx/sites/default/files/Anexo%20A.%20Requisitos%20oficio%20de%20modalidad.pdf",
+          "titulo": "Catálogo de modalidades de la unidad",
+          "fecha": "Anexo «A» — Requisitos para Oficio de Modalidad para Acta de Examen (Titulación automática, EGEL-CENEVAL, Tesis o Tesina), 26 de agosto de 2024. Alcance: Nivel Técnico Enfermería, Podología, Licenciatura Escolarizada y Complementaria en Enfermería. Verificado el 2026-09-30."
+        }
+      ],
       "fuentesConsulta": [
+        {
+          "url": "https://enfermeria.buap.mx/sites/default/files/Anexo%20A.%20Requisitos%20oficio%20de%20modalidad.pdf",
+          "consultadoEn": "2026-09-30T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "Anexo «A» — Requisitos para Oficio de Modalidad para Acta de Examen (Titulación automática, EGEL-CENEVAL, Tesis o Tesina), 26 de agosto de 2024. Alcance: Nivel Técnico Enfermería, Podología, Licenciatura Escolarizada y Complementaria en Enfermería. Verificado el 2026-09-30."
+        },
         {
           "url": "https://www.buap.mx/content/unidades-academicas",
           "consultadoEn": "2026-09-29T00:00:00Z",
@@ -4256,8 +4324,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://enfermeria.buap.mx/sites/default/files/Anexo%20A.%20Requisitos%20oficio%20de%20modalidad.pdf",
+          "fecha": "Anexo «A» — Requisitos para Oficio de Modalidad para Acta de Examen (Titulación automática, EGEL-CENEVAL, Tesis o Tesina), 26 de agosto de 2024. Alcance: Nivel Técnico Enfermería, Podología, Licenciatura Escolarizada y Complementaria en Enfermería. Verificado el 2026-09-30.",
           "requisitosTexto": "Modalidad nombrada en el título del Anexo A. Requisitos comunes a las cuatro modalidades: (1) certificado de estudios de bachillerato o preparatoria o equivalente, legalizado — los certificados de prepas BUAP no necesitan legalización —, escaneado del original por ambos lados a color en PDF; (2) certificado de estudio (licenciatura o técnico en enfermería o podología), escaneado por ambos lados a color en PDF; (3) Kárdex simple actualizado con el 100 % de los créditos aprobados del plan de estudios, escaneado a color en PDF; (4) certificado de Servicio Social en original expedido por la Dirección de Servicio Social de la BUAP; (5) resultado CENEVAL escaneado a color por ambos lados (consultable en https://des.buap.mx/), sólo para la modalidad EGEL-CENEVAL. Envío de los documentos a titulacion.enfermeria@correo.buap.mx colocando nombre, matrícula, programa académico y número de teléfono. Responsables: DCE. Vianet Nava Navarro y DE. Inés Tenahua Quitl. Advertencia del documento: los originales escaneados no deben llevar tachaduras, recortes, manchas, enmendaduras ni enmices, o NO PODRÁN RECIBIRSE.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4295,8 +4363,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://enfermeria.buap.mx/sites/default/files/Anexo%20A.%20Requisitos%20oficio%20de%20modalidad.pdf",
+          "fecha": "Anexo «A» — Requisitos para Oficio de Modalidad para Acta de Examen (Titulación automática, EGEL-CENEVAL, Tesis o Tesina), 26 de agosto de 2024. Alcance: Nivel Técnico Enfermería, Podología, Licenciatura Escolarizada y Complementaria en Enfermería. Verificado el 2026-09-30.",
           "requisitosTexto": "Modalidad nombrada en el título del Anexo A. Además de los cuatro requisitos comunes, exige el punto 5: «Resultado CENEVAL: escaneado del original a color en formato PDF, escaneado de ambos lados a color en formato PDF. Consultar resultado en: https://des.buap.mx/». Es la única modalidad para la que la unidad pide además constancia del resultado del examen.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4333,8 +4401,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://enfermeria.buap.mx/sites/default/files/Anexo%20A.%20Requisitos%20oficio%20de%20modalidad.pdf",
+          "fecha": "Anexo «A» — Requisitos para Oficio de Modalidad para Acta de Examen (Titulación automática, EGEL-CENEVAL, Tesis o Tesina), 26 de agosto de 2024. Alcance: Nivel Técnico Enfermería, Podología, Licenciatura Escolarizada y Complementaria en Enfermería. Verificado el 2026-09-30.",
           "requisitosTexto": "Modalidad nombrada en el título del Anexo A, agrupada ahí con la Tesina. El Anexo A no publica requisitos específicos de tesis más allá de los cinco requisitos comunes. La unidad sí publica, en la sección «Lineamientos», un «Diagrama de Flujo para la Revisión de Trabajos de Titulación» (https://enfermeria.buap.mx/sites/default/files/Fluxograma%20de%20Revision%20de%20protocolos%20y%20tesis%20%281%29.pdf, Last-Modified 2019-05-23) y un «Diagrama de Flujo de Co Directores de Titulación» (https://enfermeria.buap.mx/sites/default/files/Fluxograma%20de%20co%20directores%20de%20Titulaci%C3%B3n.pdf), pero ambos están orientados a posgrado: el primero se autoriza por el «comité académico de posgrado de la FE-BUAP, 2018» y sus requisitos son la prueba piloto, la revisión de seminarios 1 y 2, el comité tutorial y la recolección final de datos. No constituyen un catálogo de modalidades de pregrado.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4371,8 +4439,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://enfermeria.buap.mx/sites/default/files/Anexo%20A.%20Requisitos%20oficio%20de%20modalidad.pdf",
+          "fecha": "Anexo «A» — Requisitos para Oficio de Modalidad para Acta de Examen (Titulación automática, EGEL-CENEVAL, Tesis o Tesina), 26 de agosto de 2024. Alcance: Nivel Técnico Enfermería, Podología, Licenciatura Escolarizada y Complementaria en Enfermería. Verificado el 2026-09-30.",
           "requisitosTexto": "Modalidad nombrada en el título del Anexo A, agrupada ahí con la Tesis. El Anexo A no publica requisitos específicos de tesina más allá de los cinco requisitos comunes.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4402,14 +4470,26 @@
       "clave": "FESTO",
       "nombreOficial": "Facultad de Estomatología",
       "nombreCatalogo": "Facultad de Estomatología",
-      "estadoCatalogo": "publicacion_sin_fuente_registrada",
-      "resultadoBusqueda": "modalidades_sin_fuente_registrada",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
       "veredictoConfirmacion": "confirmada",
       "veredictoDetalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad.",
       "publicaCatalogo": true,
-      "salvedad": "",
-      "fuentes": [],
+      "salvedad": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30.",
+      "fuentes": [
+        {
+          "url": "https://estomatologia.buap.mx/sites/default/files/Tr%C3%A1mites%20de%20Titulaci%C3%B3n%20diciembre%202025.pdf",
+          "titulo": "Catálogo de modalidades de la unidad",
+          "fecha": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30."
+        }
+      ],
       "fuentesConsulta": [
+        {
+          "url": "https://estomatologia.buap.mx/sites/default/files/Tr%C3%A1mites%20de%20Titulaci%C3%B3n%20diciembre%202025.pdf",
+          "consultadoEn": "2026-09-30T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30."
+        },
         {
           "url": "https://www.buap.mx/content/unidades-academicas",
           "consultadoEn": "2026-09-29T00:00:00Z",
@@ -4451,8 +4531,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://estomatologia.buap.mx/sites/default/files/Tr%C3%A1mites%20de%20Titulaci%C3%B3n%20diciembre%202025.pdf",
+          "fecha": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30.",
           "requisitosTexto": "Nota general del documento: para iniciar trámites en cualquier modalidad hay que haber concluido la totalidad de los créditos mínimos obligatorios del Plan de Estudios. En el paso 5 (oficio de modalidad para la constancia de no adeudo bibliotecario) y en el paso 6 (oficio de modalidad para Acta de Examen en DAE) se pide, solo para esta modalidad, Kárdex legalizado al 100 %, con promedio mínimo de 8.5 y sin recursos. En autoservicios se generan de manera independiente «Kardex legalizado» y «Certificado de estudios». Requisitos que acompañan a esta modalidad en los pasos 5 y 6: certificado de servicio social BUAP, carta de liberación de la dependencia, liberación de la Secretaría de Salud (excepto Programa Universitario), certificado de licenciatura, y certificado de no adeudo de la Dirección General de Bibliotecas. Dirigirse a Secretaría Académica de lunes a viernes de 10:00 a 13:00 h con original y una copia; el oficio de modalidad se recoge a partir de tres días hábiles posteriores a la entrega.",
           "requisitos": {
             "promedioMinimo": 8.5,
@@ -4490,8 +4570,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://estomatologia.buap.mx/sites/default/files/Tr%C3%A1mites%20de%20Titulaci%C3%B3n%20diciembre%202025.pdf",
+          "fecha": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30.",
           "requisitosTexto": "El examen aprobado se clasifica en satisfactorio o sobresaliente y con ambos se puede iniciar el trámite con el TESTIMONIO DIGITAL. Un testimonio aprobatorio CENEVAL es válido cuando la inscripción al examen fue posterior a la conclusión del 100 % de los créditos. Desde la primera aplicación de 2024 el registro debe hacerse por https://des.buap.mx/ y no se aceptan exámenes aplicados directamente con CENEVAL. En los pasos 5 y 6 hay que presentar el resultado digital completo impreso y el testimonio correspondiente; se revisa que la fecha de inscripción al examen sea posterior a la liberación de Servicio Social, de lo contrario no tiene validez. No exceder tres oportunidades (art. 25 del Reglamento General de Titulación). Pago de derechos de examen: $1,190.00 M.N. con convenio CENEVAL. La convocatoria vive fuera del sitio de la facultad: https://des.buap.mx/?q=content/convocato-ria-egel-ceneval.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4529,8 +4609,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://estomatologia.buap.mx/sites/default/files/Tr%C3%A1mites%20de%20Titulaci%C3%B3n%20diciembre%202025.pdf",
+          "fecha": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30.",
           "requisitosTexto": "Antes de asistir a Secretaría Académica hay que enviar el archivo en PDF con la aprobación y autorización de impresión de la Secretaría de Investigación y Estudios de Posgrado, así como del Consejo de Investigación de la facultad, al correo planeacion.estomatologia@correo.buap.mx. Dudas sobre la autorización de impresión: coordinadores.estomatologia@correo.buap.mx. Una vez recibida la documentación, la Secretaría asigna los sinodales y programa la presentación y defensa, enviando citatorio con fecha, hora y lugar por correo electrónico. Además: los pasos 1 a 5 del trámite (liberación de servicio social, certificado de licenciatura y kárdex legalizado, certificado de servicio social BUAP, liberación de clínica y archivo clínico, oficio de modalidad para constancia de no adeudo bibliotecario).",
           "requisitos": {
             "promedioMinimo": null,
@@ -4567,8 +4647,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://estomatologia.buap.mx/sites/default/files/Tr%C3%A1mites%20de%20Titulaci%C3%B3n%20diciembre%202025.pdf",
+          "fecha": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30.",
           "requisitosTexto": "El documento de dic-2025 la agrupa con la tesis en el mismo trámite («En caso de titulación por tesis/tesina»), con el mismo envío previo del PDF con aprobación y autorización de impresión de la S.I.E.P. y del Consejo de Investigación a planeacion.estomatologia@correo.buap.mx. La unidad publica además un procedimiento propio de registro ante el C.I.F.E. con docente lector (ver «Diagrama para el registro de Tesina», Last-Modified 2022-11-03). Nota de coherencia: el documento de diciembre 2025 enumera «cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)» y NO incluye la Tesina en esa enumeración, aunque sí la contempla en el paso a paso y le dedica un diagrama de registro propio. Reportada con esa salvedad.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4605,8 +4685,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://estomatologia.buap.mx/sites/default/files/Tr%C3%A1mites%20de%20Titulaci%C3%B3n%20diciembre%202025.pdf",
+          "fecha": "Trámites de Titulación de la Licenciatura en Estomatología, diciembre de 2025. El documento enumera «cualquiera de los cuatro tipos de titulación (Automática, CENEVAL, Tesis o Seminario)»; además regula expresamente el caso de titulación por tesis/tesina y publica un diagrama de registro de tesina. Verificado el 2026-09-30.",
           "requisitosTexto": "Modalidad reservada a quienes tienen «más de cinco años de haber concluido el Servicio Social». Se debe enviar correo a academica.estomatologia@correo.buap.mx indicando: (1) que se es aspirante al Seminario de Titulación; (2) nombre, matrícula, correo alternativo y dos números de contacto telefónico; (3) identificación oficial adjunta; (4) Certificado de Servicio Social BUAP; (5) Kárdex legalizado al 100 % o Certificado de licenciatura. En los pasos 5 y 6 hay que adjuntar el oficio de aprobación emitido por la Secretaría Académica.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4635,15 +4715,38 @@
     {
       "clave": "FFL",
       "nombreOficial": "Facultad de Filosofía y Letras",
-      "nombreCatalogo": "Facultad de Filosofía y Letras",
-      "estadoCatalogo": "unidad_no_publica_catalogo",
-      "resultadoBusqueda": "sin_catalogo_publicado",
+      "nombreCatalogo": "Modalidades para la titulación en las licenciaturas de la Facultad de Filosofía y Letras",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
       "veredictoConfirmacion": "sin-confirmar",
       "veredictoDetalle": "Esta unidad no publica catálogo identificable en las fuentes consultadas al 2026-09-29. Rastro: https://www.buap.mx/content/unidades-academicas (HTTP 200), https://titulacion.buap.mx/ (HTTP 200); no se encontró una página oficial individual con catálogo de titulación.",
       "publicaCatalogo": true,
-      "salvedad": "",
-      "fuentes": [],
+      "salvedad": "El catálogo es por licenciatura, no una lista única para toda la facultad: cada modalidad aplica solo a la licenciatura en la que el documento la enumera. El PDF es de 2018 y sigue siendo el documento enlazado por la Secretaría Académica de la unidad; no se encontró versión posterior.",
+      "fuentes": [
+        {
+          "url": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "titulo": "Modalidades para la titulación en las licenciaturas de la FFyL",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "url": "https://filosofia.buap.mx/content/secretar%C3%ADa-acad%C3%A9mica",
+          "titulo": "Secretaría Académica FFyL (enlaza el catálogo)",
+          "fecha": "Consultada 2026-09-30"
+        }
+      ],
       "fuentesConsulta": [
+        {
+          "url": "https://filosofia.buap.mx/content/secretar%C3%ADa-acad%C3%A9mica",
+          "consultadoEn": "2026-09-30T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "PDF de modalidades descargado y leído; 33 modalidades en 5 licenciaturas."
+        },
+        {
+          "url": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "consultadoEn": "2026-09-30T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "Texto extraído del PDF oficial (15 páginas)."
+        },
         {
           "url": "https://www.buap.mx/content/unidades-academicas",
           "consultadoEn": "2026-09-29T00:00:00Z",
@@ -4671,7 +4774,305 @@
         "notas": "",
         "confianza": "baja"
       },
-      "modalidades": []
+      "modalidades": [
+        {
+          "modalidadId": "ffyl-antropologia-titulacion-automatica",
+          "nombreEnUnidad": "Titulación automática",
+          "carrera": "Licenciatura en Antropología Social",
+          "rutaId": "promedio",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-antropologia-tesis",
+          "nombreEnUnidad": "Tesis",
+          "carrera": "Licenciatura en Antropología Social",
+          "rutaId": "tesis",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-antropologia-tesina",
+          "nombreEnUnidad": "Tesina",
+          "carrera": "Licenciatura en Antropología Social",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-antropologia-memoria-de-experiencia-profesional",
+          "nombreEnUnidad": "Memoria de experiencia profesional",
+          "carrera": "Licenciatura en Antropología Social",
+          "rutaId": "experiencia-profesional",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-antropologia-capitulo-cientifico-publicado-en-una-rev",
+          "nombreEnUnidad": "Capítulo científico publicado en una revista arbitrada",
+          "carrera": "Licenciatura en Antropología Social",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-antropologia-dos-capitulos-de-libro-arbitrado",
+          "nombreEnUnidad": "Dos capítulos de libro arbitrado",
+          "carrera": "Licenciatura en Antropología Social",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-filosofia-tesis",
+          "nombreEnUnidad": "Tesis",
+          "carrera": "Licenciatura en Filosofía",
+          "rutaId": "tesis",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-filosofia-tesina",
+          "nombreEnUnidad": "Tesina",
+          "carrera": "Licenciatura en Filosofía",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-filosofia-titulacion-automatica",
+          "nombreEnUnidad": "Titulación automática",
+          "carrera": "Licenciatura en Filosofía",
+          "rutaId": "promedio",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-filosofia-traduccion-comentada-de-texto-filosofico",
+          "nombreEnUnidad": "Traducción comentada de texto filosófico",
+          "carrera": "Licenciatura en Filosofía",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-filosofia-publicacion-de-articulo-arbitrado-o-de-c",
+          "nombreEnUnidad": "Publicación de Artículo arbitrado o de Capítulo de libro",
+          "carrera": "Licenciatura en Filosofía",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-filosofia-proyecto-de-investigacion-para-ingreso-a",
+          "nombreEnUnidad": "Proyecto de investigación para ingreso a posgrado",
+          "carrera": "Licenciatura en Filosofía",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-filosofia-proyecto-de-impacto-social",
+          "nombreEnUnidad": "Proyecto de impacto social",
+          "carrera": "Licenciatura en Filosofía",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-historia-titulacion-automatica",
+          "nombreEnUnidad": "Titulación automática",
+          "carrera": "Licenciatura en Historia",
+          "rutaId": "promedio",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-historia-tesis",
+          "nombreEnUnidad": "Tesis",
+          "carrera": "Licenciatura en Historia",
+          "rutaId": "tesis",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-historia-tesina",
+          "nombreEnUnidad": "Tesina",
+          "carrera": "Licenciatura en Historia",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-historia-instrumentos-de-registro-y-proteccion-de",
+          "nombreEnUnidad": "Instrumentos de registro y protección del Patrimonio Histórico",
+          "carrera": "Licenciatura en Historia",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-historia-traduccion-de-un-corpus-documental",
+          "nombreEnUnidad": "Traducción de un corpus documental",
+          "carrera": "Licenciatura en Historia",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-historia-publicacion-de-articulo-arbitrado-o-de-c",
+          "nombreEnUnidad": "Publicación de Artículo arbitrado o de Capítulo de libro",
+          "carrera": "Licenciatura en Historia",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-linguistica--titulacion-automatica",
+          "nombreEnUnidad": "Titulación automática",
+          "carrera": "Licenciatura en Lingüística Y Literatura Hispánica",
+          "rutaId": "promedio",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-linguistica--tesis",
+          "nombreEnUnidad": "Tesis",
+          "carrera": "Licenciatura en Lingüística Y Literatura Hispánica",
+          "rutaId": "tesis",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-linguistica--tesina",
+          "nombreEnUnidad": "Tesina",
+          "carrera": "Licenciatura en Lingüística Y Literatura Hispánica",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-linguistica--traduccion-literaria",
+          "nombreEnUnidad": "Traducción literaria",
+          "carrera": "Licenciatura en Lingüística Y Literatura Hispánica",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-linguistica--informe-critico-de-servicio-social",
+          "nombreEnUnidad": "Informe Crítico de Servicio Social",
+          "carrera": "Licenciatura en Lingüística Y Literatura Hispánica",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-linguistica--informe-critico-practica-profesional",
+          "nombreEnUnidad": "Informe Crítico Práctica Profesional",
+          "carrera": "Licenciatura en Lingüística Y Literatura Hispánica",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-linguistica--publicacion-de-articulo-arbitrado-o-de-c",
+          "nombreEnUnidad": "Publicación de Artículo arbitrado o de Capítulo de libro",
+          "carrera": "Licenciatura en Lingüística Y Literatura Hispánica",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-procesos-edu-titulacion-automatica",
+          "nombreEnUnidad": "Titulación automática",
+          "carrera": "Licenciatura en Procesos Educativos",
+          "rutaId": "promedio",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-procesos-edu-tesis",
+          "nombreEnUnidad": "Tesis",
+          "carrera": "Licenciatura en Procesos Educativos",
+          "rutaId": "tesis",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-procesos-edu-tesina",
+          "nombreEnUnidad": "Tesina",
+          "carrera": "Licenciatura en Procesos Educativos",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-procesos-edu-proyecto-de-intervencion",
+          "nombreEnUnidad": "Proyecto de intervención",
+          "carrera": "Licenciatura en Procesos Educativos",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-procesos-edu-informe-critico-de-servicio-social-o-pra",
+          "nombreEnUnidad": "Informe Crítico de Servicio Social o Práctica Profesional",
+          "carrera": "Licenciatura en Procesos Educativos",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-procesos-edu-publicacion-de-articulo-arbitrado-o-de-c",
+          "nombreEnUnidad": "Publicación de Artículo arbitrado o de Capitulo de libro",
+          "carrera": "Licenciatura en Procesos Educativos",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        },
+        {
+          "modalidadId": "ffyl-historia-instrumentos-y-materiales-para-la-ensena",
+          "nombreEnUnidad": "Instrumentos y materiales para la enseñanza o divulgación del Patrimonio Histórico",
+          "carrera": "Licenciatura en Historia",
+          "rutaId": "asignatura-optativa",
+          "requisitosTexto": "",
+          "fuente": "https://filosofia.buap.mx/sites/default/files/Estudiantes/Modalidad%20de%20titulaci%C3%B3n/MODALIDADES_Y_PROCEDIMIENTOS_PARA_LA_TITULACION.pdf",
+          "fecha": "PDF de septiembre de 2018, aprobado por el Consejo de Unidad Académica el 6 de febrero de 2018; reconsultado el 2026-09-30."
+        }
+      ]
     },
     {
       "clave": "FING",
@@ -4718,14 +5119,26 @@
       "clave": "FIQ",
       "nombreOficial": "Facultad de Ingeniería Química",
       "nombreCatalogo": "Facultad de Ingeniería Química",
-      "estadoCatalogo": "publicacion_sin_fuente_registrada",
-      "resultadoBusqueda": "modalidades_sin_fuente_registrada",
+      "estadoCatalogo": "publicado",
+      "resultadoBusqueda": "catalogo_publicado",
       "veredictoConfirmacion": "confirmada",
       "veredictoDetalle": "Se confirmó la existencia de la entrada y sus campos no vacíos en titulacion/assets/json/facultades.json (lectura local, consulta 2026-09-29); la fuente oficial general enlazada para contraste fue https://www.buap.mx/content/unidades-academicas (HTTP 200). No se encontró en esta revisión una URL individual publicada por la unidad.",
       "publicaCatalogo": true,
-      "salvedad": "",
-      "fuentes": [],
+      "salvedad": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
+      "fuentes": [
+        {
+          "url": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "titulo": "Catálogo de modalidades de la unidad",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30."
+        }
+      ],
       "fuentesConsulta": [
+        {
+          "url": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "consultadoEn": "2026-09-30T00:00:00Z",
+          "resultado": "catalogo_publicado",
+          "evidencia": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30."
+        },
         {
           "url": "https://www.buap.mx/content/unidades-academicas",
           "consultadoEn": "2026-09-29T00:00:00Z",
@@ -4767,8 +5180,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Consiste en tener una trayectoria de alto desempeño al haber cursado y aprobado sin recursos todas las asignaturas que conforman el plan de estudios de la licenciatura a la que pertenece el solicitante, con un promedio general mínimo de ocho punto cinco. Documentos: solicitud de carta aval Titulación automática/modalidad de titulación (ver formato); Kárdex simple reciente con promedio mínimo de 8.5 y sin recursos; certificado de licenciatura; certificado de servicio social; constancia de no adeudo de material de laboratorio (autorizada por la Coordinación Administrativa de la FIQ).",
           "requisitos": {
             "promedioMinimo": 8.5,
@@ -4806,8 +5219,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Consiste en presentar y obtener el nivel satisfactorio o sobresaliente en el examen de conocimientos, habilidades y competencias que realiza el Centro Nacional de Evaluación de la Educación Superior (EGEL-CENEVAL), a través de la programación que la Universidad y la FIQ coordinarán para su realización. Documentos: solicitud de carta aval titulación CENEVAL/modalidad de titulación; Kárdex simple reciente con el 100 % de créditos concluidos antes de la presentación del examen; hoja testimonio de desempeño satisfactorio o sobresaliente; hoja de reporte individual de resultados; constancia de no adeudo de material de laboratorio (Coordinación Administrativa de la FIQ).",
           "requisitos": {
             "promedioMinimo": null,
@@ -4845,8 +5258,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Consiste en la elaboración de un informe por escrito de las actividades profesionales desarrolladas a través del desempeño laboral o la práctica profesional en un periodo mínimo de un año. El informe escrito tendrá la asesoría y supervisión de un director, y se presenta mediante una exposición oral ante un jurado. Formatos: Asignación de asesor de reporte técnico; Dictamen de comisión revisora de reporte técnico; Aprobación de registro de reporte técnico; Asignación de jurado de reporte técnico; Reporte técnico.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4883,8 +5296,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Consiste en el desarrollo de un trabajo de investigación, bajo la asesoría y supervisión de un director, que se presenta y defiende mediante una exposición oral ante un jurado. Formatos: Asignación de jurado; Asignación de comisión revisora de protocolo de tesis; Dictamen de comisión de coloquio de tesis; Aprobación de registro de tesis; Asignación de jurado de coloquio; Dictamen de comisión revisora de protocolo de tesis; Autorización de impresión de tesis; tesis.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4921,8 +5334,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Consiste en la elaboración de un documento que implica investigación documental, de campo o práctica, conocido como Tesina, que trata sobre un tema que está vinculado con el campo de acción de la Licenciatura que el estudiante cursó. La Tesina tendrá la asesoría y supervisión de un director, y se presenta mediante una exposición oral ante un jurado. Formatos: Asignación de comisión revisora de protocolo de tesina; Dictamen de comisión revisora de protocolo de tesina; Aprobación de registro de tesina; Autorización de impresión de tesina; Asignación de jurado de tesina; tesina-diplomado.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4959,8 +5372,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Consiste en la elaboración de un documento con orientación teórica o empírica conocido como Tesina, que trata sobre un tema relacionado al Diplomado que el estudiante está cursando. La Tesina tendrá la asesoría y supervisión de un director, y se presenta mediante una exposición oral ante un jurado. Formato final: tesina-diplomado.pdf.",
           "requisitos": {
             "promedioMinimo": null,
@@ -4997,8 +5410,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Artículo científico desarrollado en un proyecto de investigación en el que se apliquen desarrollos científicos o tecnológicos de los programas educativos de licenciatura de la FIQ, publicado en revista científica con registro ISSN al menos de alcance nacional. Procedimiento: se aceptarán a evaluación solo artículos que apliquen desarrollos de los programas de licenciatura de la FIQ; la publicación periódica debe tener ISSN y alcance nacional; el artículo debe ser producto de un Proyecto de Investigación; la evaluación la desarrolla un comité de tres profesores de la facultad, en una sola oportunidad por sustentante/artículo; el comité se forma con un jurado de examen eligiendo un presidente, un secretario y un vocal; el sustentante entrega al comité el artículo y los probatorios de su participación; el comité se reúne en sesión pública para verificar el dominio de la temática y emite dictamen escrito (aprobado por unanimidad / aprobado / no aprobado). Documento que se entrega: dictamen de examen profesional.",
           "requisitos": {
             "promedioMinimo": null,
@@ -5035,8 +5448,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Al estar cursando una maestría con reconocimiento oficial, afín al ejercicio de la profesión del egresado en el ámbito educativo, se presenta el certificado parcial de estudios con al menos 50 % de los créditos cursados y aprobados. Documentos: certificado de estudios del 100 % de los créditos cursados; certificado de estudios de maestría afín (mínimo 50 % de créditos concluidos); copia de la liberación de biblioteca; constancia de no adeudo de almacén (sellada); encuesta de seguimiento de egresados SEP; copia del certificado de servicio social.",
           "requisitos": {
             "promedioMinimo": null,
@@ -5074,8 +5487,8 @@
           "vigenteHasta": null,
           "consultadoEn": "2026-09-29T00:00:00Z",
           "fuenteIds": [],
-          "fuente": null,
-          "fecha": "Consultada 2026-09-29",
+          "fuente": "https://ingenieriaquimica.buap.mx/content/titulaci%C3%B3n",
+          "fecha": "Página de Titulación de la Facultad de Ingeniería Química. La unidad publica nueve modalidades; la página no muestra fecha de publicación ni asigna cada modalidad a una licenciatura concreta. Verificada el 2026-09-30.",
           "requisitosTexto": "Haber cursado y aprobado el 100 % de los créditos y obtenido el grado correspondiente de una Especialidad afín al ejercicio de la profesión del egresado en el ámbito educativo. Documentos: certificados de estudios del 100 % de los créditos cursados y el documento que avale la obtención de la especialidad; copia de la liberación de biblioteca; constancia de no adeudo de almacén (sellada); encuesta de seguimiento de egresados SEP; copia del certificado de servicio social.",
           "requisitos": {
             "promedioMinimo": null,
@@ -5537,8 +5950,8 @@
         {
           "id": "licenciatura-en-nutricion-clinica-titulacion-por-ceneval-fmed",
           "titulo": "Licenciatura en Nutrición Clínica - Titulación por CENEVAL",
-          "url": "https://medicina.buap.mx/?q=content/licenciatura-en-nutrici%C3%ADnica-titulacion-por-ceneval",
-          "urlCompleta": "https://medicina.buap.mx/?q=content/licenciatura-en-nutrici%C3%ADnica-titulacion-por-ceneval",
+          "url": "https://medicina.buap.mx/?q=content/licenciatura-en-nutricion-clinica-titulacion-por-ceneval",
+          "urlCompleta": "https://medicina.buap.mx/?q=content/licenciatura-en-nutricion-clinica-titulacion-por-ceneval",
           "fechaPublicacion": null,
           "consultadoEn": "2026-09-29T00:00:00Z"
         },
@@ -5609,7 +6022,7 @@
       ],
       "fuentesConsulta": [
         {
-          "url": "https://medicina.buap.mx/?q=content/licenciatura-en-ciencia-forense-titulacion-automatica",
+          "url": "https://medicina.buap.mx/?q=licenciatura-en-ciencia-forense-titulacion-automatica",
           "consultadoEn": "2026-09-29T00:00:00Z",
           "resultado": "catalogo_publicado",
           "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMED].notas"
@@ -5618,7 +6031,9 @@
           "url": "https://mederi.buap.mx/titulacion/",
           "consultadoEn": "2026-09-29T00:00:00Z",
           "resultado": "catalogo_publicado",
-          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMED].notas"
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMED].notas",
+          "estadoEnlace": "no_verificado",
+          "notaEnlace": "Verificado el 2026-09-30: el dominio no responde. Se conserva como referencia; si sigue caido debe retirarse o sustituirse por la Secretaria Academica de la unidad."
         },
         {
           "url": "https://repositorio.buap.mx/rdocencia/public/inf_public/2019/0/197-Reglamento-General-Titulaci%C3%B3n-Gaceta.pdf",
@@ -6129,7 +6544,7 @@
           "fuenteIds": [
             "licenciatura-en-nutricion-clinica-titulacion-por-ceneval-fmed"
           ],
-          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-nutrici%C3%ADnica-titulacion-por-ceneval",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-nutricion-clinica-titulacion-por-ceneval",
           "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29",
           "requisitosTexto": "100% de créditos curriculares obligatorios, incluidos servicio social y práctica profesional; sólo convocatoria interna.",
           "requisitos": {
@@ -6524,7 +6939,7 @@
           "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMVZ].notas"
         },
         {
-          "url": "https://veterinaria.buap.mx/sites/default/files/PLAN%20DE%ESTUDIOS%202024_0.pdf",
+          "url": "https://veterinaria.buap.mx/sites/default/files/PLAN%20DE%20ESTUDIOS%202024_0.pdf",
           "consultadoEn": "2026-09-29T00:00:00Z",
           "resultado": "catalogo_publicado",
           "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FMVZ].notas"
@@ -6668,18 +7083,20 @@
         {
           "id": "titulacion-automatica-solicitud-de-oficio-de-modalidad-de-titulacion-automatica-fpsy",
           "titulo": "Titulación automática (solicitud de oficio de modalidad de titulación automática)",
-          "url": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)",
+          "url": "https://psicologia.buap.mx/coords/titulacion/",
           "urlCompleta": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "citaFuente": "(infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)"
         },
         {
           "id": "titulacion-por-egel-plus-ceneval-solicitud-de-oficio-de-modalidad-de-titulacion-por-egel-plus-fpsy",
           "titulo": "Titulación por EGEL Plus-CENEVAL (solicitud de oficio de modalidad de titulación por EGEL Plus)",
-          "url": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)",
+          "url": "https://psicologia.buap.mx/coords/titulacion/",
           "urlCompleta": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)",
           "fechaPublicacion": null,
-          "consultadoEn": "2026-09-29T00:00:00Z"
+          "consultadoEn": "2026-09-29T00:00:00Z",
+          "citaFuente": "(infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)"
         }
       ],
       "fuentesConsulta": [
@@ -6696,16 +7113,18 @@
           "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
         },
         {
-          "url": "https://des.buap.mx/?q=pdf/convocatoria-egel-ceneval-marzo-2021",
           "consultadoEn": "2026-09-29T00:00:00Z",
           "resultado": "catalogo_publicado",
-          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas",
+          "enlaceRetirado": "La convocatoria EGEL-CENEVAL de marzo de 2021 que citaba el folleto ya no está publicada en des.buap.mx (verificado 404 el 2026-09-30). Se retira el enlace y se conserva el dato como antecedente historico, no como convocatoria vigente. La convocatoria que corresponde se publica cada ciclo en des.buap.mx."
         },
         {
           "url": "https://des.buap.mx/?q=content/examen-general-de-egreso-de-licenciatura-egel-buap",
           "consultadoEn": "2026-09-29T00:00:00Z",
           "resultado": "catalogo_publicado",
-          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas"
+          "evidencia": "out/modalidades-por-facultad.json → unidades[clave=FPSY].notas",
+          "estadoEnlace": "no_verificado",
+          "notaEnlace": "Verificado el 2026-09-30: el sitio responde 403 a cualquier cliente desde esta red, tambien con cabeceras de navegador. No se pudo comprobar si la pagina sigue viva; el enlace se conserva porque es la fuente oficial de la convocatoria EGEL-CENEVAL."
         },
         {
           "url": "https://bsu.buap.mx/fvx",
@@ -6860,7 +7279,7 @@
           "fuenteIds": [
             "titulacion-automatica-solicitud-de-oficio-de-modalidad-de-titulacion-automatica-fpsy"
           ],
-          "fuente": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)",
+          "fuente": "https://psicologia.buap.mx/coords/titulacion/",
           "fecha": "Infografía vigente en el sitio (© 2026); consultada el 2026-09-29",
           "requisitosTexto": "Promedio mínimo 8.5, sin recursos, 100% materias, servicio social y prácticas liberados.",
           "requisitos": {
@@ -6883,7 +7302,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "(infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)"
         },
         {
           "modalidadId": "titulacion-por-egel-plus-ceneval-solicitud-de-oficio-de-modalidad-de-titulacion-por-egel-plus-fpsy",
@@ -6900,7 +7320,7 @@
           "fuenteIds": [
             "titulacion-por-egel-plus-ceneval-solicitud-de-oficio-de-modalidad-de-titulacion-por-egel-plus-fpsy"
           ],
-          "fuente": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)",
+          "fuente": "https://psicologia.buap.mx/coords/titulacion/",
           "fecha": "Infografía vigente en el sitio (© 2026); consultada el 2026-09-29",
           "requisitosTexto": "100% materias, servicio social y prácticas liberados, y resultado aprobatorio EGEL Plus-CENEVAL.",
           "requisitos": {
@@ -6923,7 +7343,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "(infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)"
         }
       ]
     },
@@ -7038,7 +7459,7 @@
           "fuenteIds": [
             "examen-profesional-por-tesis-icgde"
           ],
-          "fuente": "https://icgde.buap.mx/content/titulaci%C3%B3n-dcgp ; https://icgde.buap.mx/content/titulaci%C3%B3n-mopmp ; https://icgde.buap.mx/content/titulaci%C3%B3n-magrcge ; https://icgde.buap.mx/content/formatos-de-ingreso-seguimiento-titulaci%C3%B3n",
+          "fuente": "https://icgde.buap.mx/content/titulaci%C3%B3n-dcgp",
           "fecha": "La página consultada no muestra fecha de publicación/actualización visible; consultada 2026-09-29",
           "requisitosTexto": "Las páginas oficiales de titulación de los posgrados publican Proceso de Titulación, registro de trabajo, portada de tesis, liberación de dirección, voto aprobatorio y asignación de jurado; no publican en la página consultada el texto completo de requisitos ni fecha de vigencia.",
           "requisitos": {
@@ -7061,7 +7482,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "https://icgde.buap.mx/content/titulaci%C3%B3n-mopmp ; https://icgde.buap.mx/content/titulaci%C3%B3n-magrcge ; https://icgde.buap.mx/content/formatos-de-ingreso-seguimiento-titulaci%C3%B3n"
         }
       ]
     },
@@ -7252,7 +7674,7 @@
           "fuenteIds": [
             "titulacion-por-memoria-de-experiencia-profesional-crm"
           ],
-          "fuente": "https://crmixteca.buap.mx/pdf/titulaci%C3%B3n-por-memoria-de-experiencia-profesional ; PDF incrustado: https://crmixteca.buap.mx/sites/default/files/Titulaci%C3%B3n/Convocatoria%20Titulaci%C3%B3n%20por%20Memoria%20de%20Experiencia%20Profesional.pdf",
+          "fuente": "https://crmixteca.buap.mx/pdf/titulaci%C3%B3n-por-memoria-de-experiencia-profesional",
           "fecha": "enero de 2026",
           "requisitosTexto": "Ser pasante de una licenciatura del CRM; cumplir servicio social y práctica profesional; acreditar al menos un año de experiencia tras cubrir 100% del plan; entregar informe acompañado por docente y portafolio digital/impreso.",
           "requisitos": {
@@ -7275,7 +7697,8 @@
           },
           "operaciones": [],
           "seleccionable": true,
-          "pendiente": null
+          "pendiente": null,
+          "citaFuente": "PDF incrustado: https://crmixteca.buap.mx/sites/default/files/Titulaci%C3%B3n/Convocatoria%20Titulaci%C3%B3n%20por%20Memoria%20de%20Experiencia%20Profesional.pdf"
         }
       ]
     },
@@ -7723,5 +8146,7 @@
       },
       "modalidades": []
     }
-  ]
+  ],
+  "notaContacto": "El procedimiento oficial de la Facultad de Ciencias Físico Matemáticas publica paty@fcfm.buap.mx como contacto para el oficio de modalidad, pero es un buzón personal: si deja de funcionar, el trámite sigue con Secretaría Académica (secretaria.academica.fcfm@correo.buap.mx, cubículo FM3/208, extensión 7554), que es la vía estable. Todos los formatos están en https://www.fcfm.buap.mx/servicios/tramites.",
+  "contactoInstitucional": "secretaria.academica.fcfm@correo.buap.mx"
 }

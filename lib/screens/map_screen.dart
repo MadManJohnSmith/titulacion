@@ -159,6 +159,7 @@ class MapScreen extends StatelessWidget {
             child: Column(
               children: [
                 _buildHeader(context, numeros, siguiente),
+                _avisoMapa(),
                 Expanded(
                   child: Stack(
                     children: [
@@ -188,6 +189,43 @@ class MapScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  /// Aviso de que el fondo de este mapa no viene del diseño de la BUAP.
+  ///
+  /// El JSON lo declara en cinco rutas (carpetas de mapas vacías o con
+  /// nomenclatura contradictoria del designer) y antes se descartaba: el
+  /// alumno veía un fondo sin saber que no es arte de la BUAP.
+  Widget _avisoMapa() {
+    if (ruta.mapaNota.isEmpty) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 10),
+      child: Container(
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.black.withValues(alpha: 0.35),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.white24),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.image_outlined, size: 14, color: Colors.white70),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Text(
+                ruta.mapaNota,
+                style: const TextStyle(
+                  color: Colors.white70,
+                  fontSize: 11,
+                  height: 1.35,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -245,6 +283,14 @@ class MapScreen extends StatelessWidget {
               ],
             ),
           ),
+          // Deshacer el avance: deja volver un nivel atrás sin usar el botón
+          // atrás del teléfono, que solo navega y nunca toca el progreso.
+          if (state.completadosDe(ruta.id).isNotEmpty)
+            IconButton(
+              onPressed: () => _deshacer(context),
+              icon: const Icon(Icons.undo, color: Colors.white),
+              tooltip: 'Deshacer el último paso completado',
+            ),
           SizedBox(
             width: 44,
             height: 44,
@@ -265,6 +311,29 @@ class MapScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  /// Deshace el último nivel completado y avisa de qué fue, para que el alumno
+  /// sepa qué perdió exactamente y pueda volver a marcarlo.
+  Future<void> _deshacer(BuildContext context) async {
+    final nivel = await state.deshacerProgreso(ruta.id);
+    if (nivel == null) return;
+    if (!context.mounted) return;
+    final titulo =
+        ruta.nivelesJugables
+            .where((n) => n.numero == nivel)
+            .firstOrNull
+            ?.titulo ??
+        'Nivel $nivel';
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Se deshizo «$titulo». Puedes volver a completarlo.'),
+        action: SnackBarAction(
+          label: 'Rehacer',
+          onPressed: () => state.completarNivel(ruta.id, nivel),
+        ),
       ),
     );
   }

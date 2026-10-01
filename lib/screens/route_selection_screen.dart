@@ -151,27 +151,44 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
     // dentro del mismo contenedor que el texto: un Container sin hijo dentro de
     // un Stack se encoge a su padding y tapa media línea en vez de hacer de
     // fondo.
-    return Stack(
+    //
+    // El rollo es vertical (viewBox 348×418) y el panel se mide con esa misma
+    // relación. Estirado a lo ancho, el SVG se centraba en un rollo estrecho y
+    // el texto se derramaba en una banda de más de mil píxeles, más ancha que
+    // el dibujo: se veía el pergamino correcto con una caja que no lo era.
+    final relacion = ruta.pergaminoRelacion;
+    final panel = Stack(
       alignment: Alignment.center,
       children: [
-        if (ruta.pergaminoInicio.isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 6),
-            child: AssetImageSafe(
-              ruta.pergaminoInicio,
-              height: 470,
-              width: double.infinity,
-              fallbackIcon: Icons.description_outlined,
-            ),
-          ),
-        // Fondo de lectura: el pergamino siempre es legible, se dibuje el SVG
-        // del diseño o no. Si el archivo falta o no se puede pintar, el texto
-        // no queda sobre un hueco.
+        // El fondo va **posicionado** para que ocupe lo que mida el panel y no
+        // lo que mida él solo: con el SVG como hijo suelto del `Stack` competía
+        // por el alto con la columna de texto.
+        Positioned.fill(
+          child: ruta.pergaminoInicio.isNotEmpty
+              ? AssetImageSafe(
+                  ruta.pergaminoInicio,
+                  height: double.infinity,
+                  width: double.infinity,
+                  fallbackIcon: Icons.description_outlined,
+                )
+              : DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: LoboColors.parchment,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+        ),
+        // El fondo de lectura va encima del marco con márgenes que dejan ver el
+        // dibujo por los bordes, y es translúcido para que el pergamino se vea
+        // a través. Si el SVG falta, cae al color sólido y el texto sigue
+        // siendo legible.
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 14, vertical: 26),
+          margin: const EdgeInsets.symmetric(horizontal: 26, vertical: 26),
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           decoration: BoxDecoration(
-            color: LoboColors.parchment,
+            color: LoboColors.parchment.withValues(
+              alpha: ruta.pergaminoInicio.isEmpty ? 1.0 : 0.82,
+            ),
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
@@ -205,6 +222,43 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
           ),
         ),
       ],
+    );
+
+    // El rollo manda en las dos medidas. Antes el alto venía fijo en 470 y el
+    // anchooccupaba toda la pantalla, así que el SVG —vertical— quedaba como
+    // una tira estrecha en medio de una caja ancha; y al fijar el alto, una
+    // descripción larga en un teléfono angosto se salía 350 px por abajo y el
+    // artículo 7 quedaba ilegible.
+    //
+    // Ahora el ancho sale del rollo (alto × relación, o el ancho disponible si
+    // el teléfono es más angosto) y el alto es un **mínimo**: la caja crece si
+    // el texto no cabe, pero nunca se ensancha. El SVG va con `BoxFit.contain`
+    // y `Positioned.fill`, así que al crecer se centra con margen en vez de
+    // deformarse.
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final disponible = constraints.maxWidth;
+        // Sin SVG no hay figura que respetar: el papel es un rectángulo y puede
+        // ocupar el ancho entero, como siempre.
+        if (relacion == null || relacion <= 0) {
+          return ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 470),
+            child: panel,
+          );
+        }
+        final rel = relacion;
+        final ancho = 470.0 * rel < disponible ? 470.0 * rel : disponible;
+        final minAlto = disponible / rel < 470.0 ? disponible / rel : 470.0;
+        return Center(
+          child: SizedBox(
+            width: ancho,
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: minAlto),
+              child: panel,
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -245,14 +299,9 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
                       fallbackIcon: Icons.flag_outlined,
                     ),
                     const SizedBox(height: 4),
-                    Text(
-                      '${n.numero}',
-                      style: const TextStyle(
-                        color: Colors.white70,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    // El número no se repite: el SVG del icono ya lo trae
+                    // dibujado y aquí se escribía otra vez, así que cada paso
+                    // mostraba su cifra dos veces seguidas.
                     Text(
                       n.titulo,
                       textAlign: TextAlign.center,
@@ -291,12 +340,17 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
             children: [
               const Icon(Icons.rule, color: LoboColors.gold, size: 18),
               const SizedBox(width: 8),
-              Text(
-                'Requisitos de ${ofertaRuta.modalidad?.unidadNombre ?? 'la ruta'}',
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                  color: Colors.white,
+              // El nombre de la unidad va entero y en pantalla angosta se
+              // desborda: sin Expanded el texto no baja de línea y la fila se
+              // salía de la pantalla.
+              Expanded(
+                child: Text(
+                  'Requisitos de ${ofertaRuta.modalidad?.unidadNombre ?? 'la ruta'}',
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],
@@ -345,9 +399,235 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
               ),
             ),
           ],
+          // Lo que la unidad publica de **esta** modalidad. Se calculaba y se
+          // llevaba en `RutaOferta.particularidad`, pero ninguna pantalla lo
+          // mostraba: el alumno veía los requisitos genéricos de la ruta y se
+          // perdía lo único que distingue a su unidad del resto.
+          ..._loQuePublicaLaUnidad(ofertaRuta),
         ],
       ),
     );
+  }
+
+  /// Lo que la unidad académica publica de esta modalidad, con su fuente.
+  List<Widget> _loQuePublicaLaUnidad(RutaOferta ofertaRuta) {
+    final p = ofertaRuta.particularidad;
+    if (p == null || p.detalle.isEmpty) return const [];
+    return [
+      const SizedBox(height: 14),
+      Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: LoboColors.gold.withValues(alpha: 0.09),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: LoboColors.gold.withValues(alpha: 0.30)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(Icons.campaign_outlined,
+                    color: LoboColors.gold, size: 18),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Lo que publica ${p.nombreOficial.isEmpty ? 'tu unidad' : p.nombreOficial}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            Text(
+              p.detalle,
+              style: const TextStyle(
+                color: Colors.white70,
+                fontSize: 13,
+                height: 1.5,
+              ),
+            ),
+            if (p.estadoCatalogoUnidad.isNotEmpty) ...[
+              const SizedBox(height: 6),
+              Text(
+                'Publicación de la unidad: ${p.estadoCatalogoUnidad.replaceAll('_', ' ')}.',
+                style: const TextStyle(
+                  color: Colors.white54,
+                  fontSize: 11,
+                  height: 1.4,
+                ),
+              ),
+            ],
+            // Sin esto el bloque sería una afirmación sin respaldo.
+                        // «Tesina» y «tesis» son modalidades distintas en el Reglamento.
+            // La app encamina a la ruta de tesis y no se corrige sin
+            // comprobarlo, así que se dice antes de que el alumno la siga.
+            if (ofertaRuta.modalidad?.tesinaEnRutaDeTesis ?? false) ...[
+              const SizedBox(height: 10),
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: LoboColors.gold.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: LoboColors.gold.withValues(alpha: 0.45),
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.help_outline,
+                      size: 16,
+                      color: LoboColors.gold,
+                    ),
+                    const SizedBox(width: 7),
+                    Expanded(
+                      child: Text(
+                        'Tu unidad publica esta modalidad como «Tesina», pero '
+                        'aquí se muestra con la ruta de tesis. En el Reglamento '
+                        'General de Titulación son distintas: la tesis es el '
+                        'art. 7 fr. I (protocolo, director, jurado y defensa) '
+                        'y la tesina el art. 7 fr. VII, una asignatura optativa '
+                        'con créditos. Algunas unidades usan «tesina» como '
+                        'nombre de una tesis corta. Confírmalo con tu unidad '
+                        'antes de seguir estos pasos.',
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 12,
+                          height: 1.45,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+            // Si la unidad advierte que el contacto publicado es un buzón
+            // personal, se dice antes de que el alumno le escriba: es la
+            // diferencia entre un trámite que sigue y uno que se pierde.
+            if ((ofertaRuta.modalidad?.notaContacto.isNotEmpty ?? false)) ...[
+              const SizedBox(height: 10),
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: LoboColors.gold.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: LoboColors.gold.withValues(alpha: 0.40),
+                  ),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.alternate_email,
+                          size: 15,
+                          color: LoboColors.gold,
+                        ),
+                        const SizedBox(width: 6),
+                        Expanded(
+                          child: Text(
+                            'A quién escribir',
+                            style: const TextStyle(
+                              color: LoboColors.gold,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Text(
+                      ofertaRuta.modalidad!.notaContacto,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 12,
+                        height: 1.45,
+                      ),
+                    ),
+                    if (ofertaRuta.modalidad!.contactoInstitucional.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 6),
+                        child: OutlinedButton.icon(
+                          onPressed:
+                              () => abrirUrl(
+                                context,
+                                'mailto:${ofertaRuta.modalidad!.contactoInstitucional}',
+                              ),
+                          icon: const Icon(Icons.mail_outline, size: 14),
+                          label: Text(
+                            ofertaRuta.modalidad!.contactoInstitucional,
+                            style: const TextStyle(fontSize: 12),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            foregroundColor: LoboColors.gold,
+                            side: BorderSide(
+                              color: LoboColors.gold.withValues(alpha: 0.6),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 4,
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ],
+            // La cita oficial: el artículo, la convocatoria o el PDF concreto. Sin esto
+            // el bloque dice qué exige la unidad pero no dónde lo dice.
+            if (p.citaFuente.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Text(
+                  p.citaFuente,
+                  style: const TextStyle(
+                    color: Colors.white54,
+                    fontSize: 11,
+                    height: 1.4,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
+            if (p.fuente.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 8),
+                child: Text(
+                  p.fecha.isEmpty ? 'Fuente: ${p.fuente}' : 'Fuente: ${p.fuente} · ${p.fecha}',
+                  style: const TextStyle(
+                    color: Colors.white38,
+                    fontSize: 11,
+                    height: 1.35,
+                  ),
+                ),
+              ),
+            if (ofertaRuta.ruta.fuenteDeParticularidades.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(top: 2),
+                child: Text(
+                  'Registro: ${ofertaRuta.ruta.fuenteDeParticularidades}',
+                  style: const TextStyle(
+                    color: Colors.white38,
+                    fontSize: 11,
+                    height: 1.35,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    ];
   }
 
   /// De dónde sale lo que se está viendo, con su fecha.
@@ -707,9 +987,37 @@ class _EstadoVacio extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '${r.resultado}${r.consultadoEn.isEmpty ? '' : ' · consultado ${r.consultadoEn}'}',
+                    '${r.resultado}${r.fecha.isEmpty ? '' : ' · consultado ${r.fecha}'}',
                     style: const TextStyle(color: Colors.white54, fontSize: 11),
                   ),
+                  // Si la página no respondió, «no lo encontré aquí» no es una
+                  // búsqueda: es un sitio que no se pudo abrir. Sin decirlo,
+                  // el rastro aparenta más de lo que comprobó.
+                  if (r.enlaceRetirado.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child: Text(
+                        r.enlaceRetirado,
+                        style: const TextStyle(
+                          color: Colors.white38,
+                          fontSize: 11,
+                          height: 1.35,
+                          fontStyle: FontStyle.italic,
+                        ),
+                      ),
+                    ),
+                  if (r.estadoEnlace.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 3),
+                      child: Text(
+                        'El enlace no se pudo comprobar. ${r.avisoEnlace}',
+                        style: const TextStyle(
+                          color: Colors.white38,
+                          fontSize: 11,
+                          height: 1.35,
+                        ),
+                      ),
+                    ),
                 ],
               ),
             ),

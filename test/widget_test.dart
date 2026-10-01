@@ -297,6 +297,8 @@ void main() {
       await tester.tap(find.text('Primer nivel'));
       await tester.pumpAndSettle();
 
+      // En el mapa la cifra va dentro del icono; en la pantalla del nivel
+      // aparece en el encabezado, que solo enseña la mascota.
       expect(find.text('Nivel 1'), findsOneWidget);
     });
   });

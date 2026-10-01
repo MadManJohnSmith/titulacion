@@ -1,21 +1,28 @@
 {
-  "_nota": "Contactos de alcance general (toda la BUAP). Los contactos por facultad viven en facultades.json. Cuando una facultad no publica el suyo, la app muestra estos.",
-  "contactos": [
-    {
-      "nombre": "Dirección de Administración Escolar (DAE)",
-      "area": "Titulación — BUAP",
-      "telefono": "+52 (222) 229 55 00",
-      "correo": "",
-      "redes": "Extensiones 7025 y 4051. Edificio Central DAE, Ciudad Universitaria, Col. San Manuel, C.P. 72592, Puebla, Pue.",
-      "ambito": "general"
-    },
-    {
-      "nombre": "Coordinación General de Atención a los Universitarios (CGAU)",
-      "area": "Atención a egresados y titulación",
-      "telefono": "+52 (222) 229 5500",
-      "correo": "jorge.avelinos@correo.buap.mx",
-      "redes": "Facebook: CGAU BUAP Coordinación General de Atención a los Universitarios · Instagram: @cgaubuap",
-      "ambito": "general"
-    }
-  ]
+ "_nota": "Contactos de alcance general (toda la BUAP). Los contactos por facultad viven en facultades.json. Cuando una facultad no publica el suyo, la app muestra estos.",
+ "contactos": [
+  {
+   "nombre": "Dirección de Titulación (BUAP)",
+   "area": "Titulación — BUAP",
+   "telefono": "+52 (222) 229 55 00 (ext. 7025 actas / 4051 títulos)",
+   "correo": "titulacion@correo.buap.mx",
+   "redes": "Titular: Marcela Juárez Zenteno. Edificio Central DAE, C.U., acceso por 24 Sur, Puebla, Pue. Verificado en https://titulacion.buap.mx/?q=content/contacto el 2026-09-30."
+  },
+  {
+   "nombre": "Dirección de Administración Escolar (DAE)",
+   "area": "Titulación — BUAP",
+   "telefono": "+52 (222) 229 55 00",
+   "correo": "titulacion@correo.buap.mx",
+   "redes": "Ext. 7025 (Actas) y 4051 (Títulos). Edificio Central DAE, Ciudad Universitaria, Col. San Manuel, C.P. 72592, Puebla, Pue. La DAE no publica un correo propio de titulación: el trámite de título se atiende en titulacion@correo.buap.mx, publicado en https://titulacion.buap.mx/?q=content/contacto (consultado 2026-09-30).",
+   "ambito": "general"
+  },
+  {
+   "nombre": "Coordinación General de Atención a los Universitarios (CGAU)",
+   "area": "Atención a egresados y titulación",
+   "telefono": "+52 (222) 229 5500",
+   "correo": "jorge.avelinos@correo.buap.mx",
+   "redes": "Facebook: CGAU BUAP Coordinación General de Atención a los Universitarios · Instagram: @cgaubuap",
+   "ambito": "general"
+  }
+ ]
 }

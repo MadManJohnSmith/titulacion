@@ -19,6 +19,7 @@
       "descripcion": "Llegaste hasta aquí sin reprobar, sin recursar y sin baja temporal. Ahora solo queda terminar tu proceso: es momento de empezar el vuelo hacia tu título profesional. Reúne tus documentos y vuela por los cielos de tu proceso final.",
       "mascotaInicio": "assets/images/lobo_deportivo.svg",
       "pergaminoInicio": "assets/images/parchment/prof_niveles.svg",
+      "pergaminoRelacion": 0.637945,
       "tituloAsset": "assets/images/screens/select_titulo_promedio.svg",
       "descripcionAsset": "assets/images/screens/select_desc_promedio.svg",
       "niveles": [
@@ -177,7 +178,9 @@
             {
               "nombre": "Certificado de estudios",
               "nota": "Póliza generada desde autoservicios. Con fecha de emisión de 1997 o anteriores el tiempo de entrega es mayor.",
-              "url": "https://escolar.buap.mx/"
+              "url": "https://escolar.buap.mx/",
+              "fuente": "https://escolar.buap.mx/",
+              "fecha": "Verificado el 2026-09-30."
             }
           ],
           "esFinal": false,
@@ -238,7 +241,11 @@
             {
               "nombre": "Comprobante de la encuesta a egresados",
               "nota": "IMPRESO. Sin la impresión no se acepta.",
-              "url": "http://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1"
+              "url": "https://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1",
+              "fuente": "https://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1",
+              "fecha": "Verificado el 2026-09-30.",
+              "estadoEnlace": "no_verificado",
+              "notaEnlace": "Verificado el 2026-09-30: el servidor de egresados no responde. El tramite sigue siendo valido, pero el enlace no sirve hasta que el sistema vuelva."
             }
           ],
           "esFinal": false,
@@ -277,12 +284,16 @@
             },
             {
               "nombre": "Oficio original de titulación por promedio",
-              "nota": "Con antigüedad no mayor a 6 meses."
+              "nota": "Con antigüedad no mayor a 6 meses.",
+              "verificadoEn": "2026-09-30"
             },
             {
               "nombre": "Certificado de liberación de bibliotecas",
               "nota": "VIGENTE y con antigüedad no mayor a 3 meses.",
-              "url": "https://bibliotecas.buap.mx/"
+              "url": "https://bibliotecas.buap.mx/",
+              "verificadoEn": "2026-09-30",
+              "fuente": "https://bibliotecas.buap.mx/",
+              "fecha": "Verificado el 2026-09-30."
             },
             {
               "nombre": "Ficha de depósito bancario",
@@ -297,7 +308,8 @@
               "nota": "IMPRESO."
             }
           ],
-          "esInicio": false
+          "esInicio": false,
+          "nota": "Vigencias CONFIRMADAS en la fuente oficial de Titulación BUAP el 2026-09-30: el certificado de liberación de bibliotecas debe estar «vigente y no mayor a 3 meses», y el oficio de modalidad de titulación por promedio, expedido por la Unidad Académica, «no mayor a seis meses». La misma página exige acta de nacimiento con expedición no mayor a 1 año, CURP con impresión no mayor a 1 mes, validación de certificado de estudios no mayor a 1 año y fotografías no mayores a 1 año. Fuente: https://titulacion.buap.mx/?q=content/requisitos-para-tr%C3%A1mite-completo-acta-de-titulaci%C3%B3n-autom%C3%A1tica-y-t%C3%ADtulo-0"
         }
       ],
       "mapa": "assets/images/maps/mapa_aire.png",
@@ -310,9 +322,10 @@
           "nombreEnUnidad": "Titulación Automática",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Promedio general mínimo de 8.50 y no haber recursado ninguna asignatura (Art. 15 del RGT). Trámite en 5 pasos: certificados de estudios, servicio social y práctica profesional → oficio de modalidad (5 a 10 días hábiles) → acta de titulación automática…",
-          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-automatica/ ; guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2022/09/Titulacion-Automatica-SD.pdf",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-automatica/",
           "fecha": "Guía PDF creada 2022-09-26 (metadato interno). Página consultada 2026-09-29.",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ARPA].modalidades[modalidadId=titulacion-automatica-arpa].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ARPA].modalidades[modalidadId=titulacion-automatica-arpa].requisitosTexto",
+          "citaFuente": "guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2022/09/Titulacion-Automatica-SD.pdf"
         },
         {
           "unidadClave": "CRNO",
@@ -343,9 +356,10 @@
           "nombreEnUnidad": "Titulación Automática",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Promedio general mínimo de 8.5, no haber recursado asignaturas y cumplir los requisitos del artículo 61 del Lineamiento de Procedimientos de la BUAP. Solo para egresados de Biología y Biotecnología.",
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 4 y 4.1)",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09 (actualización del CUA); PDF creado 2022-02-22",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCB].modalidades[modalidadId=titulacion-automatica-fcb].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCB].modalidades[modalidadId=titulacion-automatica-fcb].requisitosTexto",
+          "citaFuente": "(art. 4 y 4.1)"
         },
         {
           "unidadClave": "FCC",
@@ -378,7 +392,9 @@
           "detalle": "Solicitud de titulación por la opción Titulación Automática dirigida a la Directora de la FCE. Certificado de Estudios de la DAE, de fecha reciente, que indique promedio mayor o igual a 8.5 (ocho punto cinco), sin recurso de materias.…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=titulacion-automatica-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=titulacion-automatica-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCF",
@@ -541,9 +557,10 @@
           "nombreEnUnidad": "Titulación automática (solicitud de oficio de modalidad de titulación automática)",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Promedio mínimo 8.5, sin recursos, 100% materias, servicio social y prácticas liberados.",
-          "fuente": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)",
+          "fuente": "https://psicologia.buap.mx/coords/titulacion/",
           "fecha": "Infografía vigente en el sitio (© 2026); consultada el 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FPSY].modalidades[modalidadId=titulacion-automatica-solicitud-de-oficio-de-modalidad-de-titulacion-automatica-fpsy].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FPSY].modalidades[modalidadId=titulacion-automatica-solicitud-de-oficio-de-modalidad-de-titulacion-automatica-fpsy].requisitosTexto",
+          "citaFuente": "(infografía 'Requisitos para el trámite de modalidad de titulación Automática', https://psicologia.buap.mx/_sac/titulacion_auto.png)"
         }
       ],
       "fuenteDeParticularidades": "assets/json/catalogo_modalidades.json (fecha de corte 2026-09-29)",
@@ -579,6 +596,7 @@
       "descripcion": "Rinde el Examen General para el Egreso de la Licenciaatura, reúne los documentos que pide la BUAP y presenta tu expediente. Al final del camino: tu título profesional.",
       "mascotaInicio": "assets/images/lobo_aviador.svg",
       "pergaminoInicio": "assets/images/parchment/ceneval_inicio.svg",
+      "pergaminoRelacion": 0.832497,
       "tituloAsset": "assets/images/screens/select_titulo_ceneval.svg",
       "descripcionAsset": "assets/images/screens/select_desc_ceneval.svg",
       "niveles": [
@@ -667,7 +685,9 @@
             {
               "nombre": "Impresión de CURP certificada",
               "nota": "Los datos deben coincidir con tu acta.",
-              "url": "https://www.gob.mx/curp/"
+              "url": "https://www.gob.mx/curp/",
+              "fuente": "https://www.gob.mx/curp/",
+              "fecha": "Verificado el 2026-09-30."
             }
           ],
           "esFinal": false,
@@ -702,12 +722,16 @@
             {
               "nombre": "Formato original de Validación del Certificado de Estudios",
               "nota": "",
-              "url": "https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf"
+              "url": "https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf",
+              "fuente": "https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf",
+              "fecha": "Verificado el 2026-09-30."
             },
             {
               "nombre": "Certificado de Estudios original de Licenciatura",
               "nota": "",
-              "url": "https://escolar.buap.mx/?q=content/certificado-de-estudios-por-autoservicios"
+              "url": "https://escolar.buap.mx/?q=content/certificado-de-estudios-por-autoservicios",
+              "fuente": "https://escolar.buap.mx/?q=content/certificado-de-estudios-por-autoservicios",
+              "fecha": "Verificado el 2026-09-30."
             }
           ],
           "esFinal": false,
@@ -759,12 +783,15 @@
           "documentos": [
             {
               "nombre": "Certificado de no adeudo bibliotecario",
-              "nota": ""
+              "nota": "El certificado de no adeudo lo expide el sistema de bibliotecas de la BUAP. Se pide para acreditar que no hay pendientes de libros ni material bibliográfico.",
+              "url": "https://bibliotecas.buap.mx/",
+              "fuente": "https://bibliotecas.buap.mx/",
+              "fecha": "Verificado el 2026-09-30."
             },
             {
               "nombre": "Catálogo de fotografías",
-              "nota": "Consulta antes de tomarlas.",
-              "url": "https://escolar.buap.mx/sites/default/files/Catalogo%20de%20fotografias1.pdf"
+              "nota": "Consulta antes de tomarlas. El BUAP no publica hoy un catálogo de fotografías en una dirección estable; el formato vigente se pide en la ventanilla de la DAE.",
+              "sinEnlace": "El enlace que traía el contenido original ya no responde (404) y no se sustituye por otro porque no hay fuente oficial equivalente publicada."
             },
             {
               "nombre": "Dos fotografías",
@@ -804,7 +831,11 @@
             {
               "nombre": "Comprobante de la encuesta a egresados",
               "nota": "IMPRESO.",
-              "url": "http://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1"
+              "url": "https://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1",
+              "fuente": "https://webserver.siiaa.siu.buap.mx/egresados/registro.solicitud?x=1",
+              "fecha": "Verificado el 2026-09-30.",
+              "estadoEnlace": "no_verificado",
+              "notaEnlace": "Verificado el 2026-09-30: el servidor de egresados no responde. El tramite sigue siendo valido, pero el enlace no sirve hasta que el sistema vuelva."
             }
           ],
           "esInicio": false
@@ -884,9 +915,10 @@
           "nombreEnUnidad": "Examen de conocimientos EGEL-BIO CENEVAL",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Aplicación del EGEL-BIO del CENEVAL. Solo con testimonio de desempeño satisfactorio (TDS) o sobresaliente (TDSS). La vigencia del testimonio es máximo 1 año desde su presentación; si en ese plazo no se hacen los trámites internos, hay que repetir la prueba.…",
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5, 5.1, 5.1.1 a 5.1.3)",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCB].modalidades[modalidadId=examen-de-conocimientos-egel-bio-ceneval-fcb].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCB].modalidades[modalidadId=examen-de-conocimientos-egel-bio-ceneval-fcb].requisitosTexto",
+          "citaFuente": "(art. 5, 5.1, 5.1.1 a 5.1.3)"
         },
         {
           "unidadClave": "FCC",
@@ -919,7 +951,9 @@
           "detalle": "Una vez obtenido el Testimonio de Desempeño Satisfactorio del examen CENEVAL-EGEL, presentar en Secretaría Académica: solicitud de titulación por esta opción dirigida a la Directora de la FCE.…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=presentacion-de-examen-ceneval-egel-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=presentacion-de-examen-ceneval-egel-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCEL",
@@ -930,7 +964,9 @@
           "detalle": "El propio documento no desarrolla requisitos específicos: remite al Reglamento General de Titulación y recuerda su artículo transitorio: 'La Institución realizará lo necesario para su aplicación y entrada en vigor a partir de 2017'.…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=asignatura-obligatoria-con-valor-en-creditos-que-incorpora-el-examen-ceneval-egel-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=asignatura-obligatoria-con-valor-en-creditos-que-incorpora-el-examen-ceneval-egel-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCP",
@@ -1027,7 +1063,7 @@
           "nombreEnUnidad": "Licenciatura en Nutrición Clínica - Titulación por CENEVAL",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "100% de créditos curriculares obligatorios, incluidos servicio social y práctica profesional; sólo convocatoria interna.",
-          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-nutrici%C3%ADnica-titulacion-por-ceneval",
+          "fuente": "https://medicina.buap.mx/?q=content/licenciatura-en-nutricion-clinica-titulacion-por-ceneval",
           "fecha": "Sin fecha de publicación visible en la página; página viva consultada el 2026-09-29",
           "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FMED].modalidades[modalidadId=licenciatura-en-nutricion-clinica-titulacion-por-ceneval-fmed].requisitosTexto"
         },
@@ -1038,9 +1074,10 @@
           "nombreEnUnidad": "Titulación por EGEL Plus-CENEVAL (solicitud de oficio de modalidad de titulación por EGEL Plus)",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "100% materias, servicio social y prácticas liberados, y resultado aprobatorio EGEL Plus-CENEVAL.",
-          "fuente": "https://psicologia.buap.mx/coords/titulacion/ (infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)",
+          "fuente": "https://psicologia.buap.mx/coords/titulacion/",
           "fecha": "Infografía vigente en el sitio (© 2026); consultada el 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FPSY].modalidades[modalidadId=titulacion-por-egel-plus-ceneval-solicitud-de-oficio-de-modalidad-de-titulacion-por-egel-plus-fpsy].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FPSY].modalidades[modalidadId=titulacion-por-egel-plus-ceneval-solicitud-de-oficio-de-modalidad-de-titulacion-por-egel-plus-fpsy].requisitosTexto",
+          "citaFuente": "(infografía 'Requisitos para el trámite de modalidad de titulación Egel-Plus', https://psicologia.buap.mx/_sac/titulacion_egel.jpeg)"
         }
       ],
       "fuenteDeParticularidades": "assets/json/catalogo_modalidades.json (fecha de corte 2026-09-29)",
@@ -1077,6 +1114,7 @@
       "descripcion": "Reúne a tu equipo, registra tu tesis, obtén el aval académico, rinde el examen y entrega tu tesis. El camino de los que lo logran en equipo.",
       "mascotaInicio": "assets/images/mascot_profesional_lobo_1.svg",
       "pergaminoInicio": "assets/images/parchment/prof_inicio.svg",
+      "pergaminoRelacion": 0.83888,
       "tituloAsset": "assets/images/screens/select_titulo_profesional.svg",
       "descripcionAsset": "assets/images/screens/select_desc_profesional.svg",
       "niveles": [
@@ -1146,8 +1184,8 @@
         },
         {
           "numero": 3,
-          "titulo": "Aval Académico",
-          "descripcion": "Obtén la aceptación y la firma del Formato de Aval Académico. Es lo que autoriza tu examen.",
+          "titulo": "Aval y oficio de modalidad",
+          "descripcion": "Obtén la aceptación y la firma del formato de aval que expide tu Unidad Académica. Es lo que autoriza tu examen. El documento que la BUAPrecognos de forma general es el oficio que indica la modalidad de titulación, que se tramita ante tu escuela, facultad o instituto.",
           "icono": "assets/images/level_icons/nivel_3.svg",
           "mascota": "assets/images/mascot_profesional_lobo_3.svg",
           "fondo": "assets/images/levels_profesional_bg_2_3_4.svg",
@@ -1162,7 +1200,9 @@
             },
             {
               "titulo": "Respeta el tiempo límite",
-              "detalle": "Tienes 1 año para presentar la tesis tras el registro, con posibilidad de prórroga de hasta 6 meses."
+              "detalle": "Tienes un año para presentar la tesis contado a partir de la fecha en que el tema sea autorizado. Puedes pedir una prórroga de hasta seis meses cuando exista causa justificada y la Unidad Académica la autorice.",
+              "fuente": "https://repositorio.buap.mx/rcontraloria/public/inf_public/2019/0/reglamento_general_de_titulacion_de_la_buap.pdf",
+              "fecha": "Reglamento General de Titulación de la BUAP, art. 32 (H. Consejo Universitario, sesión extraordinaria del 23-nov-2015)."
             }
           ],
           "documentos": [
@@ -1172,7 +1212,10 @@
             }
           ],
           "esFinal": false,
-          "esInicio": false
+          "esInicio": false,
+          "nota": "El Reglamento General de Titulación no usa la expresión «aval académico». El documento oficial de alcance BUAP para acreditar la modalidad es el «oficio que indica la modalidad de titulación», expedido por la Unidad Académica. El formato que sí publica Titulación a nivel institucional es el de validación de certificado de estudios: https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf, que se entrega a la institución que expidió el certificado, no es un aval de tesis. Verificado el 2026-09-30 contra la fuente institucional.",
+          "fuente": "https://repositorio.buap.mx/rcontraloria/public/inf_public/2019/0/reglamento_general_de_titulacion_de_la_buap.pdf",
+          "fecha": "Reglamento General de Titulación de la BUAP, art. 7, 20 y 32 (H. Consejo Universitario, sesión extraordinaria del 23-nov-2015); verificado el 2026-09-30."
         },
         {
           "numero": 4,
@@ -1222,7 +1265,10 @@
             },
             {
               "nombre": "Certificado de no adeudo bibliotecario",
-              "nota": ""
+              "nota": "El certificado de no adeudo lo expide el sistema de bibliotecas de la BUAP. Se pide para acreditar que no hay pendientes de libros ni material bibliográfico.",
+              "url": "https://bibliotecas.buap.mx/",
+              "fuente": "https://bibliotecas.buap.mx/",
+              "fecha": "Verificado el 2026-09-30."
             },
             {
               "nombre": "Carta de separación de equipo",
@@ -1253,8 +1299,8 @@
               "detalle": "La tesis autorizada por tu director de tesis, en formato PDF y WORD."
             },
             {
-              "titulo": "Anexa el aval académico",
-              "detalle": "El formato de aval académico con fecha, hora de examen y sello de la secretaría académica."
+              "titulo": "Anexa el formato de validación",
+              "detalle": "El Formato de Validación de Certificado de Estudios, con la fecha, hora de examen y el sello o firma de tu Secretaría Académica. Lo expide la institución que te dio el certificado del nivel inmediato anterior."
             },
             {
               "titulo": "Consulta una cita",
@@ -1265,15 +1311,21 @@
             {
               "nombre": "Tesis autorizada por tu director",
               "nota": "PDF y WORD.",
-              "url": "https://bdigital.buap.mx/user_services_beta/certificate/wizard"
+              "url": "https://bdigital.buap.mx/user_services_beta/certificate/wizard",
+              "fuente": "https://bdigital.buap.mx/user_services_beta/certificate/wizard",
+              "fecha": "Verificado el 2026-09-30."
             },
             {
-              "nombre": "Formato de aval académico sellado",
-              "nota": "Con fecha y hora de examen."
+              "nombre": "Formato de Validación de Certificado de Estudios",
+              "nota": "Formato oficial de validación de certificado de estudios publicado por Titulación BUAP. Se entrega ORIGINAL a la institución que expidió el certificado del nivel inmediato anterior, que es la única competente para validarlo. No es un aval de tesis.",
+              "url": "https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf",
+              "verificadoEn": "2026-09-30",
+              "fuente": "https://titulacion.buap.mx/sites/default/files/2022/Formato%20de%20validaci%C3%B3n%20de%20certificado%20de%20estudios%20simplificado_TIT.pdf"
             }
           ],
           "esFinal": false,
-          "esInicio": false
+          "esInicio": false,
+          "nota": "El nivel citaba un «aval académico» sin enlace. El documento institucional verificable es el Formato de Validación de Certificado de Estudios (ver documento). Si tu unidad pide además un aval de liberación o depósito, ese formato se tramita ante tu Secretaría Académica."
         },
         {
           "numero": 6,
@@ -1297,14 +1349,19 @@
             {
               "nombre": "Expediente completo digital",
               "nota": "Subido a autoservicios.",
-              "url": "https://autoservicios.buap.mx/"
+              "url": "https://autoservicios.buap.mx/",
+              "fuente": "https://autoservicios.buap.mx/",
+              "fecha": "Verificado el 2026-09-30.",
+              "estadoEnlace": "no_verificado",
+              "notaEnlace": "Verificado el 2026-09-30: responde 503 (servicio caido o en mantenimiento). Es la direccion oficial para subir documentos; se conserva y hay que reintentarlo antes de publicar."
             },
             {
               "nombre": "Tesis final",
               "nota": "Con todas las firmas."
             }
           ],
-          "esInicio": false
+          "esInicio": false,
+          "nota": "El diseño decía «esperen un correo de confirmación» sin dirección. La BUAP no publica un correo de confirmación de tesis: el trámite de acta de examen o título es PRESENCIAL y personal (se entrega en ventanilla), y el correo publicado es el de la Dirección de Titulación titulacion@correo.buap.mx (titular Marcela Juárez Zenteno; ext. 7025 actas, 4051 títulos). Para el título profesional electrónico el remitente es notificaciontituloselectronicos@correo.buap.mx. Verificado el 2026-09-30."
         }
       ],
       "mapa": "assets/images/maps/mapa_tierra.png",
@@ -1340,9 +1397,10 @@
           "unidadClave": "ARPA",
           "nombreOficial": "Facultad de Artes Plásticas y Audiovisuales",
           "titulo": "Titulación por Examen ante un Jurado (ruta)",
-          "url": "https://admin.arpa.buap.mx/titulacion/titulacion-por-examen-profesional/ ; guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/09/TitulacionExamenProfesional_080926.pdf",
+          "url": "https://admin.arpa.buap.mx/titulacion/titulacion-por-examen-profesional/",
           "fecha": "Guía PDF creada 2026-09-08 16:26 CST. Es el documento de trámite más reciente encontrado en cualquiera de las cinco unidades.",
-          "nota": "La unidad publica esta guía de trámite; el catálogo no la normaliza a una modalidad del art. 7, por lo que no se ofrece como ruta acreditada."
+          "nota": "La unidad publica esta guía de trámite; el catálogo no la normaliza a una modalidad del art. 7, por lo que no se ofrece como ruta acreditada.",
+          "citaFuente": "guía https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/09/TitulacionExamenProfesional_080926.pdf"
         }
       ],
       "mapaNota": "La carpeta \"Mapas/Mapa tierra/\" guarda los textos \"textos niveles ezamen profesional_1..9.eps\": la nomenclatura del designer es contradictoria, pero el contenido de la carpeta es del examen profesional."
@@ -1434,7 +1492,9 @@
           "detalle": "Solicitud de titulación por la opción de Tesis dirigida a la Directora de la FCE (el documento de 2016 nombra a la Dra. Luz del Carmen Gómez Pavón; verificar el cargo vigente antes de publicar ese nombre en la app).…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=examen-profesional-por-tesis-individual-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=examen-profesional-por-tesis-individual-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCF",
@@ -1718,9 +1778,10 @@
           "nombreEnUnidad": "Examen profesional por tesis",
           "estadoCatalogoUnidad": "publicacion_parcial_no_exhaustiva",
           "detalle": "Las páginas oficiales de titulación de los posgrados publican Proceso de Titulación, registro de trabajo, portada de tesis, liberación de dirección, voto aprobatorio y asignación de jurado; no publican en la página consultada el texto completo de requisitos ni fecha de vigencia.",
-          "fuente": "https://icgde.buap.mx/content/titulaci%C3%B3n-dcgp ; https://icgde.buap.mx/content/titulaci%C3%B3n-mopmp ; https://icgde.buap.mx/content/titulaci%C3%B3n-magrcge ; https://icgde.buap.mx/content/formatos-de-ingreso-seguimiento-titulaci%C3%B3n",
+          "fuente": "https://icgde.buap.mx/content/titulaci%C3%B3n-dcgp",
           "fecha": "La página consultada no muestra fecha de publicación/actualización visible; consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ICGDE].modalidades[modalidadId=examen-profesional-por-tesis-icgde].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ICGDE].modalidades[modalidadId=examen-profesional-por-tesis-icgde].requisitosTexto",
+          "citaFuente": "https://icgde.buap.mx/content/titulaci%C3%B3n-mopmp ; https://icgde.buap.mx/content/titulaci%C3%B3n-magrcge ; https://icgde.buap.mx/content/formatos-de-ingreso-seguimiento-titulaci%C3%B3n"
         }
       ],
       "niveles": [
@@ -1962,9 +2023,10 @@
           "nombreEnUnidad": "Titulación por Diplomado de Educación Continua",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Dirigido a quienes cumplen el 100 % del plan de estudios; el diplomado debe estar aprobado por el Consejo de Unidad Académica y avalado por el Consejo de Docencia, y acreditarse con uno de estos trabajos: Tesina, Portafolio Profesional, Formación Profesional Específica o Certificación Profesional.…",
-          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-diplomado-de-educacion-continua/ ; convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Diplomado_O2026.jpg",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/titulacion-por-diplomado-de-educacion-continua/",
           "fecha": "Convocatoria Otoño 2026, fecha de inicio 2026-08-20; imagen publicada en la carpeta /2026/07/ de WordPress. Leída 2026-09-29.",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ARPA].modalidades[modalidadId=titulacion-por-diplomado-de-educacion-continua-arpa].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ARPA].modalidades[modalidadId=titulacion-por-diplomado-de-educacion-continua-arpa].requisitosTexto",
+          "citaFuente": "convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Diplomado_O2026.jpg"
         },
         {
           "unidadClave": "FCC",
@@ -1986,7 +2048,9 @@
           "detalle": "Los diplomados propuestos por los académicos de la Facultad deben orientarse a las Áreas del Conocimiento y/o Líneas de Generación e Investigación de los programas de estudio a los que se dirigen.…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=diplomado-de-educacion-continua-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=diplomado-de-educacion-continua-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCF",
@@ -2269,9 +2333,10 @@
           "nombreEnUnidad": "Titulación por Memoria de Experiencia Profesional",
           "estadoCatalogoUnidad": "publicacion_parcial_no_exhaustiva",
           "detalle": "Ser pasante de una licenciatura del CRM; cumplir servicio social y práctica profesional; acreditar al menos un año de experiencia tras cubrir 100% del plan; entregar informe acompañado por docente y portafolio digital/impreso.",
-          "fuente": "https://crmixteca.buap.mx/pdf/titulaci%C3%B3n-por-memoria-de-experiencia-profesional ; PDF incrustado: https://crmixteca.buap.mx/sites/default/files/Titulaci%C3%B3n/Convocatoria%20Titulaci%C3%B3n%20por%20Memoria%20de%20Experiencia%20Profesional.pdf",
+          "fuente": "https://crmixteca.buap.mx/pdf/titulaci%C3%B3n-por-memoria-de-experiencia-profesional",
           "fecha": "enero de 2026",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=CRM].modalidades[modalidadId=titulacion-por-memoria-de-experiencia-profesional-crm].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=CRM].modalidades[modalidadId=titulacion-por-memoria-de-experiencia-profesional-crm].requisitosTexto",
+          "citaFuente": "PDF incrustado: https://crmixteca.buap.mx/sites/default/files/Titulaci%C3%B3n/Convocatoria%20Titulaci%C3%B3n%20por%20Memoria%20de%20Experiencia%20Profesional.pdf"
         },
         {
           "unidadClave": "CRNO",
@@ -2291,9 +2356,10 @@
           "nombreEnUnidad": "Reporte Laboral",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Egresado laborando en el área biológica o biotecnológica con experiencia mínima comprobable de 3 años en el mismo empleo. Presenta carta de antigüedad con situación laboral actual y resumen de actividades de máximo una cuartilla.…",
-          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf (art. 5 y 5.2 a 5.2.4, Apéndice 1)",
+          "fuente": "https://csbiologicas.buap.mx/sites/default/files/Lineamientos_de_Titulacion_al_9_de_Febrero_de_2022.pdf",
           "fecha": "2022-02-09",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCB].modalidades[modalidadId=reporte-laboral-fcb].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCB].modalidades[modalidadId=reporte-laboral-fcb].requisitosTexto",
+          "citaFuente": "(art. 5 y 5.2 a 5.2.4, Apéndice 1)"
         },
         {
           "unidadClave": "FCC",
@@ -2301,7 +2367,7 @@
           "modalidadId": "experiencia-profesional-fcc",
           "nombreEnUnidad": "Experiencia Profesional",
           "estadoCatalogoUnidad": "publicado",
-          "detalle": "Paso 1: obtener la Constancia de Suficiencia. Se参加 en las Convocatorias de Titulación por Experiencia Profesional o por Experiencia Profesional Docente de la unidad y, con esa constancia, presentar la documentación siguiente.…",
+          "detalle": "Paso 1: obtener la Constancia de Suficiencia. Si ha participado en las Convocatorias de Titulación por Experiencia Profesional o Titulación por Experiencia Profesional Docente de la unidad y, con esa constancia, presentar la documentación siguiente.…",
           "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.016378_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Experiencia%20Profesional.pdf",
           "fecha": "Consultada 2026-09-29",
           "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCC].modalidades[modalidadId=experiencia-profesional-fcc].requisitosTexto"
@@ -2313,7 +2379,7 @@
           "nombreEnUnidad": "Memoria de Experiencia Profesional",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Paso 1 — Revisa que cumplas con los requisitos: 100% de créditos cursados en kárdex; contar con evidencias de las actividades profesionales en Comunicación desarrolladas durante un periodo no menor a un año después de haber egresado.…",
-          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM(1).pdf",
+          "fuente": "https://facultadcomunicacion.buap.mx/sites/default/files/TITULACI%C3%93N%202026/EXPERIENCIA%20PROFESIONAL%20FCCOM%20(1).pdf",
           "fecha": "Consultada 2026-09-29",
           "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCCOM].modalidades[modalidadId=memoria-de-experiencia-profesional-fccom].requisitosTexto"
         },
@@ -2326,7 +2392,9 @@
           "detalle": "En el caso de Memoria por Experiencia Profesional, el estudiante debe contar con al menos cuatro años de haber concluido el cien por ciento de los créditos del plan de estudios.…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=memoria-de-experiencia-profesional-o-reporte-tecnico-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=memoria-de-experiencia-profesional-o-reporte-tecnico-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCF",
@@ -2501,9 +2569,9 @@
           "pasos": [
             {
               "titulo": "Participa en la convocatoria de la unidad",
-              "detalle": "Cita literal del mapa gráfico: «Se参加 en las Convocatorias de Titulación por Experiencia Profesional o por Experiencia Profesional Docente de la unidad». La transcripción de la fuente trae un carácter ilegible; ver out/CONTENIDO-PENDIENTE.md.",
+              "detalle": "Texto de la fuente: «Si ha participación en las Convocatorias de Titulación por Experiencia Profesional o Titulación por Experiencia Profesional Docente». Cotejado contra el PDF original el 2026-09-30; la transcripción anterior traía un carácter ilegible.",
               "fuente": "https://secreacademica.cs.buap.mx/alumnos/Titulacion2026/1772668573.016378_Mapa%20Gr%C3%A1fico%20-%20Titulaci%C3%B3n%20Experiencia%20Profesional.pdf",
-              "fecha": "PDF de la carpeta Titulacion2026; consultado 2026-09-29 (confirmacion-g1.json:28-31)."
+              "fecha": "PDF de la carpeta Titulacion2026; reconsultado y cotejado el 2026-09-30."
             },
             {
               "titulo": "Consulta la vigencia de la constancia",
@@ -2662,9 +2730,10 @@
           "nombreEnUnidad": "Seminario de Titulación",
           "estadoCatalogoUnidad": "publicado",
           "detalle": "Curso de duración mínima de 150 horas, con calificación no menor de 8 y asistencia mínima del 90 %, más un trabajo escrito sobre el tema del seminario. Se abre por convocatoria de la unidad académica (Art. 19 del RGT).…",
-          "fuente": "https://admin.arpa.buap.mx/titulacion/seminario-de-titulacion/ ; convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Seminario_P2026.jpg",
+          "fuente": "https://admin.arpa.buap.mx/titulacion/seminario-de-titulacion/",
           "fecha": "Convocatoria Primavera 2026, fecha de inicio 2026-04-16; imagen publicada en la carpeta /2026/07/ de WordPress. Leída 2026-09-29.",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ARPA].modalidades[modalidadId=seminario-de-titulacion-arpa].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=ARPA].modalidades[modalidadId=seminario-de-titulacion-arpa].requisitosTexto",
+          "citaFuente": "convocatoria https://admin.arpa.buap.mx/titulacion/wp-content/uploads/sites/2/2026/07/Seminario_P2026.jpg"
         },
         {
           "unidadClave": "FCAP",
@@ -2686,7 +2755,9 @@
           "detalle": "Para la publicación de la Convocatoria, los organizadores deben solicitar el aval de la Comisión de Titulación entregando: solicitud dirigida a la Comisión de Titulación de la FCE y protocolo de la propuesta de seminario…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=seminario-de-titulacion-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=seminario-de-titulacion-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCFM",
@@ -2929,7 +3000,9 @@
           "detalle": "El documento no fija requisitos: declara que 'Esta opción aplicará solamente a estudiantes de la Generación 2016 y posteriores, por lo que la asignatura optativa se definirá en el proceso de Modificación de los Programas de Estudio'.…",
           "fuente": "http://academica.ece.buap.mx/image-resources/objects/opciones.pdf",
           "fecha": "Consultada 2026-09-29",
-          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=asignatura-optativa-con-valor-de-creditos-fcel].requisitosTexto"
+          "textoCompletoEnCatalogo": "assets/json/catalogo_modalidades.json → unidades[clave=FCEL].modalidades[modalidadId=asignatura-optativa-con-valor-de-creditos-fcel].requisitosTexto",
+          "estadoEnlace": "http_solo_sin_tls",
+          "notaEnlace": "Verificado el 2026-09-30: el servidor de la Facultad de Electrónica no publica HTTPS; la direccion responde 200 en http y no responde en https. Se deja en http a proposito: cambiarla a https la dejaria rota. Documento de opciones de modalidad de titulacion."
         },
         {
           "unidadClave": "FCF",
