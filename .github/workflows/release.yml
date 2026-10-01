@@ -85,13 +85,14 @@ jobs:
             "$TOOLS/apksigner" verify --verbose --print-certs "$APK" \
               > "$RUNNER_TEMP/signature.txt"
             # El propio código de salida de `apksigner verify` ya es la
-            # comprobación criptográfica. No se busca la palabra «Verifies»:
-            # algunas versiones la traducen según el locale del runner.
-            # La huella hexadecimal conserva el mismo
-            # formato. Extraer el primer SHA-256 de 64 caracteres evita
-            # depender del texto «Signer #1 certificate…».
-            ACTUAL=$(grep -Eio '[0-9a-f]{64}' "$RUNNER_TEMP/signature.txt" \
-              | head -1 | tr '[:upper:]' '[:lower:]')
+            # comprobación criptográfica. Para la identidad, exportar el
+            # certificado en PEM y calcular la huella con OpenSSL: así no
+            # dependemos del idioma ni del formato de texto de apksigner.
+            "$TOOLS/apksigner" verify --print-certs-pem "$APK" \
+              > "$RUNNER_TEMP/certificate.pem"
+            ACTUAL=$(openssl x509 -in "$RUNNER_TEMP/certificate.pem" \
+              -noout -fingerprint -sha256 \
+              | cut -d= -f2 | tr -d ':' | tr '[:upper:]' '[:lower:]')
             test -n "$ACTUAL"
             test "$ACTUAL" = "$EXPECTED" || {
               echo "Firma inesperada en $APK" >&2
