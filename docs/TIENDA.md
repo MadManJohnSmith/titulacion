@@ -113,6 +113,14 @@ Toma 5-8 en un teléfono. La app ya se ve bien; estas pantallas sirven:
 Android: sin restricción adicional.
 iOS: 4+.
 
+## Actualizaciones de Android
+
+**La primera instalación firmada de forma permanente es la v1.3.1.** Quien
+tenga instalada v1.3.0 o anterior debe desinstalarla una vez: esas releases se
+firmaron con claves de depuración distintas y Android no permite actualizar
+entre certificados. Desde v1.3.1, las versiones nuevas sí se instalarán encima
+de la anterior sin borrar los datos mientras se use la misma clave.
+
 ## Tamaño de descarga
 
 | Formato | Tamaño |

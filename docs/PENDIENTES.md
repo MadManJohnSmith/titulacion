@@ -94,17 +94,21 @@ corregir, pero conviene que lo sepan.**
 
 ## 2. Decisiones de publicación
 
-- [ ] **Firmas de release**: el AAB que compilé está **sin firmar**
-      (`flutter build appbundle` usa la clave de debug). Play Store rechaza
-      builds sin firmar. Hay que generar un keystore:
+- [x] **Firma permanente de Android** — resuelto para **v1.3.1**. Hasta v1.3.0
+      el workflow firmaba cada release con la clave de depuración creada por
+      el runner efímero de GitHub. Las huellas de v1.2.1 y v1.3.0 son distintas,
+      así que Android no acepta una como actualización de la otra. Desde v1.3.1
+      los APK se firman con el keystore permanente `loboapp-upload-v1`, guardado
+      como secretos de GitHub, y el workflow comprueba la huella SHA-256,
+      `applicationId`, `versionCode` y `versionName` antes de publicar.
 
-      ```bash
-      keytool -genkey -v -ke ~/loboapp-upload.jks -keyalg RSA \
-        -keysize 2048 -validity 10000 -alias upload
-      ```
+      **Migración inevitable:** quien tenga instalada v1.3.0 o anterior debe
+      desinstalarla una vez para instalar v1.3.1, y Android borrará el progreso
+      local. De v1.3.1 en adelante las actualizaciones se instalan encima sin
+      desinstalar, mientras se conserve el mismo keystore.
 
-      y ponerlo en `android/key.properties` (**ese archivo NO se sube al
-      repositorio**).
+      La copia maestra quedó fuera del repositorio en
+      `~/Documents/LoboApp-signing-backup/`; nunca subirla ni perderla.
 - [ ] **iOS**: falta el certificado de Apple Developer, el provisioning profile
       y probarlo en un dispositivo real. Solo compilé Android.
 - [ ] **Correo de soporte y sitio web** para la ficha de tienda

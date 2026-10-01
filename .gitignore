@@ -51,6 +51,8 @@ app.*.map.json
 android/key.properties
 *.jks
 *.keystore
+*.p12
+*.pfx
 
 # Local databases (source data lives outside the repo)
 *.db
