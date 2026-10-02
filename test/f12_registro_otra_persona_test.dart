@@ -53,7 +53,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Facultad de Ciencias de la Computación').last);
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Continuar como invitado'));
+      await tester.tap(find.text('Comenzar mi aventura'));
       await tester.pumpAndSettle();
 
       expect(find.text('Vas a registrar a otra persona'), findsOneWidget);
@@ -79,7 +79,7 @@ void main() {
       await tester.pumpAndSettle();
       await tester.tap(find.text('Facultad de Ciencias de la Computación').last);
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Continuar como invitado'));
+      await tester.tap(find.text('Comenzar mi aventura'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Registrar de todos modos'));
       await tester.pumpAndSettle();

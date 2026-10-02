@@ -29,9 +29,30 @@ jobs:
           flutter-version: 3.47.5
           cache: true
 
-      - name: Compilar demo web sin bases de datos
+      - name: Compilar la demo web
         run: bash tools/preparar_demo_web.sh LoboApp
 
+      - name: Firmar y publicar el catálogo de modalidades
+        env:
+          # Clave Ed25519 que firma el manifiesto. La privada nunca está en el
+          # repositorio; la publica sí va dentro de la app, en
+          # ContentRepository.clavesPublicasConfiables.
+          CONTENIDO_SIGNING_KEY_B64: ${{ secrets.CONTENIDO_SIGNING_KEY_B64 }}
+        run: |
+          set -euo pipefail
+          test -n "$CONTENIDO_SIGNING_KEY_B64"
+          printf '%s' "$CONTENIDO_SIGNING_KEY_B64" | base64 --decode \
+            > "$RUNNER_TEMP/contenido.pem"
+          chmod 600 "$RUNNER_TEMP/contenido.pem"
+          # La URL tiene que ser exactamente la que sirve Pages, y en
+          # minúsculas: el manifiesto la compara con la que descarga la app.
+          OWNER=$(printf '%s' '${{ github.repository_owner }}' | tr '[:upper:]' '[:lower:]')
+          REPO=$(printf '%s' '${{ github.event.repository.name }}')
+          BASE="https://${OWNER}.github.io/${REPO}"
+          bash tools/publicar_contenido.sh \
+            "$RUNNER_TEMP/contenido.pem" \
+            "$BASE" \
+            build/demo-web
       - name: Configurar Pages
         uses: actions/configure-pages@v5
 

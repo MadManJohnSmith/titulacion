@@ -1407,8 +1407,8 @@
     },
     {
       "id": "tesis",
-      "nombre": "Titulación por examen profesional (tesis)",
-      "descripcion": "Modalidad de examen profesional por tesis del art. 7 del Reglamento General de Titulación. Ruta base construida con el mapa gráfico oficial de la Facultad de Ciencias de la Computación; tu unidad puede exigir pasos o documentos adicionales.",
+      "nombre": "Titulación por examen profesional (tesis o tesina)",
+      "descripcion": "Modalidad de examen profesional por trabajo escrito. El Reglamento General de Titulación la recoge en sus dos formas: la tesis (art. 7 fr. I) y la tesina (art. 7 fr. VII), que varias unidades ofrecen como la misma modalidad con un trabajo más breve. Ruta base construida con el mapa gráfico oficial de la Facultad de Ciencias de la Computación; tu unidad puede exigir pasos o documentos adicionales.",
       "mascotaInicio": "assets/images/lobo_aviador.svg",
       "pergaminoInicio": "",
       "tituloAsset": "",

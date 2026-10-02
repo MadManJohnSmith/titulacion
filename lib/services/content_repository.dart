@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:crypto/crypto.dart';
+import 'package:cryptography/cryptography.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
@@ -39,32 +40,40 @@ class ContentRepository {
   static const String _kCacheManifiesto = 'catalogo_cache_manifiesto';
   static const String _kCacheFecha = 'catalogo_cache_fecha';
 
-  /// Hosts de los que se acepta manifiesto. Vacío = no se acepta ninguno: la
-  /// app no conoce todavía el dominio de publicación, así que por omisión
-  /// **no actualiza**. Esto no es un olvido: acceptar un host desconocido sería
-  /// dejar que cualquiera cambie el contenido que la app enseña.
-  static const Set<String> hostsPermitidos = {};
+  /// Hosts de los que se acepta manifiesto. Vacío = no se acepta ninguno.
+  ///
+  /// Solo está GitHub Pages, que es donde `pages.yml` publica el catálogo
+  /// firmado. Aceptar un host más sería dejar que cualquiera pueda cambiar el
+  /// contenido que la app enseña.
+  static const Set<String> hostsPermitidos = {
+    'madmanjohnsmith.github.io',
+  };
 
   /// Claves públicas Ed25519 en las que se confía para validar el manifiesto.
   /// Vacío = ninguna: sin clave de confianza el manifiesto se rechaza.
-  static const Map<String, String> clavesPublicasConfiables = {};
+  ///
+  /// El valor son los 32 bytes crudos de la clave pública, en base64. La
+  /// privada nunca entra al repositorio: vive fuera de esta computadora y en
+  /// el secreto `CONTENIDO_SIGNING_KEY_B64` de GitHub.
+  static const Map<String, String> clavesPublicasConfiables = {
+    'loboapp-contenido-v1': '5bO+DK0JpykcHvun2xB1GBMLDLhDRHTATFHlR/Y0eRs=',
+  };
 
-  /// Anula los dos mapas de arriba durante las pruebas. Vacío = se usan los de
-  /// compilación, que es lo que corre en la app.
+  /// Sustituye los mapas de arriba durante las pruebas.
+  ///
+  /// `null` = se usan los de compilación, que es lo que corre en la app. Se
+  /// permiten vacíos a propósito (`= {}`) para que una prueba pueda simular
+  /// "nunca se declara ningún host", que con listas no vacías no se puede
+  /// expresar.
   @visibleForTesting
-  static Set<String> hostsPermitidosDePrueba = const {};
+  static Set<String>? hostsPermitidosDePrueba;
   @visibleForTesting
-  static Map<String, String> clavesPublicasDePrueba = const {};
+  static Map<String, String>? clavesPublicasDePrueba;
 
-  static Set<String> get _hosts =>
-      hostsPermitidosDePrueba.isEmpty
-          ? hostsPermitidos
-          : hostsPermitidosDePrueba;
+  static Set<String> get _hosts => hostsPermitidosDePrueba ?? hostsPermitidos;
 
   static Map<String, String> get _claves =>
-      clavesPublicasDePrueba.isEmpty
-          ? clavesPublicasConfiables
-          : clavesPublicasDePrueba;
+      clavesPublicasDePrueba ?? clavesPublicasConfiables;
 
   /// Tope del contenido descargado, para que un servidor grande no nos llene
   /// el almacenamiento del dispositivo.
@@ -523,7 +532,7 @@ class ContentRepository {
               'instala contenido vencido.',
         );
       }
-      final problemaFirma = manifiesto.problemaDeFirma(_claves);
+      final problemaFirma = await manifiesto.problemaDeFirma(_claves);
       if (problemaFirma != null) {
         return ResultadoActualizacion(
           EstadoActualizacion.sinConfianza,
@@ -594,9 +603,10 @@ class ContentRepository {
     }
   }
 
-  /// URL del manifiesto. Vacía a propósito: la app no publica aún su contenido
-  /// en la web, así que no hay un endpoint que legitimate este valor.
-  static const String manifiestoPorDefecto = '';
+  /// URL del manifiesto. Apunta a GitHub Pages, que es donde `pages.yml`
+  /// publica `contenido/manifiesto.json` junto con el catálogo firmado.
+  static const String manifiestoPorDefecto =
+      'https://madmanjohnsmith.github.io/LoboApp/contenido/manifiesto.json';
 
   /// Descarga acotada: HTTPS, host permitido, sin redirección a otro host,
   /// tope de tamaño y timeout.
@@ -931,12 +941,37 @@ class ManifiestoContenido {
     return t.isBefore(DateTime.now().toUtc());
   }
 
+  /// Bytes exactos que cubre la firma.
+  ///
+  /// No se firma el manifiesto entero, porque el manifiesto lleva la firma y
+  /// eso sería autorreferente. Se firma esta cadena, que se puede reconstruir
+  /// byte a byte desde el manifiesto y desde `tools/publicar_contenido.sh`.
+  ///
+  /// Lleva un salto de línea detrás de cada campo, incluido el último.
+  List<int> get bytesFirmados => utf8.encode(
+    <String>[
+      'loboapp-contenido-v1',
+      catalogoVersion,
+      generadoEn,
+      expiraEn,
+      urlContenido,
+      sha256,
+      // El salto final también va firmado. Es el detalle que hay que mantener
+      // igual en Dart y en tools/publicar_contenido.sh: si uno lo pone y el
+      // otro no, ninguna firma cuadra y el contenido nunca se instala.
+      '',
+    ].join('\n'),
+  );
+
   /// Motivo por el que la firma no sirve, o `null` si la confianza alcanza.
   ///
-  /// La app no trae ninguna clave pública todavía: sin `claveId` en
-  /// [clavesConfiables] el manifiesto se rechaza siempre. Integridad (hash) no
-  /// es autenticidad: quien cambie el contenido puede cambiar también el hash.
-  String? problemaDeFirma(Map<String, String> clavesConfiables) {
+  /// Antes esto solo miraba que el manifiesto trajera `algoritmo`, `claveId` y
+  /// `firmaBase64` no vacíos. Eso **no era una verificación**: cualquiera que
+  /// sirviera el manifiesto pasaba el filtro, y cambiar el hash o la caducidad
+  /// no rompía nada. Ahora la firma se comprueba de verdad contra la clave
+  /// pública: si alguien altera un campo, la firma deja de cuadrar y el
+  /// contenido anterior se conserva.
+  Future<String?> problemaDeFirma(Map<String, String> clavesConfiables) async {
     if (algoritmo.isEmpty || claveId.isEmpty || firmaBase64.isEmpty) {
       return 'El manifiesto no trae firma; no se instala contenido sin '
           'autenticidad.';
@@ -944,9 +979,32 @@ class ManifiestoContenido {
     if (algoritmo != 'Ed25519') {
       return 'La firma usa "$algoritmo", que la app no sabe verificar.';
     }
-    if (!clavesConfiables.containsKey(claveId)) {
+    final clave = clavesConfiables[claveId];
+    if (clave == null) {
       return 'La firma viene de la clave "$claveId", en la que la app no '
           'confía. Se conserva el contenido anterior.';
+    }
+    try {
+      // La clave viaja en base64: son los 32 bytes crudos de una Ed25519
+      // pública, sin el envoltorio PEM.
+      final publica = SimplePublicKey(
+        base64Decode(clave),
+        type: KeyPairType.ed25519,
+      );
+      final ok = await Ed25519().verify(
+        bytesFirmados,
+        signature: Signature(
+          base64Decode(firmaBase64),
+          publicKey: publica,
+        ),
+      );
+      if (!ok) {
+        return 'La firma del manifiesto no cuadra con la clave "$claveId". '
+            'Alguien cambió el manifiesto por el camino. Se conserva el '
+            'contenido anterior.';
+      }
+    } catch (e) {
+      return 'No se pudo comprobar la firma del manifiesto: $e';
     }
     return null;
   }

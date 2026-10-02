@@ -46,8 +46,9 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('¿Quién eres?'), findsOneWidget);
-    // La búsqueda real contra la base de la BUAP.
-    expect(find.text('Matrícula o nombre'), findsOneWidget);
+    // Se escriben a mano: no hay padrón de alumnos en la app.
+    expect(find.text('Nombre (opcional)'), findsOneWidget);
+    expect(find.text('Matrícula (opcional)'), findsOneWidget);
     // Y se listan las unidades académicas de la BUAP.
     expect(find.text('¿De qué unidad académica vienes?'), findsOneWidget);
   });
@@ -60,15 +61,20 @@ void main() {
     await tester.tap(find.text('Comenzar'));
     await tester.pumpAndSettle();
 
-    // Sin matrícula válida, el botón ofrece el modo invitado.
-    await tester.tap(find.text('Continuar como invitado'));
+    // Nombre y matrícula son opcionales: aun sin ellos hace falta la unidad.
+    await tester.scrollUntilVisible(
+      find.text('Comenzar mi aventura'),
+      200,
+      scrollable: find.byType(Scrollable).first,
+    );
+    await tester.tap(find.text('Comenzar mi aventura'));
     await tester.pumpAndSettle();
 
     expect(find.textContaining('Elige tu unidad académica'), findsOneWidget);
     expect(state.estaRegistrado, isFalse);
   });
 
-  testWidgets('se entra como invitado si no hay matricula en la base', (
+  testWidgets('se entra escribiendo nombre y matrícula a mano', (
     tester,
   ) async {
     tester.view.physicalSize = const Size(1080, 2400);
@@ -86,9 +92,12 @@ void main() {
     await tester.tap(find.text('Facultad de Administración').last);
     await tester.pumpAndSettle();
 
-    // Sin matrícula válida se entra como invitado, con el texto que lo dice.
-    expect(find.text('Continuar como invitado'), findsOneWidget);
-    await tester.tap(find.text('Continuar como invitado'));
+    // La persona escribe lo suyo; la app no lo contrasta con ningún padrón.
+    await tester.enterText(find.byType(TextField).at(0), 'María Fernanda López');
+    await tester.enterText(find.byType(TextField).at(1), '202145678');
+    await tester.pumpAndSettle();
+    expect(find.text('Comenzar mi aventura'), findsOneWidget);
+    await tester.tap(find.text('Comenzar mi aventura'));
     await tester.pumpAndSettle();
 
     // Entra a su casa, con la unidad guardada y su catálogo a la vista.
@@ -904,7 +913,7 @@ void main() {
         await tester.pumpAndSettle();
         await tester.tap(find.text('Facultad de Ciencias de la Comunicación').last);
         await tester.pumpAndSettle();
-        await tester.tap(find.text('Continuar como invitado'));
+        await tester.tap(find.text('Comenzar mi aventura'));
         await tester.pumpAndSettle();
         // F-12: se está registrando a otra persona en este mismo teléfono, así
         // que el registro avisa antes de seguir (el avance y las notas de la

@@ -463,10 +463,15 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
                 ),
               ),
             ],
-            // Sin esto el bloque sería una afirmación sin respaldo.
-                        // «Tesina» y «tesis» son modalidades distintas en el Reglamento.
-            // La app encamina a la ruta de tesis y no se corrige sin
-            // comprobarlo, así que se dice antes de que el alumno la siga.
+            // «Tesina» y «tesis» son figuras distintas en el Reglamento (art.
+            // 7 fr. I y fr. VII), pero las unidades revisadas ofrecen
+            // la tesina como examen profesional por trabajo escrito, que es lo
+            // que desarrolla esta ruta: FESTO agrupa «tesis/tesina» bajo el
+            // acta de examen, FENF idem, CRNO la titula «Examen Profesional
+            // por Tesis/Tesina», FPSY pide fecha de examen profesional y FDERE
+            // publica un solo formato con las dos. Por eso no se reencamina:
+            // lo que cambia entre una y otra es la extensión y la profundidad
+            // del trabajo, y eso lo publica la unidad, no la app.
             if (ofertaRuta.modalidad?.tesinaEnRutaDeTesis ?? false) ...[
               const SizedBox(height: 10),
               Container(
@@ -489,14 +494,13 @@ class _RouteSelectionScreenState extends State<RouteSelectionScreen> {
                     const SizedBox(width: 7),
                     Expanded(
                       child: Text(
-                        'Tu unidad publica esta modalidad como «Tesina», pero '
-                        'aquí se muestra con la ruta de tesis. En el Reglamento '
-                        'General de Titulación son distintas: la tesis es el '
-                        'art. 7 fr. I (protocolo, director, jurado y defensa) '
-                        'y la tesina el art. 7 fr. VII, una asignatura optativa '
-                        'con créditos. Algunas unidades usan «tesina» como '
-                        'nombre de una tesis corta. Confírmalo con tu unidad '
-                        'antes de seguir estos pasos.',
+                        'Tu unidad publica esta modalidad como «Tesina» y la '
+                        'ruta que ves es la de examen profesional por trabajo '
+                        'escrito, que también la cubre. La diferencia real es '
+                        'el tamaño del trabajo: la tesina es una investigación '
+                        'más breve y concreta que la tesis. Lo que tu unidad '
+                        'exija en concreto está más abajo, en «Lo que publica '
+                        'tu unidad».',
                         style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 12,

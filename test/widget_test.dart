@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:crypto/crypto.dart';
+import 'package:cryptography/cryptography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
@@ -875,8 +876,20 @@ void main() {
 
     const manifiesto = 'https://contenido.buap.mx/catalogo.json';
     const urlCatalogo = 'https://contenido.buap.mx/catalogo_2027.json';
+    const claveId = 'buap-2099';
+
+    /// Par de claves de la prueba. La app verifica la firma de verdad, así que
+    /// aquí hay que firmar de verdad: antes estas pruebas ponían 'AAA' como
+    /// clave y 'ZmFrZQ==' como firma, y pasaban porque nadie comprobaba nada.
+    late KeyPair parDePrueba;
+    late String publicaB64;
 
     setUp(() async {
+      parDePrueba = await Ed25519().newKeyPair();
+      publicaB64 = base64Encode(
+        ((await parDePrueba.extractPublicKey()) as SimplePublicKey).bytes,
+      );
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
       SharedPreferences.setMockInitialValues({});
       repo = ContentRepository.instance..cargarDesdeDiscoParaTests();
       repo.invalidarCacheEnMemoria();
@@ -890,43 +903,92 @@ void main() {
     });
 
     tearDown(() {
-      ContentRepository.hostsPermitidosDePrueba = const {};
-      ContentRepository.clavesPublicasDePrueba = const {};
+      ContentRepository.hostsPermitidosDePrueba = null;
+      ContentRepository.clavesPublicasDePrueba = null;
       repo.clienteHttpParaPruebas(null);
     });
 
     /// Arma un manifiesto y el catálogo que él describe.
-    Map<String, String> respuestas({
+    /// La cadena canónica que firma la app, tal cual la rebuild
+    /// `ManifiestoContenido.bytesFirmados`.
+    List<int> payloadFirmado({
+      required String version,
+      required String generado,
+      required String expira,
+      required String url,
+      required String hash,
+    }) => utf8.encode(
+      <String>[
+        'loboapp-contenido-v1',
+        version,
+        generado,
+        expira,
+        url,
+        hash,
+        // Salto final firmado, igual que en `bytesFirmados`.
+        '',
+      ].join('\n'),
+    );
+
+    Future<String> firmarPayload(List<int> payload) async => base64Encode(
+      (await Ed25519().sign(payload, keyPair: parDePrueba)).bytes,
+    );
+
+    /// Arma un manifiesto firmado de verdad y el catálogo que él describe.
+    ///
+    /// [alterar] permite dejar el manifiesto desincronizado de su firma, que
+    /// es justo lo que la app tiene que detectar.
+    Future<Map<String, String>> respuestas({
       String version = '2099.01.01-001',
       String expira = '2099-01-01T00:00:00Z',
       String sha = '',
-      String claveId = 'buap-2099',
       String algoritmo = 'Ed25519',
-      String firma = 'ZmFrZQ==',
+      bool firmar = true,
       Map<String, dynamic>? catalogo,
-    }) {
+      void Function(Map<String, dynamic> manifiesto)? alterar,
+    }) async {
       final cuerpo = catalogo ?? catalogoBase;
       final bytes = utf8.encode(json.encode(cuerpo));
       final hashReal = sha256.convert(bytes).toString();
+      final generado = '2026-09-29T00:00:00Z';
+      final hashFinal = sha.isEmpty ? hashReal : sha;
+
+      final manifiestoJson = <String, dynamic>{
+        'catalogoVersion': version,
+        'generadoEn': generado,
+        'expiraEn': expira,
+        'urlContenido': urlCatalogo,
+        'sha256': hashFinal,
+        'firma': {
+          'algoritmo': algoritmo,
+          'claveId': claveId,
+          'valorBase64':
+              firmar
+                  ? await firmarPayload(
+                    payloadFirmado(
+                      version: version,
+                      generado: generado,
+                      expira: expira,
+                      url: urlCatalogo,
+                      hash: hashFinal,
+                    ),
+                  )
+                  : base64Encode(List<int>.filled(64, 0)),
+        },
+      };
+      alterar?.call(manifiestoJson);
       return {
-        manifiesto: json.encode({
-          'catalogoVersion': version,
-          'generadoEn': '2026-09-29T00:00:00Z',
-          'expiraEn': expira,
-          'urlContenido': urlCatalogo,
-          'sha256': sha.isEmpty ? hashReal : sha,
-          'firma': {
-            'algoritmo': algoritmo,
-            'claveId': claveId,
-            'valorBase64': firma,
-          },
-        }),
+        manifiesto: json.encode(manifiestoJson),
         urlCatalogo: json.encode(cuerpo),
       };
     }
 
     test('sin host de publicación declarado no se descarga nada', () async {
-      final cliente = _ClienteFalso(respuestas());
+      // Vacío a propósito: simula una compilación donde no se declaró ningún
+      // host. En producción sí hay uno (GitHub Pages), así que sin esto la
+      // prueba dependería de la lista de compilación.
+      ContentRepository.hostsPermitidosDePrueba = const {};
+      final cliente = _ClienteFalso(await respuestas());
       repo.clienteHttpParaPruebas(cliente);
 
       final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -938,7 +1000,7 @@ void main() {
 
     test('un host que no está en la lista se rechaza sin descargar', () async {
       ContentRepository.hostsPermitidosDePrueba = {'titulacion.buap.mx'};
-      final cliente = _ClienteFalso(respuestas());
+      final cliente = _ClienteFalso(await respuestas());
       repo.clienteHttpParaPruebas(cliente);
 
       final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -949,7 +1011,7 @@ void main() {
 
     test('solo HTTPS: un manifiesto en http plano no se acepta', () async {
       ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-      final cliente = _ClienteFalso(respuestas());
+      final cliente = _ClienteFalso(await respuestas());
       repo.clienteHttpParaPruebas(cliente);
 
       final r = await repo.actualizarDesdeWeb(
@@ -964,7 +1026,10 @@ void main() {
       'una firma de una clave en la que no se confía no se instala',
       () async {
         ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-        final cliente = _ClienteFalso(respuestas());
+        // Vacío: la app cae en sus claves de compilación, que no conocen la
+        // clave de la prueba.
+        ContentRepository.clavesPublicasDePrueba = const {};
+        final cliente = _ClienteFalso(await respuestas());
         repo.clienteHttpParaPruebas(cliente);
 
         final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -979,8 +1044,8 @@ void main() {
 
     test('un manifiesto sin firma tampoco', () async {
       ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-      ContentRepository.clavesPublicasDePrueba = {'buap-2099': 'AAA'};
-      final cliente = _ClienteFalso(respuestas(firma: '', algoritmo: ''));
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
+      final cliente = _ClienteFalso(await respuestas(algoritmo: ''));
       repo.clienteHttpParaPruebas(cliente);
 
       final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -990,8 +1055,8 @@ void main() {
 
     test('un manifiesto vencido no se instala', () async {
       ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-      ContentRepository.clavesPublicasDePrueba = {'buap-2099': 'AAA'};
-      final cliente = _ClienteFalso(respuestas(expira: '2020-01-01T00:00:00Z'));
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
+      final cliente = _ClienteFalso(await respuestas(expira: '2020-01-01T00:00:00Z'));
       repo.clienteHttpParaPruebas(cliente);
 
       final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -1001,8 +1066,8 @@ void main() {
 
     test('si el contenido no cuadra con el hash se descarta', () async {
       ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-      ContentRepository.clavesPublicasDePrueba = {'buap-2099': 'AAA'};
-      final cliente = _ClienteFalso(respuestas(sha: 'a' * 64));
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
+      final cliente = _ClienteFalso(await respuestas(sha: 'a' * 64));
       repo.clienteHttpParaPruebas(cliente);
 
       final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -1014,9 +1079,9 @@ void main() {
 
     test('un catálogo con el mismo contenido no cambia nada', () async {
       ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-      ContentRepository.clavesPublicasDePrueba = {'buap-2099': 'AAA'};
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
       final cliente = _ClienteFalso(
-        respuestas(version: catalogoBase['catalogoVersion'] as String),
+        await respuestas(version: catalogoBase['catalogoVersion'] as String),
       );
       repo.clienteHttpParaPruebas(cliente);
 
@@ -1029,7 +1094,8 @@ void main() {
       // Sustituir url + hash juntos es el ataque clásico; la firma es lo único
       // que lo detiene.
       ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-      final cliente = _ClienteFalso(respuestas());
+      ContentRepository.clavesPublicasDePrueba = const {};
+      final cliente = _ClienteFalso(await respuestas());
       repo.clienteHttpParaPruebas(cliente);
 
       final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -1041,12 +1107,12 @@ void main() {
       'con host, clave y hash correctos se instala y queda en caché',
       () async {
         ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-        ContentRepository.clavesPublicasDePrueba = {'buap-2099': 'AAA'};
+        ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
         final nuevo =
             Map<String, dynamic>.from(catalogoBase)
               ..['catalogoVersion'] = '2099.01.01-001'
               ..['fechaCorte'] = '2027-01-01';
-        final cliente = _ClienteFalso(respuestas(catalogo: nuevo));
+        final cliente = _ClienteFalso(await respuestas(catalogo: nuevo));
         repo.clienteHttpParaPruebas(cliente);
 
         final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
@@ -1067,13 +1133,88 @@ void main() {
       },
     );
 
+    test('un manifiesto al que le cambian el hash es rechazado', () async {
+      // El ataque que la verificación de firma tiene que detener: publicar el
+      // mismo catálogo pero prometer otro hash. El SHA-256 del contenido sigue
+      // cuadrando con el contenido real, así que la única defensa es la firma.
+      ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
+      final cliente = _ClienteFalso(
+        await respuestas(
+          alterar:
+              (m) => m['sha256'] =
+                  '0000000000000000000000000000000000000000000000000000000000000000',
+        ),
+      );
+      repo.clienteHttpParaPruebas(cliente);
+
+      final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
+      expect(r.estado, EstadoActualizacion.sinConfianza);
+      expect(r.motivo, contains('firma'));
+      expect((await repo.catalogo()).origen, CatalogoModalidades.origenEmbi);
+    });
+
+    test('un manifiesto con otra caducidad es rechazado', () async {
+      // Alguien alarga la vigencia para que un manifiesto viejo siga valiendo.
+      ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
+      final cliente = _ClienteFalso(
+        await respuestas(
+          alterar: (m) => m['expiraEn'] = '2099-12-31T00:00:00Z',
+        ),
+      );
+      repo.clienteHttpParaPruebas(cliente);
+
+      final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
+      expect(r.estado, EstadoActualizacion.sinConfianza);
+      expect((await repo.catalogo()).origen, CatalogoModalidades.origenEmbi);
+    });
+
+    test('una firma hecha con otra clave es rechazada', () async {
+      // El manifiesto bien formado y bien firmado, pero por una clave en la
+      // que la app no confía.
+      final otroPar = await Ed25519().newKeyPair();
+      final bytes = utf8.encode(json.encode(catalogoBase));
+      final hash = sha256.convert(bytes).toString();
+      final firmaAjena = base64Encode(
+        (
+          await Ed25519().sign(
+            payloadFirmado(
+              version: '2099.01.01-001',
+              generado: '2026-09-29T00:00:00Z',
+              expira: '2099-01-01T00:00:00Z',
+              url: urlCatalogo,
+              hash: hash,
+            ),
+            keyPair: otroPar,
+          )
+        ).bytes,
+      );
+      ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
+      ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
+      final cliente = _ClienteFalso(
+        await respuestas(
+          alterar: (m) => m['firma'] = {
+            'algoritmo': 'Ed25519',
+            'claveId': claveId,
+            'valorBase64': firmaAjena,
+          },
+        ),
+      );
+      repo.clienteHttpParaPruebas(cliente);
+
+      final r = await repo.actualizarDesdeWeb(manifiestoUrl: manifiesto);
+      expect(r.estado, EstadoActualizacion.sinConfianza);
+      expect((await repo.catalogo()).origen, CatalogoModalidades.origenEmbi);
+    });
+
     test(
       'un catálogo remoto sin unidades se rechaza aunque el hash cuadre',
       () async {
         ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-        ContentRepository.clavesPublicasDePrueba = {'buap-2099': 'AAA'};
+        ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
         final cliente = _ClienteFalso(
-          respuestas(
+          await respuestas(
             catalogo: const {
               'catalogoVersion': '2099.01.01-001',
               'fechaCorte': '2027-01-01',
@@ -1093,7 +1234,7 @@ void main() {
       'un catálogo remoto que contradice su propio estado se rechaza',
       () async {
         ContentRepository.hostsPermitidosDePrueba = {'contenido.buap.mx'};
-        ContentRepository.clavesPublicasDePrueba = {'buap-2099': 'AAA'};
+        ContentRepository.clavesPublicasDePrueba = {claveId: publicaB64};
         // Declara que no publica catálogo pero trae modalidades.
         final unidades =
             (catalogoBase['unidades'] as List<dynamic>)
@@ -1111,7 +1252,7 @@ void main() {
           },
         ];
         final cliente = _ClienteFalso(
-          respuestas(
+          await respuestas(
             catalogo: {
               'catalogoVersion': '2099.01.01-001',
               'fechaCorte': '2027-01-01',

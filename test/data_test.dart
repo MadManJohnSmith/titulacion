@@ -1,15 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:archive/archive.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:titulacion/services/staff_repository.dart';
-import 'package:titulacion/services/student_repository.dart';
+import 'package:titulacion/models/models.dart';
 import 'package:vector_graphics_compiler/vector_graphics_compiler.dart' as vgc;
 
-/// Comprueba la base de alumnos y el directorio de trabajadores empaquetados:
-/// que los archivos estén, que se descompriman y que el contenido sea el que
-/// la BUAP envió.
+/// Comprueba que el proyecto no vuelva a empaquetar padrones de personas y que
+/// los datos que sí se distribuyen (mapas, catálogo) sigan enteros.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -26,120 +23,69 @@ void main() {
     return json.decode(f.readAsStringSync()) as Map<String, dynamic>;
   }
 
-  List<List<String>> leerCohorte(String rutaGz) {
-    final f = File('${raiz.path}/$rutaGz');
-    expect(f.existsSync(), isTrue, reason: 'falta $rutaGz');
-    final texto = utf8.decode(
-      GZipDecoder().decodeBytes(f.readAsBytesSync()),
-      allowMalformed: true,
-    );
-    return texto
-        .split('\n')
-        .where((l) => l.trim().isNotEmpty)
-        .map((l) => l.split('\t'))
-        .toList();
-  }
-
-  group('Base de alumnos', () {
-    test('el índice declara las cohortes y los archivos existen', () {
-      final idx = leerIndice('assets/alumnos/index.json');
-      final cohortes = idx['cohorts'] as Map<String, dynamic>;
-      expect(cohortes, isNotEmpty);
-
-      var total = 0;
-      cohortes.forEach((anio, v) {
-        final info = v as Map<String, dynamic>;
-        final archivo = info['archivo'] as String;
+  group('Privacidad: ningún padrón de personas viaja en el paquete', () {
+    /// El padrón de alumnos (318 mil) y el de trabajadores (43 mil, con
+    /// matrícula y correo institucional) se distribuían dentro del APK sin
+    /// ninguna forma de dar acceso controlado a esa información. Se quitaron.
+    ///
+    /// Estas pruebas son la red que evita que vuelvan: si alguien reintroduce
+    /// los archivos, la suite falla aquí y no en una auditoría posterior.
+    for (final carpeta in ['assets/alumnos', 'assets/trabajadores']) {
+      test('$carpeta no existe en el repositorio', () {
         expect(
-          File('${raiz.path}/$archivo').existsSync(),
-          isTrue,
-          reason: 'falta el archivo de la cohorte $anio',
+          Directory('${raiz.path}/$carpeta').existsSync(),
+          isFalse,
+          reason:
+              '$carpeta volvió al proyecto. Son datos personales de personas '
+              'que no se pueden consultar sin registro; no se empaquetan.',
         );
-        expect(anio, matches(RegExp(r'^\d{4}$')));
-        total += info['registros'] as int;
       });
-      expect(total, idx['total']);
-      expect(
-        total,
-        greaterThan(300000),
-        reason: 'la BUAP envió 318 mil alumnos',
-      );
-    });
+    }
 
-    test('cada línea es matrícula + nombre, sin correos', () {
-      final idx = leerIndice('assets/alumnos/index.json');
-      final cohortes = idx['cohorts'] as Map<String, dynamic>;
-      // Muestreo: la primera y la última cohorte.
-      for (final anio in ['2020', '2025']) {
-        final info = cohortes[anio] as Map<String, dynamic>;
-        final lineas = leerCohorte(info['archivo'] as String);
-        expect(lineas.length, info['registros']);
-
-        for (final l in lineas.take(50)) {
-          expect(l.length, 2, reason: 'más de 2 campos: ${l.length}');
-          expect(l[0], matches(RegExp(r'^\d{9}$')));
-          expect(l[0].startsWith(anio), isTrue);
-          expect(l[1].trim(), isNotEmpty);
-          // El correo del alumno no debe estar en la app.
-          expect(l[1], isNot(contains('@')));
-        }
-      }
-    });
-
-    test('las matrículas no están duplicadas dentro de una cohorte', () {
-      final idx = leerIndice('assets/alumnos/index.json');
-      final info =
-          (idx['cohorts'] as Map<String, dynamic>)['2023']
-              as Map<String, dynamic>;
-      final matriculas =
-          leerCohorte(info['archivo'] as String).map((l) => l[0]).toSet();
-      expect(matriculas.length, info['registros']);
-    });
-
-    test('el tamaño total cabe en lo razonable para una app', () {
-      final idx = leerIndice('assets/alumnos/index.json');
-      final cohortes = idx['cohorts'] as Map<String, dynamic>;
-      var total = 0;
-      cohortes.forEach((_, v) {
-        total += (v as Map<String, dynamic>)['gz_bytes'] as int;
-      });
-      expect(
-        total,
-        lessThan(6 * 1024 * 1024),
-        reason: 'la app no debe pesar MB',
-      );
-    });
-  });
-
-  group('Directorio de trabajadores', () {
-    test('el archivo existe y trae nombre y correo institucional', () {
-      final idx = leerIndice('assets/trabajadores/index.json');
-      final lineas = leerCohorte(idx['archivo'] as String);
-      expect(lineas.length, idx['total']);
-      expect(lineas.length, greaterThan(40000));
-
-      final conCorreo = lineas.where((l) => l.length > 2 && l[2].isNotEmpty);
-      expect(conCorreo.length, idx['con_correo_institucional']);
-      for (final l in conCorreo.take(50)) {
+    test('ningún asset del paquete es un padrón comprimido de personas', () {
+      final pubspec = File('${raiz.path}/pubspec.yaml').readAsStringSync();
+      for (final carpeta in ['assets/alumnos/', 'assets/trabajadores/']) {
         expect(
-          l[2],
-          endsWith('@correo.buap.mx'),
-          reason: 'solo correos institucionales: ${l[2]}',
+          pubspec,
+          isNot(contains(carpeta)),
+          reason: 'pubspec.yaml vuelve a declarar $carpeta como asset',
         );
       }
     });
 
-    test('no se empaquetan correos personales', () {
-      final idx = leerIndice('assets/trabajadores/index.json');
-      final texto =
-          File('${raiz.path}/${idx['archivo']}').existsSync()
-              ? leerCohorte(idx['archivo'] as String)
-              : <List<String>>[];
-      for (final l in texto) {
-        if (l.length > 2 && l[2].isNotEmpty) {
-          expect(l[2], isNot(contains('gmail')));
-          expect(l[2], isNot(contains('hotmail')));
-        }
+    test('ningún .tsv.gz quedó suelto en assets/', () {
+      final encontrados = Directory('${raiz.path}/assets')
+          .listSync(recursive: true)
+          .whereType<File>()
+          .where((f) => f.path.endsWith('.tsv.gz'))
+          .map((f) => f.path)
+          .toList();
+      expect(
+        encontrados,
+        isEmpty,
+        reason: 'Hay padrones en el proyecto: $encontrados',
+      );
+    });
+
+    test('el código no busca alumnos ni trabajadores por padrón', () {
+      final codigo = Directory('${raiz.path}/lib')
+          .listSync(recursive: true)
+          .whereType<File>()
+          .where((f) => f.path.endsWith('.dart'))
+          .map((f) => f.readAsStringSync())
+          .join('\n');
+      for (final simbolo in [
+        'StudentRepository',
+        'StaffRepository',
+        'Trabajador(',
+        'assets/alumnos',
+        'assets/trabajadores',
+      ]) {
+        expect(
+          codigo,
+          isNot(contains(simbolo)),
+          reason: 'lib/ vuelve a usar "$simbolo"',
+        );
       }
     });
   });
@@ -165,23 +111,6 @@ void main() {
       expect(d.normalizar('2021-458-78'), '202145878');
       expect(d.normalizar('2021 458 78'), '202145878');
       expect(d.normalizar('202145678'), '202145678');
-    });
-  });
-
-  group('Trabajador', () {
-    test('sabe si tiene correo', () {
-      expect(
-        const Trabajador(
-          matricula: '1',
-          nombre: 'X',
-          correo: 'a@correo.buap.mx',
-        ).tieneCorreo,
-        isTrue,
-      );
-      expect(
-        const Trabajador(matricula: '1', nombre: 'X').tieneCorreo,
-        isFalse,
-      );
     });
   });
 

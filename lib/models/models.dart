@@ -1563,6 +1563,25 @@ DirectorioUnidad _directorioDe(Object? json) {
   );
 }
 
+/// Detecta si un texto parece una matrícula de la BUAP (9 dígitos, cohorte 1990+).
+///
+/// La app **no consulta ningún padrón**: la matrícula que se escribe es la que
+/// la persona dice ser y solo se comprueba su forma. El padrón de la BUAP no
+/// viaja dentro del paquete, a propósito: son 318 mil nombres de alumnos y no
+/// hay forma de consultar esa información sin registro.
+class DigitosMatricula {
+  bool esMatricula(String texto) {
+    final t = texto.trim();
+    if (t.length != 9) return false;
+    if (!RegExp(r'^\d{9}$').hasMatch(t)) return false;
+    final cohorte = int.tryParse(t.substring(0, 4));
+    return cohorte != null && cohorte >= 1990 && cohorte <= 2100;
+  }
+
+  /// Deja solo dígitos, para tolerar que se tecleen espacios o guiones.
+  String normalizar(String texto) => texto.replaceAll(RegExp(r'\D'), '');
+}
+
 /// Un alumno registrado en el dispositivo.
 class Alumno {
   const Alumno({

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../demo.dart';
 import '../models/models.dart';
 import '../services/content_repository.dart';
-import '../services/student_repository.dart';
 import '../state/app_state.dart';
 import '../theme.dart';
-import '../widgets/common.dart';
 
-/// Registro del alumno: se busca en la base de la BUAP y se elige la facultad.
+/// Registro del alumno: se escribe su nombre y se elige su unidad.
 ///
-/// La base trae nombre y matrícula, pero **no la facultad**: la matrícula de la
-/// BUAP no codifica la unidad académica, así que esa parte la elige la persona.
+/// La app **no consulta ningún padrón de alumnos**: ni el de la BUAP ni uno
+/// propio. La matrícula que se escribe es la que la persona dice tener y lo
+/// único que se comprueba es su forma (9 dígitos). La base no viaja en el
+/// paquete porque son 318 mil nombres y no hay forma de consultar esa
+/// información sin registro.
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key, required this.state});
 
@@ -22,22 +22,18 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final _buscador = TextEditingController();
-  final _buscadorFocus = FocusNode();
+  final _nombre = TextEditingController();
+  final _matricula = TextEditingController();
   final _repo = ContentRepository.instance;
-  final _alumnosRepo = StudentRepository.instance;
   final _digitos = DigitosMatricula();
 
   List<Facultad> _facultades = [];
-  Alumno? _alumno;
   String? _facultad;
   /// La unidad elegida como modelo, para poder mostrar su fuente de catálogo y
   /// su salvedad. `_facultad` es solo la clave.
   Facultad? _facultadObj;
   bool _cargando = true;
-  bool _buscando = false;
   String _error = '';
-  String _pista = '';
 
   // Contexto académico opcional: solo sirve para comparar contra lo que la
   // unidad publica. Nunca es obligatorio y nunca se inventa.
@@ -50,13 +46,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void initState() {
     super.initState();
     _cargar();
-    _buscador.addListener(_alTocar);
   }
 
   @override
   void dispose() {
-    _buscador.dispose();
-    _buscadorFocus.dispose();
+    _nombre.dispose();
+    _matricula.dispose();
     _carrera.dispose();
     _plan.dispose();
     _anio.dispose();
@@ -115,63 +110,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
-  void _alTocar() {
-    if (_error.isNotEmpty) setState(() => _error = '');
-    final esMatricula = _digitos.esMatricula(_buscador.text.trim());
-    setState(() => _pista = esMatricula ? 'Buscando por matrícula…' : '');
-    if (esMatricula) {
-      // La matrícula es exacta: buscamos en cuanto se complete.
-      _buscar();
-    } else if (_pista.isNotEmpty) {
-      setState(() => _pista = '');
-    }
-  }
-
-  Future<void> _buscar() async {
-    final q = _buscador.text.trim();
-    if (q.length < 3) {
-      setState(() => _error = 'Escribe tu nombre o tu matrícula (9 dígitos).');
-      return;
-    }
-
-    setState(() {
-      _buscando = true;
-      _error = '';
-      _pista = '';
-    });
-    _buscadorFocus.unfocus();
-
-    final limpio = _digitos.esMatricula(q) ? q : _digitos.normalizar(q);
-
-    final Alumno? encontrado;
-    try {
-      encontrado = await _alumnosRepo.buscar(limpio);
-    } catch (e) {
-      // La base que no carga no deja el spinner girando: se avisa y la persona
-      // puede continuar como invitada.
-      if (!mounted) return;
-      setState(() {
-        _buscando = false;
-        _alumno = null;
-        _error = 'No se pudo consultar la base de la BUAP: $e';
-      });
-      return;
-    }
-    if (!mounted) return;
-    setState(() {
-      _buscando = false;
-      if (encontrado == null) {
-        _alumno = null;
-        _error =
-            limpio.length == 9
-                ? 'La matrícula $limpio no está en la base de la BUAP. '
-                    'Revísala, o continúa como invitado.'
-                : 'No encontramos "$q". Revisa cómo lo escribiste.';
-      } else {
-        _alumno = encontrado;
-        _error = '';
-      }
-    });
+  /// Aviso de forma, no de contenido: la app no puede saber si la matrícula es
+  /// real, así que solo señala que no tiene el formato de una de la BUAP.
+  String get _avisoMatricula {
+    final t = _matricula.text.trim();
+    if (t.isEmpty) return '';
+    if (_digitos.normalizar(t).length < 9) return '';
+    if (_digitos.esMatricula(t)) return '';
+    return 'La matrícula de la BUAP son 9 dígitos. La app no la verifica: solo '
+        'te avisa del formato. Puedes corregirla cuando quieras en '
+        'Menú → Mi perfil.';
   }
 
   Future<void> _continuar() async {
@@ -180,20 +128,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
       setState(() => _error = 'Elige tu unidad académica para continuar.');
       return;
     }
-    // Si no se encontró en la base, la persona entra como invitada: su
-    // progreso se guarda igual en el dispositivo.
-    final encontrado = _alumno;
-    final alumno =
-        encontrado == null
-            ? Alumno(nombre: '', matricula: '', facultad: facultad)
-            : Alumno(
-              nombre: encontrado.nombre,
-              matricula: encontrado.matricula,
-              facultad: facultad,
-              carrera: _carrera.text.trim(),
-              plan: _plan.text.trim(),
-              anioIngreso: int.tryParse(_anio.text.trim()),
-            );
+    // Nombre y matrícula son opcionales: la app no consulta ningún padrón, así
+    // que no hay nada que "encontrar". Se guardan tal cual, para que la persona
+    // los vea y pueda corregirlos.
+    final alumno = Alumno(
+      nombre: _nombre.text.trim(),
+      matricula: _digitos.normalizar(_matricula.text.trim()),
+      facultad: facultad,
+      carrera: _carrera.text.trim(),
+      plan: _plan.text.trim(),
+      anioIngreso: int.tryParse(_anio.text.trim()),
+    );
     // El avance y las notas se guardan por modalidad, no por persona: registrar
     // a otra persona en este teléfono no borra nada de la anterior, solo deja de
     // mostrar su oferta. Por eso se avisa antes, con la salida que sí limpia.
@@ -268,8 +213,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 6),
             const Text(
-              'Busca tu matrícula en la base de la BUAP para empezar tu camino '
-              'a la titulación.',
+              'Escribe tu nombre y, si te acuerdas, tu matrícula. Los dos '
+              'campos son opcionales: la app no consulta ninguna base de la '
+              'BUAP, solo guarda lo que escribas en este teléfono.',
               style: TextStyle(
                 color: Colors.white70,
                 fontSize: 15,
@@ -277,57 +223,49 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            if (!kDemoWeb)
-              TextField(
-                controller: _buscador,
-                focusNode: _buscadorFocus,
-                textInputAction: TextInputAction.search,
-                keyboardType: TextInputType.text,
-                autocorrect: false,
-                onSubmitted: (_) => _buscar(),
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-                decoration: InputDecoration(
-                  hintText: 'Matrícula o nombre',
-                  hintStyle: const TextStyle(color: Colors.white38),
-                  prefixIcon: const Icon(Icons.search, color: Colors.white70),
-                  suffixIcon:
-                      _buscando
-                          ? const Padding(
-                            padding: EdgeInsets.all(12),
-                            child: SizedBox(
-                              width: 18,
-                              height: 18,
-                              child: CircularProgressIndicator(strokeWidth: 2),
-                            ),
-                          )
-                          : null,
-                  filled: true,
-                  fillColor: Colors.white.withValues(alpha: 0.08),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(14),
-                    borderSide: BorderSide.none,
-                  ),
+            TextField(
+              controller: _nombre,
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.words,
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+              onChanged: (_) {
+                if (_error.isNotEmpty) setState(() => _error = '');
+              },
+              decoration: InputDecoration(
+                labelText: 'Nombre (opcional)',
+                labelStyle: const TextStyle(color: Colors.white54),
+                prefixIcon: const Icon(Icons.person_outline, color: Colors.white70),
+                filled: true,
+                fillColor: Colors.white.withValues(alpha: 0.08),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14),
+                  borderSide: BorderSide.none,
                 ),
-              )
-            else ...[
-              const AvisoDemo(
-                'La búsqueda por matrícula no viene en la demo web. '
-                'Continúa como invitado: en la app instalada sí puedes '
-                'encontrarte en la base de la BUAP.',
               ),
-              const SizedBox(height: 8),
-            ],
-            if (_pista.isNotEmpty) ...[
-              const SizedBox(height: 10),
-              Text(
-                _pista,
-                style: const TextStyle(color: Colors.white54, fontSize: 13),
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _matricula,
+              textInputAction: TextInputAction.done,
+              keyboardType: TextInputType.number,
+              autocorrect: false,
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+              onChanged: (_) => setState(() {}),
+              decoration: InputDecoration(
+                labelText: 'Matrícula (opcional)',
+                labelStyle: const TextStyle(color: Colors.white54),
+                prefixIcon: const Icon(Icons.badge_outlined, color: Colors.white70),
+                helperText: _avisoMatricula.isEmpty ? null : _avisoMatricula,
+                helperStyle: const TextStyle(color: Colors.white54, height: 1.4),
+                helperMaxLines: 3,
+                filled: true,
+                fillColor: Colors.white.withValues(alpha: 0.08),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14),
+                  borderSide: BorderSide.none,
+                ),
               ),
-            ],
-            if (_alumno != null) ...[
-              const SizedBox(height: 16),
-              _tarjetaAlumno(),
-            ],
+            ),
             if (_error.isNotEmpty) ...[
               const SizedBox(height: 16),
               Container(
@@ -457,12 +395,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   borderRadius: BorderRadius.circular(14),
                 ),
               ),
-              onPressed: _buscando ? null : _continuar,
-              child: Text(
-                _alumno == null
-                    ? 'Continuar como invitado'
-                    : 'Comenzar mi aventura',
-                style: const TextStyle(
+              onPressed: _continuar,
+              child: const Text(
+                'Comenzar mi aventura',
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),
@@ -470,8 +406,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
             const SizedBox(height: 14),
             const Text(
-              'Si no estás en la base todavía puedes entrar: tu progreso se '
-              'guarda en este dispositivo.',
+              'Tu avance y tus notas se guardan solo en este teléfono. Nada '
+              'de lo que escribas sale de tu dispositivo.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white54,
@@ -543,49 +479,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           borderRadius: BorderRadius.circular(14),
           borderSide: BorderSide.none,
         ),
-      ),
-    );
-  }
-
-  Widget _tarjetaAlumno() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: LoboColors.gold.withValues(alpha: 0.15),
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: LoboColors.gold.withValues(alpha: 0.5)),
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.check_circle, color: LoboColors.gold),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  _alumno!.nombre,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-                Text(
-                  'Matrícula ${_alumno!.matricula}',
-                  style: const TextStyle(color: Colors.white70, fontSize: 14),
-                ),
-              ],
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              _buscador.clear();
-              setState(() => _alumno = null);
-            },
-            icon: const Icon(Icons.close, color: Colors.white70),
-            tooltip: 'Cambiar',
-          ),
-        ],
       ),
     );
   }

@@ -6,7 +6,7 @@ import '../state/app_state.dart';
 import '../theme.dart';
 import '../widgets/common.dart';
 import 'contacts_screen.dart';
-import 'directory_screen.dart';
+import 'directorio_unidad_screen.dart';
 import 'map_screen.dart';
 import 'menu_screen.dart';
 import 'profile_screen.dart';
@@ -532,12 +532,8 @@ class _HomeScreenState extends State<HomeScreen> {
               side: const BorderSide(color: Colors.white38),
               padding: const EdgeInsets.symmetric(vertical: 14),
             ),
-            onPressed:
-                () => Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => const DirectoryScreen()),
-                ),
-            icon: const Icon(Icons.badge_outlined, size: 18),
+            onPressed: _abrirDirectorioDeMiUnidad,
+            icon: const Icon(Icons.groups_outlined, size: 18),
             label: const Text('Directorio'),
           ),
         ),
@@ -555,6 +551,24 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ],
+    );
+  }
+
+  /// Abre el directorio oficial de la unidad de la persona.
+  ///
+  /// Antes este botón buscaba en un padrón general de trabajadores de la BUAP
+  /// que viajaba dentro del paquete. Ese padrón ya no se distribuye: son 43 mil
+  /// nombres con matrícula y correo, y sin registro no hay forma de dar acceso
+  /// controlado a esa información. Ahora va al directorio que cada unidad publica
+  /// para ser contactada, que sí existe con ese propósito.
+  Future<void> _abrirDirectorioDeMiUnidad() async {
+    final clave = widget.state.facultadClave;
+    if (clave == null) return;
+    final f = await _repo.facultadPorClave(clave);
+    if (f == null || !mounted) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => DirectorioUnidadScreen(facultad: f)),
     );
   }
 

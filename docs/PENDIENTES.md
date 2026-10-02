@@ -318,7 +318,9 @@ alumno.
 9. **`build_catalog.py` y `build_assets.py` ya no reproducen el JSON
    actual.** Correrlos perdería el directorio, el catálogo de FFyL, las 114
    particularidades y todo lo de esta sesión. Nadie los ha ejecutado desde el
-   2026-09-29.
+   2026-09-29. **Sigue pendiente: lo correcto es borrarlos o marcarlos como
+   obsoletos**, porque son el camino más fácil para perder datos sin darse
+   cuenta.
 10. **`assets/json/directorios.json` está huérfano.** Su contenido está
     embebido en `facultades.json` y el archivo no lo lee nadie. Hoy es
     inocuo porque se comprobó que coinciden en las 29 unidades, pero es una

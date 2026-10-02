@@ -5,7 +5,6 @@ import 'package:titulacion/models/models.dart';
 import 'package:titulacion/screens/backup_screen.dart';
 import 'package:titulacion/screens/contacts_screen.dart';
 import 'package:titulacion/screens/directorio_unidad_screen.dart';
-import 'package:titulacion/screens/directory_screen.dart';
 import 'package:titulacion/screens/eligibility_screen.dart';
 import 'package:titulacion/screens/home_screen.dart';
 import 'package:titulacion/screens/level_detail_screen.dart';
@@ -88,8 +87,6 @@ void main() {
     );
     await a360(t, 'ContactsScreen', ContactsScreen(state: state));
   });
-
-  testWidgets('DirectoryScreen', (t) => a360(t, 'DirectoryScreen', const DirectoryScreen()));
 
   testWidgets('DirectorioUnidadScreen', (t) async {
     final state = await estadoLimpio();

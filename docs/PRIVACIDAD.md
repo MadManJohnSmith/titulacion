@@ -1,63 +1,51 @@
 # Aviso de privacidad — LoboApp
 
-**Versión:** 1.0 · **Última actualización:** 29 de septiembre de 2026
+**Versión:** 2.0 · **Última actualización:** 1 de octubre de 2026
 **Responsable:** Benemérita Universidad Autónoma de Puebla (BUAP)
 
 ---
 
 ## En una frase
 
-LoboApp **no recoge, no transmite y no comparte datos personales**. Todo se
-queda en el teléfono donde se instala.
+LoboApp **no recoge, no transmite y no comparte datos personales tuyos**. Lo que
+escribes se queda en el teléfono donde se instala.
 
 ---
 
-## Qué datos trae la app
+## La app no trae bases de datos de personas
 
-La app incluye dos bases de datos de la BUAP **dentro del propio archivo de
-instalación**:
+Hasta la versión 1.3.2 el archivo de instalación incluía dos padrones de la
+BUAP: 318,374 matrículas y nombres de alumnos, y 43,025 matrículas, nombres y
+correos institucionales de trabajadores. **Se quitaron a partir de la
+1.4.0.** Ninguno de los dos se distribuye ya, ni en los binarios ni en la demo
+web.
 
-| Base | Contenido | Tamaño |
-|---|---|---|
-| Alumnos | 318,374 matrículas y nombres | 2.9 MB comprimidos |
-| Trabajadores | 43,025 matrículas y nombres | 0.6 MB comprimidos |
+El motivo es que empaquetarlos hacía que **cualquiera que descargara la app
+pudiera extraer la lista completa** sin dejar rastro, y no había forma de dar
+acceso controlado a esa información. El argumento de que "la BUAP ya publica
+datos equivalentes" no se sostenía: los directorios públicos dan unas cientos
+de personas con cargo y ubicación, no cuatrocientas mil sin cargo ni unidad.
 
-Estas bases van empaquetadas, no se descargan. **La app no puede modificarlas ni
-enviarlas a ningún lado**, y no hay ningún servidor detrás.
+### Qué hace la app en su lugar
 
-### Qué se quitó a propósito
-
-- **Los correos de los alumnos no están en la app.** La base original los traía;
-  se eliminaron antes de empaquetar porque la app no los usa para nada.
-- **Los correos personales de los trabajadores tampoco** (gmail, hotmail y
-  similares). Solo se conservan los institucionales `@correo.buap.mx`, que la
-  universidad ya publica en sus directorios.
-
-### Aviso sobre la base de alumnos
-
-Empaquetar el padrón de alumnos significa que **cualquiera que descargue la app
-puede extraer la lista de matrículas y nombres**. Consideramos que es aceptable
-porque:
-
-1. La BUAP publica datos equivalentes en sus directorios públicos.
-2. La app **no tiene la facultad asociada**, así que no permite saber qué
-   unidad académica estudia cada persona.
-3. La lista es de 2020 a 2025 y no incluye correos, teléfonos ni datos
-   sensibles.
-
-Aun así, si la BUAP prefiere no distribuirla, se puede dejar la base fuera
-(borrando `assets/alumnos/`) y la app funciona igual: el alumno entra como
-invitado. Ver "Cómo quitar la base" más abajo.
-
----
+- **Tu nombre y tu matrícula los escribes tú.** No hay búsqueda ni verificación:
+  la app no consulta ningún padrón, así que lo que escribes es lo que se guarda.
+  La matrícula solo se revisa por su forma (9 dígitos).
+- **El directorio que sí incluye es el que las unidades publican** para poder
+  ser contactadas: 407 personas en 29 unidades, con su puesto, su ubicación,
+  su correo institucional y su teléfono, y con la URL de la fuente y la fecha
+  en que se consultó. Es información publicada con ese propósito.
+- **Ya no existe la búsqueda general de trabajadores**, porque solo podía
+  alimentarse del padrón que se quitó.
 
 ## Qué guarda la app en tu teléfono
 
-Solo el **progreso de juego**, en el almacenamiento local del dispositivo:
+Solo el **progreso**, en el almacenamiento local del dispositivo:
 
-- Tu nombre y matrícula (solo si te encontraste en la base)
+- Tu nombre y matrícula, si los escribiste
 - La unidad académica que elegiste
 - Qué niveles completaste y qué documentos marcaste
+- Tus notas
 
 Esto se guarda con `shared_preferences`, en el espacio privado de la app. **No se
 envía a ningún servidor.** Si desinstalas la app, se borra.
@@ -68,11 +56,28 @@ Al tocar un enlace o un correo, la app **te manda a otra app** (navegador,
 cliente de correo o teléfono). A partir de ahí, esa otra app tiene sus propias
 políticas de privacidad. LoboApp no interviene ni ve lo que haces ahí.
 
+## Conexiones que hace la app por su cuenta
+
+La app hace **una sola petición automática**, y solo en contenido público:
+
+| A dónde | Qué pide | Para qué |
+|---|---|---|
+| `madmanjohnsmith.github.io` | Un manifiesto y el catálogo de modalidades | Actualizar los requisitos de titulación sin sacar una versión nueva |
+
+**No se envía nada de tu dispositivo en esa petición**: no se manda tu nombre,
+tu matrícula, tu unidad ni tu avance. Solo se descarga contenido oficial de la
+BUAP para que la app no enseñe requisitos vencidos.
+
+Ese contenido va **firmado con una clave Ed25519** y la app **comprueba la
+firma** contra una clave pública que va dentro de la app. Si alguien cambia el
+manifiesto por el camino, la firma deja de cuadrar y la app conserva el
+catálogo anterior. Del hash y de la firma se ocupa `tools/publicar_contenido.sh`.
+
 ## Permisos que pide
 
 | Permiso | Para qué | ¿Se usa? |
 |---|---|---|
-| Internet | Abrir enlaces y correos | Sí, al tocar un enlace |
+| Internet | Abrir enlaces y correos; bajar el catálogo firmado | Sí |
 | Consultar el teléfono | No se pide | — |
 
 **No se pide** acceso a contactos, ubicación, cámara, micrófono, archivos ni
@@ -85,7 +90,7 @@ información de menores.
 
 ## Tus derechos
 
-Como los datos no salen de tu teléfono, borrarlos es tuyo y es inmediato:
+Como tus datos no salen de tu teléfono, borrarlos es tuyo y es inmediato:
 **desinstalar la app**. Si quieres borrarlos sin desinstalar, en la app:
 *Menú → Mi perfil → Cerrar sesión*.
 
@@ -102,30 +107,26 @@ documentos marcados y las notas que había. La app te avisa antes de cambiar el
 registro y te recuerda la salida: **Cerrar sesión**. Desinstalar la app borra
 todo, también lo de la otra persona.
 
-Lo que **no** se borra con ese botón es el contenido de la propia app
-(catálogo, rutas, padrón de alumnos y directorio), porque no es dato personal
-tuyo. Para borrarlo hace falta desinstalar la app.
+Lo que **no** se borra con ese botón es el contenido de la propia app (catálogo,
+rutas y directorio), porque no es dato personal tuyo. Para borrarlo hace falta
+desinstalar la app.
 
-Para cualquier duda sobre este aviso o sobre las bases incluidas, escribe a la
-**Coordinación General de Atención a los Universitarios (CGAU)**:
-+52 (222) 229 5500.
+Para cualquier duda sobre este aviso, escribe a la **Coordinación General de
+Atención a los Universitarios (CGAU)**: +52 (222) 229 5500.
 
 ---
 
-## Cómo quitar la base de alumnos de la app
+## Historial
 
-Si la BUAP decide que el padrón no debe distribuirse:
+- **1.0 (29 de septiembre de 2026).** Documentaba la app con los dos padrones
+  empaquetados y sus justificaciones.
+- **2.0 (1 de octubre de 2026).** Los padrones se eliminaron del paquete. Se
+  cambió el registro a escritura manual y se retiró la búsqueda general de
+  trabajadores. Se añadió la sección de conexión al catálogo firmado.
 
-1. Borra la carpeta `assets/alumnos/`.
-2. Quita la línea `- assets/alumnos/` de `pubspec.yaml`.
-3. Quita la pantalla de búsqueda del registro: en
-   `lib/screens/register_screen.dart`, deja el botón siempre como
-   "Continuar como invitado".
+## Cómo evitar que vuelvan
 
-La app sigue funcionando completa; solo pierde la verificación de matrícula.
-Lo mismo aplica a `assets/trabajadores/` para el directorio.
-
-## Cambios a este aviso
-
-Si cambia la base de datos incluida o se agrega alguna funcionalidad que
-transmita información, se actualiza este documento y la versión de la app.
+`test/data_test.dart` tiene pruebas que fallan si reaparecen `assets/alumnos`,
+`assets/trabajadores` o cualquier `.tsv.gz`, si `pubspec.yaml` vuelve a
+declararlos, y si `lib/` vuelve a usar `StudentRepository` o `StaffRepository`.
+Esas pruebas son la razón por la que esto no se repite por descuido.

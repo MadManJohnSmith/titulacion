@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.3.2+8
+version: 1.4.0+9
 
 environment:
   sdk: ^3.7.0
@@ -43,6 +43,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  cryptography: ^2.9.0
 
 dev_dependencies:
   flutter_test:
@@ -70,13 +71,16 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
-  # Cada carpeta va explícita: declarar solo `assets/images/` no trae los
+# Cada carpeta va explícita: declarar solo `assets/images/` no trae los
   # archivos de sus subdirectorios, y el build los deja fuera.
   # (Los assets están a un solo nivel: los niveles y las mascotas se llaman
-  #  levels_ceneval_bg_1.svg, mascot_profesional_lobo_3.svg, etc.)
+  # levels_ceneval_bg_1.svg, mascot_profesional_lobo_3.svg, etc.)
+  #
+  # Aquí no viaja ningún padrón de alumnos ni de trabajadores: son 318 mil y 43
+  # mil nombres respectivamente, y la app no tiene forma de consultar esa
+  # información sin registro. La matrícula se escribe a mano y solo se le
+  # comprueba la forma.
   assets:
-    - assets/alumnos/
-    - assets/trabajadores/
     - assets/fonts/
     - assets/images/
     - assets/images/maps/

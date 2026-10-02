@@ -5,7 +5,6 @@ import '../state/app_state.dart';
 import '../theme.dart';
 import 'backup_screen.dart';
 import 'contacts_screen.dart';
-import 'directory_screen.dart';
 import 'directorio_unidad_screen.dart';
 import 'eligibility_screen.dart';
 import 'notes_screen.dart';
@@ -75,17 +74,6 @@ class MenuScreen extends StatelessWidget {
               MaterialPageRoute(
                 builder: (_) => ContactsScreen(state: state),
               ),
-            ),
-          ),
-          const SizedBox(height: 10),
-          _item(
-            context,
-            icon: Icons.badge_outlined,
-            titulo: 'Directorio BUAP',
-            subtitulo: 'Buscar a un trabajador por nombre o matrícula',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const DirectoryScreen()),
             ),
           ),
           const SizedBox(height: 10),

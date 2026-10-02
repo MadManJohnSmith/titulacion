@@ -349,10 +349,14 @@ void main() {
           .widgetList<Text>(find.byType(Text))
           .map((t) => t.data ?? '')
           .join(' | ');
-      expect(textos.contains('art. 7 fr. VII'), isTrue,
-          reason: 'la diferencia entre tesis y tesina no se explica');
-      expect(textos.contains('Confírmalo con tu unidad'), isTrue,
-          reason: 'no se pide confirmar con la unidad antes de seguir');
+      // El aviso explica que la ruta también cubre la tesina y que lo que
+      // cambia es la extensión del trabajo, sin alarmar sobre un error.
+      expect(textos.contains('examen profesional por trabajo'), isTrue,
+          reason: 'no se dice que esta ruta también cubre la tesina');
+      expect(textos.contains('más breve'), isTrue,
+          reason: 'no se explica la diferencia real entre tesis y tesina');
+      expect(textos.contains('Lo que publica'), isTrue,
+          reason: 'no remite a lo que exige la unidad en concreto');
     });
 
     testWidgets('el aviso de buzón personal aparece con la vía estable', (
