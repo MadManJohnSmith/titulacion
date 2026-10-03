@@ -7,9 +7,10 @@
 <h3 align="center">Tu titulación en la BUAP, como una aventura</h3>
 
 <p align="center">
+  <a href="https://github.com/MadManJohnSmith/LoboApp/releases/latest"><img src="https://img.shields.io/github/v/release/MadManJohnSmith/LoboApp" alt="Última versión"/></a>
   <a href="https://github.com/MadManJohnSmith/LoboApp/actions/workflows/ci.yml"><img src="https://github.com/MadManJohnSmith/LoboApp/actions/workflows/ci.yml/badge.svg" alt="CI"/></a>
   <img src="https://img.shields.io/badge/Flutter-3.47-02569B?logo=flutter&logoColor=white" alt="Flutter"/>
-  <img src="https://img.shields.io/badge/plataforma-Android_%C2%B7_Web-0B233A" alt="Android y Web"/>
+  <img src="https://img.shields.io/badge/plataforma-Android_%C2%B7_escritorio_%C2%B7_Web-0B233A" alt="Android, escritorio y web"/>
   <img src="https://img.shields.io/badge/licencia-todos_los_derechos_reservados-E0A93B" alt="Licencia"/>
 </p>
 
@@ -22,29 +23,29 @@ Funciona **100% sin conexión y sin cuenta**: tu progreso se guarda únicamente
 en tu dispositivo.
 
 <p align="center">
-  🌐 <a href="https://madmanjohnsmith.github.io/LoboApp/"><strong>Pruébala en el navegador (demo)</strong></a>
-  — versión de muestra sin buscadores; la app completa va en la instalación de abajo.
+  🌐 <a href="https://madmanjohnsmith.github.io/LoboApp/"><strong>Pruébala en el navegador</strong></a>
+  &nbsp;·&nbsp;
+  ⬇ <a href="https://github.com/MadManJohnSmith/LoboApp/releases/latest"><strong>Descarga la app completa</strong></a>
+  <br/>
+  <sub>La demo web es una versión de muestra sin buscadores; la app completa
+  se publica en Releases.</sub>
 </p>
 
 ---
 
 ## 📱 Capturas
 
-| Bienvenida | Registro | Elige tu ruta |
+| Elige tu ruta | Avanza por el mapa | Completa cada nivel |
 |:---:|:---:|:---:|
-| ![Bienvenida](screenshots/bienvenida.png) | ![Registro](screenshots/registro_facultades.png) | ![Rutas](screenshots/rutas.png) |
+| ![Rutas](screenshots/rutas.png) | ![Mapa](screenshots/mapa.png) | ![Detalle del nivel](screenshots/nivel_detalle.png) |
 
-| Tu ruta | Mapa de niveles | Detalle del nivel |
+| ¿Cuál me corresponde? | Tu ruta, con sus requisitos | Cada dato con su fuente |
 |:---:|:---:|:---:|
-| ![Pergamino](screenshots/ruta_modalidad.png) | ![Mapa](screenshots/mapa.png) | ![Nivel](screenshots/nivel_detalle.png) |
+| ![Calculadora de elegibilidad](screenshots/calculadora.png) | ![Tu ruta](screenshots/ruta_modalidad.png) | ![Requisitos y fuente](screenshots/ruta_fuente.png) |
 
-| Requisitos y fuente | ¿Cuál me corresponde? | Respaldo |
+| Tu unidad, ya precargada | Anota lo que te falta | Tu avance, con respaldo |
 |:---:|:---:|:---:|
-| ![Requisitos](screenshots/ruta_fuente.png) | ![Calculadora](screenshots/calculadora.png) | ![Respaldo](screenshots/respaldo.png) |
-
-| Tus notas | Menú |
-|:---:|:---:|
-| ![Notas](screenshots/notas.png) | ![Menú](screenshots/menu.png) |
+| ![Registro de facultades](screenshots/registro_facultades.png) | ![Notas](screenshots/notas.png) | ![Respaldo](screenshots/respaldo.png) |
 
 <p align="center">
   <img src="screenshots/perfil.png" alt="Perfil con tu avance" width="260"/><br/>
@@ -54,32 +55,22 @@ en tu dispositivo.
 
 ## 🗺️ ¿Cómo funciona?
 
-1. **Entras con tu matrícula** — la app te busca en la base de alumnos de la
-   BUAP (318,374 registros) y toma tu nombre. Si no estás o prefieres no
-   buscarla, puedes continuar como invitado.
-2. **Eliges tu unidad académica** — las 34 facultades, escuelas, institutos y
-   complejos de la BUAP están precargadas con su contacto de titulación.
-3. **Eliges tu modalidad** — la lista se filtra por tu unidad y muestra, de
-   cada modalidad, los **requisitos que publica tu unidad** (y «no publicado»
-   donde no los publica), el **enlace oficial** y la **fecha** de esa fuente.
-   Si tu unidad no publica catálogo, la app te lo dice y te muestra dónde se
-   buscó, en vez de dejarte en una pantalla vacía.
-4. **Eliges tu ruta de titulación** — 8 rutas: **promedio** (8 niveles),
-   **CENEVAL** (9), **examen profesional** (7) y las cinco modalidades del
-   art. 7 del Reglamento General de Titulación: **tesis** (6), **memoria de
-   experiencia profesional o reporte técnico** (6), **diplomado de educación
-   continua** (6), **seminario por convocatoria** (4) y **asignatura optativa con
-   créditos** (4).
-5. **Recorres el mapa** — cada isla es un nivel de tu trámite, desbloqueado en
-   orden, con tu mascota lobo avanzando contigo.
-6. **Completas cada nivel** — pasos explicados uno por uno y una lista de
-   documentos para marcar como recogidos. Al terminar todos los niveles, tu
-   expediente está listo.
-7. **Si no sabes cuál te toca** — el apartado *«¿Cuál modalidad me
-   corresponde?»* compara tu promedio y tus créditos contra los requisitos que
-   publica tu unidad y te dice qué se cumple, qué no y **qué no se puede
-   confirmar** con lo que capturaste. Nunca decide por ti: cada respuesta trae
-   el enlace oficial y la fecha con la que se comparó.
+1. **Entras con tu matrícula** (o como invitado) — la app te busca en la base
+   de alumnos de la BUAP y toma tu nombre.
+2. **Eliges tu unidad y tu ruta de titulación** — las 34 unidades académicas
+   están precargadas, y hay 8 rutas: **promedio**, **CENEVAL**, **examen
+   profesional** y las cinco modalidades del art. 7 del Reglamento General de
+   Titulación (tesis, memoria de experiencia profesional, diplomado,
+   seminario por convocatoria y asignatura optativa con créditos).
+3. **Recorres el mapa** — cada isla es un nivel de tu trámite, desbloqueado
+   en orden, con tu mascota lobo avanzando contigo. Cada nivel te explica los
+   pasos uno por uno y los documentos los vas marcando como recogidos; al
+   terminar todos los niveles, tu expediente está listo.
+4. **Si no sabes cuál te toca** — el apartado *«¿Cuál modalidad me
+   corresponde?»* compara tu promedio y tus créditos contra los requisitos
+   que publica tu unidad y te dice qué se cumple, qué no y **qué no se puede
+   confirmar** con lo que capturaste. Nunca decide por ti: cada respuesta
+   trae el enlace oficial y la fecha con la que se comparó.
 
 ## ✨ Características
 
@@ -159,6 +150,32 @@ flutter analyze   # No issues found!
 flutter test      # todas las pruebas, incluidas de integridad de datos y assets
 ```
 
+## ❓ Preguntas frecuentes
+
+**¿Funciona sin internet?**
+Sí. Las rutas, el catálogo de modalidades y las bases de búsqueda viajan
+dentro de la app, y tu progreso se guarda en tu dispositivo. Solo la demo
+web corre en el navegador.
+
+**¿La app decide qué modalidad me toca?**
+No. La calculadora compara tu promedio y tus créditos contra los requisitos
+que publica tu unidad y te dice qué se cumple, qué no y qué no se puede
+confirmar con lo que capturaste, siempre con el enlace oficial y la fecha al
+lado. La decisión final es tuya.
+
+**¿De dónde salen los requisitos?**
+De lo que cada unidad académica publica: cada modalidad cita su fuente
+oficial con el enlace y la fecha, y donde tu unidad no publica requisitos la
+app dice «no publicado» en vez de rellenar. El catálogo completo vive en
+[`assets/json/`](assets/json).
+
+**¿Cambio de teléfono y pierdo mi avance?**
+No: exportas tu respaldo a un archivo y lo importas en el nuevo teléfono.
+
+**¿Por qué la demo del navegador no tiene buscadores?**
+Porque las bases de alumnos y trabajadores solo viajan dentro de la app
+instalada, nunca como archivos descargables en la web.
+
 ## 🔒 Privacidad
 
 - No hay servidor ni cuenta: todo el progreso vive en `shared_preferences`
@@ -211,9 +228,9 @@ docs/                        privacidad, pendientes, decisiones de diseño
 La app está **completa y lista para despliegue**: cada tag (`v1.1.0`, …)
 dispara una compilación automática para Android, Windows, macOS y Linux que
 se publica sola en Releases, y cada cambio en `main` actualiza la demo web.
-Verificado hoy: `flutter analyze` sin incidencias, `flutter test` con 116
-pruebas en verde, y compilan web y APK. Lo que queda depende de la BUAP:
-confirmar algunos textos del diseño original, completar los correos de
+Cada push pasa por el CI: `flutter analyze` sin incidencias, `flutter test`
+con 116 pruebas en verde, y web y APK compilan. Lo que queda depende de la
+BUAP: confirmar algunos textos del diseño original, completar los correos de
 titulación que no están publicados, recuperar el catálogo de las 9 unidades que
 no lo publican y la firma de release para Play Store. Detalles en
 [docs/PENDIENTES.md](docs/PENDIENTES.md).
