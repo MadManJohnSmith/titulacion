@@ -27,8 +27,8 @@ en tu dispositivo.
   &nbsp;·&nbsp;
   ⬇ <a href="https://github.com/MadManJohnSmith/LoboApp/releases/latest"><strong>Descarga la app completa</strong></a>
   <br/>
-  <sub>La demo web es una versión de muestra sin buscadores; la app completa
-  se publica en Releases.</sub>
+  <sub>La demo corre el mismo contenido en tu navegador, con el catálogo
+  embebido; la app completa se publica en Releases.</sub>
 </p>
 
 ---
@@ -55,8 +55,9 @@ en tu dispositivo.
 
 ## 🗺️ ¿Cómo funciona?
 
-1. **Entras con tu matrícula** (o como invitado) — la app te busca en la base
-   de alumnos de la BUAP y toma tu nombre.
+1. **Entras como invitado o escribes tu nombre y matrícula** — la app no
+   consulta ningún padrón: solo revisa el formato de 9 dígitos y guarda lo
+   que escribas en tu teléfono.
 2. **Eliges tu unidad y tu ruta de titulación** — las 34 unidades académicas
    están precargadas, y hay 8 rutas: **promedio**, **CENEVAL**, **examen
    profesional** y las cinco modalidades del art. 7 del Reglamento General de
@@ -77,16 +78,17 @@ en tu dispositivo.
 - 🎮 **Gamificado**: rutas, niveles, mascotas y mapa — el trámite deja de ser
   un laberinto de PDFs.
 - 📋 **78 documentos y 86 pasos** en 50 niveles, explicados en lenguaje claro.
-- 📑 **Catálogo por unidad**: 137 modalidades registradas de 34 unidades, cada
-  una con su fuente oficial y su fecha, dentro de las ocho modalidades que
-  reconoce el Reglamento General de Titulación (art. 7, H. Consejo Universitario
-  23-nov-2015).
+- 📑 **Catálogo por unidad**: 170 modalidades de las 25 unidades que ya
+  publican catálogo (corte 2026-09-29), cada una con su fuente oficial y su
+  fecha, dentro de las ocho modalidades que reconoce el Reglamento General de
+  Titulación (art. 7, H. Consejo Universitario 23-nov-2015).
 - 🏛️ **Las 34 unidades académicas** con su coordinación de titulación.
-- 🔍 **Buscador de matrícula offline** sobre 318,374 alumnos: la base va
-  comprimida dentro de la app y solo se descomprime la cohorte que toca.
-- 📇 **Directorio BUAP**: búsqueda de 43,025 trabajadores por nombre o
-  matrícula.
+- 📇 **Directorio de tu unidad**: a quién acudir para cada trámite, con su
+  puesto, cubículo y contacto — citando la fuente oficial que lo publica.
 - ☎️ **Contactos y enlaces útiles**: DAE, CGAU, trámites en línea.
+- 🔄 **Catálogo vivo y verificado**: el contenido va embebido y firmado, y la
+  app puede bajar catálogos más nuevos de los hosts de publicación
+  registrados.
 - 🧮 **Calculadora de elegibilidad**: tu promedio y tus créditos contra los
   requisitos reales de cada modalidad de tu unidad, con «por confirmar» donde la
   unidad no publica el dato.
@@ -153,9 +155,9 @@ flutter test      # todas las pruebas, incluidas de integridad de datos y assets
 ## ❓ Preguntas frecuentes
 
 **¿Funciona sin internet?**
-Sí. Las rutas, el catálogo de modalidades y las bases de búsqueda viajan
-dentro de la app, y tu progreso se guarda en tu dispositivo. Solo la demo
-web corre en el navegador.
+Sí. Las rutas y el catálogo de modalidades viajan dentro de la app, y tu
+progreso se guarda en tu dispositivo. La red solo entra en juego si buscas
+una actualización de catálogo.
 
 **¿La app decide qué modalidad me toca?**
 No. La calculadora compara tu promedio y tus créditos contra los requisitos
@@ -172,20 +174,20 @@ app dice «no publicado» en vez de rellenar. El catálogo completo vive en
 **¿Cambio de teléfono y pierdo mi avance?**
 No: exportas tu respaldo a un archivo y lo importas en el nuevo teléfono.
 
-**¿Por qué la demo del navegador no tiene buscadores?**
-Porque las bases de alumnos y trabajadores solo viajan dentro de la app
-instalada, nunca como archivos descargables en la web.
+**¿La demo del navegador es la app completa?**
+Sí: mismo contenido y mismo flujo. La única diferencia es que la demo no
+busca actualizaciones de catálogo — usa el que va embebido. La app instalada
+se publica en Releases.
 
 ## 🔒 Privacidad
 
 - No hay servidor ni cuenta: todo el progreso vive en `shared_preferences`
   locales del dispositivo.
-- La base de alumnos incluida contiene **solo matrícula y nombre** — se
-  quitaron todos los correos de alumnos, y de los trabajadores solo se
-  conservan los correos institucionales `@correo.buap.mx`.
-- La demo web del navegador **no incluye las bases** (por eso sus buscadores
-  están desactivados): el padrón solo viaja dentro de la app instalada, nunca
-  como archivos descargables.
+- **No empaqueta bases de personas**: desde la v1.4.0 el registro es manual
+  (tu nombre y tu matrícula, escritos por ti) y el directorio de unidad es el
+  que la propia unidad publica para ser contactada.
+- La demo web corre el mismo contenido en tu navegador; nada de lo que
+  escribas ahí sale de tu navegador.
 - El proceso completo de decisión y cómo quitar las bases si la BUAP lo
   solicita está documentado en [docs/PRIVACIDAD.md](docs/PRIVACIDAD.md).
 
@@ -198,7 +200,7 @@ hardcodeado en el código:
 |---|---|
 | `routes.json` | Las 8 rutas: niveles, pasos, documentos y particularidades por unidad |
 | `facultades.json` | Las 34 unidades académicas y sus contactos |
-| `catalogo_modalidades.json` | Las 137 modalidades con su fuente oficial y su fecha |
+| `catalogo_modalidades.json` | Las modalidades de cada unidad, con su fuente oficial y su fecha |
 | `links.json` | Enlaces útiles de la BUAP |
 | `contactos.json` | Contactos generales (DAE, CGAU) |
 
@@ -216,7 +218,7 @@ lib/
   models/models.dart         Ruta, Nivel, Paso, Documento, Facultad, Alumno,
                              UnidadCatalogo, ModalidadUnidad, Elegibilidad
   state/app_state.dart       estado + persistencia local del progreso
-  services/                  repositorios: contenido JSON, alumnos, trabajadores
+  services/                  repositorio del contenido JSON (catálogo, rutas, unidades)
   screens/                   las 13 pantallas de la app
   widgets/                   componentes reutilizables
 tools/                       script para regenerar las bases desde los .db
